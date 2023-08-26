@@ -7,3 +7,4 @@ Collection of roles for generating html reports
 | FCQN | Documentation |
 | --- | :---: |
 | zjleblanc.reporting.table | [📝](./roles/table/README.md) |
+| zjleblanc.reporting.facts | [📝](./roles/facts/README.md) |

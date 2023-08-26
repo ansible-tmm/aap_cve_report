@@ -1,4 +1,4 @@
-facts
+zjleblanc.reporting.facts
 =========
 
 Generate a report using device facts
@@ -56,9 +56,9 @@ Example Playbook
     - name: Limit to vars starting with ansible_
       run_once: true
       ansible.builtin.include_role:
-        name: roles/facts
+        name: zjleblanc.reporting.facts
       vars:
-        facts_table_title: "Facts Test"
+        facts_table_title: "Facts Example"
         facts_table_limit_prefix: ansible_
         facts_table_output_dest: "{{ playbook_dir }}/zjleblanc.facts.html"
 ```
