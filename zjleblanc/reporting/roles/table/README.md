@@ -1,4 +1,4 @@
-table
+zjleblanc.reporting.table
 =========
 
 Generate a tabular HTML report
@@ -35,7 +35,7 @@ Examples
     tasks:
       - name: Infer headers from dictionary data
         ansible.builtin.include_role:
-          name: table
+          name: zjleblanc.reporting.table
         vars:
           table_data:
             - "First Name": Zach
@@ -50,7 +50,7 @@ Examples
 
       - name: Provide separate headers for list data
         ansible.builtin.include_role:
-          name: table
+          name: zjleblanc.reporting.table
         vars:
           table_data:
             - ["Zach", "LeBlanc", "annual:)"]
@@ -62,7 +62,7 @@ Examples
 
       - name: Provide list data with headers in the first row
         ansible.builtin.include_role:
-          name: table
+          name: zjleblanc.reporting.table
         vars:
           table_data:
             - ["First Name", "Last Name", "Birthday"]
