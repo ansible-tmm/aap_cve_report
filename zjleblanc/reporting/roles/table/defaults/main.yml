@@ -1,0 +1,9 @@
+---
+table_title: "Auto-generated Report"
+table_timestamp: "{{ lookup('pipe', 'date +\"%Y-%m-%d @ %H:%M:%S\"') }}"
+# table_data: list[list] | list[dict] # tabular data used in report
+# table_headers: ["First Name", "Last Name", "Birthday"] # optionally provide column headers
+table_data_type: dict # type of input data (list or object)
+table_first_row_headers: false # flag for headers in the first row
+table_output_dest: "{{ playbook_dir }}/zjleblanc.table.html"
+# table_output_remote_host: report_server # inventory host to copy report to
