@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: true
+
+  tasks:
+    - name: facts role
+      run_once: true
+      ansible.builtin.include_role:
+        name: roles/facts
+      vars:
+        facts_table_title: "Facts Test"
+        facts_table_limit_prefix: ansible_
+        facts_table_output_dest: "{{ playbook_dir }}/zjleblanc.facts.html"

@@ -1,0 +1,63 @@
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <title>Interactive Network Report</title>
+        <meta name="description" content="Ansible for networking interactive report.">
+        <meta name="author" content="Zachary LeBlanc">
+
+        <meta property="og:title" content="Interactive Network Report">
+        <meta property="og:type" content="website">
+        <meta property="og:description" content="Ansible for networking interactive report.">
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <style>
+            .wrapper { margin: 20px; }
+            .fancySearchRow input { padding: 5px; margin: 10px 0px; }
+            #facts-modal .modal-dialog { max-width: 100%; margin: 20px; }
+            .table td.facts-col { padding: .5rem .75rem; max-width: 300px; overflow-x: scroll }
+            .btn-facts { padding: 2px 4px; }
+            #title { display: flex; justify-content: space-between; align-items: end }
+            #title p { opacity: 0.75; margin-bottom: 0.5rem; font-size: 0.85rem }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div id="title">
+                <p style="opacity: 0">{{ facts_table_timestamp }}</p>
+                <h3>{{ facts_table_title }}</h3>
+                <p>{{ facts_table_timestamp }}</p>
+            </div>
+            <table id="report-table" class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>inventory_hostname</th>
+                    {% for header in facts_table_data_headers -%}
+                        <th>{{ header }}</th>
+                    {% endfor -%}
+                    </tr>
+                </thead>
+                <tbody>
+                {% for row in facts_table_data_list -%}
+                    <tr>
+                        <th scope="row">{{ row['inventory_hostname'] }}</th>
+                    {% for header in facts_table_data_headers -%}
+                        <td class="facts-col">{{ row[header] }}</td>
+                    {% endfor -%}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>           
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery.fancytable/dist/fancyTable.min.js"></script>
+        <script src="js/json-viewer.js"></script>
+        <script type="text/javascript">
+            {% include 'interactive_report.js.j2' %}   
+        </script>
+    </body>
+</html>

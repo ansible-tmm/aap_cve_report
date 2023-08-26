@@ -1,0 +1,10 @@
+---
+facts_table_data: "{{ hostvars }}"
+facts_table_data_list: "{{ facts_table_data | json_query('*') }}"
+facts_table_data_model: "{{ facts_table_data_list[0] }}"
+facts_table_data_header_filters:
+  limit: "{{ facts_table_limit | default([]) }}"
+  limit_prefix: "{{ facts_table_limit_prefix | default('') }}"
+  exclude: "{{ facts_table_exclude | default([]) }}"
+  exclude_prefix: "{{ facts_table_exclude_prefix | default('') }}"
+facts_table_data_headers: "{{ facts_table_data_model | headers(facts_table_data_header_filters) | sort }}"
