@@ -43,7 +43,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                {% for row in facts_table_data_list -%}
+                {% for row in facts_table_data -%}
                     <tr>
                         <th scope="row">{{ row['inventory_hostname'] }}</th>
                         <td class="facts-col text-center btn-col">
@@ -58,7 +58,7 @@
                             </button>
                         </td>
                     {% for header in facts_table_data_headers -%}
-                        <td class="facts-col">{{ row[header] }}</td>
+                        <td class="facts-col">{{ row[header] | default('undef') }}</td>
                     {% endfor -%}
                     </tr>
                 {% endfor %}

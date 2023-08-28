@@ -2,10 +2,10 @@
 class FilterModule(object):
     def filters(self):
         return {
-            'headers': self.do_filter_headers
+            'fact_headers': self.do_get_fact_headers
         }
 
-    def do_filter_headers(self, data_model, config):
+    def do_get_fact_headers(self, data_model, config):
       has_limit = len(config.get('limit'))
       has_limit_prefix = len(config.get('limit_prefix'))
       has_exclude = len(config.get('exclude'))
