@@ -13,4 +13,18 @@ $(document).ready(function(){
             /* On update like search and sort of table */                 
         }
     });
+
+        $(".facts-col button").on('click', function(event) {
+        let facts = {};
+        if($(event.target).data('facts') !== undefined) {
+            facts = $(event.target).data('facts');
+        }
+        else {
+            facts = $(event.target).parent().data('facts')
+        }
+        const tree = jsonview.create(facts);
+        $('#modal-code').empty();
+        jsonview.render(tree, document.querySelector('#modal-code'));
+        $('.json-container > .line > .json-key').first().text('facts');
+    });     
 })
