@@ -2,6 +2,7 @@ zjleblanc.reporting.table
 =========
 
 Generate a tabular HTML report
+[View Example 📈](https://reports.autodotes.com/roles/table.mlb.html)
 
 Galaxy Tags: \[ report table html \]
 
@@ -21,10 +22,39 @@ Role Variables
 | -------- | ------- | ------------------- | --------- |
 | table_title | default | Auto-generated Report |  |
 | table_timestamp | default | {{ lookup('pipe', 'date +"%Y-%m-%d @ %H:%M:%S"') }} |  |
-| table_data_type | default | dict | type of input data (list or object) |
+| table_data_type | default | dict | type of input data ([see examples](#choosing-data-type)) |
 | table_headers | ["First Name", "Last Name", "Birthday"] | optionally provide column headers |
 | table_first_row_headers | default | False | flag for headers in the first row |
 | table_output_dest | default | {{ playbook_dir }}/zjleblanc.table.html |  |
+
+Choosing Data Type
+------------------
+
+When the input data is a list of objects, use **table_data_type: dict**. Example data below:
+```json
+[
+  {
+    "First Name": "Zach",
+    "Last Name": "LeBlanc",
+    "Birthday": "annual"
+  },
+  {
+    "First Name": "Linux",
+    "Last Name": "Machines",
+    "Birthday": "1/1/1970"
+  },
+  ...
+]
+```
+
+When the input data is a list of lists, use **table_data_type: list**. Example data below:
+```json
+[
+  ["Zach", "LeBlanc", "annual"],
+  ["Linux", "Machines", "1/1/1970"],
+  ...
+]
+```
 
 Examples
 --------

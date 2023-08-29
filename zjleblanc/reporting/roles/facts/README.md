@@ -1,7 +1,8 @@
 zjleblanc.reporting.facts
 =========
 
-Generate a report using device facts
+Generate a report using device facts<br>
+[View Example 📈](https://reports.autodotes.com/roles/facts.lab.html)
 
 Galaxy Tags: \[ report facts html \]
 
