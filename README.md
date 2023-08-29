@@ -4,5 +4,5 @@
 
 | FCQN | Documentation |
 | --- | :---: |
-| zjleblanc.reporting.table | [📝](./zjleblanc/reporting/roles/table/README.md) |
-| zjleblanc.reporting.facts | [📝](./zjleblanc/reporting/roles/facts/README.md) |
+| zjleblanc.reporting.table | [📝](https://github.com/zjleblanc/zjleblanc.reporting/blob/master/zjleblanc/reporting/roles/table/README.md) |
+| zjleblanc.reporting.facts | [📝](https://github.com/zjleblanc/zjleblanc.reporting/blob/master/zjleblanc/reporting/roles/facts/README.md) |
