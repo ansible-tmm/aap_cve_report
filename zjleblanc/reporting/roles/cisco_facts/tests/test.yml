@@ -1,0 +1,8 @@
+---
+- name: Role test
+  hosts: [nxos, ios, iosxr]
+
+  tasks:
+    - name: Test role
+      ansible.builtin.include_role:
+        name: cisco_facts

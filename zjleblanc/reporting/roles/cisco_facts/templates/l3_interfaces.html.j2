@@ -1,0 +1,41 @@
+{% if device['ansible_network_resources']['l3_interfaces'] is defined and device['ansible_network_resources']['l3_interfaces']|length > 0 %}
+<table class="table table-striped table-bordered table-sm">
+    <thead>
+        <tr>
+            <th>Interface Name</th>
+            <th>IPv4</th>
+            <th>IPv6</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for interface in device['ansible_network_resources']['l3_interfaces'] %}
+        <tr>
+            <td>{{interface['name']}}</td>
+            <td>
+{% if interface.ipv4 is defined %}
+{% for address in interface.ipv4 %}
+{{ address['address']|default("Not Configured") }}
+{% if address['secondary'] is defined %}
+secondary
+{% endif %}
+{% if loop.length > 1 and not loop.last %}<br>{% endif %}
+{% endfor %}
+{% endif %}
+            </td>
+            <td>
+{% if interface.ipv6 is defined %}
+{% for v6address in interface.ipv6 %}
+{{v6address['address']|default("Not Configured") }}
+{% if loop.length > 1 and not loop.last %}<br>{% endif %}
+{% endfor %}
+{% endif %}
+            </td>
+        </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% elif device['ansible_network_resources']['l3_interfaces'] is defined and device['ansible_network_resources']['l3_interfaces']|length == 0 %}
+L3 information is not configured on this device
+{% else %}
+No L3 information available
+{% endif %}

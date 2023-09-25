@@ -1,0 +1,20 @@
+{% if device['ansible_network_resources']['lacp'] is defined and device['ansible_network_resources']['lacp'].keys()|length > 0  %}
+<table class="table table-striped table-bordered table-sm">
+    <thead>
+        <tr>
+            <th>System Priority</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for property in device['ansible_network_resources']['lacp'] %}
+        <tr>
+            <td>{% if property['system'] is defined %} }{{property['system']['priority']}}{% else %}LACP not configured {% endif %}</td>
+        </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% elif device['ansible_network_resources']['lacp'] is defined and device['ansible_network_resources']['lacp'].keys()|length == 0 %}
+LACP is not configured on this device
+{% else %}
+No LACP information available
+{% endif %}

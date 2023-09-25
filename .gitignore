@@ -1,3 +1,7 @@
+# Local run output
+facts.json
+.vscode/
+
 # Collection artifacts
 *.log
 *.tar.gz

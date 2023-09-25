@@ -1,0 +1,22 @@
+{% if device['ansible_network_resources']['ospfv2'] is defined and device['ansible_network_resources']['ospfv2']|length > 0 %}
+<table class="table table-striped table-bordered table-sm">
+    <thead>
+        <tr>
+            <th>Process ID</th>
+            <th>Router ID</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for key,value in device['ansible_network_resources']['ospfv2'].items() %}
+        <tr>
+            <td>{{ value[0].process_id }}</td>
+            <td>{{ value[0].router_id | default("Not Configured") }}</td>
+        </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% elif device['ansible_network_resources']['ospfv2'] is defined and device['ansible_network_resources']['ospfv2']|length == 0 %}
+OSPF is not configured on this device
+{% else %}
+No OSPF information available
+{% endif %}

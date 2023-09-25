@@ -1,0 +1,43 @@
+{% if device['ansible_network_resources']['bgp_global'] is defined and device['ansible_network_resources']['bgp_global']|length > 0 %}
+<table class="table table-striped table-bordered table-sm">
+    <thead>
+        <tr>
+            <th>ASN</th>
+            <th>Router ID</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ device.ansible_network_resources.bgp_global['as_number'] | default("Not Configured") }}</td>
+            <td>{{ device.ansible_network_resources.bgp_global.bgp['router_id']['address'] | default("Not Configured") }}</td>
+        </tr>
+    </tbody>
+</table>
+{% if device['ansible_network_resources']['bgp_global'][
+'neighbor'] is defined and device['ansible_network_resources']['bgp_global'][
+'neighbor']|length > 0 %}
+<p>BGP Neighbors</p>
+<table class="table table-striped table-bordered table-sm">
+    <thead>
+        <tr>
+            <th>Address</th>
+            <th>Remote AS</th>
+
+        </tr>
+    </thead>
+    <tbody>
+    {% for bgp_neighbor in device.ansible_network_resources.bgp_global.neighbor %}
+        <tr>
+            <td>{{ bgp_neighbor['address'] | default("Not Configured") }}</td>
+            <td>{{ bgp_neighbor['remote_as'] | default("Not Configured") }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% elif device['ansible_network_resources']['bgp_global'] is defined and device['ansible_network_resources']['bgp_global']|length == 0 %}
+BGP is not configured on this device
+{% else %}
+No BGP information available
+{% endif %}

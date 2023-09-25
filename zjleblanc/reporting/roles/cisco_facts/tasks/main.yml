@@ -1,0 +1,36 @@
+---
+- name: Gather facts | ios
+  when: ansible_net_system|lower == 'ios'
+  cisco.ios.ios_facts:
+    gather_subset: all
+    gather_network_resources: all
+
+- name: Gather facts | iosxr
+  when: ansible_net_system|lower == 'iosxr'
+  cisco.iosxr.iosxr_facts:
+    gather_subset: all
+    gather_network_resources: all
+
+- name: Gather facts | nxos
+  when: ansible_net_system|lower == 'nxos'
+  cisco.nxos.nxos_facts:
+    gather_subset: all
+    gather_network_resources: all
+
+- name: Generate report on execution node
+  when: cisco_facts_output_remote_host is not defined
+  delegate_to: localhost
+  run_once: true
+  ansible.builtin.copy:
+    content: "{{ lookup('template', 'templates/report.html.j2') }}"
+    dest: "{{ cisco_facts_output_dest }}"
+    mode: "0664"
+
+- name: Generate report on remote host
+  when: cisco_facts_output_remote_host is defined
+  delegate_to: "{{ cisco_facts_output_remote_host | default('localhost') }}"
+  run_once: true
+  ansible.builtin.copy:
+    content: "{{ lookup('template', 'templates/report.html.j2') }}"
+    dest: "{{ cisco_facts_output_dest }}"
+    mode: "0664"

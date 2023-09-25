@@ -1,0 +1,22 @@
+{% if device['ansible_network_resources']['lldp_interfaces'] is defined %}
+<table class="table table-striped table-bordered table-sm">
+    <thead>
+        <tr>
+            <th>vlan_id</th>
+            <th>Name</th>
+            <th>state</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for interface in device['ansible_network_resources']['lldp_interfaces'] %}
+        <tr>
+            <td>{{ interface['name'] }}</td>
+            <td>{{ interface['receive'] | default("Not Configured") }}</td>
+            <td>{{ interface['transmit'] | default("Not Configured") }}</td>
+        </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% else %}
+No LLDP information available
+{% endif %}

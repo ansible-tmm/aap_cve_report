@@ -1,0 +1,218 @@
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+      <title>{{ cisco_facts_report_title }}</title>
+      <meta name="description" content="{{ cisco_facts_report_desc }}">
+      <meta name="author" content="Zachary LeBlanc">
+
+      <meta property="og:title" content="{{ cisco_facts_report_title }}">
+      <meta property="og:type" content="website">
+      <meta property="og:description" content="{{ cisco_facts_report_desc }}">
+
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+      <style>
+        .badge-info { color: #fff; background-color: {{ cisco_facts_group_pill_color }}; margin-right: 4px; }
+        .report-container { margin: 0px 8px; }
+        .report-container h5 { margin-top: .5rem }
+        .header-col { background-color: black; color: white; border-top: none; border-bottom: 1px solid {{ cisco_facts_cell_border_color }}; border-right: 1px solid white; border-left: 1px solid white; }
+        .header-col p { margin-bottom: 0; line-height: 2.5rem;}
+        .device-col { border: 1px solid {{ cisco_facts_cell_border_color }}; }
+        .devices-row:nth-child(even) .device-col { background-color: {{ cisco_facts_row_even_background_color }}; }
+        .devices-row:nth-child(odd) .device-col { background-color: {{ cisco_facts_row_odd_background_color }}; }
+        .tab-group-wrapper { padding: 12px 0; height: 100%; }
+        .tab-group-wrapper .v-pills-tab { height: 100%; padding-right: 8px; border-right: 2px solid white; }
+        .tab-group-wrapper .nav-pills .nav-link.active { background-color: {{ cisco_facts_tab_color }}; color: white; }
+        .tab-group-wrapper .nav-pills .nav-link { color: {{ cisco_facts_tab_color }}; padding: 4px; line-height: 18px; font-size: 14px; width: fit-content; }
+        .tab-content, .tab-content .tab-pane, .tab-group-layer, .layer-tab { height: 100% }
+        #v-pills-layer-tabContent { padding: 0 8px; }
+        .tab-group-layer .layer-tab { padding: 0 8px; border-right: 2px solid white; }
+        .tab-content.tab-details { padding: 0 8px; }
+        .accordion-item:first-of-type .accordion-button.collapsed { border-top-left-radius: calc(0.25rem - 1px); border-top-right-radius: calc(0.25rem - 1px) }
+        .accordion .accordion-button:focus { border: none; box-shadow: none; }
+        .accordion .accordion-button { background-color: #676c70; color: white; border: none; padding: .25rem .45rem; }
+        .accordion .accordion-button:after { background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important; }
+        .table-scrollable { overflow: auto; max-height: 25vh; }
+        .table-scrollable table { border: 1px solid rgb(222, 226, 230); }
+        .table-scrollable thead th { position: sticky; top: 0; z-index: 1; background: #fff; }
+      </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light justify-content-between">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <svg alt="" width="30" height="24" class="d-inline-block align-text-top" style="isolation:isolate" viewBox="0 0 194 148" width="194pt" height="148pt"><defs><clipPath id="_clipPath_d3mLhlIU9h8BLhy63FXSL7Ga261TcnSw"><rect width="194" height="148"/></clipPath></defs><g clip-path="url(#_clipPath_d3mLhlIU9h8BLhy63FXSL7Ga261TcnSw)"><path d=" M 129 85 C 141.51 85 159.61 82.42 159.61 67.54 C 159.647 66.392 159.543 65.243 159.3 64.12 L 151.85 31.76 C 150.13 24.64 148.62 21.41 136.12 15.16 C 126.39 10.19 105.26 2 99 2 C 93.18 2 91.45 9.54 84.55 9.54 C 77.87 9.54 72.91 3.94 66.66 3.94 C 60.66 3.94 56.75 8.03 53.73 16.44 C 53.73 16.44 45.32 40.16 44.24 43.6 C 44.062 44.231 43.981 44.885 44 45.54 C 44 54.76 80.33 85 129 85 Z  M 161.55 73.58 C 163.28 81.77 163.28 82.63 163.28 83.71 C 163.28 97.71 147.54 105.48 126.85 105.48 C 80 105.47 39.08 78.1 39.08 60 C 39.077 57.479 39.591 54.985 40.59 52.67 C 23.77 53.52 2 56.54 2 75.72 C 2 107.2 76.59 146 135.65 146 C 180.93 146 192.35 125.52 192.35 109.35 C 192.35 96.63 181.35 82.19 161.52 73.57" fill="rgb(238,0,0)"/><path d=" M 161.52 73.57 C 163.25 81.76 163.25 82.62 163.25 83.7 C 163.25 97.7 147.51 105.47 126.82 105.47 C 80 105.47 39.08 78.1 39.08 60 C 39.077 57.479 39.591 54.985 40.59 52.67 L 44.25 43.61 C 44.069 44.237 43.985 44.888 44 45.54 C 44 54.76 80.33 85 129 85 C 141.51 85 159.61 82.42 159.61 67.54 C 159.647 66.392 159.543 65.243 159.3 64.12 L 161.52 73.57 Z " fill="rgb(0,0,0)"/></g></svg>
+          <span style="margin-left: 4px">{{ cisco_facts_report_title | default('Ansible Cisco Facts Report') }}</span>
+        </a>
+        <span class="navbar-text" style="color: grey">
+          <i>Generated by Ansible on {{ cisco_facts_timestamp }}</i>
+        </span>
+      </div>
+    </nav>
+    <div class="report-container">
+      <div class="row headers-row">
+        <div class="header-col col-xs-12 col-sm-3"><p>Device Facts</p></div>
+        <div class="header-col col-xs-12 col-sm-9"><p>Layer Facts</p></div>
+      </div>
+      {% for host in cisco_facts_report_hosts %}
+      {% set device = hostvars[host] %}
+      <div class="row devices-row">
+        <div class="device-col text-center col-xs-12 col-sm-3">
+          <h5>{{ device.ansible_net_hostname | default('<i>(no name)</i>') }}</h5>
+          <table class="table table-striped table-bordered table-sm">
+            <tbody>
+              <tr>
+                <td>Platform</td>
+                <td>{{ device['ansible_net_system'] }}</td>
+              </tr>
+              <tr>
+                <td>Version</td>
+                <td>{{ device['ansible_net_version'] }}</td>
+              </tr>
+              <tr>
+                <td>Model</td>
+                <td>{{ device['ansible_net_model'] }}</td>
+              </tr>
+              <tr>
+                <td>Serial Number</td>
+                <td>{{ device['ansible_net_serialnum'] }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="accordion accordion-flush" id="accordion-layers-{{ loop.index }}" style="margin-bottom: 8px;">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="accordion-layers-{{ loop.index }}-heading-1">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#accordion-layers-{{ loop.index }}-collapse-1" aria-expanded="false" aria-controls="accordion-layers-{{ loop.index }}-collapse-1">
+                  Ansible Facts
+                </button>
+              </h2>
+              <div id="accordion-layers-{{ loop.index }}-collapse-1" class="accordion-collapse collapse" aria-labelledby="accordion-layers-{{ loop.index }}-heading-1" data-bs-parent="#accordion-layers-{{ loop.index }}">
+                <div class="accordion-body">
+                  <table class="table table-striped table-bordered table-sm">
+                    <tbody>
+                      <tr>
+                        <td>User</td>
+                        <td>{{ ansible_user }}</td>
+                      </tr>
+                      <tr>
+                        <td>Transport</td>
+                        <td>{{ device['ansible_net_api'] }}</td>
+                      </tr>
+                      <tr>
+                        <td>Groups</td>
+                        <td>{% for group in device['group_names'] %}<span class="badge badge-info">{{ group }}</span>{% endfor %}</td>
+                      </tr>
+                      <tr>
+                        <td>Python</td>
+                        <td>{{ device['ansible_net_python_version'] | default("undef") }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="device-col col-xs-12 col-sm-9">
+          <div class="tab-group-wrapper d-flex align-items-start">
+            <div class="nav flex-column nav-pills v-pills-tab" id="v-pills-tab-dev{{ loop.index }}" role="tablist" aria-orientation="vertical">
+              <button class="nav-link active" id="v-pills-layer-1-tab-dev{{ loop.index }}" data-bs-toggle="pill" data-bs-target="#v-pills-layer-1-dev{{ loop.index }}" type="button" role="tab" aria-controls="v-pills-layer-1-dev{{ loop.index }}" aria-selected="true">Layer 1</button>
+              <button class="nav-link" id="v-pills-layer-2-tab-dev{{ loop.index }}" data-bs-toggle="pill" data-bs-target="#v-pills-layer-2-dev{{ loop.index }}" type="button" role="tab" aria-controls="v-pills-layer-2-dev{{ loop.index }}" aria-selected="false">Layer 2</button>
+              <button class="nav-link" id="v-pills-layer-3-tab-dev{{ loop.index }}" data-bs-toggle="pill" data-bs-target="#v-pills-layer-3-dev{{ loop.index }}" type="button" role="tab" aria-controls="v-pills-layer-3-dev{{ loop.index }}" aria-selected="false">Layer 3</button>
+            </div>
+            <div class="tab-content" id="v-pills-tabContent-dev{{ loop.index }}">
+              <div class="tab-pane fade show active" id="v-pills-layer-1-dev{{ loop.index }}" role="tabpanel" aria-labelledby="v-pills-layer-1-dev{{ loop.index }}">
+                <div class="tab-group-layer d-flex align-items-start">
+                  <div class="nav flex-column nav-pills layer-tab" id="v-pills-l1-tab-dev{{ loop.index }}" role="tablist" aria-orientation="vertical">
+                    <button class="nav-link active" id="v-pills-l1-interfaces-tab-dev{{ loop.index }}" data-bs-toggle="pill" data-bs-target="#v-pills-l1-interfaces" type="button" role="tab" aria-controls="v-pills-l1-interfaces-dev{{ loop.index }}" aria-selected="true">Interfaces</button>
+                  </div>
+                  <div class="tab-content tab-details" id="v-pills-layer-tabContent-dev{{ loop.index }}">
+                    <div class="tab-pane fade show active" id="v-pills-l1-interfaces-dev{{ loop.index }}" role="tabpanel" aria-labelledby="v-pills-l1-interfaces-dev{{ loop.index }}">
+                      <div class="table-scrollable">
+                      {% include 'l1_interfaces.html.j2' %} 
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="v-pills-layer-2-dev{{ loop.index }}" role="tabpanel" aria-labelledby="v-pills-layer-2-dev{{ loop.index }}">
+                <div class="tab-group-layer d-flex align-items-start">
+                  <div class="nav flex-column nav-pills layer-tab" id="v-pills-l2-tab-dev{{ loop.index }}" role="tablist" aria-orientation="vertical">
+                    <button class="nav-link active" id="v-pills-l2-vlans-tab-dev{{ loop.index }}" data-bs-toggle="pill" data-bs-target="#v-pills-l2-vlans-dev{{ loop.index }}" type="button" role="tab" aria-controls="v-pills-l2-vlans-dev{{ loop.index }}" aria-selected="true">VLANs</button>
+                    <button class="nav-link" id="v-pills-l2-lldp-tab-dev{{ loop.index }}" data-bs-toggle="pill" data-bs-target="#v-pills-l2-lldp-dev{{ loop.index }}" type="button" role="tab" aria-controls="v-pills-l2-lldp-dev{{ loop.index }}" aria-selected="true">LLDP</button>
+                    <button class="nav-link" id="v-pills-l2-interfaces-tab-dev{{ loop.index }}" data-bs-toggle="pill" data-bs-target="#v-pills-l2-interfaces-dev{{ loop.index }}" type="button" role="tab" aria-controls="v-pills-l2-interfaces-dev{{ loop.index }}" aria-selected="true">Interfaces</button>
+                  </div>
+                  <div class="tab-content  tab-details" id="v-pills-layer-tabContent-dev{{ loop.index }}">
+                    <div class="tab-pane fade show active" id="v-pills-l2-vlans-dev{{ loop.index }}" role="tabpanel" aria-labelledby="v-pills-l2-vlans-dev{{ loop.index }}">
+                      <div class="table-scrollable">
+                        {% include 'l2_vlans.html.j2' %} 
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-l2-lldp-dev{{ loop.index }}" role="tabpanel" aria-labelledby="v-pills-l2-lldp-dev{{ loop.index }}">
+                      <div class="table-scrollable">
+                        {% include 'l2_lldp.html.j2' %} 
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-l2-interfaces-dev{{ loop.index }}" role="tabpanel" aria-labelledby="v-pills-l2-interfaces-dev{{ loop.index }}">
+                      <div class="table-scrollable">
+                        {% include 'l2_interfaces.html.j2' %} 
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="v-pills-layer-3-dev{{ loop.index }}" role="tabpanel" aria-labelledby="v-pills-layer-3-dev{{ loop.index }}">
+                <div class="tab-group-layer d-flex align-items-start">
+                  <div class="nav flex-column nav-pills layer-tab" id="v-pills-l3-tab-dev{{ loop.index }}" role="tablist" aria-orientation="vertical">
+                    <button class="nav-link active" id="v-pills-l3-lacp-tab-dev{{ loop.index }}" data-bs-toggle="pill" data-bs-target="#v-pills-l3-lacp-dev{{ loop.index }}" type="button" role="tab" aria-controls="v-pills-l3-lacp-dev{{ loop.index }}" aria-selected="true">LACP</button>
+                    <button class="nav-link" id="v-pills-l3-static-routes-tab-dev{{ loop.index }}" data-bs-toggle="pill" data-bs-target="#v-pills-l3-static-routes-dev{{ loop.index }}" type="button" role="tab" aria-controls="v-pills-l3-static-routes-dev{{ loop.index }}" aria-selected="true">Static Routes</button>
+                    <button class="nav-link" id="v-pills-l3-bgp-global-tab-dev{{ loop.index }}" data-bs-toggle="pill" data-bs-target="#v-pills-l3-bgp-global-dev{{ loop.index }}" type="button" role="tab" aria-controls="v-pills-l3-bgp-global-dev{{ loop.index }}" aria-selected="true">BGP Global</button>
+                    <button class="nav-link" id="v-pills-l3-bgp-addr-tab-dev{{ loop.index }}" data-bs-toggle="pill" data-bs-target="#v-pills-l3-bgp-addr-dev{{ loop.index }}" type="button" role="tab" aria-controls="v-pills-l3-bgp-addr-dev{{ loop.index }}" aria-selected="true">BGP Address</button>
+                    <button class="nav-link" id="v-pills-l3-ospf-tab-dev{{ loop.index }}" data-bs-toggle="pill" data-bs-target="#v-pills-l3-ospf-dev{{ loop.index }}" type="button" role="tab" aria-controls="v-pills-l3-ospf-dev{{ loop.index }}" aria-selected="true">OSPF Global</button>
+                    <button class="nav-link" id="v-pills-l3-interfaces-tab-dev{{ loop.index }}" data-bs-toggle="pill" data-bs-target="#v-pills-l3-interfaces-dev{{ loop.index }}" type="button" role="tab" aria-controls="v-pills-l3-interfaces-dev{{ loop.index }}" aria-selected="true">Interfaces</button>
+                  </div>
+                  <div class="tab-content  tab-details" id="v-pills-layer-tabContent">
+                    <div class="tab-pane fade show active" id="v-pills-l3-lacp-dev{{ loop.index }}" role="tabpanel" aria-labelledby="v-pills-l3-lacp-dev{{ loop.index }}">
+                      <div class="table-scrollable">
+                        {% include 'l3_lacp.html.j2' %} 
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-l3-static-routes-dev{{ loop.index }}" role="tabpanel" aria-labelledby="v-pills-l3-static-routes-dev{{ loop.index }}">
+                      <div class="table-scrollable">
+                        {% include 'l3_static_routes.html.j2' %} 
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-l3-bgp-global-dev{{ loop.index }}" role="tabpanel" aria-labelledby="v-pills-l3-bgp-global-dev{{ loop.index }}">
+                      <div class="table-scrollable">
+                        {% include 'l3_bgp_global.html.j2' %} 
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-l3-bgp-addr-dev{{ loop.index }}" role="tabpanel" aria-labelledby="v-pills-l3-bgp-addr-dev{{ loop.index }}">
+                      <div class="table-scrollable">
+                        {% include 'l3_bgp_addr.html.j2' %} 
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-l3-ospf-dev{{ loop.index }}" role="tabpanel" aria-labelledby="v-pills-l3-ospf-dev{{ loop.index }}">
+                      <div class="table-scrollable">
+                        {% include 'l3_ospf.html.j2' %} 
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="v-pills-l3-interfaces-dev{{ loop.index }}" role="tabpanel" aria-labelledby="v-pills-l3-interfaces-dev{{ loop.index }}">
+                      <div class="table-scrollable">
+                        {% include 'l3_interfaces.html.j2' %} 
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </body>
+</html>
