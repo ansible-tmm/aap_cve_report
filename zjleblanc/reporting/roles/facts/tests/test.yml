@@ -1,12 +1,13 @@
 ---
-- hosts: all
+- name: Test cisco_facts role
+  hosts: all
   gather_facts: true
 
   tasks:
-    - name: facts role
+    - name: Facts role # noqa: run-once[task]
       run_once: true
       ansible.builtin.include_role:
-        name: roles/facts
+        name: roles/facts # noqa: role-name[path]
       vars:
         facts_table_title: "Facts Test"
         facts_table_limit_prefix: ansible_
