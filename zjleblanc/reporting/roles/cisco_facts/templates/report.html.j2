@@ -59,6 +59,7 @@
       </div>
       {% for host in cisco_facts_report_hosts %}
       {% set device = hostvars[host] %}
+      {% if device['ansible_net_system'] in cisco_facts_supported_systems %}
       <div class="row devices-row">
         <div class="device-col text-center col-xs-12 col-sm-3">
           <h5>{{ device.ansible_net_hostname | default('<i>(no name)</i>') }}</h5>
@@ -212,6 +213,7 @@
           </div>
         </div>
       </div>
+      {% endif %}
       {% endfor %}
     </div>
   </body>

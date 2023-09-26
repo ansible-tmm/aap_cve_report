@@ -1,18 +1,23 @@
 ---
+- name: Skip unsupported os
+  when: cisco_facts_system not in cisco_facts_supported_systems
+  ansible.builtin.debug:
+    msg: "Skipping {{ inventory_hostname }} - {{ cisco_facts_system }} not in [{{ cisco_facts_supported_systems | join(',') }}]" 
+
 - name: Gather facts | ios
-  when: ansible_net_system|lower == 'ios'
+  when: cisco_facts_system|lower == 'ios'
   cisco.ios.ios_facts:
     gather_subset: all
     gather_network_resources: all
 
 - name: Gather facts | iosxr
-  when: ansible_net_system|lower == 'iosxr'
+  when: cisco_facts_system|lower == 'iosxr'
   cisco.iosxr.iosxr_facts:
     gather_subset: all
     gather_network_resources: all
 
 - name: Gather facts | nxos
-  when: ansible_net_system|lower == 'nxos'
+  when: cisco_facts_system|lower == 'nxos'
   cisco.nxos.nxos_facts:
     gather_subset: all
     gather_network_resources: all

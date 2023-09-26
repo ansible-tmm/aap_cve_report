@@ -24,6 +24,7 @@ Role Variables
 | cisco_facts_report_hosts | default | {{ ansible_play_hosts }} | report hosts (cisco devices with gathered facts) |
 | cisco_facts_timestamp | default | {{ lookup('pipe', 'date +"%Y-%m-%d @ %H:%M:%S"') }} | report timestamp |
 | cisco_facts_output_dest | default | {{ playbook_dir }}/zjleblanc.cisco_facts.html | report html file destination |
+| cisco_facts_system | var | {{ ansible_net_system | default('undef) }} | handle non-cisco devices passed into role |
 
 Custom Style Variables
 --------------
@@ -42,13 +43,38 @@ Example Playbook
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
   ```yaml
-    - hosts: servers
+    # Basic usage - report generated locally
+    - hosts: [ios, nxos]
+      tasks:
+        - name: Execute cisco_facts role
+          ansible.builtin.include_role:
+            name: cisco_facts
+
+    # Generate report for all play hosts and publish to a report server
+    - hosts: [ios, nxos]
       tasks:
         - name: Execute cisco_facts role
           ansible.builtin.include_role:
             name: cisco_facts
           vars:
-            cisco_facts_output_remote_host: report_server
+            cisco_facts_output_remote_host: report_server # host in the inventory
+            cisco_facts_output_dest: /var/www/html/cisco_facts_report.html # folder must exist on report_server
+
+    # Generate report for specific hosts
+    # by default the role will not attempt to gather facts for non-Cisco devices
+    - hosts: all
+      tasks:
+        - name: Execute cisco_facts role
+          ansible.builtin.include_role:
+            name: cisco_facts
+          vars:
+            cisco_facts_report_hosts:
+              - ios-corp-1
+              - ios-corp-2
+              - ios-emea-1
+              - nxos-emea-1
+            cisco_facts_output_remote_host: report_server # host in the inventory
+            cisco_facts_output_dest: /var/www/html/cisco_facts_report.html # folder must exist on report_server
   ```
 
 License

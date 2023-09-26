@@ -1,3 +1,13 @@
+# v1.1.2
+
+## Bug fixes
+
+- handle input of non-Cisco devices
+
+## Enhancements
+
+- additional examples added to cisco_facts role documentation
+
 # v1.1.1
 
 ## Feature

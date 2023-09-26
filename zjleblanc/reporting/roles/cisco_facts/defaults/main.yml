@@ -5,6 +5,10 @@ cisco_facts_report_hosts: "{{ ansible_play_hosts }}" # report hosts (cisco devic
 cisco_facts_timestamp: "{{ lookup('pipe', 'date +\"%Y-%m-%d @ %H:%M:%S\"') }}" # report timestamp
 cisco_facts_output_dest: "{{ playbook_dir }}/zjleblanc.cisco_facts.html" # report html file destination
 # cisco_facts_output_remote_host: report_server # inventory host to copy report to
+cisco_facts_supported_systems:
+  - ios
+  - nxos
+  - iosxr
 
 cisco_facts_cell_border_color: "white" # device table cell border color
 cisco_facts_row_even_background_color: "#f8f9fa" # device table row background color (even rows)

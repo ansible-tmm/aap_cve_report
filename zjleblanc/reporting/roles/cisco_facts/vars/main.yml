@@ -1,0 +1,1 @@
+cisco_facts_system: "{{ ansible_net_system | default('undef') }}" # handle non-cisco devices passed into role
