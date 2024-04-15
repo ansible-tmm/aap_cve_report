@@ -30,6 +30,13 @@ jobs:
           MY_PAH_TOKEN: ${{ secrets.MY_PAH_TOKEN }}
           MY_GALAXY_TOKEN: ${{ secrets.MY_GALAXY_TOKEN }}
 
+      - name: tag commit
+        id: tag-commit
+        run: |
+          ./.github/scripts/increment-tag.sh
+          sed -i "s/semantic_replace/$NEW_VERSION/1" zjleblanc/reporting/galaxy.yml
+        shell: bash
+
       - name: Build collection
         id: build-collection
         run: ansible-galaxy collection build zjleblanc/reporting
