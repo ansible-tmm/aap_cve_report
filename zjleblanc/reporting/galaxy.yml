@@ -1,6 +1,6 @@
 namespace: zjleblanc
 name: reporting
-version: semantic_replace
+version: semantic_version
 readme: README.md
 
 authors:
