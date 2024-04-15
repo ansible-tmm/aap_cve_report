@@ -1,5 +1,8 @@
 name: Publish collection
 
+permissions:
+  contents: write
+
 on:
   workflow_dispatch:
     secrets:

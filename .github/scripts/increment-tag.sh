@@ -5,7 +5,6 @@ git config user.name "$GITHUB_ACTOR"
 
 #get highest tag number
 VERSION=`git describe --abbrev=0 --tags`
-echo $VERSION
 
 if [ $? -eq 1 ] 
 then
@@ -14,7 +13,6 @@ fi
 
 #replace . with space so can split into an array
 VERSION_BITS=(${VERSION//./ })
-echo $VERSION_BITS
 
 #get number parts and increase last one by 1
 VNUM1=${VERSION_BITS[0]}
