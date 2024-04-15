@@ -1,0 +1,47 @@
+name: Publish collection
+
+on:
+  workflow_call:
+    secrets:
+      MY_PAH_TOKEN:
+        description: 'API token for Private Automation Hub'
+        required: false
+      MY_GALAXY_TOKEN:
+        description: 'API token for public Ansible Galaxy'
+        required: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        
+      - name: Install python requirements
+        run: pip install ansible
+          
+      - name: substitute token for automation hub
+        id: inject-tokens
+        run: |
+          cp ansible.cfg.publish ansible.cfg
+          sed -i "s/my_ah_token/$MY_PAH_TOKEN/1" ansible.cfg
+          sed -i "s/my_galaxy_token/$MY_GALAXY_TOKEN/1" ansible.cfg
+        env:
+          MY_PAH_TOKEN: ${{ secrets.MY_PAH_TOKEN }}
+          MY_GALAXY_TOKEN: ${{ secrets.MY_GALAXY_TOKEN }}
+
+      - name: Build collection
+        id: build-collection
+        run: ansible-galaxy collection build zjleblanc/reporting
+
+      - name: Publish collection to Private Automation Hub
+        id: publish-pah
+        run: |
+          VERSION=$(cat zjleblanc/reporting/galaxy.yml | awk '/version:/ {print $2}')
+          ansible-galaxy collection publish zjleblanc-reporting-$VERSION.tar.gz -s pah
+        
+      - name: Publish collection to Galaxy
+        id: publish-galaxy
+        run: |
+          VERSION=$(cat zjleblanc/reporting/galaxy.yml | awk '/version:/ {print $2}')
+          ansible-galaxy collection publish zjleblanc-reporting-$VERSION.tar.gz -s galaxy

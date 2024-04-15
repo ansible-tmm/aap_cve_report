@@ -1,0 +1,10 @@
+[galaxy]
+server_list = pah, galaxy
+
+[galaxy_server.pah]
+url=https://automation-hub.autodotes.com/api/galaxy/
+token=my_pah_token
+
+[galaxy_server.galaxy]
+url=https://galaxy.ansible.com/
+token=my_galaxy_token
