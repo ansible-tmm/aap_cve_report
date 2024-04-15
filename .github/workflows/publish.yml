@@ -37,11 +37,16 @@ jobs:
 
       - name: tag commit
         id: tag-commit
+        run: ./.github/scripts/increment-tag.sh
+        shell: bash
+
+      - name: Set version
+        id: set-version
         run: |
-          ./.github/scripts/increment-tag.sh
           echo $NEW_VERSION
           sed -i "s/semantic_version/$NEW_VERSION/1" zjleblanc/reporting/galaxy.yml
-        shell: bash
+        env:
+          NEW_VERSION: ${{ env.NEW_VERSION }}
 
       - name: Build collection
         id: build-collection
@@ -49,12 +54,12 @@ jobs:
 
       - name: Publish collection to Private Automation Hub
         id: publish-pah
-        run: |
-          VERSION=$(cat zjleblanc/reporting/galaxy.yml | awk '/version:/ {print $2}')
-          ansible-galaxy collection publish zjleblanc-reporting-$VERSION.tar.gz -s pah
+        run: ansible-galaxy collection publish zjleblanc-reporting-$NEW_VERSION.tar.gz -s pah
+        env:
+          NEW_VERSION: ${{ env.NEW_VERSION }}
         
       - name: Publish collection to Galaxy
         id: publish-galaxy
-        run: |
-          VERSION=$(cat zjleblanc/reporting/galaxy.yml | awk '/version:/ {print $2}')
-          ansible-galaxy collection publish zjleblanc-reporting-$VERSION.tar.gz -s galaxy
+        run: ansible-galaxy collection publish zjleblanc-reporting-$NEW_VERSION.tar.gz -s galaxy
+        env:
+          NEW_VERSION: ${{ env.NEW_VERSION }}
