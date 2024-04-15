@@ -41,7 +41,7 @@ fi
 
 #create new tag
 NEW_TAG="v$VNUM1.$VNUM2.$VNUM3"
-NEW_VERSION="$VNUM1.$VNUM2.$VNUM3"
+export NEW_VERSION="$VNUM1.$VNUM2.$VNUM3"
 
 echo "Updating $VERSION to $NEW_TAG"
 
