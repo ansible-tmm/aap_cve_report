@@ -1,7 +1,7 @@
 name: Publish collection
 
 on:
-  workflow_call:
+  workflow_dispatch:
     secrets:
       MY_PAH_TOKEN:
         description: 'API token for Private Automation Hub'
