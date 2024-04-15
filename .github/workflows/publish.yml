@@ -24,7 +24,7 @@ jobs:
         id: inject-tokens
         run: |
           cp ansible.cfg.publish ansible.cfg
-          sed -i "s/my_ah_token/$MY_PAH_TOKEN/1" ansible.cfg
+          sed -i "s/my_pah_token/$MY_PAH_TOKEN/1" ansible.cfg
           sed -i "s/my_galaxy_token/$MY_GALAXY_TOKEN/1" ansible.cfg
         env:
           MY_PAH_TOKEN: ${{ secrets.MY_PAH_TOKEN }}
