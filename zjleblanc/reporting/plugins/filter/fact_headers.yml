@@ -1,0 +1,39 @@
+DOCUMENTATION:
+  name: fact_headers
+  version_added: "historical"
+  short_description: determine facts to include columns for in report
+  description:
+    - Based on user configuration, identify which ansible_facts should have a dedicated column in the resulting report.
+  positional: data_model, config
+  options:
+    data_model:
+      description: First row of data used to infer model
+      type: dictionary
+      required: true
+    config:
+      description: Configuration options for determining which attributes should be used as columns
+      type: dictionary
+      required: true
+
+EXAMPLES: |
+
+    data: 
+      - name: linux
+        type: os
+        os_version: a
+        maintainer: Linus
+      - name: windows
+        type: os
+        os_version: b
+        maintainer: Microsoft
+
+    config:
+      facts_table_exclude_prefix: os_
+
+    columns: "{{ data[0] | fact_headers(config) }}"
+    # columns = ['name', 'type', 'maintainer']
+
+RETURN:
+  _value:
+    description: The list of attributes to be used as headers
+    type: list
