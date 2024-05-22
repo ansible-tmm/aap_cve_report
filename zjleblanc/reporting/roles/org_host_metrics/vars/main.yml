@@ -1,0 +1,2 @@
+---
+# org_host_metrics_data: "{{ lookup('zjleblanc.utils.org_host_metrics') }}" # Purpose-built to work with data model produced by zjleblanc.utils.org_host_metrics lookup plugin

@@ -1,0 +1,22 @@
+---
+- name: Assert that data is defined
+  ansible.builtin.assert:
+    that: org_host_metrics_data is defined
+
+- name: Generate report on execution node
+  when: org_host_metrics_remote_host is not defined
+  delegate_to: localhost
+  run_once: true
+  ansible.builtin.copy:
+    content: "{{ lookup('template', 'templates/report.html.j2') }}"
+    dest: "{{ org_host_metrics_output_dest }}"
+    mode: "0664"
+
+- name: Generate report on remote host
+  when: org_host_metrics_remote_host is defined
+  delegate_to: "{{ org_host_metrics_remote_host | default('localhost') }}"
+  run_once: true
+  ansible.builtin.copy:
+    content: "{{ lookup('template', 'templates/report.html.j2') }}"
+    dest: "{{ org_host_metrics_output_dest }}"
+    mode: "0664"

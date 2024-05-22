@@ -6,12 +6,12 @@ Generate a report using cisco device facts<br>
 
 Galaxy Tags: \[ report cisco facts html \]
 
-Required Variables
+Expected Variables
 ------------------
 
 | Name | Example | Description |
 | -------- | ------- | ------------------- |
-| cisco_facts_output_remote_host | report_server | inventory host to copy report to |
+| cisco_facts_output_remote_host | report_server | inventory host to copy report to (otherwise writes to localhost) |
 
 
 Role Variables
@@ -48,14 +48,14 @@ Including an example of how to use your role (for instance, with variables passe
       tasks:
         - name: Execute cisco_facts role
           ansible.builtin.include_role:
-            name: cisco_facts
+            name: zjleblanc.reporting.cisco_facts
 
     # Generate report for all play hosts and publish to a report server
     - hosts: [ios, nxos]
       tasks:
         - name: Execute cisco_facts role
           ansible.builtin.include_role:
-            name: cisco_facts
+            name: zjleblanc.reporting.cisco_facts
           vars:
             cisco_facts_output_remote_host: report_server # host in the inventory
             cisco_facts_output_dest: /var/www/html/cisco_facts_report.html # folder must exist on report_server
@@ -66,7 +66,7 @@ Including an example of how to use your role (for instance, with variables passe
       tasks:
         - name: Execute cisco_facts role
           ansible.builtin.include_role:
-            name: cisco_facts
+            name: zjleblanc.reporting.cisco_facts
           vars:
             cisco_facts_report_hosts:
               - ios-corp-1

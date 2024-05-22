@@ -1,0 +1,6 @@
+---
+org_host_metrics_title: Organization Host Metrics Report
+org_host_metrics_desc: Ansible host entitlement usage report stratified by Organization.
+org_host_metrics_timestamp: "{{ lookup('pipe', 'date +\"%Y-%m-%d @ %H:%M:%S\"') }}"
+org_host_metrics_output_dest: "{{ playbook_dir }}/zjleblanc.org_host_metrics.html" # report html file destination
+# org_host_metrics_remote_host: report_server # inventory host to copy report to
