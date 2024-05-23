@@ -63,7 +63,7 @@
                 <p class="note-bg">Organization level metrics for 
                   <a
                     class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                    href="{{ org_host_metrics_instance | ternary(org_host_metrics_instance + '/#/organizations/' + org['id']  + '/details', '#') }}"
+                    href="{{ org_host_metrics_instance | ternary(org_host_metrics_instance + '/#/organizations/' + org['id']|string  + '/details', '#') }}"
                     target="_blank"
                   >
                     {{ org['name'] }}
@@ -119,7 +119,7 @@
                       <td>
                         <a
                           class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                          href="{{ org_host_metrics_instance | ternary(org_host_metrics_instance + '/#/inventories/inventory/' + inv['id']  + '/details', '#') }}"
+                          href="{{ org_host_metrics_instance | ternary(org_host_metrics_instance + '/#/inventories/inventory/' + inv['id']|string  + '/details', '#') }}"
                           target="_blank"
                         >
                           {{ inv['name'] }}
