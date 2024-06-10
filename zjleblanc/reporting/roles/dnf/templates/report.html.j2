@@ -62,7 +62,11 @@
         {% endif %}
         <hr class="report-divider">
         {% for host in linux_patch_hosts | sort %}
+        {% if linux_patch_hosts | length > 1 %}
         <div id="host-report-{{ host }}" class="host-report" style="display: none">
+        {% else %}
+        <div id="host-report-{{ host }}" class="host-report">
+        {% endif %}
           <div class="row metadata-row">
             {% for card in linux_patch_host_fact_cards %}
             <div class="col-xs-6 col-sm-3 metadata-col">
@@ -161,8 +165,9 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
       <script type="text/javascript">
-hljs.highlightAll();
+        hljs.highlightAll();
 
+        {% if linux_patch_hosts | length > 1 %}
         var host_select = document.getElementById("host-select");
         var host_selected = host_select.value;
 
@@ -181,6 +186,7 @@ hljs.highlightAll();
           curr_report_selected.style.display = "block";
           curr_report_selected.classList.add("report-visible");
         });
+        {% endif %}
       </script>
     </body>
 </html>
