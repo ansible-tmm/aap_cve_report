@@ -1,0 +1,17 @@
+---
+linux_patch_title: "Ansible dnf Patch Report" # report title
+linux_patch_desc: "Ansible dnf (or yum) patching report with pre and post check information" # report description
+linux_patch_timestamp: "{{ lookup('pipe', 'date +\"%Y-%m-%d @ %H:%M:%S\"') }}" # report timestamp
+linux_patch_output_dest: "{{ playbook_dir }}/zjleblanc.reporting.dnf.html" # report html file destination
+linux_patch_hosts: "{{ ansible_play_hosts }}"
+# linux_patch_output_remote_host: report_server # inventory host to copy report to
+
+linux_patch_text_success: "#204d00"
+linux_patch_text_danger: "#5f0000"
+linux_patch_text_header: "#147878"
+
+linux_patch_host_fact_cards:
+  - var: inventory_hostname
+  - var: ansible_distribution
+  - var: ansible_distribution_version
+  - var: ansible_pkg_mgr

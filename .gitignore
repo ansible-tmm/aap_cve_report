@@ -1,6 +1,10 @@
 # Local run output
-facts.json
+facts.json/
 .vscode/
+test-artifacts/
+inventory.ini
+test_*
+collections/
 
 # Collection artifacts
 *.log
