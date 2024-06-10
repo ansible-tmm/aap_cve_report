@@ -1,18 +1,18 @@
 zjleblanc.reporting.dnf
 =========
 
-Generate a report using linux patch results with pre-check information
+Generate a report using dnf (or yum) patch results with services health check information
 
 [Issue Tracker](https://github.com/zjleblanc/zjleblanc.reporting/issues)
 
 Minimum Ansible Version: 2.9
 
-Galaxy Tags: \[ report linux patch html tools \]
+Galaxy Tags: \[ report rhel fedora patch dnf html tools \]
 
 Required Hostvars
 ------------------
 
-These should be set prior to invoking the role with `ansible.builtin.set_fact`. (See example playbook)
+These should be set prior to invoking the role with `ansible.builtin.set_fact`.<br>(See [example playbook](#example-playbook))
 
 | Name | Description |
 | ---- | ----------- |
@@ -31,6 +31,7 @@ Role Variables
 | linux_patch_timestamp | default | {{ lookup('pipe', 'date +"%Y-%m-%d @ %H:%M:%S"') }} | report timestamp |
 | linux_patch_output_dest | default | {{ playbook_dir }}/zjleblanc.reporting.dnf.html | report html file destination |
 | linux_patch_output_remote_host | default | {{ report_server \| default('localhost') }} | inventory host to copy report to |
+| linux_patch_become_publish | default | false | elevate privilege to publish report on target host |
 | linux_patch_hosts | default | {{ linux_patch_run_once \| ternary(ansible_play_hosts, \[inventory_hostname\]) }} | hosts to include in the report  |
 | linux_patch_text_success | default | #204d00 | success text color |
 | linux_patch_text_danger | default | #5f0000 | danger text color |

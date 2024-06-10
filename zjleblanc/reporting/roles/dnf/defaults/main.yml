@@ -6,6 +6,7 @@ linux_patch_output_dest: "{{ playbook_dir }}/zjleblanc.reporting.dnf.html" # rep
 linux_patch_run_once: true # generate one report or per host
 linux_patch_hosts: "{{ linux_patch_run_once | ternary(ansible_play_hosts, [inventory_hostname]) }}" # hosts to include in report
 # linux_patch_output_remote_host: report_server # inventory host to copy report to
+linux_patch_become_publish: false # elevate privilege to publish report on target host
 
 linux_patch_text_success: "#204d00"
 linux_patch_text_danger: "#5f0000"

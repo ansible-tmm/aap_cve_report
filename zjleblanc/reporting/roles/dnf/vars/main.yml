@@ -1,5 +1,0 @@
----
-# vars file for roles/linux_patch
-# pre_check_services: {} # set_fact to preserve output from ansible.builtin.service_facts before patching
-# services: {} # output from ansible.builtin.service_facts after patching
-# pkg_mgr_output: {} # set_fact to preserve output from ansible.builtin.{package_manager_module}

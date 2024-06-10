@@ -16,6 +16,7 @@
 - name: Generate report on execution node
   when: linux_patch_output_remote_host is not defined
   delegate_to: localhost
+  become: "{{ linux_patch_become_publish }}"
   run_once: "{{ linux_patch_run_once }}"
   ansible.builtin.copy:
     content: "{{ lookup('template', 'templates/report.html.j2') }}"
@@ -25,6 +26,7 @@
 - name: Generate report on remote host
   when: linux_patch_output_remote_host is defined
   delegate_to: "{{ linux_patch_output_remote_host | default('localhost') }}"
+  become: "{{ linux_patch_become_publish }}"
   run_once: "{{ linux_patch_run_once }}"
   ansible.builtin.copy:
     content: "{{ lookup('template', 'templates/report.html.j2') }}"
