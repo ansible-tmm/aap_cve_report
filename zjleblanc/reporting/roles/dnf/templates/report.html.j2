@@ -108,7 +108,7 @@
               <div class="patch-wrapper" id="installed-wrapper">
                 <h5>Packages Added</h5>
                 {% if not hostvars[host]['linux_patch_pkg_output_parsed']['installed'] | length %}
-                  <p class="text-muted" style="margin-left: 8px; font-style: italic">No packages removed<p>
+                  <p class="text-muted" style="margin-left: 8px; font-style: italic">No packages added<p>
                 {% else %}
                 <ul class="list-group">
                   {% for pkg_name, pkg_meta in hostvars[host]['linux_patch_pkg_output_parsed']['installed'].items() | sort %}
