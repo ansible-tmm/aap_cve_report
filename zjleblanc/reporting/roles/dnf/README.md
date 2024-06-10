@@ -9,6 +9,17 @@ Minimum Ansible Version: 2.9
 
 Galaxy Tags: \[ report rhel fedora patch dnf html tools \]
 
+Purpose
+-------
+
+This role can be used to generate a patch report after using the dnf or yum builtin modules for patching your inventory. The role has two main operating modes:
+
+1. Generate a cumulative report for all hosts patched
+2. Generate per-host reports
+
+The report(s) can be published to a remote location or placed on the inventory host(s).<br>
+⚠️ The report(s) can also be saved on localhost, but keep in mind the ephemeral nature of an execution environment.
+
 Required Hostvars
 ------------------
 
