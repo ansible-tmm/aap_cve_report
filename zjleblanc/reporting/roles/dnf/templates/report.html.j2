@@ -17,18 +17,23 @@
         .link-info { color: rgb(55, 163, 163) !important; text-decoration-color: rgb(55, 163, 163) !important }
         .link-info:hover { color:  rgb(20, 120, 120) !important; text-decoration-color:  rgb(20, 120, 120) !important }
         .report-container { margin: 8px 16px;}
-        .report-container #host-select-container p { font-weight: 500; margin-bottom: 0; margin-left: 4px; font-size: 14px; color: {{ linux_patch_text_header }} } 
-        .report-container #host-select-container select { width: fit-content; border-color: {{ linux_patch_text_header }}60; } 
-        .report-container #host-select-container select:focus { border-color: {{ linux_patch_text_header }}; box-shadow: 0 0 0 .25rem {{ linux_patch_text_header }}20 }
+        .report-container #host-select-container p { font-weight: 500; margin-bottom: 0; margin-left: 4px; font-size: 14px; color: {{ linux_patch_tabs_color }} } 
+        .report-container #host-select-container select { width: fit-content; border-color: {{ linux_patch_tabs_color }}60; } 
+        .report-container #host-select-container select:focus { border-color: {{ linux_patch_tabs_color }}; box-shadow: 0 0 0 .25rem {{ linux_patch_tabs_color }}20 }
         .report-container .text-bold { font-weight: bold }
         .report-container p.pkg-name { margin-right: 12px }
         .report-container .text-danger { color: {{ linux_patch_text_danger }} }
         .report-container .text-success { color: {{ linux_patch_text_success }} }
         .report-container .metadata-col { display: flex; justify-content: center }
         .report-container .patch-col { display: flex; justify-content: center; gap: 8px }
-        .report-container .patch-wrapper h5 { font-size: 16px; font-weight: 400; margin-bottom: .75rem; margin-left: 4px; }
-        .report-container .report-header { font-weight: 400; margin-top: 1rem; margin-bottom: 0; color: {{ linux_patch_text_header }}}
+        .report-container .patch-results-tab-group { margin-bottom: 1rem; gap: 24px }
+        .report-container .patch-results-tab-group button.nav-link.active { color: #fff; background-color: {{ linux_patch_tabs_color }}; border: none }
+        .report-container .patch-results-tab-group button.nav-link { color: {{ linux_patch_tabs_color }}; border: 1px solid {{ linux_patch_tabs_color }}20 }
+        .report-container .pkg-name-filter { margin-bottom: 1rem; max-width: 300px }
+        .report-container .report-header { font-weight: 400; margin-top: 1rem; margin-bottom: 0 }
         .report-container .report-header#patch-header { margin-top: 2rem; margin-bottom: -.4rem }
+        .report-container .patch-wrapper ul.list-group { width: fit-content }
+        .report-container .patch-wrapper input.pkg-name-filter:focus { border-color: {{ linux_patch_tabs_color }}; box-shadow: 0 0 0 .25rem {{ linux_patch_tabs_color }}20 }
       </style>
     </head>
     <body>
@@ -39,7 +44,7 @@
             <span style="margin-left: 4px">{{ linux_patch_title }}</span>
           </a>
           <span class="navbar-text" style="color: grey">
-            <i>Data gathered by zjleblanc.utils.linux_patch on {{ linux_patch_timestamp }}</i>
+            <i>Data gathered by zjleblanc.reportin.dnf on {{ linux_patch_timestamp }}</i>
           </span>
         </div>
       </nav>
@@ -81,19 +86,56 @@
           </div>
           <h4 id="patch-header" class="report-header">Patch Results</h4>
           <hr class="report-divider">
-          <div class="row patch-row">
-            <div class="col-xs-12 col-sm-4 patch-col installed-col">
+          <ul class="nav nav-pills patch-results-tab-group" id="patch-results-tabs-{{ host }}" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active position-relative" id="updates-tab-{{ host }}" data-bs-toggle="tab" data-bs-target="#updates-tab-pane-{{ host }}" type="button" role="tab" aria-controls="updates-tab-pane-{{ host }}" aria-selected="true">
+                Updates 
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {{ hostvars[host]['linux_patch_pkg_output_parsed']['updated'] | length }}
+                  <span class="visually-hidden">unread messages</span>
+                </span>
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link position-relative" id="added-tab-{{ host }}" data-bs-toggle="tab" data-bs-target="#added-tab-pane-{{ host }}" type="button" role="tab" aria-controls="added-tab-pane-{{ host }}" aria-selected="false">
+                Added 
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {{ hostvars[host]['linux_patch_pkg_output_parsed']['installed'] | length }}
+                  <span class="visually-hidden">unread messages</span>
+                </span>
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link position-relative" id="removed-tab-{{ host }}" data-bs-toggle="tab" data-bs-target="#removed-tab-pane-{{ host }}" type="button" role="tab" aria-controls="removed-tab-pane-{{ host }}" aria-selected="false">
+                Removed 
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  {{ hostvars[host]['linux_patch_pkg_output_parsed']['removed'] | length }}
+                  <span class="visually-hidden">unread messages</span>
+                </span>
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="service-check-tab-{{ host }}" data-bs-toggle="tab" data-bs-target="#service-check-tab-pane-{{ host }}" type="button" role="tab" aria-controls="service-check-tab-pane-{{ host }}" aria-selected="false">
+                Service Check
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="patch-tab-content-{{ host }}">
+            <div class="tab-pane fade show active" id="updates-tab-pane-{{ host }}" role="tabpanel" aria-labelledby="updates-tab-{{ host }}" tabindex="0">
               <div class="patch-wrapper" id="installed-wrapper">
-                <h5>Package Updates</h5>
-                <ul class="list-group">
+                <div class="form-floating mb-3">
+                  <input id="pkg-updates-filter-{{ host.replace('.', '-') }}" class="pkg-name-filter form-control form-control-sm" type="text" placeholder="Package Name Filter">
+                  <label for="floatingInput">Package Name Filter</label>
+                </div>
+                <ul id="pkg-update-list-{{ host.replace('.', '-') }}" class="list-group">
                   {% for pkg_name, pkg_meta in hostvars[host]['linux_patch_pkg_output_parsed']['updated'].items() | sort %}
-                  <li class="list-group-item list-group-item-action" aria-current="true">
+                  <li class="list-group-item list-group-item-action" aria-current="true" data-pkg="{{ pkg_name }}">
                     <div class="d-flex w-100 justify-content-between">
                       <p class="mb-1 text-bold pkg-name">{{ pkg_name }}</p>
                       <small>{{ pkg_meta['arch'] }}</small>
                     </div>
                     <div class="d-flex w-100 justify-content-between">
-                      <p class="mb-1">
+                      <p class="mb-1" style="margin-right: 40px">
                         <span class="text-danger">{{ pkg_meta['old_version'] }}</span> ->
                         <span class="text-success">{{ pkg_meta['version'] }}</span>
                       </p>
@@ -104,15 +146,18 @@
                 </ul>
               </div>
             </div>
-            <div class="col-xs-12 col-sm-4 patch-col removed-col">
+            <div class="tab-pane fade" id="added-tab-pane-{{ host }}" role="tabpanel" aria-labelledby="added-tab-{{ host }}" tabindex="0">
               <div class="patch-wrapper" id="installed-wrapper">
-                <h5>Packages Added</h5>
                 {% if not hostvars[host]['linux_patch_pkg_output_parsed']['installed'] | length %}
-                  <p class="text-muted" style="margin-left: 8px; font-style: italic">No packages added<p>
+                  <p class="text-muted" style="margin-left: 8px; font-style: italic">¯\_(ツ)_/¯<p>
                 {% else %}
-                <ul class="list-group">
+                <div class="form-floating mb-3">
+                  <input id="pkg-added-filter-{{ host.replace('.', '-') }}" class="pkg-name-filter form-control form-control-sm" type="text" placeholder="Package Name Filter">
+                  <label for="floatingInput">Package Name Filter</label>
+                </div>
+                <ul id="pkg-added-list-{{ host.replace('.', '-') }}" class="list-group">
                   {% for pkg_name, pkg_meta in hostvars[host]['linux_patch_pkg_output_parsed']['installed'].items() | sort %}
-                  <li class="list-group-item list-group-item-action" aria-current="true">
+                  <li class="list-group-item list-group-item-action" aria-current="true" data-pkg="{{ pkg_name }}">
                     <div class="d-flex w-100 justify-content-between">
                       <p class="mb-1 text-bold pkg-name">{{ pkg_name }}</p>
                       <small>{{ pkg_meta['arch'] }}</small>
@@ -127,13 +172,20 @@
                   {% endfor %}
                 </ul>
                 {% endif %}
-                <h5 style="margin-top: 32px">Packages Removed</h5>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="removed-tab-pane-{{ host }}" role="tabpanel" aria-labelledby="removed-tab-{{ host }}" tabindex="0">
+              <div class="patch-wrapper" id="installed-wrapper">
                 {% if not hostvars[host]['linux_patch_pkg_output_parsed']['removed'] | length %}
-                  <p class="text-muted" style="margin-left: 8px; font-style: italic">No packages removed<p>
+                  <p class="text-muted" style="margin-left: 8px; font-style: italic">¯\_(ツ)_/¯<p>
                 {% else %}
-                <ul class="list-group">
+                <div class="form-floating mb-3">
+                  <input id="pkg-removed-filter-{{ host.replace('.', '-') }}" class="pkg-name-filter form-control form-control-sm" type="text" placeholder="Package Name Filter">
+                  <label for="floatingInput">Package Name Filter</label>
+                </div>
+                <ul id="pkg-removed-list-{{ host.replace('.', '-') }}" class="list-group">
                   {% for pkg_name, pkg_meta in hostvars[host]['linux_patch_pkg_output_parsed']['removed'].items() | sort %}
-                  <li class="list-group-item list-group-item-action" aria-current="true">
+                  <li class="list-group-item list-group-item-action" aria-current="true" data-pkg="{{ pkg_name }}">
                     <div class="d-flex w-100 justify-content-between">
                       <p class="mb-1 text-bold pkg-name">{{ pkg_name }}</p>
                       <small>{{ pkg_meta['arch'] }}</small>
@@ -150,9 +202,8 @@
                 {% endif %}
               </div>
             </div>
-            <div class="col-xs-12 col-sm-4 patch-col diff-col">
+            <div class="tab-pane fade" id="service-check-tab-pane-{{ host }}" role="tabpanel" aria-labelledby="service-check-tab-{{ host }}" tabindex="0">
               <div class="patch-wrapper" id="diff-wrapper">
-                <h5>Service Check</h5>
                 <p class="text-muted" style="margin-left: 4px">Based on service facts before and after patching<p>
                 <pre><code class="language-diff">{{ hostvars[host]['post_check_diff'] | default('') }}</code></pre>
               </div>
@@ -164,8 +215,58 @@
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
       <script type="text/javascript">
-        hljs.highlightAll();
+        $(document).ready(function(){
+          hljs.highlightAll();
+
+          {% for host in linux_patch_hosts %}
+          {% if hostvars[host]['linux_patch_pkg_output_parsed']['updated'] | length %}
+          $("#pkg-updates-filter-{{ host.replace('.', '-') }}").on("keyup", function() {
+              var value = $(this).val().toLowerCase();
+              $("#pkg-update-list-{{ host.replace('.', '-') }} li").filter(function() {
+                if(value == '') {
+                  $(this).toggle(true);
+                }
+                else {
+                  let display = $(this).data('pkg').toLowerCase().indexOf(value) > -1;
+                  $(this).toggle(display);
+                }
+              });
+          });
+          {% endif %}
+
+          {% if hostvars[host]['linux_patch_pkg_output_parsed']['installed'] | length %}
+          $("#pkg-added-filter-{{ host.replace('.', '-') }}").on("keyup", function() {
+              var value = $(this).val().toLowerCase();
+              $("#pkg-added-list-{{ host.replace('.', '-') }} li").filter(function() {
+                if(value == '') {
+                  $(this).toggle(true);
+                }
+                else {
+                  let display = $(this).data('pkg').toLowerCase().indexOf(value) > -1;
+                  $(this).toggle(display);
+                }
+              });
+          });
+          {% endif %}
+
+          {% if hostvars[host]['linux_patch_pkg_output_parsed']['removed'] | length %}
+          $("#pkg-removed-filter-{{ host.replace('.', '-') }}").on("keyup", function() {
+              var value = $(this).val().toLowerCase();
+              $("#pkg-removed-list-{{ host.replace('.', '-') }} li").filter(function() {
+                if(value == '') {
+                  $(this).toggle(true);
+                }
+                else {
+                  let display = $(this).data('pkg').toLowerCase().indexOf(value) > -1;
+                  $(this).toggle(display);
+                }
+              });
+          });
+          {% endif %}
+          {% endfor %}
+        });
 
         {% if linux_patch_hosts | length > 1 %}
         var host_select = document.getElementById("host-select");

@@ -43,10 +43,11 @@ Role Variables
 | linux_patch_output_dest | default | {{ playbook_dir }}/zjleblanc.reporting.dnf.html | report html file destination |
 | linux_patch_output_remote_host | default | {{ report_server \| default('localhost') }} | inventory host to copy report to |
 | linux_patch_become_publish | default | false | elevate privilege to publish report on target host |
+| linux_patch_run_once | default | true | generate one cumulative report or per host |
 | linux_patch_hosts | default | {{ linux_patch_run_once \| ternary(ansible_play_hosts, \[inventory_hostname\]) }} | hosts to include in the report  |
 | linux_patch_text_success | default | #204d00 | success text color |
 | linux_patch_text_danger | default | #5f0000 | danger text color |
-| linux_patch_text_header | default | #147878 | header text color |
+| linux_patch_tabs_color | default | #147878 | tabs text color |
 | linux_patch_host_fact_cards | default | \[{'var': 'inventory_hostname'}, {'var': ... | customizable list of host fact cards |
 
 Example Playbook

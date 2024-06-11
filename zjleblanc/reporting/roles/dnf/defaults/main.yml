@@ -10,7 +10,7 @@ linux_patch_become_publish: false # elevate privilege to publish report on targe
 
 linux_patch_text_success: "#204d00"
 linux_patch_text_danger: "#5f0000"
-linux_patch_text_header: "#147878"
+linux_patch_tabs_color: "#37a3a3"
 
 linux_patch_host_fact_cards:
   - var: inventory_hostname
