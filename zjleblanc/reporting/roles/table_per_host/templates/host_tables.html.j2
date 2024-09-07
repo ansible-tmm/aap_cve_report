@@ -1,0 +1,47 @@
+{% for host in table_hosts %}
+  {% set table_data = hostvars[host][table_data_fact] %}
+  {% if table_hosts | length > 1 %}
+  <table id="report-table-{{ host }}" class="table table-striped report-table" style="display: none">
+  {% else %}
+  <table id="report-table-{{ host }}" class="table table-striped report-table">
+  {% endif %}
+      <thead>
+          <tr>
+      {% if table_headers is defined -%}
+          {% for th in table_headers -%}
+              <th>{{ th }}</th>
+          {% endfor -%}
+      {% else -%}
+          {% if table_data_type == 'dict' -%}
+              {% for th in table_data[0].keys() -%}
+              <th>{{ th }}</th>
+              {% endfor -%}
+          {% elif table_data_type == 'list' and table_first_row_headers -%}
+              {% for th in table_data[0] -%}
+              <th>{{ th }}</th>
+              {% endfor -%}
+          {% else -%}
+              {% for col in range(table_data[0]|length) -%}
+              <th>Column {{ col + 1 }}</th>
+              {% endfor -%}
+          {% endif -%}
+      {% endif -%}
+          </tr>
+      </thead>
+      <tbody>
+      {% for row in table_data -%}
+          <tr>
+          {% if table_data_type == 'dict' -%}
+              {% for col_header in row.keys() -%}
+              <td>{{ row[col_header] }}</td>
+              {% endfor -%}
+          {% else -%}
+              {% for col in row -%}
+              <td>{{ col }}</td>
+              {% endfor -%}
+          {% endif -%}
+          </tr>
+      {% endfor %}
+      </tbody>
+  </table>
+{% endfor %}

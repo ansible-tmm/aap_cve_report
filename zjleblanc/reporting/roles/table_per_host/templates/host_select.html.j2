@@ -1,0 +1,14 @@
+{% if table_hosts | length > 1 %}
+<div id="host-select-container">
+    <p>Select a host</p>
+    <select id="host-select" class="form-select" aria-label="Select host report to view">
+        {% for host in table_hosts | sort %}
+        {% if loop.index == 1 %}
+        <option value="{{ host }}" selected>{{ host }}</option>
+        {% else %}
+        <option value="{{ host }}">{{ host }}</option>
+        {% endif %}
+        {% endfor %}
+    </select>
+</div>
+{% endif %}

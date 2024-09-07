@@ -1,0 +1,16 @@
+---
+- name: Generate report on execution node
+  when: table_output_remote_host is not defined
+  delegate_to: localhost
+  ansible.builtin.copy:
+    content: "{{ lookup('template', 'templates/interactive_report.html.j2') }}"
+    dest: "{{ table_output_dest }}"
+    mode: "0664"
+
+- name: Generate report on remote host
+  when: table_output_remote_host is defined
+  delegate_to: "{{ table_output_remote_host | default('localhost') }}"
+  ansible.builtin.copy:
+    content: "{{ lookup('template', 'templates/interactive_report.html.j2') }}"
+    dest: "{{ table_output_dest }}"
+    mode: "0664"
