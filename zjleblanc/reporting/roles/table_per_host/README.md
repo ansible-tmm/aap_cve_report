@@ -11,7 +11,7 @@ Required Variables
 
 | Name | Example | Description |
 | -------- | ------- | ------------------- |
-| table_data_fact | fact which contains list[list] OR list[dict] | tabular data fact set for each host in table_hosts |
+| table_data_fact | fact which contains list[list] OR list[dict] | tabular data fact set for each host in `{{ table_hosts }}` |
 | table_output_remote_host | report_server | inventory host to copy report to |
 
 
@@ -25,7 +25,8 @@ Role Variables
 | table_hosts | default | {{ ansible_play_hosts }} | A set of hosts in the inventory to report on |
 | table_timestamp | default | {{ lookup('pipe', 'date +"%Y-%m-%d @ %H:%M:%S"') }} |  |
 | table_data_type | default | dict | type of input data ([see examples](#choosing-data-type)) |
-| table_headers | ["First Name", "Last Name", "Birthday"] | optionally provide column headers |
+| table_headers_fact | default | table_data_headers | tabular data headers fact set for each host in `{{ table_hosts }}` |
+| table_headers | default | ["First Name", "Last Name", "Birthday"] | optionally provide column headers |
 | table_first_row_headers | default | False | flag for headers in the first row |
 | table_output_dest | default | {{ playbook_dir }}/zjleblanc.table_per_host.html |  |
 | table_accent_color | default | #37a3a3 | Styles the select box for choosing a host report to view |
@@ -72,6 +73,9 @@ For example, if `table_data_fact: last_logon_report_data` is used, then a corres
             "Last Logon": 09/05/2024
           - "Username": ansible
             "Last Logon": 09/07/2024
+        last_logon_report_data_headers:
+          - "Username"
+          - "Last Logon"
 ```
 
 Of course, you will want to have the data generated dynamically. In my blog post, I will provide an example using the results of a call to `last` combined with an inspection of each user's home directory.
@@ -90,6 +94,7 @@ Examples
         vars:
           table_title: Last Login Report
           table_data_fact: last_login_report_data
+          table_headers_fact: last_login_report_data_headers # host specific headers
           table_data_type: dict
           table_output_remote_host: report_server
           table_output_dest: "{{ reports_dir }}/table.html"
@@ -102,7 +107,7 @@ Examples
           table_title: Last Login Report
           table_data_fact: last_login_report_data
           table_data_type: list
-          table_headers: ["Last Logon", "Username"] # Change the order
+          table_headers: ["Last Logon", "Username"] # Generic headers for all hosts
           table_output_remote_host: report_server
           table_output_dest: "{{ reports_dir }}/table.html"
 
