@@ -36,9 +36,15 @@
       {% for row in table_data -%}
           <tr>
           {% if table_data_type == 'dict' -%}
-              {% for col_header in row.keys() -%}
-              <td>{{ row[col_header] }}</td>
-              {% endfor -%}
+              {% if table_headers_fact is defined and table_headers_fact in hostvars[host] -%}
+                {% for col_header in hostvars[host][table_headers_fact] -%}
+                <td>{{ row[col_header] }}</td>
+                {% endfor -%}
+              {% else %}
+                {% for col_header in row.keys() -%}
+                <td>{{ row[col_header] }}</td>
+                {% endfor -%}
+              {% endif %}
           {% else -%}
               {% for col in row -%}
               <td>{{ col }}</td>
