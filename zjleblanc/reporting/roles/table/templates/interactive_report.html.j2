@@ -11,7 +11,7 @@
         <meta property="og:type" content="website">
         <meta property="og:description" content="{{ table_desc }}">
 
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
         <style>
             .wrapper { margin: 20px; }
@@ -69,9 +69,15 @@
                 {% for row in table_data -%}
                     <tr>
                     {% if table_data_type == 'dict' -%}
-                        {% for col_header in row.keys() -%}
-                        <td>{{ row[col_header] }}</td>
-                        {% endfor -%}
+                        {% if table_headers is defined -%}
+                            {% for col_header in table_headers -%}
+                            <td>{{ row[col_header] }}</td>
+                            {% endfor -%}
+                        {% else -%}
+                            {% for col_header in row.keys() -%}
+                            <td>{{ row[col_header] }}</td>
+                            {% endfor -%}
+                        {% endif -%}
                     {% else -%}
                         {% for col in row -%}
                         <td>{{ col }}</td>
