@@ -1,0 +1,25 @@
+const ctx = document.getElementById('cve-donut');
+        
+new Chart(ctx, {
+type: 'doughnut',
+data: {
+    labels: ['Critical', 'Important', 'Moderate', 'Low'],
+    datasets: [{
+    label: '# of CVEs',
+    data: [
+      {% for sev in cve_severities %}
+      {{ r_cve_data['cves'].get(sev,[]) | length }},
+      {% endfor %}
+    ],
+    borderWidth: 1,
+    backgroundColor: ['#7a0000','#ee0000','#f5921b','#ffcc17']
+    }]
+},
+options: {
+    scales: {
+      y: {
+          beginAtZero: true
+      }
+    }
+}
+});

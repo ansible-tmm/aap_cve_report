@@ -2,6 +2,7 @@
 facts.json/
 .vscode/
 test-artifacts/
+test-data/
 inventory.ini
 test_*
 collections/

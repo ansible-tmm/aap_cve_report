@@ -1,0 +1,18 @@
+$(document).ready(function(){
+    $("#report-table").fancyTable({
+        sortColumn: 1,
+        /* Setting pagination or enabling */
+        pagination: false,
+        globalSearch:true,
+        /* Exclude 2nd column from global search.*/
+        // globalSearchExcludeColumns: [2],
+        onInit:function(){                
+            /* On initialization of table */
+        },
+        onUpdate:function(){
+            /* On update like search and sort of table */                 
+        }
+    });
+
+    $(".fancySearchRow").addClass("skip-print");
+})

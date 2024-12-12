@@ -1,0 +1,11 @@
+---
+cve_severities:
+  - critical
+  - important
+  - moderate
+  - low
+cve_severity_sort_values:
+  critical: 0
+  important: 1
+  moderate: 2
+  low: 3
