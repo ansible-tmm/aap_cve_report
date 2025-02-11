@@ -20,9 +20,6 @@
             #facts-modal .modal-dialog { max-width: 100%; margin: 20px; }
             .table td.facts-col { padding: .5rem .75rem }
             .btn-facts { padding: 2px 4px; }
-            #report-table .color-important { color: #ee0000 }
-            #report-table .color-moderate { color: #f5921b }
-            #report-table .color-low { color: #ffcc17 }
             @media print { .skip-print { visibility: hidden; } }
         </style>
     </head>
@@ -30,8 +27,7 @@
         <nav class="navbar navbar-light bg-light justify-content-between">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
-                <svg alt="" width="30" height="24" class="d-inline-block align-text-top" style="isolation:isolate" viewBox="0 0 194 148" width="194pt" height="148pt"><defs><clipPath id="_clipPath_d3mLhlIU9h8BLhy63FXSL7Ga261TcnSw"><rect width="194" height="148"/></clipPath></defs><g clip-path="url(#_clipPath_d3mLhlIU9h8BLhy63FXSL7Ga261TcnSw)"><path d=" M 129 85 C 141.51 85 159.61 82.42 159.61 67.54 C 159.647 66.392 159.543 65.243 159.3 64.12 L 151.85 31.76 C 150.13 24.64 148.62 21.41 136.12 15.16 C 126.39 10.19 105.26 2 99 2 C 93.18 2 91.45 9.54 84.55 9.54 C 77.87 9.54 72.91 3.94 66.66 3.94 C 60.66 3.94 56.75 8.03 53.73 16.44 C 53.73 16.44 45.32 40.16 44.24 43.6 C 44.062 44.231 43.981 44.885 44 45.54 C 44 54.76 80.33 85 129 85 Z  M 161.55 73.58 C 163.28 81.77 163.28 82.63 163.28 83.71 C 163.28 97.71 147.54 105.48 126.85 105.48 C 80 105.47 39.08 78.1 39.08 60 C 39.077 57.479 39.591 54.985 40.59 52.67 C 23.77 53.52 2 56.54 2 75.72 C 2 107.2 76.59 146 135.65 146 C 180.93 146 192.35 125.52 192.35 109.35 C 192.35 96.63 181.35 82.19 161.52 73.57" fill="rgb(238,0,0)"/><path d=" M 161.52 73.57 C 163.25 81.76 163.25 82.62 163.25 83.7 C 163.25 97.7 147.51 105.47 126.82 105.47 C 80 105.47 39.08 78.1 39.08 60 C 39.077 57.479 39.591 54.985 40.59 52.67 L 44.25 43.61 C 44.069 44.237 43.985 44.888 44 45.54 C 44 54.76 80.33 85 129 85 C 141.51 85 159.61 82.42 159.61 67.54 C 159.647 66.392 159.543 65.243 159.3 64.12 L 161.52 73.57 Z " fill="rgb(0,0,0)"/></g></svg>
-                <span style="margin-left: 4px">{{ cve_table_title }}</span>
+                <span>{{ cve_table_title }}</span>
                 </a>
                 <span class="navbar-text" style="color: grey">
                 <i>{{ cve_table_subtitle }}</i>
@@ -75,11 +71,5 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/jquery.fancytable/dist/fancyTable.min.js"></script>
         <script src="js/json-viewer.js"></script>
-        <script type="text/javascript">
-            {% include 'interactive_report.js.j2' %}
-        </script>
-        <!-- <script>
-            {% include 'donut_chart.js.j2' %}
-        </script> -->
     </body>
 </html>
