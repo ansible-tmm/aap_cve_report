@@ -5,7 +5,7 @@
 
         <title>{{ cve_table_title }}</title>
         <meta name="description" content="{{ cve_table_desc }}">
-        <meta name="author" content="Zachary LeBlanc">
+        <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="{{ cve_table_title }}">
         <meta property="og:type" content="website">
@@ -18,7 +18,7 @@
             #donut-wrapper { max-height: 300px; display: flex; justify-content: center; align-items: center; }
             .fancySearchRow input { padding: 5px; margin: 10px 0px; }
             #facts-modal .modal-dialog { max-width: 100%; margin: 20px; }
-            .table td.facts-col { padding: .5rem .75rem }
+            .table td.facts-col { width:1042; padding: .5rem .75rem }
             .btn-facts { padding: 2px 4px; }
             @media print { .skip-print { visibility: hidden; } }
         </style>
@@ -43,10 +43,10 @@
             <table id="report-table" class="table table-striped">
                 <thead>
                     <tr>
-                        <th>CVE</th>
-                        <th data-sortas="numeric">Severity</th>
-                        <th>Date</th>
-                        <th>Description</th>
+                        <th style="width: 170px;">CVE</th>
+                        <th data-sortas="numeric" style="width: 90px;">Severity</th>
+                        <th style="width: 120px;">Date</th>
+                        <th style="width: 200px;">Description</th>
                         <th>Statement / Details</th>
                     </tr>
                 </thead>
@@ -63,7 +63,7 @@
                     {% endfor %}
                 {% endfor %}
                 </tbody>
-            </table>           
+            </table>
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
