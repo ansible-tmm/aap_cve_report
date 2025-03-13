@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title>AAP Dynamic Documentation CVE Report</title>
-        <meta name="description" content="Report generated on 2025-03-13 @ 14:07:54">
+        <meta name="description" content="Report generated on 2025-03-13 @ 14:16:06">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="AAP Dynamic Documentation CVE Report">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2025-03-13 @ 14:07:54">
+        <meta property="og:description" content="Report generated on 2025-03-13 @ 14:16:06">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -21,7 +21,15 @@
             .table td.facts-col { padding: .5rem .75rem }
             .btn-facts { padding: 2px 4px; }
             @media print { .skip-print { visibility: hidden; } }
-            table#report-table { width: 1042px; }
+            table#report-table {
+                width: 1042px !important;
+                max-width: 1042px !important;
+                table-layout: fixed !important;
+            }            #report-table th:nth-child(1) { width: 170px; }
+            #report-table th:nth-child(2) { width: 90px; }
+            #report-table th:nth-child(3) { width: 120px; }
+            #report-table th:nth-child(4) { width: 200px; }
+            #report-table th:nth-child(5) { width: 462px; } /* Remaining space: 1042 - (170+90+120+200) = 462px */
         </style>
     </head>
     <body>
@@ -31,7 +39,7 @@
                 <span>AAP Dynamic Documentation CVE Report</span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2025-03-13 @ 14:07:54</i>
+                <i>Report generated on 2025-03-13 @ 14:16:06</i>
                 </span>
             </div>
         </nav>

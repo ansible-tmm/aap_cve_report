@@ -21,7 +21,15 @@
             .table td.facts-col { padding: .5rem .75rem }
             .btn-facts { padding: 2px 4px; }
             @media print { .skip-print { visibility: hidden; } }
-            table#report-table { width: 1042px; }
+            table#report-table {
+                width: 1042px !important;
+                max-width: 1042px !important;
+                table-layout: fixed !important;
+            }            #report-table th:nth-child(1) { width: 170px; }
+            #report-table th:nth-child(2) { width: 90px; }
+            #report-table th:nth-child(3) { width: 120px; }
+            #report-table th:nth-child(4) { width: 200px; }
+            #report-table th:nth-child(5) { width: 462px; } /* Remaining space: 1042 - (170+90+120+200) = 462px */
         </style>
     </head>
     <body>
