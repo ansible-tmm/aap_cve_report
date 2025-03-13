@@ -1,9 +1,0 @@
----
-facts_table_title: "Auto-generated Report"
-facts_table_timestamp: "{{ lookup('pipe', 'date +\"%Y-%m-%d @ %H:%M:%S\"') }}"
-# facts_table_limit: ["ansible_fips", "ansible_domain"] # limit facts in report
-# facts_table_limit_prefix: ansible_net_ # limit facts in report to vars starting with prefix
-# facts_table_exclude: ["ansible_nonsense", "ansible_confusion"] # exclude facts in report
-# facts_table_exclude_prefix: ansible_net_ # exclude facts staring witn prefix in report
-facts_table_output_dest: "{{ playbook_dir }}/zjleblanc.table.html"
-# table_output_remote_host: report_server # inventory host to copy report to

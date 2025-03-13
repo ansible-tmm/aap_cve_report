@@ -1,9 +1,0 @@
----
-facts_table_data: "{{ ansible_play_hosts | map('extract', hostvars) | list }}"
-facts_table_data_model: "{{ facts_table_data[0] }}"
-facts_table_data_header_filters:
-  limit: "{{ facts_table_limit | default([]) }}"
-  limit_prefix: "{{ facts_table_limit_prefix | default('') }}"
-  exclude: "{{ facts_table_exclude | default([]) }}"
-  exclude_prefix: "{{ facts_table_exclude_prefix | default('') }}"
-facts_table_data_headers: "{{ facts_table_data_model | zjleblanc.reporting.fact_headers(facts_table_data_header_filters) | sort }}"

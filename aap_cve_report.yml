@@ -1,0 +1,28 @@
+---
+- name: Generate cve report
+  hosts: localhost
+  gather_facts: false
+  become: false
+
+  tasks:
+    - name: Get CVE data
+      register: r_cve_by_product
+      loop:
+        - Red Hat Ansible Automation Platform 2.4
+        - Red Hat Ansible Automation Platform 2.5
+      ansible_tmm.aap_cve_report.cve_info:
+        details: false
+        product: "{{ item }}"
+
+    - name: Generate patch report
+      ansible.builtin.include_role:
+        name:  ansible_tmm.aap_cve_report.cve
+      vars:
+        cve_table_title: AWX CVE Report
+        cve_list: "{{ r_cve_by_product.results | map(attribute='cves') | flatten | unique }}"
+        cve_table_output_remote_host: "{{ report_server }}"
+        cve_table_output_dest: "{{ playbook_dir }}/cves.html"
+        cve_table_become_publish: true
+        cve_disclaimer: |
+          The CVEs listed are based on those which have been addressed in Red Hat Ansible Automation Platform 2.{4,5}.
+          Further investigation would need to be done to determine exactly which CVEs affect AWX.

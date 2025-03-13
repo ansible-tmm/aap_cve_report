@@ -1,3 +1,0 @@
----
-# org_host_metrics_data: "{{ lookup('zjleblanc.utils.org_host_metrics') }}" # Purpose-built to work with data model produced by zjleblanc.utils.org_host_metrics lookup plugin
-org_host_metrics_instance: "{{ controller_host | default(lookup('env', 'CONTROLLER_HOST')) | default(tower_host) | default(lookup('env', 'TOWER_HOST')) | default(false) }}"

@@ -1,3 +1,0 @@
-web ansible_host=localhost ansible_connection=local
-db ansible_host=localhost ansible_connection=local
-app ansible_host=localhost ansible_connection=local
