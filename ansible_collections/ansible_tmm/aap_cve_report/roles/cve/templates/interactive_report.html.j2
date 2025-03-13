@@ -21,15 +21,20 @@
             .table td.facts-col { padding: .5rem .75rem }
             .btn-facts { padding: 2px 4px; }
             @media print { .skip-print { visibility: hidden; } }
+            .table-responsive-container {
+                width: 100%;
+                max-width: 1042px; /* Maximum width */
+                margin: 0 auto; /* Center if smaller than container */
+            }
             table#report-table {
-                width: 1042px !important;
-                max-width: 1042px !important;
-                table-layout: fixed !important;
-            }            #report-table th:nth-child(1) { width: 170px; }
-            #report-table th:nth-child(2) { width: 90px; }
-            #report-table th:nth-child(3) { width: 120px; }
-            #report-table th:nth-child(4) { width: 200px; }
-            #report-table th:nth-child(5) { width: 462px; } /* Remaining space: 1042 - (170+90+120+200) = 462px */
+                width: 100%;
+                table-layout: fixed;
+            }
+            #report-table th:nth-child(1) { width: 16.3%; } /* 170px/1042px ≈ 16.3% */
+            #report-table th:nth-child(2) { width: 8.6%; }  /* 90px/1042px ≈ 8.6% */
+            #report-table th:nth-child(3) { width: 11.5%; } /* 120px/1042px ≈ 11.5% */
+            #report-table th:nth-child(4) { width: 19.2%; } /* 200px/1042px ≈ 19.2% */
+            #report-table th:nth-child(5) { width: 44.4%; } /* 462px/1042px ≈ 44.4% */
         </style>
     </head>
     <body>
@@ -49,6 +54,7 @@
                 {{ cve_disclaimer }}
             </div>
             {% endif %}
+            <div class="table-responsive-container">
             <table id="report-table" class="table table-striped">
                 <thead>
                     <tr>
@@ -73,6 +79,7 @@
                 {% endfor %}
                 </tbody>
             </table>
+            </div>
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
