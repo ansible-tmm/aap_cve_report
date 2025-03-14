@@ -20,7 +20,7 @@
       ansible.builtin.include_role:
         name: ansible_tmm.aap_cve_report.cve
       vars:
-        cve_table_title: AAP Dynamic Documentation CVE Report
+        cve_table_title:
         cve_list: "{{ r_cve_by_product.results | map(attribute='cves') | flatten | unique }}"
         cve_table_output_remote_host: "{{ report_server }}"
         cve_table_output_dest: "{{ website_location }}"
