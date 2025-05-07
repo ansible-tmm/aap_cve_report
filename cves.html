@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2025-05-07 @ 13:30:30">
+        <meta name="description" content="Report generated on 2025-05-07 @ 15:30:35">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2025-05-07 @ 13:30:30">
+        <meta property="og:description" content="Report generated on 2025-05-07 @ 15:30:35">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2025-05-07 @ 13:30:30</i>
+                <i>Report generated on 2025-05-07 @ 15:30:35</i>
                 </span>
             </div>
         </nav>
@@ -110,6 +110,25 @@ Red Hat Satellite has set a moderate impact of this issue as invalid requests wh
                         <td>Gunicorn fails to properly validate Transfer-Encoding headers, leading to HTTP Request Smuggling (HRS) vulnerabilities. By crafting requests with conflicting Transfer-Encoding headers, attackers can bypass security restrictions and access restricted endpoints. This issue is due to Gunicorn's handling of Transfer-Encoding headers, where it incorrectly processes requests with multiple, conflicting Transfer-Encoding headers, treating them as chunked regardless of the final encoding specified. This vulnerability allows for a range of attacks including cache poisoning, session manipulation, and data exposure. An HTTP Request Smuggling vulnerability was found in Gunicorn. By crafting requests with conflicting Transfer-Encoding headers, attackers can bypass security restrictions and access restricted endpoints. This issue is due to Gunicorn's handling of Transfer-Encoding headers, where it incorrectly processes requests with multiple, conflicting Transfer-Encoding headers, treating them as chunked regardless of the final encoding specified. This vulnerability allows for a range of attacks, including cache poisoning, session manipulation, and data exposure.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-45288'>CVE-2023-45288</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2024-04-03</td>
+                        <td>golang: net/http, x/net/http2: unlimited number of CONTINUATION frames causes DoS</td>
+                        <td>Red Hat rates the security impact of this vulnerability as Important due to the worst case scenario resulting in a denial of service. It is simple to exploit, could significantly impact availability, and there is not a suitable mitigation for all use cases. Once an attack has ended, the system should return to normal operations on its own.
+This vulnerability only impacts servers which have HTTP/2 enabled. It stems from an imperfect definition of the protocol. As the Go programming language is widely utilized across nearly every major Red Hat offering, a full listing of impacted packages will not be provided. Therefore, the “Affected Packages and Issued Red Hat Security Errata” section contains a simplified list of what offerings need to remediate this vulnerability. Every impacted offering has at least one representative component listed, but potentially not all of them. Rest assured that Red Hat is committed to remediating this vulnerability across our entire portfolio.
+Many components are rated as Low impact due to configurations which reduce the attack surface or  significantly increase the difficulty of exploitation. A summary of these scenarios are:
+* The container includes a package that provides a vulnerable webserver, but it is not used or running during operation
+* HTTP/2 is disabled by default and is not supported
+* Only a client implementation is provided, which is not vulnerable
+* A vulnerable module (either golang.org/net/http or golang.org/x/net/http2) is included, but disabled
+* Access to a vulnerable server is restricted within the container (loopback only connections)
+* Golang is available in the container but is not used
+Within the Red Hat OpenShift Container Platform, the majority of vulnerable components are not externally accessible. This means an attacker must already have access to a container within your environment to exploit this vulnerability. However, the ose-hyperkube (openshift-enterprise-hyperkube) container is externally accessible, so there are less barriers to exploitation. Fixes for this specific container are already available.
+Within Red Hat Ansible Automation Platform, the impacted component is Receptor. The impact has been reduced to Low as the vulnerable code is present, but not utilized. There are three potential exposures within this component:
+* Receptor utilizes QUIC a UDP based protocol which does not run over HTTP/2
+* Receptor utilizes the x/net/ipv4 and ipv6 packages, both of which are not affected</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-1394'>CVE-2024-1394</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2024-03-20</td>
@@ -140,6 +159,23 @@ This issue does not affect Red Hat Enterprise Linux 6, 7, 8 and 9 as we dont shi
                         <td>The vulnerability in Pillow's PIL.ImageMath.eval function poses a significant threat due to its potential for arbitrary code execution. Pillow's widespread use in diverse domains makes this flaw particularly impactful, as it could lead to unauthorized access, data breaches, and compromise of entire systems. The complex exploitation method involving Python's dunder methods adds sophistication to potential attacks.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-44487'>CVE-2023-44487</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2023-10-10</td>
+                        <td>HTTP/2: Multiple HTTP/2 enabled web servers are vulnerable to a DDoS attack (Rapid Reset Attack)</td>
+                        <td>NGINX has been marked as Moderate Impact because, for performance and resource consumption reasons, NGINX limits the number of concurrent streams to a default of 128. In addition, to optimally balance network and server performance, NGINX allows the client to persist HTTP connections for up to 1000 requests by default using an HTTP keepalive.
+The majority of RHEL utilities are not long-running applications; instead, they are command-line tools. These tools utilize Golang package as build-time dependency, which is why they are classified as having a "Moderate" level of impact.
+rhc component is no longer impacted by CVE-2023-44487 & CVE-2023-39325.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-39325'>CVE-2023-39325</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2023-10-10</td>
+                        <td>golang: net/http, x/net/http2: rapid stream resets can cause excessive work (CVE-2023-44487)</td>
+                        <td>This CVE is related to CVE-2023-44487.
+The majority of RHEL utilities are not long-running applications; instead, they are command-line tools. These tools utilize Golang package as build-time dependency, which is why they are classified as having a "Moderate" level of impact.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-1801'>CVE-2025-1801</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2025-03-01</td>
@@ -151,7 +187,8 @@ This issue does not affect Red Hat Enterprise Linux 6, 7, 8 and 9 as we dont shi
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2025-01-14</td>
                         <td>django: potential denial-of-service vulnerability in IPv6 validation</td>
-                        <td>An issue was discovered in Django 5.1 before 5.1.5, 5.0 before 5.0.11, and 4.2 before 4.2.18. Lack of upper-bound limit enforcement in strings passed when performing IPv6 validation could lead to a potential denial-of-service attack. The undocumented and private functions clean_ipv6_address and is_valid_ipv6_address are vulnerable, as is the django.forms.GenericIPAddressField form field. (The django.db.models.GenericIPAddressField model field is not affected.) A flaw was found in the Django framework. Lack of upper bound limit enforcement in strings passed when performing IPv6 validation could lead to a potential denial of service attack. The undocumented and private functions `clean_ipv6_address` and `is_valid_ipv6_address` were vulnerable, as was the `django.forms.GenericIPAddressField` form field, which has now been updated to define a `max_length` of 39 characters.</td>
+                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-770: Allocation of Resources Without Limits or Throttling vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
+The platform enforces hardening guidelines to apply the most restrictive settings required for operations, while baseline configurations maintain secure system and software states. A defense-in-depth monitoring strategy includes perimeter firewalls and endpoint protection services that detect excessive resource usage caused by malicious activity or system misconfigurations. In the event of exploitation, process isolation ensures workloads operate in separate environments, preventing any single process from overconsuming CPU or memory and degrading system performance.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-56326'>CVE-2024-56326</a></td>
@@ -309,7 +346,8 @@ Controls such as input validation and error handling mitigate input misinterpret
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-05-20</td>
                         <td>requests: subsequent requests to the same host ignore cert verification</td>
-                        <td>Requests is a HTTP library. Prior to 2.32.0, when making requests through a Requests `Session`, if the first request is made with `verify=False` to disable cert verification, all subsequent requests to the same host will continue to ignore cert verification regardless of changes to the value of `verify`. This behavior will continue for the lifecycle of the connection in the connection pool. This vulnerability is fixed in 2.32.0. An incorrect control flow implementation vulnerability was found in Requests. If the first request in a session is made with verify=False, all subsequent requests to the same host will continue to ignore cert verification.</td>
+                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-670: Always-Incorrect Control Flow Implementation vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
+The platform's orchestration features, such as liveness and readiness probes, automated pod restarts, and health monitoring, help to quickly detect and recover from service-level failures resulting from incorrect control flows. Static code analysis and peer code review techniques are used to execute robust input validation and error-handling mechanisms to ensure all user inputs are thoroughly validated, preventing improperly validated inputs from causing system instability, exposing sensitive data, or escalating risks. Additionally, process isolation ensures that component issues are contained within the originating process, preventing them from affecting other processes or the system as a whole.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-24788'>CVE-2024-24788</a></td>
@@ -398,6 +436,13 @@ Fence agents on RHEL 8 has been fixed as a part of https://access.redhat.com/err
                         <td>The CVE-2024-28102 vulnerability in JWCrypto represents a moderate severity issue due to its potential impact on system availability and resource consumption. While the vulnerability allows for a denial of service (DoS) attack, it requires an attacker to craft a malicious JWE Token with a high compression ratio. This specific condition limits the practical exploitability of the vulnerability to some extent, as it demands a more sophisticated attack approach than common vulnerabilities. Nonetheless, if exploited, the vulnerability can lead to significant memory exhaustion and increased server processing time, impacting the overall performance and availability of the affected system.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-45290'>CVE-2023-45290</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2024-03-05</td>
+                        <td>golang: net/http: golang: mime/multipart: golang: net/textproto: memory exhaustion in Request.ParseMultipartForm</td>
+                        <td>When parsing a multipart form (either explicitly with Request.ParseMultipartForm or implicitly with Request.FormValue, Request.PostFormValue, or Request.FormFile), limits on the total size of the parsed form were not applied to the memory consumed while reading a single form line. This permits a maliciously crafted input containing very long lines to cause allocation of arbitrarily large amounts of memory, potentially leading to memory exhaustion. With fix, the ParseMultipartForm function now correctly limits the maximum size of form lines. A flaw was discovered in Go's net/http standard library package. When parsing a multipart form (either explicitly with Request.ParseMultipartForm or implicitly with Request.FormValue, Request.PostFormValue, or Request.FormFile), limits on the total size of the parsed form were not applied to the memory consumed while reading a single form line. This permits a maliciously crafted input containing very long lines to cause allocation of arbitrarily large amounts of memory, potentially leading to memory exhaustion. With fix, the ParseMultipartForm function now correctly limits the maximum size of form lines.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-24783'>CVE-2024-24783</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-03-05</td>
@@ -467,6 +512,14 @@ Fence agents on RHEL 8 has been fixed as a part of https://access.redhat.com/err
                         <td>pycryptodome: side-channel leakage for OAEP decryption in PyCryptodome and pycryptodomex</td>
                         <td>Red Hat Satellite ship affected version of pycryptodome for pulp_container, however, product is not vulnerable as it doesn't utilize OAEP algorithm technique. Red Hat Product Security has classified its impact as Low for Red Hat Satellite; future updates expected to address this issue.
 Red Hat OpenStack 16.1 and 16.2 versions include affected python-scciclient embedded through the python-crypto package, however, python-scciclient employs only one algorithm, which is AES. While the version of python-crypto we ship may be susceptible to a particular CVE, since affected algorithms are not utilized by OpenStack, the attack cannot be executed to exploit an OpenStack deployment</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-39326'>CVE-2023-39326</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2023-12-06</td>
+                        <td>golang: net/http/internal: Denial of Service (DoS) via Resource Consumption via HTTP requests</td>
+                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-400: Uncontrolled Resource Consumption vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
+Red Hat restricts access to all platform information by default, granting access only after successful hard token-based multi-factor authentication (MFA) and enforcing least privilege to ensure only authorized roles can execute or modify code. The environment employs malicious code protections, including IDS/IPS and antimalware tools to detect threats and monitor resource usage, helping prevent uncontrolled consumption that could lead to system failure. Additional safeguards, such as web application firewalls and load-balancing strategies, protect against resource exhaustion and performance degradation. Event logs are centrally collected, correlated, and analyzed to support monitoring, alerting, and retention, aiding in the detection of abnormal behavior and potential denial-of-service (DoS) conditions. Static code analysis and peer reviews enforce strong input validation and error handling, reducing the likelihood of input-based DoS attacks.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-49081'>CVE-2023-49081</a></td>
