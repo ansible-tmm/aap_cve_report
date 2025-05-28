@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2025-05-28 @ 01:30:28">
+        <meta name="description" content="Report generated on 2025-05-28 @ 03:30:28">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2025-05-28 @ 01:30:28">
+        <meta property="og:description" content="Report generated on 2025-05-28 @ 03:30:28">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2025-05-28 @ 01:30:28</i>
+                <i>Report generated on 2025-05-28 @ 03:30:28</i>
                 </span>
             </div>
         </nav>
@@ -159,21 +159,11 @@ This issue does not affect Red Hat Enterprise Linux 6, 7, 8 and 9 as we dont shi
                         <td>The vulnerability in Pillow's PIL.ImageMath.eval function poses a significant threat due to its potential for arbitrary code execution. Pillow's widespread use in diverse domains makes this flaw particularly impactful, as it could lead to unauthorized access, data breaches, and compromise of entire systems. The complex exploitation method involving Python's dunder methods adds sophistication to potential attacks.</td>
                     </tr>
                                         <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-44487'>CVE-2023-44487</a></td>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-43859'>CVE-2025-43859</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2023-10-10</td>
-                        <td>HTTP/2: Multiple HTTP/2 enabled web servers are vulnerable to a DDoS attack (Rapid Reset Attack)</td>
-                        <td>NGINX has been marked as Moderate Impact because, for performance and resource consumption reasons, NGINX limits the number of concurrent streams to a default of 128. In addition, to optimally balance network and server performance, NGINX allows the client to persist HTTP connections for up to 1000 requests by default using an HTTP keepalive.
-The majority of RHEL utilities are not long-running applications; instead, they are command-line tools. These tools utilize Golang package as build-time dependency, which is why they are classified as having a "Moderate" level of impact.
-rhc component is no longer impacted by CVE-2023-44487 & CVE-2023-39325.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-39325'>CVE-2023-39325</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2023-10-10</td>
-                        <td>golang: net/http, x/net/http2: rapid stream resets can cause excessive work (CVE-2023-44487)</td>
-                        <td>This CVE is related to CVE-2023-44487.
-The majority of RHEL utilities are not long-running applications; instead, they are command-line tools. These tools utilize Golang package as build-time dependency, which is why they are classified as having a "Moderate" level of impact.</td>
+                        <td>2025-04-24</td>
+                        <td>h11: h11 accepts some malformed Chunked-Encoding bodies</td>
+                        <td>h11 is a Python implementation of HTTP/1.1. Prior to version 0.16.0, a leniency in h11's parsing of line terminators in chunked-coding message bodies can lead to request smuggling vulnerabilities under certain conditions. This issue has been patched in version 0.16.0. Since exploitation requires the combination of buggy h11 with a buggy (reverse) proxy, fixing either component is sufficient to mitigate this issue. A flaw was found in the h11. This vulnerability allows request smuggling via improper parsing of chunked-coding message bodies, where h11 fails to validate the required \r\n terminators.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-1801'>CVE-2025-1801</a></td>
@@ -434,13 +424,6 @@ Fence agents on RHEL 8 has been fixed as a part of https://access.redhat.com/err
                         <td>2024-03-08</td>
                         <td>python-jwcrypto: malicious JWE token can cause denial of service</td>
                         <td>The CVE-2024-28102 vulnerability in JWCrypto represents a moderate severity issue due to its potential impact on system availability and resource consumption. While the vulnerability allows for a denial of service (DoS) attack, it requires an attacker to craft a malicious JWE Token with a high compression ratio. This specific condition limits the practical exploitability of the vulnerability to some extent, as it demands a more sophisticated attack approach than common vulnerabilities. Nonetheless, if exploited, the vulnerability can lead to significant memory exhaustion and increased server processing time, impacting the overall performance and availability of the affected system.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-45290'>CVE-2023-45290</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2024-03-05</td>
-                        <td>golang: net/http: golang: mime/multipart: golang: net/textproto: memory exhaustion in Request.ParseMultipartForm</td>
-                        <td>When parsing a multipart form (either explicitly with Request.ParseMultipartForm or implicitly with Request.FormValue, Request.PostFormValue, or Request.FormFile), limits on the total size of the parsed form were not applied to the memory consumed while reading a single form line. This permits a maliciously crafted input containing very long lines to cause allocation of arbitrarily large amounts of memory, potentially leading to memory exhaustion. With fix, the ParseMultipartForm function now correctly limits the maximum size of form lines. A flaw was discovered in Go's net/http standard library package. When parsing a multipart form (either explicitly with Request.ParseMultipartForm or implicitly with Request.FormValue, Request.PostFormValue, or Request.FormFile), limits on the total size of the parsed form were not applied to the memory consumed while reading a single form line. This permits a maliciously crafted input containing very long lines to cause allocation of arbitrarily large amounts of memory, potentially leading to memory exhaustion. With fix, the ParseMultipartForm function now correctly limits the maximum size of form lines.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-24783'>CVE-2024-24783</a></td>
