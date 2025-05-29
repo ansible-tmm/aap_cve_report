@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2025-05-29 @ 14:18:11">
+        <meta name="description" content="Report generated on 2025-05-29 @ 16:20:53">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2025-05-29 @ 14:18:11">
+        <meta property="og:description" content="Report generated on 2025-05-29 @ 16:20:53">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2025-05-29 @ 14:18:11</i>
+                <i>Report generated on 2025-05-29 @ 16:20:53</i>
                 </span>
             </div>
         </nav>
@@ -176,6 +176,13 @@ rhc component is no longer impacted by CVE-2023-44487 & CVE-2023-39325.</td>
 The majority of RHEL utilities are not long-running applications; instead, they are command-line tools. These tools utilize Golang package as build-time dependency, which is why they are classified as having a "Moderate" level of impact.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-43859'>CVE-2025-43859</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-04-24</td>
+                        <td>h11: h11 accepts some malformed Chunked-Encoding bodies</td>
+                        <td>h11 is a Python implementation of HTTP/1.1. Prior to version 0.16.0, a leniency in h11's parsing of line terminators in chunked-coding message bodies can lead to request smuggling vulnerabilities under certain conditions. This issue has been patched in version 0.16.0. Since exploitation requires the combination of buggy h11 with a buggy (reverse) proxy, fixing either component is sufficient to mitigate this issue. A flaw was found in the h11. This vulnerability allows request smuggling via improper parsing of chunked-coding message bodies, where h11 fails to validate the required \r\n terminators.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-1801'>CVE-2025-1801</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2025-03-01</td>
@@ -260,6 +267,13 @@ The platform uses secure, encrypted HTTPS connections over TLS 1.2 to reduce the
                         <td>2024-08-06</td>
                         <td>python-django: Memory exhaustion in django.utils.numberformat.floatformat()</td>
                         <td>This issue is categorized as moderate severity rather than important because, while it has the potential to cause significant memory consumption under specific conditions, the likelihood of such a scenario occurring in typical applications is relatively low. The issue arises primarily when processing extremely large numbers in scientific notation, which is not a common use case in most Django applications. Additionally, the impact is localized to the floatformat function, and the issue does not expose sensitive data or compromise the integrity of the application.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-41990'>CVE-2024-41990</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2024-08-06</td>
+                        <td>python-django: Potential denial-of-service vulnerability in django.utils.html.urlize()</td>
+                        <td>An issue was discovered in Django 5.0 before 5.0.8 and 4.2 before 4.2.15. The urlize() and urlizetrunc() template filters are subject to a potential denial-of-service attack via very large inputs with a specific sequence of characters. A flaw was found in Django. Processing very large inputs with a specific sequence of characters with the urlize and urlizetrunc functions can cause a denial of service.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-41991'>CVE-2024-41991</a></td>
@@ -464,13 +478,6 @@ Fence agents on RHEL 8 has been fixed as a part of https://access.redhat.com/err
                         <td>Redhat has rated this vulnerability as moderate severity because exploitation of this vulnerability is only theoretical in nature and can only result in a denial of service bug.</td>
                     </tr>
                                         <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-23334'>CVE-2024-23334</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2024-01-30</td>
-                        <td>aiohttp: follow_symlinks directory traversal vulnerability</td>
-                        <td>This vulnerability has been rated as having a moderate impact. There is a non-default precondition which is required to exploit it: the follow_symlinks setting needs to be enabled.</td>
-                    </tr>
-                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-23829'>CVE-2024-23829</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-01-30</td>
@@ -537,13 +544,6 @@ Red Hat restricts access to all platform information by default, granting access
 https://data.safetycli.com/vulnerabilities/CVE-2022-40896/58910/?utm_source=pyupio&utm_medium=redirect&utm_campaign=pyup_rd&utm_id=0817&utm_content=data
 Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-434: Unrestricted Upload of File with Dangerous Type vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
 Access to the platform is granted only after successful hard token-based multi-factor authentication (MFA) and is governed by least privilege to ensure that only authorized users and roles can execute code or upload files. Red Hat enforces least functionality by enabling only essential features, services, and ports, and applies hardening guidelines to ensure the most restrictive configurations necessary for operational requirements. The environment employs IPS/IDS and antimalware solutions to detect and block malicious code and files before execution. Static code analysis and peer reviews enforce strong input validation and error handling, reducing the risk of denial-of-service (DoS) attacks. In the event of successful exploitation, process isolation prevents a compromised process from accessing memory freed by another, containing the impact. Finally, the ROSA platform uses memory protection mechanisms such as Data Execution Prevention (DEP) and Address Space Layout Randomization (ASLR) to strengthen defenses against malicious file uploads and memory-based attacks.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-47627'>CVE-2023-47627</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2023-11-15</td>
-                        <td>python-aiohttp: numerous issues in HTTP parser with header parsing</td>
-                        <td>aiohttp is an asynchronous HTTP client/server framework for asyncio and Python. The HTTP parser in AIOHTTP has numerous problems with header parsing, which could lead to request smuggling. This parser is only used when AIOHTTP_NO_EXTENSIONS is enabled (or not using a prebuilt wheel). These bugs have been addressed in commit `d5c12ba89` which has been included in release version 3.8.6. Users are advised to upgrade. There are no known workarounds for these issues. An HTTP request smuggling vulnerability was found in aiohttp. Numerous issues with HTTP parsing can allow an attacker to smuggle HTTP requests.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-45857'>CVE-2023-45857</a></td>
