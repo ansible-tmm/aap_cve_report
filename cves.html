@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2025-05-29 @ 10:16:42">
+        <meta name="description" content="Report generated on 2025-05-29 @ 12:17:53">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2025-05-29 @ 10:16:42">
+        <meta property="og:description" content="Report generated on 2025-05-29 @ 12:17:53">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2025-05-29 @ 10:16:42</i>
+                <i>Report generated on 2025-05-29 @ 12:17:53</i>
                 </span>
             </div>
         </nav>
@@ -136,13 +136,6 @@ Within Red Hat Ansible Automation Platform, the impacted component is Receptor. 
                         <td>The majority of RHEL utilities are not long-running applications; instead, they are command-line tools. These tools utilize Golang package as build-time dependency, which is why they are classified as having a "Moderate" level of impact.</td>
                     </tr>
                                         <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-1657'>CVE-2024-1657</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2024-02-29</td>
-                        <td>platform: Insecure websocket used when interacting with EDA server</td>
-                        <td>A flaw was found in the ansible automation platform. An insecure WebSocket connection was being used in installation from the Ansible rulebook EDA server. An attacker that has access to any machine in the CIDR block could download all rulebook data from the WebSocket, resulting in loss of confidentiality and integrity of the system. A flaw was found in the ansible automation platform. An insecure WebSocket connection was being used in installation from the Ansible rulebook EDA server. An attacker that has access to any machine in the CIDR block could download all rulebook data from the WebSocket, resulting in loss of confidentiality and integrity of the system.</td>
-                    </tr>
-                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-26130'>CVE-2024-26130</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2024-02-21</td>
@@ -157,23 +150,6 @@ This issue does not affect Red Hat Enterprise Linux 6, 7, 8 and 9 as we dont shi
                         <td>2024-01-19</td>
                         <td>pillow: Arbitrary Code Execution via the environment parameter</td>
                         <td>The vulnerability in Pillow's PIL.ImageMath.eval function poses a significant threat due to its potential for arbitrary code execution. Pillow's widespread use in diverse domains makes this flaw particularly impactful, as it could lead to unauthorized access, data breaches, and compromise of entire systems. The complex exploitation method involving Python's dunder methods adds sophistication to potential attacks.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-44487'>CVE-2023-44487</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2023-10-10</td>
-                        <td>HTTP/2: Multiple HTTP/2 enabled web servers are vulnerable to a DDoS attack (Rapid Reset Attack)</td>
-                        <td>NGINX has been marked as Moderate Impact because, for performance and resource consumption reasons, NGINX limits the number of concurrent streams to a default of 128. In addition, to optimally balance network and server performance, NGINX allows the client to persist HTTP connections for up to 1000 requests by default using an HTTP keepalive.
-The majority of RHEL utilities are not long-running applications; instead, they are command-line tools. These tools utilize Golang package as build-time dependency, which is why they are classified as having a "Moderate" level of impact.
-rhc component is no longer impacted by CVE-2023-44487 & CVE-2023-39325.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-39325'>CVE-2023-39325</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2023-10-10</td>
-                        <td>golang: net/http, x/net/http2: rapid stream resets can cause excessive work (CVE-2023-44487)</td>
-                        <td>This CVE is related to CVE-2023-44487.
-The majority of RHEL utilities are not long-running applications; instead, they are command-line tools. These tools utilize Golang package as build-time dependency, which is why they are classified as having a "Moderate" level of impact.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-43859'>CVE-2025-43859</a></td>
@@ -288,14 +264,6 @@ The platform uses secure, encrypted HTTPS connections over TLS 1.2 to reduce the
                         <td>2024-08-06</td>
                         <td>python-django: Potential SQL injection in QuerySet.values() and values_list()</td>
                         <td>This vulnerability is considered of moderate severity rather than high or critical because it requires specific conditions to be exploitable. The potential for SQL injection exists only when QuerySet.values() or values_list() methods are used on models with a JSONField, and an attacker must have control over the JSON object keys passed as arguments. In typical use cases, these methods are often used with predefined or controlled data, limiting the attack surface. Furthermore, the impact is constrained to the manipulation of column aliases, rather than direct injection into more critical parts of the SQL query, reducing the overall risk compared to more direct forms of SQL injection vulnerabilities.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-7246'>CVE-2024-7246</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2024-08-06</td>
-                        <td>grpc: client communicating with a HTTP/2 proxy can poison the HPACK table between the proxy and the backend</td>
-                        <td>This vulnerability is specific to C++ implementations of gRPC release and does not affect Golang or Java implementations of gRPC.
-The gRPC RPM was packaged with Openshift via the Kuryr component. However, Kuryr was never configured to run code using the gRPC library, hence, grpcio dependency has been removed from Kuryr since Openshift-4.12.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-41810'>CVE-2024-41810</a></td>
@@ -441,13 +409,6 @@ Fence agents on RHEL 8 has been fixed as a part of https://access.redhat.com/err
                         <td>2024-03-08</td>
                         <td>python-jwcrypto: malicious JWE token can cause denial of service</td>
                         <td>The CVE-2024-28102 vulnerability in JWCrypto represents a moderate severity issue due to its potential impact on system availability and resource consumption. While the vulnerability allows for a denial of service (DoS) attack, it requires an attacker to craft a malicious JWE Token with a high compression ratio. This specific condition limits the practical exploitability of the vulnerability to some extent, as it demands a more sophisticated attack approach than common vulnerabilities. Nonetheless, if exploited, the vulnerability can lead to significant memory exhaustion and increased server processing time, impacting the overall performance and availability of the affected system.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-45290'>CVE-2023-45290</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2024-03-05</td>
-                        <td>golang: net/http: golang: mime/multipart: golang: net/textproto: memory exhaustion in Request.ParseMultipartForm</td>
-                        <td>When parsing a multipart form (either explicitly with Request.ParseMultipartForm or implicitly with Request.FormValue, Request.PostFormValue, or Request.FormFile), limits on the total size of the parsed form were not applied to the memory consumed while reading a single form line. This permits a maliciously crafted input containing very long lines to cause allocation of arbitrarily large amounts of memory, potentially leading to memory exhaustion. With fix, the ParseMultipartForm function now correctly limits the maximum size of form lines. A flaw was discovered in Go's net/http standard library package. When parsing a multipart form (either explicitly with Request.ParseMultipartForm or implicitly with Request.FormValue, Request.PostFormValue, or Request.FormFile), limits on the total size of the parsed form were not applied to the memory consumed while reading a single form line. This permits a maliciously crafted input containing very long lines to cause allocation of arbitrarily large amounts of memory, potentially leading to memory exhaustion. With fix, the ParseMultipartForm function now correctly limits the maximum size of form lines.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-24783'>CVE-2024-24783</a></td>
@@ -642,14 +603,6 @@ Access to the platform is granted only after successful hard token-based multi-f
                         <td>2023-08-16</td>
                         <td>platform: token exposed at importing project</td>
                         <td>A logic flaw exists in Ansible Automation platform. Whenever a private project is created with incorrect credentials, they are logged in plaintext. This flaw allows an attacker to retrieve the credentials from the log, resulting in the loss of confidentiality, integrity, and availability. A logic flaw exists in Ansible Automation platform. Whenever a private project is created with incorrect credentials, they are logged in plaintext. This flaw allows an attacker to retrieve the credentials from the log, resulting in the loss of confidentiality, integrity, and availability.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-40267'>CVE-2023-40267</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2023-08-11</td>
-                        <td>GitPython: Insecure non-multi options in clone and clone_from is not blocked</td>
-                        <td>In Red Hat Openstack, Red Hat Ansible Automation Platform, and Red Hat Certification Program, while the gitpython dependency is present, the affected codebase is not being used. 
-Red Hat Satellite does not use the affected functions during runtime, therefore the possible impact is limited to Moderate.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-4237'>CVE-2023-4237</a></td>
