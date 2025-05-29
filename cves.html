@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2025-05-29 @ 01:30:33">
+        <meta name="description" content="Report generated on 2025-05-29 @ 04:17:24">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2025-05-29 @ 01:30:33">
+        <meta property="og:description" content="Report generated on 2025-05-29 @ 04:17:24">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2025-05-29 @ 01:30:33</i>
+                <i>Report generated on 2025-05-29 @ 04:17:24</i>
                 </span>
             </div>
         </nav>
@@ -176,13 +176,6 @@ rhc component is no longer impacted by CVE-2023-44487 & CVE-2023-39325.</td>
 The majority of RHEL utilities are not long-running applications; instead, they are command-line tools. These tools utilize Golang package as build-time dependency, which is why they are classified as having a "Moderate" level of impact.</td>
                     </tr>
                                         <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-43859'>CVE-2025-43859</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2025-04-24</td>
-                        <td>h11: h11 accepts some malformed Chunked-Encoding bodies</td>
-                        <td>h11 is a Python implementation of HTTP/1.1. Prior to version 0.16.0, a leniency in h11's parsing of line terminators in chunked-coding message bodies can lead to request smuggling vulnerabilities under certain conditions. This issue has been patched in version 0.16.0. Since exploitation requires the combination of buggy h11 with a buggy (reverse) proxy, fixing either component is sufficient to mitigate this issue. A flaw was found in the h11. This vulnerability allows request smuggling via improper parsing of chunked-coding message bodies, where h11 fails to validate the required \r\n terminators.</td>
-                    </tr>
-                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-1801'>CVE-2025-1801</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2025-03-01</td>
@@ -217,14 +210,6 @@ The platform enforces hardening guidelines to apply the most restrictive setting
                         <td>2024-11-26</td>
                         <td>grpc: Denial of Service through Data corruption in gRPC-C++</td>
                         <td>There exists a denial of service through Data corruption in gRPC-C++ - gRPC-C++ servers with transmit zero copy enabled through the channel arg GRPC_ARG_TCP_TX_ZEROCOPY_ENABLED can experience data corruption issues. The data sent by the application may be corrupted before transmission over the network thus leading the receiver to receive an incorrect set of bytes causing RPC requests to fail. We recommend upgrading past commit e9046b2bbebc0cb7f5dc42008f807f6c7e98e791 A flaw was found in gRPC. In certain configurations, the data sent by the application may be corrupted before transmission over the network, leaving the recipient with an incorrect set of bytes, which will cause RPC requests to fail. This issue may lead to a denial of service.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-52304'>CVE-2024-52304</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2024-11-18</td>
-                        <td>aiohttp: aiohttp vulnerable to request smuggling due to incorrect parsing of chunk extensions</td>
-                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-444: Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling') vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
-The platform uses secure, encrypted HTTPS connections over TLS 1.2 to reduce the risk of smuggling attacks by preventing the injection of ambiguous or malformed requests between components. The environment employs IPS/IDS and antimalware solutions to detect and block malicious code while ensuring consistent interpretation of HTTP requests across network layers, mitigating request/response inconsistencies. Event logs are collected and analyzed for centralization, correlation, monitoring, alerting, and retention, enabling the detection of malformed or suspicious HTTP traffic. Static code analysis and peer reviews enforce strong input validation and error handling to ensure all user inputs adhere to HTTP protocol specifications.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-9902'>CVE-2024-9902</a></td>
@@ -429,13 +414,6 @@ Fence agents on RHEL 8 has been fixed as a part of https://access.redhat.com/err
                         <td>Versions of the package black before 24.3.0 are vulnerable to Regular Expression Denial of Service (ReDoS) via the lines_with_leading_tabs_expanded function in the strings.py file. An attacker could exploit this vulnerability by crafting a malicious input that causes a denial of service. Exploiting this vulnerability is possible when running Black on untrusted input, or if you habitually put thousands of leading tab characters in your docstrings. The python-black package is susceptible to a regular expression denial of service (ReDoS) vulnerability, found in the lines_with_leading_tabs_expanded() function within the strings.py file. This vulnerability could be exploited by running Black on untrusted input or by inserting numerous leading tab characters into docstrings. This flaw allows attackers to craft malicious input to trigger a denial of service.</td>
                     </tr>
                                         <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-28849'>CVE-2024-28849</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2024-03-14</td>
-                        <td>follow-redirects: Possible credential leak</td>
-                        <td>follow-redirects is an open source, drop-in replacement for Node's `http` and `https` modules that automatically follows redirects. In affected versions follow-redirects only clears authorization header during cross-domain redirect, but keep the proxy-authentication header which contains credentials too. This vulnerability may lead to credentials leak, but has been addressed in version 1.15.6. Users are advised to upgrade. There are no known workarounds for this vulnerability. A vulnerability was found in the follow-redirects package. While processing the cross-domain redirection, `follow-redirects` clears authorization headers, however, it misses clearing proxy-authentication headers, which contain credentials as well. This issue may lead to credential leaking, having a high impact on data confidentiality.</td>
-                    </tr>
-                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-28102'>CVE-2024-28102</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-03-08</td>
@@ -511,14 +489,6 @@ Fence agents on RHEL 8 has been fixed as a part of https://access.redhat.com/err
                         <td>2024-01-10</td>
                         <td>quic-go: memory exhaustion attack against QUIC's path validation mechanism</td>
                         <td>quic-go is an implementation of the QUIC protocol (RFC 9000, RFC 9001, RFC 9002) in Go. An attacker can cause its peer to run out of memory sending a large number of PATH_CHALLENGE frames. The receiver is supposed to respond to each PATH_CHALLENGE frame with a PATH_RESPONSE frame. The attacker can prevent the receiver from sending out (the vast majority of) these PATH_RESPONSE frames by collapsing the peers congestion window (by selectively acknowledging received packets) and by manipulating the peer's RTT estimate. This vulnerability has been patched in versions 0.37.7, 0.38.2 and 0.39.4. A memory exhaustion vulnerability was found in Quic-GO, where a malicious client exploits the path validation mechanism to induce the server into accumulating an unbounded queue of PATH_RESPONSE frames, depleting its memory. The attacker controls the victim's packet send rate by overwhelming the server with numerous packets containing PATH_CHALLENGE frames. Through selective acknowledgments of received packets and manipulation of peer's Round-Trip Time (RTT) estimates, the attacker induces congestion control mechanisms to reduce the server's send rate significantly. Consequently, the victim server is compelled to store an increasing number of queued PATH_RESPONSE frames, resulting in memory exhaustion.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-52323'>CVE-2023-52323</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2024-01-05</td>
-                        <td>pycryptodome: side-channel leakage for OAEP decryption in PyCryptodome and pycryptodomex</td>
-                        <td>Red Hat Satellite ship affected version of pycryptodome for pulp_container, however, product is not vulnerable as it doesn't utilize OAEP algorithm technique. Red Hat Product Security has classified its impact as Low for Red Hat Satellite; future updates expected to address this issue.
-Red Hat OpenStack 16.1 and 16.2 versions include affected python-scciclient embedded through the python-crypto package, however, python-scciclient employs only one algorithm, which is AES. While the version of python-crypto we ship may be susceptible to a particular CVE, since affected algorithms are not utilized by OpenStack, the attack cannot be executed to exploit an OpenStack deployment</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-39326'>CVE-2023-39326</a></td>
@@ -714,13 +684,6 @@ Red Hat restricts access to all platform information by default, granting access
                         <td>2025-03-06</td>
                         <td>django: Potential denial-of-service vulnerability in django.utils.text.wrap()</td>
                         <td>This vulnerability is rated as a Moderate severity because it exposes the wrap() method and wordwrap template filter to a potential denial of service attack. Malicious input containing extremely long strings could cause excessive processing, leading to resource exhaustion. However, it does not affect data confidentiality or integrity.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-26791'>CVE-2025-26791</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2025-02-14</td>
-                        <td>dompurify: Mutation XSS in DOMPurify Due to Improper Template Literal Handling</td>
-                        <td>DOMPurify before 3.2.4 has an incorrect template literal regular expression, sometimes leading to mutation cross-site scripting (mXSS). A flaw was found in DOMPurify. This vulnerability allows attackers to execute mutation-based Cross-site scripting (mXSS) via an incorrect template literal regular expression.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-55565'>CVE-2024-55565</a></td>
