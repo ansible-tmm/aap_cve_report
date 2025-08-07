@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2025-05-29 @ 21:30:30">
+        <meta name="description" content="Report generated on 2025-08-07 @ 18:05:22">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2025-05-29 @ 21:30:30">
+        <meta property="og:description" content="Report generated on 2025-08-07 @ 18:05:22">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2025-05-29 @ 21:30:30</i>
+                <i>Report generated on 2025-08-07 @ 18:05:22</i>
                 </span>
             </div>
         </nav>
@@ -67,6 +67,13 @@ Further investigation would need to be done to determine exactly which CVEs affe
                 </thead>
                 <tbody>
                                                                                             <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-43859'>CVE-2025-43859</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-04-24</td>
+                        <td>h11: h11 accepts some malformed Chunked-Encoding bodies</td>
+                        <td>h11 is a Python implementation of HTTP/1.1. Prior to version 0.16.0, a leniency in h11's parsing of line terminators in chunked-coding message bodies can lead to request smuggling vulnerabilities under certain conditions. This issue has been patched in version 0.16.0. Since exploitation requires the combination of buggy h11 with a buggy (reverse) proxy, fixing either component is sufficient to mitigate this issue. A flaw was found in the h11. This vulnerability allows request smuggling via improper parsing of chunked-coding message bodies, where h11 fails to validate the required \r\n terminators.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-2877'>CVE-2025-2877</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2025-03-25</td>
@@ -176,11 +183,18 @@ rhc component is no longer impacted by CVE-2023-44487 & CVE-2023-39325.</td>
 The majority of RHEL utilities are not long-running applications; instead, they are command-line tools. These tools utilize Golang package as build-time dependency, which is why they are classified as having a "Moderate" level of impact.</td>
                     </tr>
                                         <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-43859'>CVE-2025-43859</a></td>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-49521'>CVE-2025-49521</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2025-04-24</td>
-                        <td>h11: h11 accepts some malformed Chunked-Encoding bodies</td>
-                        <td>h11 is a Python implementation of HTTP/1.1. Prior to version 0.16.0, a leniency in h11's parsing of line terminators in chunked-coding message bodies can lead to request smuggling vulnerabilities under certain conditions. This issue has been patched in version 0.16.0. Since exploitation requires the combination of buggy h11 with a buggy (reverse) proxy, fixing either component is sufficient to mitigate this issue. A flaw was found in the h11. This vulnerability allows request smuggling via improper parsing of chunked-coding message bodies, where h11 fails to validate the required \r\n terminators.</td>
+                        <td>2025-06-30</td>
+                        <td>event-driven-ansible: Template Injection via Git Branch and Refspec in EDA Projects</td>
+                        <td>The Red Hat Product Security team has assessed this vulnerability as Important as the flaw enables template injection via unsanitized user input into Jinja2 templates used during project setup. Successful exploitation allows command execution and sensitive data exposure on the EDA worker, including Kubernetes service tokens in containerized environments.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-49520'>CVE-2025-49520</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-06-30</td>
+                        <td>event-driven-ansible: Authenticated Argument Injection in Git URL in EDA Project Creation</td>
+                        <td>The Red Hat Product Security team has assessed the severity of this vulnerability as Important. Although authentication is required, the flaw allows remote code execution and token theft within containerized environments like OpenShift. The vulnerability stems from a lack of input validation on user-supplied Git URLs passed to git commands.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-1801'>CVE-2025-1801</a></td>
@@ -190,6 +204,22 @@ The majority of RHEL utilities are not long-running applications; instead, they 
                         <td>Red Hat has evaluated this vulnerability. This issue only affects versions AAP 2.5 GA and onwards.</td>
                     </tr>
                                                                             <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-22871'>CVE-2025-22871</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-04-08</td>
+                        <td>net/http: Request smuggling due to acceptance of invalid chunked data in net/http</td>
+                        <td>Red Hat Satellite includes affected component however product is not directly impacted since the vulnerability arises when "net/http" is used as a server. Satellite uses it solely as a client, so it's not exposed to the flaw. Product Security has assessed this as Low severity.
+Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-444: Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling') vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
+The platform uses secure, encrypted HTTPS connections over TLS 1.2 to reduce the risk of smuggling attacks by preventing the injection of ambiguous or malformed requests between components. The environment employs IPS/IDS and antimalware solutions to detect and block malicious code while ensuring consistent interpretation of HTTP requests across network layers, mitigating request/response inconsistencies. Event logs are collected and analyzed for centralization, correlation, monitoring, alerting, and retention, enabling the detection of malformed or suspicious HTTP traffic. Static code analysis and peer reviews enforce strong input validation and error handling to ensure all user inputs adhere to HTTP protocol specifications.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-26699'>CVE-2025-26699</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-03-06</td>
+                        <td>django: Potential denial-of-service vulnerability in django.utils.text.wrap()</td>
+                        <td>This vulnerability is rated as a Moderate severity because it exposes the wrap() method and wordwrap template filter to a potential denial of service attack. Malicious input containing extremely long strings could cause excessive processing, leading to resource exhaustion. However, it does not affect data confidentiality or integrity.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-56374'>CVE-2024-56374</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2025-01-14</td>
@@ -510,7 +540,8 @@ Fence agents on RHEL 8 has been fixed as a part of https://access.redhat.com/err
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-01-10</td>
                         <td>quic-go: memory exhaustion attack against QUIC's path validation mechanism</td>
-                        <td>quic-go is an implementation of the QUIC protocol (RFC 9000, RFC 9001, RFC 9002) in Go. An attacker can cause its peer to run out of memory sending a large number of PATH_CHALLENGE frames. The receiver is supposed to respond to each PATH_CHALLENGE frame with a PATH_RESPONSE frame. The attacker can prevent the receiver from sending out (the vast majority of) these PATH_RESPONSE frames by collapsing the peers congestion window (by selectively acknowledging received packets) and by manipulating the peer's RTT estimate. This vulnerability has been patched in versions 0.37.7, 0.38.2 and 0.39.4. A memory exhaustion vulnerability was found in Quic-GO, where a malicious client exploits the path validation mechanism to induce the server into accumulating an unbounded queue of PATH_RESPONSE frames, depleting its memory. The attacker controls the victim's packet send rate by overwhelming the server with numerous packets containing PATH_CHALLENGE frames. Through selective acknowledgments of received packets and manipulation of peer's Round-Trip Time (RTT) estimates, the attacker induces congestion control mechanisms to reduce the server's send rate significantly. Consequently, the victim server is compelled to store an increasing number of queued PATH_RESPONSE frames, resulting in memory exhaustion.</td>
+                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-400: Uncontrolled Resource Consumption vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
+Red Hat restricts access to all platform information by default, granting access only after successful hard token-based multi-factor authentication (MFA) and enforcing least privilege to ensure only authorized roles can execute or modify code. The environment employs malicious code protections, including IDS/IPS and antimalware tools to detect threats and monitor resource usage, helping prevent uncontrolled consumption that could lead to system failure. Additional safeguards, such as web application firewalls and load-balancing strategies, protect against resource exhaustion and performance degradation. Event logs are centrally collected, correlated, and analyzed to support monitoring, alerting, and retention, aiding in the detection of abnormal behavior and potential denial-of-service (DoS) conditions. Static code analysis and peer reviews enforce strong input validation and error handling, reducing the likelihood of input-based DoS attacks.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-52323'>CVE-2023-52323</a></td>
@@ -550,7 +581,7 @@ Red Hat restricts access to all platform information by default, granting access
                         <td>https://pyup.io/posts/pyup-discovers-redos-vulnerabilities-in-top-python-packages-part-2/
 https://data.safetycli.com/vulnerabilities/CVE-2022-40896/58910/?utm_source=pyupio&utm_medium=redirect&utm_campaign=pyup_rd&utm_id=0817&utm_content=data
 Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-434: Unrestricted Upload of File with Dangerous Type vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
-Access to the platform is granted only after successful hard token-based multi-factor authentication (MFA) and is governed by least privilege to ensure that only authorized users and roles can execute code or upload files. Red Hat enforces least functionality by enabling only essential features, services, and ports, and applies hardening guidelines to ensure the most restrictive configurations necessary for operational requirements. The environment employs IPS/IDS and antimalware solutions to detect and block malicious code and files before execution. Static code analysis and peer reviews enforce strong input validation and error handling, reducing the risk of denial-of-service (DoS) attacks. In the event of successful exploitation, process isolation prevents a compromised process from accessing memory freed by another, containing the impact. Finally, the ROSA platform uses memory protection mechanisms such as Data Execution Prevention (DEP) and Address Space Layout Randomization (ASLR) to strengthen defenses against malicious file uploads and memory-based attacks.</td>
+Access to the platform is granted only after successful hard token-based multi-factor authentication (MFA) and is governed by least privilege to ensure that only authorized users and roles can execute code or upload files. Red Hat enforces least functionality by enabling only essential features, services, and ports, and applies hardening guidelines to ensure the most restrictive configurations necessary for operational requirements. The environment employs IPS/IDS and antimalware solutions to detect and block malicious code and files before execution. Static code analysis and peer reviews enforce strong input validation and error handling, reducing the risk of denial-of-service (DoS) attacks. In the event of successful exploitation, process isolation prevents a compromised process from accessing memory freed by another, containing the impact. Finally, the platform uses memory protection mechanisms such as Data Execution Prevention (DEP) and Address Space Layout Randomization (ASLR) to strengthen defenses against malicious file uploads and memory-based attacks.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-47627'>CVE-2023-47627</a></td>
@@ -709,11 +740,25 @@ Red Hat restricts access to all platform information by default, granting access
                         <td>cryptography is a package designed to expose cryptographic primitives and recipes to Python developers. In affected versions `Cipher.update_into` would accept Python objects which implement the buffer protocol, but provide only immutable buffers. This would allow immutable objects (such as `bytes`) to be mutated, thus violating fundamental rules of Python and resulting in corrupted output. This now correctly raises an exception. This issue has been present since `update_into` was originally introduced in cryptography 1.8. A vulnerability was found in python-cryptography. In affected versions, `Cipher.update_into` would accept Python objects which implement the buffer protocol but provide only immutable buffers. This issue allows immutable objects (such as `bytes`) to be mutated, thus violating the fundamental rules of Python, resulting in corrupted output.</td>
                     </tr>
                                         <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-26699'>CVE-2025-26699</a></td>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-5988'>CVE-2025-5988</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2025-03-06</td>
-                        <td>django: Potential denial-of-service vulnerability in django.utils.text.wrap()</td>
-                        <td>This vulnerability is rated as a Moderate severity because it exposes the wrap() method and wordwrap template filter to a potential denial of service attack. Malicious input containing extremely long strings could cause excessive processing, leading to resource exhaustion. However, it does not affect data confidentiality or integrity.</td>
+                        <td>2025-08-04</td>
+                        <td>aap-gateway: CSRF origin checking is disabled</td>
+                        <td>A flaw was found in the Ansible aap-gateway. Cross-site request forgery (CSRF) origin checking is not done on requests from the gateway to external components, such as the controller, hub, and eda. A flaw was found in the Ansible aap-gateway. Cross-site request forgery (CSRF) origin checking is not done on requests from the gateway to external components, such as the controller, hub, and eda.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-7738'>CVE-2025-7738</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-07-17</td>
+                        <td>python3.11-django-ansible-base: Sensitive Authenticator Secrets Returned in Clear Text via API in AAP</td>
+                        <td>The Red Hat Product Security team has assessed this issue as a Moderate severity. The vulnerability is limited to authenticated and highly privileged users (administrators and auditors), and exploitation does not require user interaction. However, the exposure of OAuth2 client secrets in plain text increases the risk of accidental disclosure or misuse in scenarios involving insider threats or compromised accounts.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-2099'>CVE-2025-2099</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-05-19</td>
+                        <td>transformers: Regular Expression Denial of Service (ReDoS) in huggingface/transformers</td>
+                        <td>A vulnerability in the `preprocess_string()` function of the `transformers.testing_utils` module in huggingface/transformers version v4.48.3 allows for a Regular Expression Denial of Service (ReDoS) attack. The regular expression used to process code blocks in docstrings contains nested quantifiers, leading to exponential backtracking when processing input with a large number of newline characters. An attacker can exploit this by providing a specially crafted payload, causing high CPU usage and potential application downtime, effectively resulting in a Denial of Service (DoS) scenario. A flaw was found in the preprocess_string() function of the transformers.testing_utils module in HuggingFace Transformers. This vulnerability allows a Regular Expression Denial of Service (ReDoS) via a specially crafted input string containing many newline characters that trigger excessive backtracking.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-26791'>CVE-2025-26791</a></td>
@@ -772,7 +817,8 @@ Red Hat restricts access to all platform information by default, granting access
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-04-04</td>
                         <td>quic-go: memory exhaustion attack against QUIC's connection ID mechanism</td>
-                        <td>quic-go is an implementation of the QUIC protocol in Go. Prior to version 0.42.0, an attacker can cause its peer to run out of memory sending a large number of `NEW_CONNECTION_ID` frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a `RETIRE_CONNECTION_ID` frame. The attacker can prevent the receiver from sending out (the vast majority of) these `RETIRE_CONNECTION_ID` frames by collapsing the peers congestion window (by selectively acknowledging received packets) and by manipulating the peer's RTT estimate. Version 0.42.0 contains a patch for the issue. No known workarounds are available. A flaw was found in quic-go. This issue may allow an attacker to trigger a denial of service by sending a large number of NEW_CONNECTION_ID frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a RETIRE_CONNECTION_ID frame, but the attacker can prevent the receiver from sending out the vast majority of these RETIRE_CONNECTION_ID frames by selectively acknowledging received packets and collapsing the peers congestion window and by manipulating the peer's RTT estimate.</td>
+                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-770: Allocation of Resources Without Limits or Throttling vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
+The platform enforces hardening guidelines to apply the most restrictive settings required for operations, while baseline configurations maintain secure system and software states. A defense-in-depth monitoring strategy includes perimeter firewalls and endpoint protection services that detect excessive resource usage caused by malicious activity or system misconfigurations. In the event of exploitation, process isolation ensures workloads operate in separate environments, preventing any single process from overconsuming CPU or memory and degrading system performance.</td>
                     </tr>
                                                                             <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-39329'>CVE-2024-39329</a></td>
