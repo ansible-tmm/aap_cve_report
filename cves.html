@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2025-08-27 @ 22:15:48">
+        <meta name="description" content="Report generated on 2025-08-28 @ 02:15:53">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2025-08-27 @ 22:15:48">
+        <meta property="og:description" content="Report generated on 2025-08-28 @ 02:15:53">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2025-08-27 @ 22:15:48</i>
+                <i>Report generated on 2025-08-28 @ 02:15:53</i>
                 </span>
             </div>
         </nav>
@@ -754,11 +754,31 @@ Red Hat restricts access to all platform information by default, granting access
                         <td>The Red Hat Product Security team has assessed this issue as a Moderate severity. The vulnerability is limited to authenticated and highly privileged users (administrators and auditors), and exploitation does not require user interaction. However, the exposure of OAuth2 client secrets in plain text increases the risk of accidental disclosure or misuse in scenarios involving insider threats or compromised accounts.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-48432'>CVE-2025-48432</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-06-05</td>
+                        <td>django: Django Path Injection Vulnerability</td>
+                        <td>The vulnerability allows for log injection via crafted URLs. While remote exploitation is possible without authentication (PR:N, UI:N), the attack requires a high degree of skill and knowledge to craft malicious URLs that will be logged. The impact is limited to confidentiality and integrity; specifically, the ability to manipulate log output. This allows an attacker to potentially forge log entries, which could be used for social engineering or to obscure malicious activity. While the impact isn't arbitrary code execution or a denial of service, the ability to manipulate logs presents a security risk, especially given that logs are often used for auditing and security monitoring. The Confidentiality impact is rated 'Low' as the information leaked is limited to the manipulated log entries themselves, not sensitive data. The Scope is changed to 'C' to reflect that the vulnerability affects only the logging component.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-2099'>CVE-2025-2099</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2025-05-19</td>
                         <td>transformers: Regular Expression Denial of Service (ReDoS) in huggingface/transformers</td>
                         <td>A vulnerability in the `preprocess_string()` function of the `transformers.testing_utils` module in huggingface/transformers version v4.48.3 allows for a Regular Expression Denial of Service (ReDoS) attack. The regular expression used to process code blocks in docstrings contains nested quantifiers, leading to exponential backtracking when processing input with a large number of newline characters. An attacker can exploit this by providing a specially crafted payload, causing high CPU usage and potential application downtime, effectively resulting in a Denial of Service (DoS) scenario. A flaw was found in the preprocess_string() function of the transformers.testing_utils module in HuggingFace Transformers. This vulnerability allows a Regular Expression Denial of Service (ReDoS) via a specially crafted input string containing many newline characters that trigger excessive backtracking.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-47273'>CVE-2025-47273</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-05-17</td>
+                        <td>setuptools: Path Traversal Vulnerability in setuptools PackageIndex</td>
+                        <td>Red Hat Product Security has rated this vulnerability "Moderate" based on the impact of the damage caused by a successful exploitation and the pre-requisites.
+* Exploitation requires that the attacker have limited code execution access to a Python environment where they can trigger the vulnerable PackageIndex.download() function—this might be via a script, plugin, or automated job. Full admin rights aren't needed but a user with no access at all will be unable to exploit this vulnerability.
+* The vulnerability impacts the integrity of the system within the same security boundary—it does not enable access or compromise across trust boundaries (e.g., from one container to another or from user space to kernel).
+* Successful exploitation only allows the attacker to "create" new files. The vulnerability does not provide access to existing files and by an extension to any confidential information. 
+* Arbitrary file writes can overwrite critical config files, executables, or scripts. This can lead to persistent code execution, system misconfiguration, or unauthorized behavior, especially in automated environments. While overwriting critical files could theoretically lead to service disruption, the vulnerability in isolation does not inherently cause denial of service. The exploit doesn't target availability directly, and in many cases, systems may continue running.
+Within regulated environments, a combination of the following controls acts as a significant barrier to the successful exploitation of a CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
+Input validation enforces strict path constraints, rejecting directory traversal attempts or unauthorized file access. Runtime environments restrict code execution to predefined privilege levels, preventing escalation from traversal exploits. Configuration settings limit accessible directories and enforce execution boundaries to reduce the influence of user input on file system behavior. Application components are developed and validated against secure coding standards that explicitly prevent path manipulation, further minimizing exploitation risk.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-26791'>CVE-2025-26791</a></td>
