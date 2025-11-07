@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2025-11-06 @ 23:15:39">
+        <meta name="description" content="Report generated on 2025-11-07 @ 03:16:04">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2025-11-06 @ 23:15:39">
+        <meta property="og:description" content="Report generated on 2025-11-07 @ 03:16:04">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2025-11-06 @ 23:15:39</i>
+                <i>Report generated on 2025-11-07 @ 03:16:04</i>
                 </span>
             </div>
         </nav>
@@ -533,14 +533,16 @@ Fence agents on RHEL 8 has been fixed as a part of https://access.redhat.com/err
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-03-05</td>
                         <td>golang: net/http: golang: mime/multipart: golang: net/textproto: memory exhaustion in Request.ParseMultipartForm</td>
-                        <td>When parsing a multipart form (either explicitly with Request.ParseMultipartForm or implicitly with Request.FormValue, Request.PostFormValue, or Request.FormFile), limits on the total size of the parsed form were not applied to the memory consumed while reading a single form line. This permits a maliciously crafted input containing very long lines to cause allocation of arbitrarily large amounts of memory, potentially leading to memory exhaustion. With fix, the ParseMultipartForm function now correctly limits the maximum size of form lines. A flaw was discovered in Go's net/http standard library package. When parsing a multipart form (either explicitly with Request.ParseMultipartForm or implicitly with Request.FormValue, Request.PostFormValue, or Request.FormFile), limits on the total size of the parsed form were not applied to the memory consumed while reading a single form line. This permits a maliciously crafted input containing very long lines to cause allocation of arbitrarily large amounts of memory, potentially leading to memory exhaustion. With fix, the ParseMultipartForm function now correctly limits the maximum size of form lines.</td>
+                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-20: Improper Input Validation vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
+Red Hat enforces the principle of least functionality, ensuring that only essential features, services, and ports are enabled. This minimizes the number of components that could be affected by input validation vulnerabilities. Security testing and evaluation standards are implemented within the environment to rigorously test input validation mechanisms during the development lifecycle, while static code analysis identifies potential input validation vulnerabilities by default. Process isolation ensures that processes handling potentially malicious or unvalidated inputs run in isolated environments by separating execution domains for each process. Malicious code protections such as IPS/IDS and antimalware solutions help detect and mitigate malicious payloads stemming from input validation vulnerabilities. Finally, robust input validation and error-handling mechanisms ensure all user inputs are thoroughly validated, preventing improperly validated inputs from causing system instability, exposing sensitive data, or escalating risks further.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-24783'>CVE-2024-24783</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-03-05</td>
                         <td>golang: crypto/x509: Verify panics on certificates with an unknown public key algorithm</td>
-                        <td>Verifying a certificate chain which contains a certificate with an unknown public key algorithm will cause Certificate.Verify to panic. This affects all crypto/tls clients, and servers that set Config.ClientAuth to VerifyClientCertIfGiven or RequireAndVerifyClientCert. The default behavior is for TLS servers to not verify client certificates. A flaw was found in Go's crypto/x509 standard library package. Verifying a certificate chain that contains a certificate with an unknown public key algorithm will cause a Certificate.Verify to panic. This issue affects all crypto/tls clients and servers that set Config.ClientAuth to VerifyClientCertIfGiven or RequireAndVerifyClientCert.</td>
+                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-20: Improper Input Validation leading to a CWE-400: Uncontrolled Resource Consumption vulnerability, and therefore downgrades the severity of this particular CVE from Moderate to Low.
+The platform enforces least functionality, enabling only essential features, services, and ports to minimize the attack surface for improper input handling. Secure development practices, such as static code analysis, peer reviews, and strict input validation, detect and remediate unsafe patterns early in the lifecycle, reducing the risk of malformed input causing instability or resource exhaustion. Process isolation confines untrusted workloads to restricted domains, preventing a single process from monopolizing shared resources. Malicious code protections, including IDS/IPS and antimalware tools, detect and mitigate input-driven resource consumption and denial-of-service attempts in real time. Centralized logging and continuous monitoring provide visibility into abnormal resource behavior, enabling rapid detection and response. Additionally, web application firewalls and load-balancing controls further limit the impact of uncontrolled input or resource use, maintaining platform stability and performance.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-27351'>CVE-2024-27351</a></td>
