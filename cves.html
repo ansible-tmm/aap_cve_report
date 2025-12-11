@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2025-12-10 @ 23:16:06">
+        <meta name="description" content="Report generated on 2025-12-11 @ 03:15:59">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2025-12-10 @ 23:16:06">
+        <meta property="og:description" content="Report generated on 2025-12-11 @ 03:15:59">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2025-12-10 @ 23:16:06</i>
+                <i>Report generated on 2025-12-11 @ 03:15:59</i>
                 </span>
             </div>
         </nav>
@@ -189,6 +189,13 @@ rhc component is no longer impacted by CVE-2023-44487 & CVE-2023-39325.</td>
                         <td>This CVE is related to CVE-2023-44487.
 The majority of RHEL utilities are not long-running applications; instead, they are command-line tools. These tools utilize Golang package as build-time dependency, which is why they are classified as having a "Moderate" level of impact.
 As go-lang vendors its dependencies, a package may contain a library with a known vulnerability, solely because of lower tier libraries including it as a part of its dependencies, but the vulnerable code is not reachable at runtime. In such cases the issue is not exploitable. We classify these situations as “Not affected” or “Will not fix,” depending on the risk of breaking other unrelated packages.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-64459'>CVE-2025-64459</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-11-05</td>
+                        <td>django: Django SQL injection</td>
+                        <td>The impact of this vulnerability on Red Hat products is limited to the effective user scope of the running process.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-6985'>CVE-2025-6985</a></td>
@@ -807,6 +814,34 @@ Red Hat restricts access to all platform information by default, granting access
                         <td>2023-02-08</td>
                         <td>python-cryptography: memory corruption via immutable objects</td>
                         <td>cryptography is a package designed to expose cryptographic primitives and recipes to Python developers. In affected versions `Cipher.update_into` would accept Python objects which implement the buffer protocol, but provide only immutable buffers. This would allow immutable objects (such as `bytes`) to be mutated, thus violating fundamental rules of Python and resulting in corrupted output. This now correctly raises an exception. This issue has been present since `update_into` was originally introduced in cryptography 1.8. A vulnerability was found in python-cryptography. In affected versions, `Cipher.update_into` would accept Python objects which implement the buffer protocol but provide only immutable buffers. This issue allows immutable objects (such as `bytes`) to be mutated, thus violating the fundamental rules of Python, resulting in corrupted output.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-9907'>CVE-2025-9907</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-09-17</td>
+                        <td>event-driven-ansible: Event Stream Test Mode Exposes Sensitive Headers in AAP EDA</td>
+                        <td>This issue is classified as Moderate because the exposure of sensitive headers, including client Authorization tokens and internal infrastructure values such as X-Trusted-Proxy, can lead to credential leakage and privilege escalation only after user forced mistake and with specific configuration. Exploitation does not require complex conditions—any user with read access to the event stream can retrieve the headers once a request has been posted in test mode. Exploitation depends on either a user mistakenly sending credentials to the event stream endpoint or internal headers being injected when the wrong path is used. The persistence of captured headers further increases risk, as sensitive values remain accessible until explicitly overwritten or deleted.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-9908'>CVE-2025-9908</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-09-17</td>
+                        <td>event-driven-ansible: Sensitive Internal Headers Disclosure in AAP EDA Event Streams</td>
+                        <td>This issue is classified as Moderate because the exposure of sensitive internal headers, including X-Trusted-Proxy and X-Envoy-* values, can lead to privilege escalation, request spoofing, and unauthorized access to internal infrastructure details. Exploitation requires low-complexity conditions and local access—any user with an EDA credential or shared access to a job template and event stream can capture these headers once an event is sent. The persistence of captured headers further increases risk, as sensitive values remain accessible to the attacker until explicitly cleared.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-9909'>CVE-2025-9909</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-09-17</td>
+                        <td>aap-gateway: Improper Path Validation in Gateway Allows Credential Exfiltration</td>
+                        <td>This issue is classified as Moderate because exploitation requires the attacker to have administrative access (or successfully social engineer a legitimate admin). A malicious or tricked admin can create a deceptive route with a double-slash path that captures user credentials in cleartext, potentially allowing persistent backdoor access even after the admin’s permissions are revoked. The gateway does not normalize or validate these paths, meaning normal users cannot detect the attack through ordinary API use. Although an attacker cannot exploit this without access to route creation, the combination of privileged requirements and complete credential exposure makes this a moderate severity risk in any environment where multiple users rely on gateway authentication.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-58754'>CVE-2025-58754</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-09-12</td>
+                        <td>axios: Axios DoS via lack of data size check</td>
+                        <td>Availability impact is limited to the application which bundles axios and not the host Red Hat system.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-5988'>CVE-2025-5988</a></td>
