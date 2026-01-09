@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-01-09 @ 11:15:59">
+        <meta name="description" content="Report generated on 2026-01-09 @ 15:16:01">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-01-09 @ 11:15:59">
+        <meta property="og:description" content="Report generated on 2026-01-09 @ 15:16:01">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-01-09 @ 11:15:59</i>
+                <i>Report generated on 2026-01-09 @ 15:16:01</i>
                 </span>
             </div>
         </nav>
@@ -661,7 +661,7 @@ Red Hat restricts access to all platform information by default, granting access
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2023-11-30</td>
                         <td>aiohttp: HTTP request modification</td>
-                        <td>A flaw was found in the python-aiohttp package. This issue could allow a remote attacker to modify an existing HTTP request or create a new request that could have minor confidentiality or integrity impacts.</td>
+                        <td>aiohttp is an asynchronous HTTP client/server framework for asyncio and Python. Improper validation made it possible for an attacker to modify the HTTP request (e.g. to insert a new header) or create a new HTTP request if the attacker controls the HTTP version. The vulnerability only occurs if the attacker can control the HTTP version of the request. This issue has been patched in version 3.9.0. A flaw was found in the python-aiohttp package. This issue could allow a remote attacker to modify an existing HTTP request or create a new request that could have minor confidentiality or integrity impacts.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-49083'>CVE-2023-49083</a></td>
@@ -720,7 +720,7 @@ Access to the platform is granted only after successful hard token-based multi-f
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2023-10-04</td>
                         <td>python-urllib3: Cookie request header isn't stripped during cross-origin redirects</td>
-                        <td>A flaw was found in urllib3, a user-friendly HTTP client library for Python. urllib3 doesn't treat the `Cookie` HTTP header special or provide any helpers for managing cookies over HTTP, which is the responsibility of the user. However, it is possible for a user to specify a `Cookie` header and unknowingly leak information via HTTP redirects to a different origin if that user doesn't disable redirects explicitly.</td>
+                        <td>urllib3 is a user-friendly HTTP client library for Python. urllib3 doesn't treat the `Cookie` HTTP header special or provide any helpers for managing cookies over HTTP, that is the responsibility of the user. However, it is possible for a user to specify a `Cookie` header and unknowingly leak information via HTTP redirects to a different origin if that user doesn't disable redirects explicitly. This issue has been patched in urllib3 version 1.26.17 or 2.0.5. A flaw was found in urllib3, a user-friendly HTTP client library for Python. urllib3 doesn't treat the `Cookie` HTTP header special or provide any helpers for managing cookies over HTTP, which is the responsibility of the user. However, it is possible for a user to specify a `Cookie` header and unknowingly leak information via HTTP redirects to a different origin if that user doesn't disable redirects explicitly.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-5189'>CVE-2023-5189</a></td>
@@ -770,7 +770,7 @@ QUICConn.HandleData buffers data and passes it to handlePostHandshakeMessage eve
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2023-08-16</td>
                         <td>platform: token exposed at importing project</td>
-                        <td>A logic flaw exists in Ansible Automation platform. Whenever a private project is created with incorrect credentials, they are logged in plaintext. This flaw allows an attacker to retrieve the credentials from the log, resulting in the loss of confidentiality, integrity, and availability.</td>
+                        <td>A logic flaw exists in Ansible Automation platform. Whenever a private project is created with incorrect credentials, they are logged in plaintext. This flaw allows an attacker to retrieve the credentials from the log, resulting in the loss of confidentiality, integrity, and availability. A logic flaw exists in Ansible Automation platform. Whenever a private project is created with incorrect credentials, they are logged in plaintext. This flaw allows an attacker to retrieve the credentials from the log, resulting in the loss of confidentiality, integrity, and availability.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-40267'>CVE-2023-40267</a></td>
@@ -979,14 +979,14 @@ The platform enforces hardening guidelines to apply the most restrictive setting
                         <td data-sortvalue="3" class='color-low'>Low</td>
                         <td>2024-07-09</td>
                         <td>python-django: Username enumeration through timing difference for users with unusable passwords</td>
-                        <td>A vulnerability was found in Python-Django in the django.contrib.auth.backends.ModelBackend.authenticate() method. This flaw allows remote attackers to enumerate users via a timing attack involving login requests for users with unusable passwords.</td>
+                        <td>An issue was discovered in Django 5.0 before 5.0.7 and 4.2 before 4.2.14. The django.contrib.auth.backends.ModelBackend.authenticate() method allows remote attackers to enumerate users via a timing attack involving login requests for users with an unusable password. A vulnerability was found in Python-Django in the django.contrib.auth.backends.ModelBackend.authenticate() method. This flaw allows remote attackers to enumerate users via a timing attack involving login requests for users with unusable passwords.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-39330'>CVE-2024-39330</a></td>
                         <td data-sortvalue="3" class='color-low'>Low</td>
                         <td>2024-07-09</td>
                         <td>python-django: Potential directory-traversal in django.core.files.storage.Storage.save()</td>
-                        <td>A vulnerability was found in Python-Django in the Derived classes of the django.core.files.storage.Storage base class that overrides the generate_filename() without replicating the file path validations existing in the parent class. This flaw allows potential directory traversal via certain inputs when calling save(). Built-in Storage sub-classes were not affected by this vulnerability.</td>
+                        <td>An issue was discovered in Django 5.0 before 5.0.7 and 4.2 before 4.2.14. Derived classes of the django.core.files.storage.Storage base class, when they override generate_filename() without replicating the file-path validations from the parent class, potentially allow directory traversal via certain inputs during a save() call. (Built-in Storage sub-classes are unaffected.) A vulnerability was found in Python-Django in the Derived classes of the django.core.files.storage.Storage base class that overrides the generate_filename() without replicating the file path validations existing in the parent class. This flaw allows potential directory traversal via certain inputs when calling save(). Built-in Storage sub-classes were not affected by this vulnerability.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-49082'>CVE-2023-49082</a></td>
