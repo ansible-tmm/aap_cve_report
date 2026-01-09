@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-01-08 @ 23:15:45">
+        <meta name="description" content="Report generated on 2026-01-09 @ 03:15:35">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-01-08 @ 23:15:45">
+        <meta property="og:description" content="Report generated on 2026-01-09 @ 03:15:35">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-01-08 @ 23:15:45</i>
+                <i>Report generated on 2026-01-09 @ 03:15:35</i>
                 </span>
             </div>
         </nav>
@@ -66,7 +66,14 @@ Further investigation would need to be done to determine exactly which CVEs affe
                     </tr>
                 </thead>
                 <tbody>
-                                                                                            <tr>
+                                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-68664'>CVE-2025-68664</a></td>
+                        <td data-sortvalue="0" class='color-critical'>Critical</td>
+                        <td>2025-12-23</td>
+                        <td>langchain-core: LangChain: Arbitrary code execution via serialization injection</td>
+                        <td>This vulnerability is rated Critical for Red Hat products. A serialization injection flaw in LangChain's `dumps()` and `dumpd()` functions allows remote attackers to achieve arbitrary code execution. This occurs when user-controlled data containing the internal 'lc' key is improperly deserialized as a legitimate LangChain object.</td>
+                    </tr>
+                                                                            <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-64459'>CVE-2025-64459</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2025-11-05</td>
@@ -196,6 +203,14 @@ rhc component is no longer impacted by CVE-2023-44487 & CVE-2023-39325.</td>
                         <td>This CVE is related to CVE-2023-44487.
 The majority of RHEL utilities are not long-running applications; instead, they are command-line tools. These tools utilize Golang package as build-time dependency, which is why they are classified as having a "Moderate" level of impact.
 As go-lang vendors its dependencies, a package may contain a library with a known vulnerability, solely because of lower tier libraries including it as a part of its dependencies, but the vulnerable code is not reachable at runtime. In such cases the issue is not exploitable. We classify these situations as “Not affected” or “Will not fix,” depending on the risk of breaking other unrelated packages.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-14025'>CVE-2025-14025</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-12-04</td>
+                        <td>ansible-automation-platform/aap-gateway: aap-gateway: Read-only Personal Access Token (PAT) bypasses write restrictions</td>
+                        <td>Red Hat rates the severity as Important and not Critical because an attacker already needs a valid token belonging to a user account. If the user has additional permissions beyond read-only access, an attacker can bypass the read-only limitation of the token. 
+The potential impact of this vulnerability depends on an organization’s permission model. Organizations face the most significant risk if read-only tokens are granted to individual users, instead of dedicated service accounts with restricted permissions. In the higher risk situation, attackers could create or update execution environments, projects, or run job templates.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-62727'>CVE-2025-62727</a></td>
