@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-01-22 @ 23:16:07">
+        <meta name="description" content="Report generated on 2026-01-23 @ 03:15:57">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-01-22 @ 23:16:07">
+        <meta property="og:description" content="Report generated on 2026-01-23 @ 03:15:57">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-01-22 @ 23:16:07</i>
+                <i>Report generated on 2026-01-23 @ 03:15:57</i>
                 </span>
             </div>
         </nav>
@@ -484,8 +484,7 @@ The platform's orchestration features, such as liveness and readiness probes, au
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-05-08</td>
                         <td>golang: net: malformed DNS message can cause infinite loop</td>
-                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-835: Loop with Unreachable Exit Condition ('Infinite Loop') vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
-The platform enforces hardening guidelines to ensure the most restrictive setting needed for operational requirements. Event logs are collected and processed for centralization, correlation, analysis, monitoring, reporting, alerting, and retention. This process ensures that audit logs are generated for specific events involving sensitive information, enabling capabilities like excessive CPU usage, long execution times, or processes consuming abnormal amounts of memory. Static code analysis and peer code review techniques are used to execute robust input validation and error-handling mechanisms to ensure all user inputs are thoroughly validated, preventing infinite loops caused by malformed or unexpected input, such as unbounded user input or unexpected null values that cause loops to never terminate. In the event of successful exploitation, process isolation limits the effect of an infinite loop to a single process rather than allowing it to consume all system resources.</td>
+                        <td>A malformed DNS message in response to a query can cause the Lookup functions to get stuck in an infinite loop. A flaw was found in the net package of the Go stdlib. When a malformed DNS message is received as a response to a query, the Lookup functions within the net package can get stuck in an infinite loop. This issue can lead to resource exhaustion and denial of service (DoS) conditions.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-34064'>CVE-2024-34064</a></td>
@@ -649,8 +648,7 @@ Red Hat OpenStack 16.1 and 16.2 versions include affected python-scciclient embe
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2023-12-06</td>
                         <td>golang: net/http/internal: Denial of Service (DoS) via Resource Consumption via HTTP requests</td>
-                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-400: Uncontrolled Resource Consumption vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
-Red Hat restricts access to all platform information by default, granting access only after successful hard token-based multi-factor authentication (MFA) and enforcing least privilege to ensure only authorized roles can execute or modify code. The environment employs malicious code protections, including IDS/IPS and antimalware tools to detect threats and monitor resource usage, helping prevent uncontrolled consumption that could lead to system failure. Additional safeguards, such as web application firewalls and load-balancing strategies, protect against resource exhaustion and performance degradation. Event logs are centrally collected, correlated, and analyzed to support monitoring, alerting, and retention, aiding in the detection of abnormal behavior and potential denial-of-service (DoS) conditions. Static code analysis and peer reviews enforce strong input validation and error handling, reducing the likelihood of input-based DoS attacks.</td>
+                        <td>A malicious HTTP sender can use chunk extensions to cause a receiver reading from a request or response body to read many more bytes from the network than are in the body. A malicious HTTP client can further exploit this to cause a server to automatically read a large amount of data (up to about 1GiB) when a handler fails to read the entire body of a request. Chunk extensions are a little-used HTTP feature which permit including additional metadata in a request or response body sent using the chunked encoding. The net/http chunked encoding reader discards this metadata. A sender can exploit this by inserting a large metadata segment with each byte transferred. The chunk reader now produces an error if the ratio of real body to encoded bytes grows too small. A flaw was found in the Golang net/http/internal package. This issue may allow a malicious user to send an HTTP request and cause the receiver to read more bytes from network than are in the body (up to 1GiB), causing the receiver to fail reading the response, possibly leading to a Denial of Service (DoS).</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-49081'>CVE-2023-49081</a></td>
@@ -904,9 +902,7 @@ The current python-django issue may be resolved in an upcoming Satellite update.
 * Exploitation requires that the attacker have limited code execution access to a Python environment where they can trigger the vulnerable PackageIndex.download() function—this might be via a script, plugin, or automated job. Full admin rights aren't needed but a user with no access at all will be unable to exploit this vulnerability.
 * The vulnerability impacts the integrity of the system within the same security boundary—it does not enable access or compromise across trust boundaries (e.g., from one container to another or from user space to kernel).
 * Successful exploitation only allows the attacker to "create" new files. The vulnerability does not provide access to existing files and by an extension to any confidential information. 
-* Arbitrary file writes can overwrite critical config files, executables, or scripts. This can lead to persistent code execution, system misconfiguration, or unauthorized behavior, especially in automated environments. While overwriting critical files could theoretically lead to service disruption, the vulnerability in isolation does not inherently cause denial of service. The exploit doesn't target availability directly, and in many cases, systems may continue running.
-Within regulated environments, a combination of the following controls acts as a significant barrier to the successful exploitation of a CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
-Input validation enforces strict path constraints, rejecting directory traversal attempts or unauthorized file access. Runtime environments restrict code execution to predefined privilege levels, preventing escalation from traversal exploits. Configuration settings limit accessible directories and enforce execution boundaries to reduce the influence of user input on file system behavior. Application components are developed and validated against secure coding standards that explicitly prevent path manipulation, further minimizing exploitation risk.</td>
+* Arbitrary file writes can overwrite critical config files, executables, or scripts. This can lead to persistent code execution, system misconfiguration, or unauthorized behavior, especially in automated environments. While overwriting critical files could theoretically lead to service disruption, the vulnerability in isolation does not inherently cause denial of service. The exploit doesn't target availability directly, and in many cases, systems may continue running.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-26791'>CVE-2025-26791</a></td>
