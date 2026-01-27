@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-01-26 @ 23:15:36">
+        <meta name="description" content="Report generated on 2026-01-27 @ 03:16:02">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-01-26 @ 23:15:36">
+        <meta property="og:description" content="Report generated on 2026-01-27 @ 03:16:02">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-01-26 @ 23:15:36</i>
+                <i>Report generated on 2026-01-27 @ 03:16:02</i>
                 </span>
             </div>
         </nav>
@@ -385,6 +385,13 @@ The platform uses secure, encrypted HTTPS connections over TLS 1.2 to reduce the
                         <td>An improper authorization flaw exists in the Ansible Automation Controller. This flaw allows an attacker using the k8S API server to send an HTTP request with a service account token mounted via `automountServiceAccountToken: true`, resulting in privilege escalation to a service account. An improper authorization flaw exists in the Ansible Automation Controller. This flaw allows an attacker using the k8S API server to send an HTTP request with a service account token mounted via `automountServiceAccountToken: true`, resulting in privilege escalation to a service account.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-7143'>CVE-2024-7143</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2024-08-07</td>
+                        <td>pulpcore: RBAC permissions incorrectly assigned in tasks that create objects</td>
+                        <td>A flaw was found in the Pulp package. When a role-based access control (RBAC) object in Pulp is set to assign permissions on its creation, it uses the `AutoAddObjPermsMixin` (typically the add_roles_for_object_creator method). This method finds the object creator by checking the current authenticated user. For objects that are created within a task, this current user is set by the first user with any permissions on the task object. This means the oldest user with model/domain-level task permissions will always be set as the current user of a task, even if they didn't dispatch the task. Therefore, all objects created in tasks will have their permissions assigned to this oldest user, and the creating user will receive nothing. A flaw was found in the Pulp package. When a role-based access control (RBAC) object in Pulp is set to assign permissions on its creation, it uses the `AutoAddObjPermsMixin` (typically the add_roles_for_object_creator method). This method finds the object creator by checking the current authenticated user. For objects that are created within a task, this current user is set by the first user with any permissions on the task object. This means the oldest user with model/domain-level task permissions will always be set as the current user of a task, even if they didn't dispatch the task. Therefore, all objects created in tasks will have their permissions assigned to this oldest user, and the creating user will receive nothing.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-41989'>CVE-2024-41989</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-08-06</td>
@@ -476,8 +483,7 @@ Controls such as input validation and error handling mitigate input misinterpret
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-05-20</td>
                         <td>requests: subsequent requests to the same host ignore cert verification</td>
-                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-670: Always-Incorrect Control Flow Implementation vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
-The platform's orchestration features, such as liveness and readiness probes, automated pod restarts, and health monitoring, help to quickly detect and recover from service-level failures resulting from incorrect control flows. Static code analysis and peer code review techniques are used to execute robust input validation and error-handling mechanisms to ensure all user inputs are thoroughly validated, preventing improperly validated inputs from causing system instability, exposing sensitive data, or escalating risks. Additionally, process isolation ensures that component issues are contained within the originating process, preventing them from affecting other processes or the system as a whole.</td>
+                        <td>Requests is a HTTP library. Prior to 2.32.0, when making requests through a Requests `Session`, if the first request is made with `verify=False` to disable cert verification, all subsequent requests to the same host will continue to ignore cert verification regardless of changes to the value of `verify`. This behavior will continue for the lifecycle of the connection in the connection pool. This vulnerability is fixed in 2.32.0. An incorrect control flow implementation vulnerability was found in Requests. If the first request in a session is made with verify=False, all subsequent requests to the same host will continue to ignore cert verification.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-24788'>CVE-2024-24788</a></td>
