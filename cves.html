@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2025-09-09 @ 14:15:32">
+        <meta name="description" content="Report generated on 2026-02-03 @ 15:15:52">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2025-09-09 @ 14:15:32">
+        <meta property="og:description" content="Report generated on 2026-02-03 @ 15:15:52">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2025-09-09 @ 14:15:32</i>
+                <i>Report generated on 2026-02-03 @ 15:15:52</i>
                 </span>
             </div>
         </nav>
@@ -66,7 +66,63 @@ Further investigation would need to be done to determine exactly which CVEs affe
                     </tr>
                 </thead>
                 <tbody>
-                                                                                            <tr>
+                                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-68664'>CVE-2025-68664</a></td>
+                        <td data-sortvalue="0" class='color-critical'>Critical</td>
+                        <td>2025-12-23</td>
+                        <td>langchain-core: LangChain: Arbitrary code execution via serialization injection</td>
+                        <td>This vulnerability is rated Critical for Red Hat products. A serialization injection flaw in LangChain's `dumps()` and `dumpd()` functions allows remote attackers to achieve arbitrary code execution. This occurs when user-controlled data containing the internal 'lc' key is improperly deserialized as a legitimate LangChain object.</td>
+                    </tr>
+                                                                            <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-21441'>CVE-2026-21441</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-01-07</td>
+                        <td>urllib3: urllib3 vulnerable to decompression-bomb safeguard bypass when following HTTP redirects (streaming API)</td>
+                        <td>urllib3 is an HTTP client library for Python. urllib3's streaming API is designed for the efficient handling of large HTTP responses by reading the content in chunks, rather than loading the entire response body into memory at once. urllib3 can perform decoding or decompression based on the HTTP `Content-Encoding` header (e.g., `gzip`, `deflate`, `br`, or `zstd`). When using the streaming API, the library decompresses only the necessary bytes, enabling partial content consumption. Starting in version 1.22 and prior to version 2.6.3, for HTTP redirect responses, the library would read the entire response body to drain the connection and decompress the content unnecessarily. This decompression occurred even before any read methods were called, and configured read limits did not restrict the amount of decompressed data. As a result, there was no safeguard against decompression bombs. A malicious server could exploit this to trigger excessive resource consumption on the client. Applications and libraries are affected when they stream content from untrusted sources by setting `preload_content=False` when they do not disable redirects. Users should upgrade to at least urllib3 v2.6.3, in which the library does not decode content of redirect responses when `preload_content=False`. If upgrading is not immediately possible, disable redirects by setting `redirect=False` for requests to untrusted source.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-69223'>CVE-2025-69223</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-01-05</td>
+                        <td>aiohttp: AIOHTTP's HTTP Parser auto_decompress feature is vulnerable to zip bomb</td>
+                        <td>AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Versions 3.13.2 and below allow a zip bomb to be used to execute a DoS against the AIOHTTP server. An attacker may be able to send a compressed request that when decompressed by AIOHTTP could exhaust the host's memory. This issue is fixed in version 3.13.3.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-66471'>CVE-2025-66471</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-12-05</td>
+                        <td>urllib3: urllib3 Streaming API improperly handles highly compressed data</td>
+                        <td>urllib3 is a user-friendly HTTP client library for Python. Starting in version 1.0 and prior to 2.6.0, the Streaming API improperly handles highly compressed data. urllib3's streaming API is designed for the efficient handling of large HTTP responses by reading the content in chunks, rather than loading the entire response body into memory at once. When streaming a compressed response, urllib3 can perform decoding or decompression based on the HTTP Content-Encoding header (e.g., gzip, deflate, br, or zstd). The library must read compressed data from the network and decompress it until the requested chunk size is met. Any resulting decompressed data that exceeds the requested amount is held in an internal buffer for the next read operation. The decompression logic could cause urllib3 to fully decode a small amount of highly compressed data in a single operation. This can result in excessive resource consumption (high CPU usage and massive memory allocation for the decompressed data.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-61729'>CVE-2025-61729</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-12-02</td>
+                        <td>crypto/x509: golang: Denial of Service due to excessive resource consumption via crafted certificate</td>
+                        <td>Within HostnameError.Error(), when constructing an error string, there is no limit to the number of hosts that will be printed out. Furthermore, the error string is constructed by repeated string concatenation, leading to quadratic runtime. Therefore, a certificate provided by a malicious actor can result in excessive resource consumption.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-64460'>CVE-2025-64460</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-12-02</td>
+                        <td>Django: Django: Algorithmic complexity in XML Deserializer leads to denial of service</td>
+                        <td>This vulnerability is rated Important for Red Hat products that process XML input using Django's XML Deserializer, including Red Hat Ansible Automation Platform, Red Hat OpenStack Platform, and OpenShift Service Mesh. A remote attacker can exploit this flaw by providing specially crafted XML, leading to a denial-of-service due to CPU and memory exhaustion.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-64459'>CVE-2025-64459</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-11-05</td>
+                        <td>django: Django SQL injection</td>
+                        <td>The impact of this vulnerability on Red Hat products is limited to the effective user scope of the running process.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-57833'>CVE-2025-57833</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-09-03</td>
+                        <td>django: Django SQL injection in FilteredRelation column aliases</td>
+                        <td>An issue was discovered in Django 4.2 before 4.2.24, 5.1 before 5.1.12, and 5.2 before 5.2.6. FilteredRelation is subject to SQL injection in column aliases, using a suitably crafted dictionary, with dictionary expansion, as the **kwargs passed QuerySet.annotate() or QuerySet.alias().</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-43859'>CVE-2025-43859</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2025-04-24</td>
@@ -180,7 +236,72 @@ rhc component is no longer impacted by CVE-2023-44487 & CVE-2023-39325.</td>
                         <td>2023-10-10</td>
                         <td>golang: net/http, x/net/http2: rapid stream resets can cause excessive work (CVE-2023-44487)</td>
                         <td>This CVE is related to CVE-2023-44487.
-The majority of RHEL utilities are not long-running applications; instead, they are command-line tools. These tools utilize Golang package as build-time dependency, which is why they are classified as having a "Moderate" level of impact.</td>
+The majority of RHEL utilities are not long-running applications; instead, they are command-line tools. These tools utilize Golang package as build-time dependency, which is why they are classified as having a "Moderate" level of impact.
+As go-lang vendors its dependencies, a package may contain a library with a known vulnerability, solely because of lower tier libraries including it as a part of its dependencies, but the vulnerable code is not reachable at runtime. In such cases the issue is not exploitable. We classify these situations as “Not affected” or “Will not fix,” depending on the risk of breaking other unrelated packages.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-14025'>CVE-2025-14025</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-12-04</td>
+                        <td>ansible-automation-platform/aap-gateway: aap-gateway: Read-only Personal Access Token (PAT) bypasses write restrictions</td>
+                        <td>Red Hat rates the severity as Important and not Critical because an attacker already needs a valid token belonging to a user account. If the user has additional permissions beyond read-only access, an attacker can bypass the read-only limitation of the token. 
+The potential impact of this vulnerability depends on an organization’s permission model. Organizations face the most significant risk if read-only tokens are granted to individual users, instead of dedicated service accounts with restricted permissions. In the higher risk situation, attackers could create or update execution environments, projects, or run job templates.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-62727'>CVE-2025-62727</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-10-28</td>
+                        <td>starlette: Starlette DoS via Range header merging</td>
+                        <td>Starlette is a lightweight ASGI framework/toolkit. Starting in version 0.39.0 and prior to version 0.49.1 , an unauthenticated attacker can send a crafted HTTP Range header that triggers quadratic-time processing in Starlette's FileResponse Range parsing/merging logic. This enables CPU exhaustion per request, causing denial‑of‑service for endpoints serving files (e.g., StaticFiles or any use of FileResponse). This vulnerability is fixed in 0.49.1.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-6985'>CVE-2025-6985</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-10-06</td>
+                        <td>langchain-text-splitters: XXE Vulnerability in langchain-text-splitters</td>
+                        <td>The HTMLSectionSplitter class in langchain-text-splitters version 0.3.8 is vulnerable to XML External Entity (XXE) attacks due to unsafe XSLT parsing. This vulnerability arises because the class allows the use of arbitrary XSLT stylesheets, which are parsed using lxml.etree.parse() and lxml.etree.XSLT() without any hardening measures. In lxml versions up to 4.9.x, external entities are resolved by default, allowing attackers to read arbitrary local files or perform outbound HTTP(S) fetches. In lxml versions 5.0 and above, while entity expansion is disabled, the XSLT document() function can still read any URI unless XSLTAccessControl is applied. This vulnerability allows remote attackers to gain read-only access to any file the LangChain process can reach, including sensitive files such as SSH keys, environment files, source code, or cloud metadata. No authentication, special privileges, or user interaction are required, and the issue is exploitable in default deployments that enable custom XSLT.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-59681'>CVE-2025-59681</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-10-01</td>
+                        <td>django: Potential SQL injection in QuerySet.annotate(), alias(), aggregate(), and extra() on MySQL and MariaDB1</td>
+                        <td>An issue was discovered in Django 4.2 before 4.2.25, 5.1 before 5.1.13, and 5.2 before 5.2.7. QuerySet.annotate(), QuerySet.alias(), QuerySet.aggregate(), and QuerySet.extra() are subject to SQL injection in column aliases, when using a suitably crafted dictionary, with dictionary expansion, as the **kwargs passed to these methods (on MySQL and MariaDB).</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-59682'>CVE-2025-59682</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-10-01</td>
+                        <td>django: Potential partial directory-traversal via archive.extract()</td>
+                        <td>An issue was discovered in Django 4.2 before 4.2.25, 5.1 before 5.1.13, and 5.2 before 5.2.7. The django.utils.archive.extract() function, used by the "startapp --template" and "startproject --template" commands, allows partial directory traversal via an archive with file paths sharing a common prefix with the target directory.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-7647'>CVE-2025-7647</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-09-27</td>
+                        <td>llama-index-core: Insecure Temporary File Handling in run-llama/llama_index</td>
+                        <td>The impact is IMPORTANT because this flaw affects confidentiality, integrity and availability. An attacker on the same vulnerable system can copy cached model files, poison embeddings to manipulate AI outputs, or create symlinks to overwrite important files. The issue exists in all versions up to and including 0.12.44 and is caused by insecure temporary directory creation and missing permission controls in /tmp.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-59343'>CVE-2025-59343</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-09-24</td>
+                        <td>tar-fs: tar-fs symlink validation bypass</td>
+                        <td>tar-fs provides filesystem bindings for tar-stream. Versions prior to 3.1.1, 2.1.3, and 1.16.5 are vulnerable to symlink validation bypass if the destination directory is predictable with a specific tarball. This issue has been patched in version 3.1.1, 2.1.4, and 1.16.6. A workaround involves using the ignore option on non files/directories.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-6984'>CVE-2025-6984</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-09-04</td>
+                        <td>langchain-community: Langchain-community insecure XML parsing</td>
+                        <td>The langchain-ai/langchain project, specifically the EverNoteLoader component, is vulnerable to XML External Entity (XXE) attacks due to insecure XML parsing. The affected version is 0.3.63. The vulnerability arises from the use of etree.iterparse() without disabling external entity references, which can lead to sensitive information disclosure. An attacker could exploit this by crafting a malicious XML payload that references local files, potentially exposing sensitive data such as /etc/passwd. An XML External Entity flaw has been discovered in the langchain-community python package. The EverNoteLoader component has an insecure use of the `etree.iterparse()` function which does not disable external entity references. This can lead to sensitive information disclosure. An attacker could exploit this by crafting a malicious XML payload that references local files, potentially exposing sensitive data</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-5302'>CVE-2025-5302</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-08-25</td>
+                        <td>llama_index: Denial of Service (DOS) in JSONReader in run-llama/llama_index</td>
+                        <td>This vulnerability is marked as Important rather than Moderate because it allows the attacker to potentially coordinate the attack through a network required over the whole user base of llama-index package. This DoS attack is easy to reproduce and only requires sending the malicious deeply nested JSON files which could be transmitted to lots of users of this package and trigger an uncontrolled recursion.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-49521'>CVE-2025-49521</a></td>
@@ -204,11 +325,18 @@ The majority of RHEL utilities are not long-running applications; instead, they 
                         <td>Red Hat has evaluated this vulnerability. This issue only affects versions AAP 2.5 GA and onwards.</td>
                     </tr>
                                                                             <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-59530'>CVE-2025-59530</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-10-10</td>
+                        <td>github.com/quic-go/quic-go: quic-go Crash Due to Premature HANDSHAKE_DONE Frame</td>
+                        <td>The availability risk is limited to applications which includethe quic-go library. Host Red Hat systems are not at risk of availability degradation.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-22871'>CVE-2025-22871</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2025-04-08</td>
                         <td>net/http: Request smuggling due to acceptance of invalid chunked data in net/http</td>
-                        <td>Red Hat Satellite includes affected component however product is not directly impacted since the vulnerability arises when "net/http" is used as a server. Satellite uses it solely as a client, so it's not exposed to the flaw. Product Security has assessed this as Low severity.
+                        <td>Red Hat Satellite is rated as Low severity for this vulnerability. However, other affected components remain Moderate. Satellite uses the affected Go net/http component solely as a client to make requests, not as a server. Since this vulnerability only affects server-side usage, Satellite is not directly exposed to the flaw, justifying the lower severity rating.
 Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-444: Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling') vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
 The platform uses secure, encrypted HTTPS connections over TLS 1.2 to reduce the risk of smuggling attacks by preventing the injection of ambiguous or malformed requests between components. The environment employs IPS/IDS and antimalware solutions to detect and block malicious code while ensuring consistent interpretation of HTTP requests across network layers, mitigating request/response inconsistencies. Event logs are collected and analyzed for centralization, correlation, monitoring, alerting, and retention, enabling the detection of malformed or suspicious HTTP traffic. Static code analysis and peer reviews enforce strong input validation and error handling to ensure all user inputs adhere to HTTP protocol specifications.</td>
                     </tr>
@@ -224,8 +352,7 @@ The platform uses secure, encrypted HTTPS connections over TLS 1.2 to reduce the
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2025-01-14</td>
                         <td>django: potential denial-of-service vulnerability in IPv6 validation</td>
-                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-770: Allocation of Resources Without Limits or Throttling vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
-The platform enforces hardening guidelines to apply the most restrictive settings required for operations, while baseline configurations maintain secure system and software states. A defense-in-depth monitoring strategy includes perimeter firewalls and endpoint protection services that detect excessive resource usage caused by malicious activity or system misconfigurations. In the event of exploitation, process isolation ensures workloads operate in separate environments, preventing any single process from overconsuming CPU or memory and degrading system performance.</td>
+                        <td>An issue was discovered in Django 5.1 before 5.1.5, 5.0 before 5.0.11, and 4.2 before 4.2.18. Lack of upper-bound limit enforcement in strings passed when performing IPv6 validation could lead to a potential denial-of-service attack. The undocumented and private functions clean_ipv6_address and is_valid_ipv6_address are vulnerable, as is the django.forms.GenericIPAddressField form field. (The django.db.models.GenericIPAddressField model field is not affected.) A flaw was found in the Django framework. Lack of upper bound limit enforcement in strings passed when performing IPv6 validation could lead to a potential denial of service attack. The undocumented and private functions `clean_ipv6_address` and `is_valid_ipv6_address` were vulnerable, as was the `django.forms.GenericIPAddressField` form field, which has now been updated to define a `max_length` of 39 characters.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-56326'>CVE-2024-56326</a></td>
@@ -253,8 +380,7 @@ The platform enforces hardening guidelines to apply the most restrictive setting
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-11-18</td>
                         <td>aiohttp: aiohttp vulnerable to request smuggling due to incorrect parsing of chunk extensions</td>
-                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-444: Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling') vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
-The platform uses secure, encrypted HTTPS connections over TLS 1.2 to reduce the risk of smuggling attacks by preventing the injection of ambiguous or malformed requests between components. The environment employs IPS/IDS and antimalware solutions to detect and block malicious code while ensuring consistent interpretation of HTTP requests across network layers, mitigating request/response inconsistencies. Event logs are collected and analyzed for centralization, correlation, monitoring, alerting, and retention, enabling the detection of malformed or suspicious HTTP traffic. Static code analysis and peer reviews enforce strong input validation and error handling to ensure all user inputs adhere to HTTP protocol specifications.</td>
+                        <td>aiohttp is an asynchronous HTTP client/server framework for asyncio and Python. Prior to version 3.10.11, the Python parser parses newlines in chunk extensions incorrectly which can lead to request smuggling vulnerabilities under certain conditions. If a pure Python version of aiohttp is installed (i.e. without the usual C extensions) or `AIOHTTP_NO_EXTENSIONS` is enabled, then an attacker may be able to execute a request smuggling attack to bypass certain firewalls or proxy protections. Version 3.10.11 fixes the issue. A flaw was found in the aiohttp package. The Python parser parses newlines in chunk extensions incorrectly, which can lead to request smuggling vulnerabilities under certain conditions. If a pure Python version of aiohttp is installed, for example, without the usual C extensions, or `AIOHTTP_NO_EXTENSIONS` is enabled, an attacker may be able to execute a request smuggling attack to bypass certain firewalls or proxy protections.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-9902'>CVE-2024-9902</a></td>
@@ -290,6 +416,13 @@ The platform uses secure, encrypted HTTPS connections over TLS 1.2 to reduce the
                         <td>2024-09-05</td>
                         <td>automation-controller: Gain access to the k8s API server via job execution with Container Group</td>
                         <td>An improper authorization flaw exists in the Ansible Automation Controller. This flaw allows an attacker using the k8S API server to send an HTTP request with a service account token mounted via `automountServiceAccountToken: true`, resulting in privilege escalation to a service account. An improper authorization flaw exists in the Ansible Automation Controller. This flaw allows an attacker using the k8S API server to send an HTTP request with a service account token mounted via `automountServiceAccountToken: true`, resulting in privilege escalation to a service account.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-7143'>CVE-2024-7143</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2024-08-07</td>
+                        <td>pulpcore: RBAC permissions incorrectly assigned in tasks that create objects</td>
+                        <td>A flaw was found in the Pulp package. When a role-based access control (RBAC) object in Pulp is set to assign permissions on its creation, it uses the `AutoAddObjPermsMixin` (typically the add_roles_for_object_creator method). This method finds the object creator by checking the current authenticated user. For objects that are created within a task, this current user is set by the first user with any permissions on the task object. This means the oldest user with model/domain-level task permissions will always be set as the current user of a task, even if they didn't dispatch the task. Therefore, all objects created in tasks will have their permissions assigned to this oldest user, and the creating user will receive nothing. A flaw was found in the Pulp package. When a role-based access control (RBAC) object in Pulp is set to assign permissions on its creation, it uses the `AutoAddObjPermsMixin` (typically the add_roles_for_object_creator method). This method finds the object creator by checking the current authenticated user. For objects that are created within a task, this current user is set by the first user with any permissions on the task object. This means the oldest user with model/domain-level task permissions will always be set as the current user of a task, even if they didn't dispatch the task. Therefore, all objects created in tasks will have their permissions assigned to this oldest user, and the creating user will receive nothing.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-41989'>CVE-2024-41989</a></td>
@@ -383,16 +516,14 @@ Controls such as input validation and error handling mitigate input misinterpret
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-05-20</td>
                         <td>requests: subsequent requests to the same host ignore cert verification</td>
-                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-670: Always-Incorrect Control Flow Implementation vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
-The platform's orchestration features, such as liveness and readiness probes, automated pod restarts, and health monitoring, help to quickly detect and recover from service-level failures resulting from incorrect control flows. Static code analysis and peer code review techniques are used to execute robust input validation and error-handling mechanisms to ensure all user inputs are thoroughly validated, preventing improperly validated inputs from causing system instability, exposing sensitive data, or escalating risks. Additionally, process isolation ensures that component issues are contained within the originating process, preventing them from affecting other processes or the system as a whole.</td>
+                        <td>Requests is a HTTP library. Prior to 2.32.0, when making requests through a Requests `Session`, if the first request is made with `verify=False` to disable cert verification, all subsequent requests to the same host will continue to ignore cert verification regardless of changes to the value of `verify`. This behavior will continue for the lifecycle of the connection in the connection pool. This vulnerability is fixed in 2.32.0. An incorrect control flow implementation vulnerability was found in Requests. If the first request in a session is made with verify=False, all subsequent requests to the same host will continue to ignore cert verification.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-24788'>CVE-2024-24788</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-05-08</td>
                         <td>golang: net: malformed DNS message can cause infinite loop</td>
-                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-835: Loop with Unreachable Exit Condition ('Infinite Loop') vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
-The platform enforces hardening guidelines to ensure the most restrictive setting needed for operational requirements. Event logs are collected and processed for centralization, correlation, analysis, monitoring, reporting, alerting, and retention. This process ensures that audit logs are generated for specific events involving sensitive information, enabling capabilities like excessive CPU usage, long execution times, or processes consuming abnormal amounts of memory. Static code analysis and peer code review techniques are used to execute robust input validation and error-handling mechanisms to ensure all user inputs are thoroughly validated, preventing infinite loops caused by malformed or unexpected input, such as unbounded user input or unexpected null values that cause loops to never terminate. In the event of successful exploitation, process isolation limits the effect of an infinite loop to a single process rather than allowing it to consume all system resources.</td>
+                        <td>A malformed DNS message in response to a query can cause the Lookup functions to get stuck in an infinite loop. A flaw was found in the net package of the Go stdlib. When a malformed DNS message is received as a response to a query, the Lookup functions within the net package can get stuck in an infinite loop. This issue can lead to resource exhaustion and denial of service (DoS) conditions.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-34064'>CVE-2024-34064</a></td>
@@ -540,8 +671,7 @@ Fence agents on RHEL 8 has been fixed as a part of https://access.redhat.com/err
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-01-10</td>
                         <td>quic-go: memory exhaustion attack against QUIC's path validation mechanism</td>
-                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-400: Uncontrolled Resource Consumption vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
-Red Hat restricts access to all platform information by default, granting access only after successful hard token-based multi-factor authentication (MFA) and enforcing least privilege to ensure only authorized roles can execute or modify code. The environment employs malicious code protections, including IDS/IPS and antimalware tools to detect threats and monitor resource usage, helping prevent uncontrolled consumption that could lead to system failure. Additional safeguards, such as web application firewalls and load-balancing strategies, protect against resource exhaustion and performance degradation. Event logs are centrally collected, correlated, and analyzed to support monitoring, alerting, and retention, aiding in the detection of abnormal behavior and potential denial-of-service (DoS) conditions. Static code analysis and peer reviews enforce strong input validation and error handling, reducing the likelihood of input-based DoS attacks.</td>
+                        <td>quic-go is an implementation of the QUIC protocol (RFC 9000, RFC 9001, RFC 9002) in Go. An attacker can cause its peer to run out of memory sending a large number of PATH_CHALLENGE frames. The receiver is supposed to respond to each PATH_CHALLENGE frame with a PATH_RESPONSE frame. The attacker can prevent the receiver from sending out (the vast majority of) these PATH_RESPONSE frames by collapsing the peers congestion window (by selectively acknowledging received packets) and by manipulating the peer's RTT estimate. This vulnerability has been patched in versions 0.37.7, 0.38.2 and 0.39.4. A memory exhaustion vulnerability was found in Quic-GO, where a malicious client exploits the path validation mechanism to induce the server into accumulating an unbounded queue of PATH_RESPONSE frames, depleting its memory. The attacker controls the victim's packet send rate by overwhelming the server with numerous packets containing PATH_CHALLENGE frames. Through selective acknowledgments of received packets and manipulation of peer's Round-Trip Time (RTT) estimates, the attacker induces congestion control mechanisms to reduce the server's send rate significantly. Consequently, the victim server is compelled to store an increasing number of queued PATH_RESPONSE frames, resulting in memory exhaustion.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-52323'>CVE-2023-52323</a></td>
@@ -556,8 +686,7 @@ Red Hat OpenStack 16.1 and 16.2 versions include affected python-scciclient embe
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2023-12-06</td>
                         <td>golang: net/http/internal: Denial of Service (DoS) via Resource Consumption via HTTP requests</td>
-                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-400: Uncontrolled Resource Consumption vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
-Red Hat restricts access to all platform information by default, granting access only after successful hard token-based multi-factor authentication (MFA) and enforcing least privilege to ensure only authorized roles can execute or modify code. The environment employs malicious code protections, including IDS/IPS and antimalware tools to detect threats and monitor resource usage, helping prevent uncontrolled consumption that could lead to system failure. Additional safeguards, such as web application firewalls and load-balancing strategies, protect against resource exhaustion and performance degradation. Event logs are centrally collected, correlated, and analyzed to support monitoring, alerting, and retention, aiding in the detection of abnormal behavior and potential denial-of-service (DoS) conditions. Static code analysis and peer reviews enforce strong input validation and error handling, reducing the likelihood of input-based DoS attacks.</td>
+                        <td>A malicious HTTP sender can use chunk extensions to cause a receiver reading from a request or response body to read many more bytes from the network than are in the body. A malicious HTTP client can further exploit this to cause a server to automatically read a large amount of data (up to about 1GiB) when a handler fails to read the entire body of a request. Chunk extensions are a little-used HTTP feature which permit including additional metadata in a request or response body sent using the chunked encoding. The net/http chunked encoding reader discards this metadata. A sender can exploit this by inserting a large metadata segment with each byte transferred. The chunk reader now produces an error if the ratio of real body to encoded bytes grows too small. A flaw was found in the Golang net/http/internal package. This issue may allow a malicious user to send an HTTP request and cause the receiver to read more bytes from network than are in the body (up to 1GiB), causing the receiver to fail reading the response, possibly leading to a Denial of Service (DoS).</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-49081'>CVE-2023-49081</a></td>
@@ -579,9 +708,7 @@ Red Hat restricts access to all platform information by default, granting access
                         <td>2023-11-26</td>
                         <td>pygments: ReDoS in pygments</td>
                         <td>https://pyup.io/posts/pyup-discovers-redos-vulnerabilities-in-top-python-packages-part-2/
-https://data.safetycli.com/vulnerabilities/CVE-2022-40896/58910/?utm_source=pyupio&utm_medium=redirect&utm_campaign=pyup_rd&utm_id=0817&utm_content=data
-Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-434: Unrestricted Upload of File with Dangerous Type vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
-Access to the platform is granted only after successful hard token-based multi-factor authentication (MFA) and is governed by least privilege to ensure that only authorized users and roles can execute code or upload files. Red Hat enforces least functionality by enabling only essential features, services, and ports, and applies hardening guidelines to ensure the most restrictive configurations necessary for operational requirements. The environment employs IPS/IDS and antimalware solutions to detect and block malicious code and files before execution. Static code analysis and peer reviews enforce strong input validation and error handling, reducing the risk of denial-of-service (DoS) attacks. In the event of successful exploitation, process isolation prevents a compromised process from accessing memory freed by another, containing the impact. Finally, the platform uses memory protection mechanisms such as Data Execution Prevention (DEP) and Address Space Layout Randomization (ASLR) to strengthen defenses against malicious file uploads and memory-based attacks.</td>
+https://data.safetycli.com/vulnerabilities/CVE-2022-40896/58910/?utm_source=pyupio&utm_medium=redirect&utm_campaign=pyup_rd&utm_id=0817&utm_content=data</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-47627'>CVE-2023-47627</a></td>
@@ -644,14 +771,15 @@ Access to the platform is granted only after successful hard token-based multi-f
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2023-09-06</td>
                         <td>golang: crypto/tls: panic when processing post-handshake message on QUIC connections</td>
-                        <td>Processing an incomplete post-handshake message for a QUIC connection can cause a panic. A flaw was found in Golang. Processing an incomplete post-handshake message for a QUIC connection caused a panic.</td>
+                        <td>The flaw has been marked as moderate instead of high like NVD 
+QUICConn.HandleData buffers data and passes it to handlePostHandshakeMessage every time the buffer contains a complete message, while HandleData doesn't limit the amount of data it can buffer, a panic or denial of service would likely be lower severity,also in order to exploit this vulnerability, an attacker would have to smuggle partial handshake data which might be rejected altogether as per tls RFC specification.Therfore because of a lower severity denial of service and conditions that are beyond the scope of attackers control,we have marked this as moderate severity</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-39322'>CVE-2023-39322</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2023-09-06</td>
                         <td>golang: crypto/tls: lack of a limit on buffered post-handshake</td>
-                        <td>QUIC connections do not set an upper bound on the amount of data buffered when reading post-handshake messages, allowing a malicious QUIC connection to cause unbounded memory growth. With fix, connections now consistently reject messages larger than 65KiB in size. A flaw was found in Golang. QUIC connections do not set an upper bound on the amount of data buffered when reading post-handshake messages, allowing a malicious QUIC connection to cause unbounded memory growth. With the fix, connections now consistently reject messages larger than 65KiB in size.</td>
+                        <td>A vulnerability was found in the Go QUIC protocol implementation in the logic that processes post-handshake messages. It is an uncontrolled resource consumption flaw, triggered when a malicious connection sends data without an enforced upper bound. This leads to unbounded memory growth, causing the service to crash and resulting in a denial of service.The single-dimensional impact of denial of service and the added complexity of whether the resource exhaustion would happen, being out of an attacker's control,this has been rated as moderate severity.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-41164'>CVE-2023-41164</a></td>
@@ -694,8 +822,7 @@ Red Hat Satellite does not use the affected functions during runtime, therefore 
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2023-08-02</td>
                         <td>golang: crypto/tls: slow verification of certificate chains containing large RSA keys</td>
-                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-400: Uncontrolled Resource Consumption vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
-Red Hat restricts access to all platform information by default, granting access only after successful hard token-based multi-factor authentication (MFA) and enforcing least privilege to ensure only authorized roles can execute or modify code. The environment employs malicious code protections, including IDS/IPS and antimalware tools to detect threats and monitor resource usage, helping prevent uncontrolled consumption that could lead to system failure. Additional safeguards, such as web application firewalls and load-balancing strategies, protect against resource exhaustion and performance degradation. Event logs are centrally collected, correlated, and analyzed to support monitoring, alerting, and retention, aiding in the detection of abnormal behavior and potential denial-of-service (DoS) conditions. Static code analysis and peer reviews enforce strong input validation and error handling, reducing the likelihood of input-based DoS attacks.</td>
+                        <td>Extremely large RSA keys in certificate chains can cause a client/server to expend significant CPU time verifying signatures. With fix, the size of RSA keys transmitted during handshakes is restricted to <= 8192 bits. Based on a survey of publicly trusted RSA keys, there are currently only three certificates in circulation with keys larger than this, and all three appear to be test certificates that are not actively deployed. It is possible there are larger keys in use in private PKIs, but we target the web PKI, so causing breakage here in the interests of increasing the default safety of users of crypto/tls seems reasonable. A denial of service vulnerability was found in the Golang Go package caused by an uncontrolled resource consumption flaw. By persuading a victim to use a specially crafted certificate with large RSA keys, a remote attacker can cause a client/server to expend significant CPU time verifying signatures, resulting in a denial of service condition.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2023-3971'>CVE-2023-3971</a></td>
@@ -740,6 +867,41 @@ Red Hat restricts access to all platform information by default, granting access
                         <td>cryptography is a package designed to expose cryptographic primitives and recipes to Python developers. In affected versions `Cipher.update_into` would accept Python objects which implement the buffer protocol, but provide only immutable buffers. This would allow immutable objects (such as `bytes`) to be mutated, thus violating fundamental rules of Python and resulting in corrupted output. This now correctly raises an exception. This issue has been present since `update_into` was originally introduced in cryptography 1.8. A vulnerability was found in python-cryptography. In affected versions, `Cipher.update_into` would accept Python objects which implement the buffer protocol but provide only immutable buffers. This issue allows immutable objects (such as `bytes`) to be mutated, thus violating the fundamental rules of Python, resulting in corrupted output.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-62707'>CVE-2025-62707</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-10-22</td>
+                        <td>pypdf: pypdf affected by possible infinite loop when reading DCT inline images without EOF marker</td>
+                        <td>pypdf is a free and open-source pure-python PDF library. Prior to version 6.1.3, an attacker who uses this vulnerability can craft a PDF which leads to an infinite loop. This requires parsing the content stream of a page which has an inline image using the DCTDecode filter. This has been fixed in pypdf version 6.1.3.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-9907'>CVE-2025-9907</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-09-17</td>
+                        <td>event-driven-ansible: Event Stream Test Mode Exposes Sensitive Headers in AAP EDA</td>
+                        <td>This issue is classified as Moderate because the exposure of sensitive headers, including client Authorization tokens and internal infrastructure values such as X-Trusted-Proxy, can lead to credential leakage and privilege escalation only after user forced mistake and with specific configuration. Exploitation does not require complex conditions—any user with read access to the event stream can retrieve the headers once a request has been posted in test mode. Exploitation depends on either a user mistakenly sending credentials to the event stream endpoint or internal headers being injected when the wrong path is used. The persistence of captured headers further increases risk, as sensitive values remain accessible until explicitly overwritten or deleted.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-9908'>CVE-2025-9908</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-09-17</td>
+                        <td>event-driven-ansible: Sensitive Internal Headers Disclosure in AAP EDA Event Streams</td>
+                        <td>This issue is classified as Moderate because the exposure of sensitive internal headers, including X-Trusted-Proxy and X-Envoy-* values, can lead to privilege escalation, request spoofing, and unauthorized access to internal infrastructure details. Exploitation requires low-complexity conditions and local access—any user with an EDA credential or shared access to a job template and event stream can capture these headers once an event is sent. The persistence of captured headers further increases risk, as sensitive values remain accessible to the attacker until explicitly cleared.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-9909'>CVE-2025-9909</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-09-17</td>
+                        <td>aap-gateway: Improper Path Validation in Gateway Allows Credential Exfiltration</td>
+                        <td>This issue is classified as Moderate because exploitation requires the attacker to have administrative access (or successfully social engineer a legitimate admin). A malicious or tricked admin can create a deceptive route with a double-slash path that captures user credentials in cleartext, potentially allowing persistent backdoor access even after the admin’s permissions are revoked. The gateway does not normalize or validate these paths, meaning normal users cannot detect the attack through ordinary API use. Although an attacker cannot exploit this without access to route creation, the combination of privileged requirements and complete credential exposure makes this a moderate severity risk in any environment where multiple users rely on gateway authentication.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-58754'>CVE-2025-58754</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-09-12</td>
+                        <td>axios: Axios DoS via lack of data size check</td>
+                        <td>Availability impact is limited to the application which bundles axios and not the host Red Hat system.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-5988'>CVE-2025-5988</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2025-08-04</td>
@@ -758,7 +920,8 @@ Red Hat restricts access to all platform information by default, granting access
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2025-06-05</td>
                         <td>django: Django Path Injection Vulnerability</td>
-                        <td>The vulnerability allows for log injection via crafted URLs. While remote exploitation is possible without authentication (PR:N, UI:N), the attack requires a high degree of skill and knowledge to craft malicious URLs that will be logged. The impact is limited to confidentiality and integrity; specifically, the ability to manipulate log output. This allows an attacker to potentially forge log entries, which could be used for social engineering or to obscure malicious activity. While the impact isn't arbitrary code execution or a denial of service, the ability to manipulate logs presents a security risk, especially given that logs are often used for auditing and security monitoring. The Confidentiality impact is rated 'Low' as the information leaked is limited to the manipulated log entries themselves, not sensitive data. The Scope is changed to 'C' to reflect that the vulnerability affects only the logging component.</td>
+                        <td>The vulnerability allows for log injection via crafted URLs. While remote exploitation is possible without authentication (PR:N, UI:N), the attack requires a high degree of skill and knowledge to craft malicious URLs that will be logged. The impact is limited to confidentiality and integrity; specifically, the ability to manipulate log output. This allows an attacker to potentially forge log entries, which could be used for social engineering or to obscure malicious activity. While the impact isn't arbitrary code execution or a denial of service, the ability to manipulate logs presents a security risk, especially given that logs are often used for auditing and security monitoring. The Confidentiality impact is rated 'Low' as the information leaked is limited to the manipulated log entries themselves, not sensitive data. The Scope is changed to 'C' to reflect that the vulnerability affects only the logging component.
+The current python-django issue may be resolved in an upcoming Satellite update.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-2099'>CVE-2025-2099</a></td>
@@ -776,9 +939,7 @@ Red Hat restricts access to all platform information by default, granting access
 * Exploitation requires that the attacker have limited code execution access to a Python environment where they can trigger the vulnerable PackageIndex.download() function—this might be via a script, plugin, or automated job. Full admin rights aren't needed but a user with no access at all will be unable to exploit this vulnerability.
 * The vulnerability impacts the integrity of the system within the same security boundary—it does not enable access or compromise across trust boundaries (e.g., from one container to another or from user space to kernel).
 * Successful exploitation only allows the attacker to "create" new files. The vulnerability does not provide access to existing files and by an extension to any confidential information. 
-* Arbitrary file writes can overwrite critical config files, executables, or scripts. This can lead to persistent code execution, system misconfiguration, or unauthorized behavior, especially in automated environments. While overwriting critical files could theoretically lead to service disruption, the vulnerability in isolation does not inherently cause denial of service. The exploit doesn't target availability directly, and in many cases, systems may continue running.
-Within regulated environments, a combination of the following controls acts as a significant barrier to the successful exploitation of a CWE-22: Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
-Input validation enforces strict path constraints, rejecting directory traversal attempts or unauthorized file access. Runtime environments restrict code execution to predefined privilege levels, preventing escalation from traversal exploits. Configuration settings limit accessible directories and enforce execution boundaries to reduce the influence of user input on file system behavior. Application components are developed and validated against secure coding standards that explicitly prevent path manipulation, further minimizing exploitation risk.</td>
+* Arbitrary file writes can overwrite critical config files, executables, or scripts. This can lead to persistent code execution, system misconfiguration, or unauthorized behavior, especially in automated environments. While overwriting critical files could theoretically lead to service disruption, the vulnerability in isolation does not inherently cause denial of service. The exploit doesn't target availability directly, and in many cases, systems may continue running.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-26791'>CVE-2025-26791</a></td>
@@ -792,15 +953,14 @@ Input validation enforces strict path constraints, rejecting directory traversal
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-12-09</td>
                         <td>nanoid: nanoid mishandles non-integer values</td>
-                        <td>nanoid (aka Nano ID) before 5.0.9 mishandles non-integer values. 3.3.8 is also a fixed version.</td>
+                        <td>nanoid (aka Nano ID) before 5.0.9 mishandles non-integer values. 3.3.8 is also a fixed version. A flaw was found in nanoid. Affected versions of nanoid mishandles non-integer values. When nanoid is called with a fractional value, there were a number of undesirable effects: - In browser and non-secure, the code infinite loops on while (size--) - In node, the value of poolOffset becomes fractional, causing calls to nanoid to return zeroes until the pool is next filled: when i is initialized to poolOffset, pool[i] & 63 -> undefined & 63 -> 0 - If the first call in node is a fractional argument, the initial buffer allocation fails with an error The highest impact of this issue system availability.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-53259'>CVE-2024-53259</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-12-02</td>
                         <td>quic-go: quic-go affected by an ICMP Packet Too Large Injection Attack on Linux</td>
-                        <td>In regulated environments, certain controls are used together that help prevent CWE-345: Insufficient Verification of Data Authenticity. As a result, this vulnerability has been downgraded from Moderate to Low severity.
-Red Hat restricts access to all information contained within the platform by default. Access to the platform is granted only after successful hard token, multi-factor authentication (MFA), which is coupled with least privilege principles to ensure that only authorized roles and users can execute or manipulate code. Event logs are collected and processed for centralization, correlation, analysis, monitoring, reporting, alerting, and retention. This process ensures that audit logs are generated for specific events involving sensitive information, ensuring that mechanisms such as digital signatures or certificates verify the authenticity and origin of data. External infrastructure and internal cluster certificates are established and maintained within the secure environment. The platform enforces validated cryptographic modules across all compute resources, helping prevent unauthorized actors from accessing or interpreting exposed information, even if it is intercepted.</td>
+                        <td>quic-go is an implementation of the QUIC protocol in Go. An off-path attacker can inject an ICMP Packet Too Large packet. Since affected quic-go versions used IP_PMTUDISC_DO, the kernel would then return a "message too large" error on sendmsg, i.e. when quic-go attempts to send a packet that exceeds the MTU claimed in that ICMP packet. By setting this value to smaller than 1200 bytes (the minimum MTU for QUIC), the attacker can disrupt a QUIC connection. Crucially, this can be done after completion of the handshake, thereby circumventing any TCP fallback that might be implemented on the application layer (for example, many browsers fall back to HTTP over TCP if they're unable to establish a QUIC connection). The attacker needs to at least know the client's IP and port tuple to mount an attack. This vulnerability is fixed in 0.48.2. A vulnerability was found in Quic-Go where an attacker can inject malicious data into network packets, potentially allowing them to cause harm. The issue arises from a configuration option used by some affected versions of the code that sends out information about packet size limitations. As a result, when Quic-Go attempts to send a packet larger than it claims to be able to handle, the operating system will reject it due to a "message too large" error.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-11483'>CVE-2024-11483</a></td>
@@ -828,17 +988,14 @@ Red Hat restricts access to all information contained within the platform by def
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-09-03</td>
                         <td>python-django: Potential denial-of-service vulnerability in django.utils.html.urlize()</td>
-                        <td>CVE-2024-45230 is classified as a moderate severity vulnerability because, while it presents a potential denial-of-service (DoS) risk, it does not directly expose the application to data breaches or arbitrary code execution. The vulnerability arises from inefficient handling of very large inputs with specific character sequences in the `urlize()` and `urlizetrunc()` functions. However, the attack requires carefully crafted input and only leads to resource exhaustion (such as CPU or memory overload) under specific conditions, making it less likely to be exploited in typical production environments. This reduces its impact compared to vulnerabilities that allow unauthorized access or significant system compromise, hence the moderate severity rating.
-Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-400: Uncontrolled Resource Consumption vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
-Red Hat restricts access to all platform information by default, granting access only after successful hard token-based multi-factor authentication (MFA) and enforcing least privilege to ensure only authorized roles can execute or modify code. The environment employs malicious code protections, including IDS/IPS and antimalware tools to detect threats and monitor resource usage, helping prevent uncontrolled consumption that could lead to system failure. Additional safeguards, such as web application firewalls and load-balancing strategies, protect against resource exhaustion and performance degradation. Event logs are centrally collected, correlated, and analyzed to support monitoring, alerting, and retention, aiding in the detection of abnormal behavior and potential denial-of-service (DoS) conditions. Static code analysis and peer reviews enforce strong input validation and error handling, reducing the likelihood of input-based DoS attacks.</td>
+                        <td>CVE-2024-45230 is classified as a moderate severity vulnerability because, while it presents a potential denial-of-service (DoS) risk, it does not directly expose the application to data breaches or arbitrary code execution. The vulnerability arises from inefficient handling of very large inputs with specific character sequences in the `urlize()` and `urlizetrunc()` functions. However, the attack requires carefully crafted input and only leads to resource exhaustion (such as CPU or memory overload) under specific conditions, making it less likely to be exploited in typical production environments. This reduces its impact compared to vulnerabilities that allow unauthorized access or significant system compromise, hence the moderate severity rating.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-22189'>CVE-2024-22189</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-04-04</td>
                         <td>quic-go: memory exhaustion attack against QUIC's connection ID mechanism</td>
-                        <td>Within regulated environments, a combination of the following controls acts as a significant barrier to successfully exploiting a CWE-770: Allocation of Resources Without Limits or Throttling vulnerability and therefore downgrades the severity of this particular CVE from Moderate to Low.
-The platform enforces hardening guidelines to apply the most restrictive settings required for operations, while baseline configurations maintain secure system and software states. A defense-in-depth monitoring strategy includes perimeter firewalls and endpoint protection services that detect excessive resource usage caused by malicious activity or system misconfigurations. In the event of exploitation, process isolation ensures workloads operate in separate environments, preventing any single process from overconsuming CPU or memory and degrading system performance.</td>
+                        <td>quic-go is an implementation of the QUIC protocol in Go. Prior to version 0.42.0, an attacker can cause its peer to run out of memory sending a large number of `NEW_CONNECTION_ID` frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a `RETIRE_CONNECTION_ID` frame. The attacker can prevent the receiver from sending out (the vast majority of) these `RETIRE_CONNECTION_ID` frames by collapsing the peers congestion window (by selectively acknowledging received packets) and by manipulating the peer's RTT estimate. Version 0.42.0 contains a patch for the issue. No known workarounds are available. A flaw was found in quic-go. This issue may allow an attacker to trigger a denial of service by sending a large number of NEW_CONNECTION_ID frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a RETIRE_CONNECTION_ID frame, but the attacker can prevent the receiver from sending out the vast majority of these RETIRE_CONNECTION_ID frames by selectively acknowledging received packets and collapsing the peers congestion window and by manipulating the peer's RTT estimate.</td>
                     </tr>
                                                                             <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-39329'>CVE-2024-39329</a></td>
@@ -867,6 +1024,13 @@ The platform enforces hardening guidelines to apply the most restrictive setting
                         <td>2023-10-25</td>
                         <td>pip: Mercurial configuration injectable in repo revision when installing via pip</td>
                         <td>Mercurial is not available in RHEL 8 and 9,  so the vulnerability cannot be exploited. Without mercurial installed (the hg command), pip cannot clone and install from hg+http[s] URLs.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-53643'>CVE-2025-53643</a></td>
+                        <td data-sortvalue="3" class='color-low'>Low</td>
+                        <td>2025-07-14</td>
+                        <td>aiohttp: AIOHTTP HTTP Request/Response Smuggling</td>
+                        <td>AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to version 3.12.14, the Python parser is vulnerable to a request smuggling vulnerability due to not parsing trailer sections of an HTTP request. If a pure Python version of aiohttp is installed (i.e. without the usual C extensions) or AIOHTTP_NO_EXTENSIONS is enabled, then an attacker may be able to execute a request smuggling attack to bypass certain firewalls or proxy protections. Version 3.12.14 contains a patch for this issue. A request smuggling flaw was found in the aiohttp python library. If a pure Python version of aiohttp is installed, without the usual C extensions, for example, or if AIOHTTP_NO_EXTENSIONS is enabled, an attacker can execute a request smuggling attack to bypass certain firewalls or proxy protections.</td>
                     </tr>
                                                     </tbody>
             </table>
