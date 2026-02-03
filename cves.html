@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-02-03 @ 15:15:52">
+        <meta name="description" content="Report generated on 2026-02-03 @ 17:06:51">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-02-03 @ 15:15:52">
+        <meta property="og:description" content="Report generated on 2026-02-03 @ 17:06:51">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,13 +44,13 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-02-03 @ 15:15:52</i>
+                <i>Report generated on 2026-02-03 @ 17:06:51</i>
                 </span>
             </div>
         </nav>
         <div class="wrapper">
                         <div class="alert alert-info" role="alert">
-                The CVEs listed are based on those which have been addressed in Red Hat Ansible Automation Platform 2.{4,5}.
+                The CVEs listed are based on those which have been addressed in Red Hat Ansible Automation Platform 2.{4,5,6}.
 Further investigation would need to be done to determine exactly which CVEs affect AWX.
 
             </div>
@@ -323,6 +323,20 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>2025-03-01</td>
                         <td>aap-gateway: aap-gateway privilege escalation</td>
                         <td>Red Hat has evaluated this vulnerability. This issue only affects versions AAP 2.5 GA and onwards.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-15284'>CVE-2025-15284</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-12-29</td>
+                        <td>qs: qs: Denial of Service via improper input validation in array parsing</td>
+                        <td>This vulnerability is rated Important for Red Hat products that utilize the `qs` module for parsing query strings, particularly when processing user-controlled input with bracket notation. The `arrayLimit` option, intended to prevent resource exhaustion, is bypassed when bracket notation (`a[]=value`) is used, allowing a remote attacker to cause a denial of service through memory exhaustion. This can lead to application crashes or unresponsiveness, making the service unavailable.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-66416'>CVE-2025-66416</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2025-12-02</td>
+                        <td>mcp: DNS Rebinding Protection Disabled by Default in Model Context Protocol Python SDK</td>
+                        <td>The MCP Python SDK, called `mcp` on PyPI, is a Python implementation of the Model Context Protocol (MCP). Prior to version 1.23.0, tThe Model Context Protocol (MCP) Python SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication using FastMCP with streamable HTTP or SSE transport, and has not configured TransportSecuritySettings, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access resources exposed by the MCP server on behalf of the user in those limited circumstances. Note that running HTTP-based MCP servers locally without authentication is not recommended per MCP security best practices. This issue does not affect servers using stdio transport. This vulnerability is fixed in 1.23.0.</td>
                     </tr>
                                                                             <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-59530'>CVE-2025-59530</a></td>
@@ -996,6 +1010,27 @@ The current python-django issue may be resolved in an upcoming Satellite update.
                         <td>2024-04-04</td>
                         <td>quic-go: memory exhaustion attack against QUIC's connection ID mechanism</td>
                         <td>quic-go is an implementation of the QUIC protocol in Go. Prior to version 0.42.0, an attacker can cause its peer to run out of memory sending a large number of `NEW_CONNECTION_ID` frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a `RETIRE_CONNECTION_ID` frame. The attacker can prevent the receiver from sending out (the vast majority of) these `RETIRE_CONNECTION_ID` frames by collapsing the peers congestion window (by selectively acknowledging received packets) and by manipulating the peer's RTT estimate. Version 0.42.0 contains a patch for the issue. No known workarounds are available. A flaw was found in quic-go. This issue may allow an attacker to trigger a denial of service by sending a large number of NEW_CONNECTION_ID frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a RETIRE_CONNECTION_ID frame, but the attacker can prevent the receiver from sending out the vast majority of these RETIRE_CONNECTION_ID frames by selectively acknowledging received packets and collapsing the peers congestion window and by manipulating the peer's RTT estimate.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-66031'>CVE-2025-66031</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-11-26</td>
+                        <td>node-forge: node-forge ASN.1 Unbounded Recursion</td>
+                        <td>Forge (also called `node-forge`) is a native implementation of Transport Layer Security in JavaScript. An Uncontrolled Recursion vulnerability in node-forge versions 1.3.1 and below enables remote, unauthenticated attackers to craft deep ASN.1 structures that trigger unbounded recursive parsing. This leads to a Denial-of-Service (DoS) via stack exhaustion when parsing untrusted DER inputs. This issue has been patched in version 1.3.2.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-62706'>CVE-2025-62706</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-10-22</td>
+                        <td>authlib: Authlib : JWE zip=DEF decompression bomb enables DoS</td>
+                        <td>Authlib is a Python library which builds OAuth and OpenID Connect servers. Prior to version 1.6.5, Authlib’s JWE zip=DEF path performs unbounded DEFLATE decompression. A very small ciphertext can expand into tens or hundreds of megabytes on decrypt, allowing an attacker who can supply decryptable tokens to exhaust memory and CPU and cause denial of service. This issue has been patched in version 1.6.5. Workarounds for this issue involve rejecting or stripping zip=DEF for inbound JWEs at the application boundary, forking and add a bounded decompression guard via decompressobj().decompress(data, MAX_SIZE)) and returning an error when output exceeds a safe limit, or enforcing strict maximum token sizes and fail fast on oversized inputs; combine with rate limiting.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-4565'>CVE-2025-4565</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2025-06-16</td>
+                        <td>python-protobuf: Unbounded recursion in Python Protobuf</td>
+                        <td>The availability impact of this denial-of-service vulnerability is confined to applications that directly integrate the Protobuf package. Within the context of a Red Hat system, the host machine itself is not expected to be impacted, thereby limiting the scope of disruption to individual application instances rather than broader system instability.</td>
                     </tr>
                                                                             <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-39329'>CVE-2024-39329</a></td>
