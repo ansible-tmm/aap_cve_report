@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-03-11 @ 05:15:52">
+        <meta name="description" content="Report generated on 2026-03-11 @ 06:15:47">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-03-11 @ 05:15:52">
+        <meta property="og:description" content="Report generated on 2026-03-11 @ 06:15:47">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-03-11 @ 05:15:52</i>
+                <i>Report generated on 2026-03-11 @ 06:15:47</i>
                 </span>
             </div>
         </nav>
@@ -240,6 +240,78 @@ The majority of RHEL utilities are not long-running applications; instead, they 
 As go-lang vendors its dependencies, a package may contain a library with a known vulnerability, solely because of lower tier libraries including it as a part of its dependencies, but the vulnerable code is not reachable at runtime. In such cases the issue is not exploitable. We classify these situations as “Not affected” or “Will not fix,” depending on the risk of breaking other unrelated packages.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-1312'>CVE-2026-1312</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-02-03</td>
+                        <td>Django: Django: SQL injection via crafted column aliases in QuerySet.order_by()</td>
+                        <td>This IMPORTANT vulnerability in Django allows for SQL injection within the `QuerySet.order_by()` method. A remote attacker could exploit this by providing crafted column aliases that include periods, specifically when used with `FilteredRelation`. Successful exploitation may result in unauthorized information disclosure or arbitrary code execution against the underlying database. This affects Red Hat products that integrate Django, such as Red Hat Ansible Automation Platform and Red Hat Satellite.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-1287'>CVE-2026-1287</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-02-03</td>
+                        <td>Django: Django: SQL Injection via crafted column aliases</td>
+                        <td>This IMPORTANT SQL injection flaw in Django allows a remote attacker to execute arbitrary SQL commands by crafting column aliases. This vulnerability affects Red Hat products that incorporate Django, such as Red Hat Ansible Automation Platform, Red Hat Discovery, Red Hat Satellite, Insights, and Ansible Services, potentially leading to unauthorized data access or modification.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-1207'>CVE-2026-1207</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-02-03</td>
+                        <td>Django: Django: SQL Injection via RasterField band index parameter</td>
+                        <td>This IMPORTANT flaw affects Django's `RasterField` when utilized with PostGIS, allowing remote SQL injection via the band index parameter. Red Hat Ansible Automation Platform, Red Hat Discovery, Red Hat Satellite, Insights, and Ansible Services are impacted if configured to use Django with PostGIS `RasterField` lookups. Successful exploitation could lead to unauthorized data access, modification, or denial of service.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-61726'>CVE-2025-61726</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-01-28</td>
+                        <td>golang: net/url: Memory exhaustion in query parameter parsing in net/url</td>
+                        <td>To exploit this flaw, an attacker must be able to send a specially crafted HTTP request to an application parsing URL-encoded forms with net/url, specifically a request containing a large number of unique query parameters. The request will cause the application to consume an excessive amount of memory and eventually result in a denial of service, with no impact to confidentiality or integrity. Due to this reason, this vulnerability has been rated with an important severity.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-61140'>CVE-2025-61140</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-01-28</td>
+                        <td>jsonpath: jsonpath: Prototype Pollution vulnerability in the value function</td>
+                        <td>The value function in jsonpath 1.1.1 lib/index.js is vulnerable to Prototype Pollution. A flaw was found in jsonpath. The `value` function is vulnerable to Prototype Pollution, a type of vulnerability that allows an attacker to inject or modify properties of an object's prototype. This can lead to various impacts, including arbitrary code execution, privilege escalation, or denial of service (DoS).</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-0994'>CVE-2026-0994</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-01-23</td>
+                        <td>python: protobuf: Protobuf: Denial of Service due to recursion depth bypass</td>
+                        <td>This vulnerability is rated Important for Red Hat products. The flaw in `protobuf` allows a remote attacker to trigger a denial-of-service by providing specially crafted, deeply nested `google.protobuf.Any` messages to the `google.protobuf.json_format.ParseDict()` function. This bypasses the intended recursion depth limit, leading to resource exhaustion and application crashes.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-24049'>CVE-2026-24049</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-01-22</td>
+                        <td>wheel: wheel: Privilege Escalation or Arbitrary Code Execution via malicious wheel file unpacking</td>
+                        <td>wheel is a command line tool for manipulating Python wheel files, as defined in PEP 427. In versions 0.40.0 through 0.46.1, the unpack function is vulnerable to file permission modification through mishandling of file permissions after extraction. The logic blindly trusts the filename from the archive header for the chmod operation, even though the extraction process itself might have sanitized the path. Attackers can craft a malicious wheel file that, when unpacked, changes the permissions of critical system files (e.g., /etc/passwd, SSH keys, config files), allowing for Privilege Escalation or arbitrary code execution by modifying now-writable scripts. This issue has been fixed in version 0.46.2.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-13465'>CVE-2025-13465</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-01-21</td>
+                        <td>lodash: prototype pollution in _.unset and _.omit functions</td>
+                        <td>This issue is only exploitable by applications using the _.unset and _.omit functions on an object and allowing user input to determine the path of the property to be removed. This issue only allows the deletion of properties but does not allow overwriting their behavior, limiting the impact to a denial of service. Due to this reason, this vulnerability has been rated with an important severity.
+In Grafana, JavaScript code runs only in the browser, while the server side is all Golang. Therefore, the worst-case scenario is a loss of functionality in the client application inside the browser. To reflect this, the CVSS availability metric and the severity of the Grafana and the Grafana-PCP component have been updated to low and moderate, respectively.
+The lodash dependency is bundled and used by the pcs-web-ui component of the PCS package. In Red Hat Enterprise Linux 8.10, the pcs-web-ui component is no longer included in the PCS package. As a result, RHEL 8.10 does not ship the vulnerable lodash component within PCS and is therefore not-affected by this CVE.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-23490'>CVE-2026-23490</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-01-16</td>
+                        <td>pyasn1: pyasn1: Denial of Service due to memory exhaustion from malformed RELATIVE-OID</td>
+                        <td>pyasn1 is a generic ASN.1 library for Python. Prior to 0.6.2, a Denial-of-Service issue has been found that leads to memory exhaustion from malformed RELATIVE-OID with excessive continuation octets. This vulnerability is fixed in 0.6.2.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-22029'>CVE-2026-22029</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-01-10</td>
+                        <td>@remix-run/router: react-router: React Router vulnerable to XSS via Open Redirects</td>
+                        <td>React Router is a router for React. In @remix-run/router version prior to 1.23.2. and react-router 7.0.0 through 7.11.0, React Router (and Remix v1/v2) SPA open navigation redirects originating from loaders or actions in Framework Mode, Data Mode, or the unstable RSC modes can result in unsafe URLs causing unintended javascript execution on the client. This is only an issue if you are creating redirect paths from untrusted content or via an open redirect. There is no impact if Declarative Mode (<BrowserRouter>) is being used. This issue has been patched in @remix-run/router version 1.23.2 and react-router version 7.12.0.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-14025'>CVE-2025-14025</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2025-12-04</td>
@@ -332,83 +404,11 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>MCP TypeScript SDK is the official TypeScript SDK for Model Context Protocol servers and clients. From version 1.10.0 to 1.25.3, cross-client response data leak when a single McpServer/Server and transport instance is reused across multiple client connections, most commonly in stateless StreamableHTTPServerTransport deployments. This issue has been patched in version 1.26.0.</td>
                     </tr>
                                         <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-1312'>CVE-2026-1312</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-02-03</td>
-                        <td>Django: Django: SQL injection via crafted column aliases in QuerySet.order_by()</td>
-                        <td>This IMPORTANT vulnerability in Django allows for SQL injection within the `QuerySet.order_by()` method. A remote attacker could exploit this by providing crafted column aliases that include periods, specifically when used with `FilteredRelation`. Successful exploitation may result in unauthorized information disclosure or arbitrary code execution against the underlying database. This affects Red Hat products that integrate Django, such as Red Hat Ansible Automation Platform and Red Hat Satellite.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-1287'>CVE-2026-1287</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-02-03</td>
-                        <td>Django: Django: SQL Injection via crafted column aliases</td>
-                        <td>This IMPORTANT SQL injection flaw in Django allows a remote attacker to execute arbitrary SQL commands by crafting column aliases. This vulnerability affects Red Hat products that incorporate Django, such as Red Hat Ansible Automation Platform, Red Hat Discovery, Red Hat Satellite, Insights, and Ansible Services, potentially leading to unauthorized data access or modification.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-1207'>CVE-2026-1207</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-02-03</td>
-                        <td>Django: Django: SQL Injection via RasterField band index parameter</td>
-                        <td>This IMPORTANT flaw affects Django's `RasterField` when utilized with PostGIS, allowing remote SQL injection via the band index parameter. Red Hat Ansible Automation Platform, Red Hat Discovery, Red Hat Satellite, Insights, and Ansible Services are impacted if configured to use Django with PostGIS `RasterField` lookups. Successful exploitation could lead to unauthorized data access, modification, or denial of service.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-61726'>CVE-2025-61726</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-01-28</td>
-                        <td>golang: net/url: Memory exhaustion in query parameter parsing in net/url</td>
-                        <td>To exploit this flaw, an attacker must be able to send a specially crafted HTTP request to an application parsing URL-encoded forms with net/url, specifically a request containing a large number of unique query parameters. The request will cause the application to consume an excessive amount of memory and eventually result in a denial of service, with no impact to confidentiality or integrity. Due to this reason, this vulnerability has been rated with an important severity.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-61140'>CVE-2025-61140</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-01-28</td>
-                        <td>jsonpath: jsonpath: Prototype Pollution vulnerability in the value function</td>
-                        <td>The value function in jsonpath 1.1.1 lib/index.js is vulnerable to Prototype Pollution. A flaw was found in jsonpath. The `value` function is vulnerable to Prototype Pollution, a type of vulnerability that allows an attacker to inject or modify properties of an object's prototype. This can lead to various impacts, including arbitrary code execution, privilege escalation, or denial of service (DoS).</td>
-                    </tr>
-                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-24486'>CVE-2026-24486</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-01-27</td>
                         <td>python-multipart: Python-Multipart: Arbitrary file write via path traversal vulnerability</td>
                         <td>Python-Multipart is a streaming multipart parser for Python. Prior to version 0.0.22, a Path Traversal vulnerability exists when using non-default configuration options `UPLOAD_DIR` and `UPLOAD_KEEP_FILENAME=True`. An attacker can write uploaded files to arbitrary locations on the filesystem by crafting a malicious filename. Users should upgrade to version 0.0.22 to receive a patch or, as a workaround, avoid using `UPLOAD_KEEP_FILENAME=True` in project configurations. A flaw was found in Python-Multipart, a tool for parsing multipart form data in Python applications. This vulnerability, known as path traversal, allows a remote attacker to write uploaded files to any location on the server's file system. This exploitation occurs when specific non-default configuration options, `UPLOAD_DIR` and `UPLOAD_KEEP_FILENAME=True`, are enabled, and a malicious filename is provided during a file upload. The primary consequence is unauthorized file creation or modification, which could lead to system compromise.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-0994'>CVE-2026-0994</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-01-23</td>
-                        <td>python: protobuf: Protobuf: Denial of Service due to recursion depth bypass</td>
-                        <td>This vulnerability is rated Important for Red Hat products. The flaw in `protobuf` allows a remote attacker to trigger a denial-of-service by providing specially crafted, deeply nested `google.protobuf.Any` messages to the `google.protobuf.json_format.ParseDict()` function. This bypasses the intended recursion depth limit, leading to resource exhaustion and application crashes.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-24049'>CVE-2026-24049</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-01-22</td>
-                        <td>wheel: wheel: Privilege Escalation or Arbitrary Code Execution via malicious wheel file unpacking</td>
-                        <td>wheel is a command line tool for manipulating Python wheel files, as defined in PEP 427. In versions 0.40.0 through 0.46.1, the unpack function is vulnerable to file permission modification through mishandling of file permissions after extraction. The logic blindly trusts the filename from the archive header for the chmod operation, even though the extraction process itself might have sanitized the path. Attackers can craft a malicious wheel file that, when unpacked, changes the permissions of critical system files (e.g., /etc/passwd, SSH keys, config files), allowing for Privilege Escalation or arbitrary code execution by modifying now-writable scripts. This issue has been fixed in version 0.46.2.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-13465'>CVE-2025-13465</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-01-21</td>
-                        <td>lodash: prototype pollution in _.unset and _.omit functions</td>
-                        <td>This issue is only exploitable by applications using the _.unset and _.omit functions on an object and allowing user input to determine the path of the property to be removed. This issue only allows the deletion of properties but does not allow overwriting their behavior, limiting the impact to a denial of service. Due to this reason, this vulnerability has been rated with an important severity.
-In Grafana, JavaScript code runs only in the browser, while the server side is all Golang. Therefore, the worst-case scenario is a loss of functionality in the client application inside the browser. To reflect this, the CVSS availability metric and the severity of the Grafana and the Grafana-PCP component have been updated to low and moderate, respectively.
-The lodash dependency is bundled and used by the pcs-web-ui component of the PCS package. In Red Hat Enterprise Linux 8.10, the pcs-web-ui component is no longer included in the PCS package. As a result, RHEL 8.10 does not ship the vulnerable lodash component within PCS and is therefore not-affected by this CVE.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-23490'>CVE-2026-23490</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-01-16</td>
-                        <td>pyasn1: pyasn1: Denial of Service due to memory exhaustion from malformed RELATIVE-OID</td>
-                        <td>pyasn1 is a generic ASN.1 library for Python. Prior to 0.6.2, a Denial-of-Service issue has been found that leads to memory exhaustion from malformed RELATIVE-OID with excessive continuation octets. This vulnerability is fixed in 0.6.2.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-22029'>CVE-2026-22029</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-01-10</td>
-                        <td>@remix-run/router: react-router: React Router vulnerable to XSS via Open Redirects</td>
-                        <td>React Router is a router for React. In @remix-run/router version prior to 1.23.2. and react-router 7.0.0 through 7.11.0, React Router (and Remix v1/v2) SPA open navigation redirects originating from loaders or actions in Framework Mode, Data Mode, or the unstable RSC modes can result in unsafe URLs causing unintended javascript execution on the client. This is only an issue if you are creating redirect paths from untrusted content or via an open redirect. There is no impact if Declarative Mode (<BrowserRouter>) is being used. This issue has been patched in @remix-run/router version 1.23.2 and react-router version 7.12.0.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-21884'>CVE-2026-21884</a></td>
@@ -977,6 +977,20 @@ Red Hat Satellite does not use the affected functions during runtime, therefore 
                         <td>cryptography is a package designed to expose cryptographic primitives and recipes to Python developers. In affected versions `Cipher.update_into` would accept Python objects which implement the buffer protocol, but provide only immutable buffers. This would allow immutable objects (such as `bytes`) to be mutated, thus violating fundamental rules of Python and resulting in corrupted output. This now correctly raises an exception. This issue has been present since `update_into` was originally introduced in cryptography 1.8. A vulnerability was found in python-cryptography. In affected versions, `Cipher.update_into` would accept Python objects which implement the buffer protocol but provide only immutable buffers. This issue allows immutable objects (such as `bytes`) to be mutated, thus violating the fundamental rules of Python, resulting in corrupted output.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-14550'>CVE-2025-14550</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-02-03</td>
+                        <td>Django: Django: Denial of Service via crafted request with duplicate headers</td>
+                        <td>This MODERATE impact denial-of-service flaw in Django affects Red Hat products utilizing the ASGIRequest component, such as Red Hat Ansible Automation Platform, Red Hat Discovery, and Red Hat Satellite. A remote attacker could send specially crafted requests containing duplicate headers, potentially rendering the affected system unavailable.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-1285'>CVE-2026-1285</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-02-03</td>
+                        <td>Django: Django: Denial of Service via crafted HTML inputs</td>
+                        <td>This is a MODERATE impact denial-of-service flaw in Django. Applications utilizing Django that process untrusted HTML inputs with a large number of unmatched end tags through the `Truncator.chars()` or `Truncator.words()` methods (with `html=True`), or the `truncatechars_html` and `truncatewords_html` template filters, may experience resource exhaustion. This can lead to the application becoming unavailable.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-62707'>CVE-2025-62707</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2025-10-22</td>
@@ -1106,20 +1120,6 @@ The current python-django issue may be resolved in an upcoming Satellite update.
                         <td>2024-04-04</td>
                         <td>quic-go: memory exhaustion attack against QUIC's connection ID mechanism</td>
                         <td>quic-go is an implementation of the QUIC protocol in Go. Prior to version 0.42.0, an attacker can cause its peer to run out of memory sending a large number of `NEW_CONNECTION_ID` frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a `RETIRE_CONNECTION_ID` frame. The attacker can prevent the receiver from sending out (the vast majority of) these `RETIRE_CONNECTION_ID` frames by collapsing the peers congestion window (by selectively acknowledging received packets) and by manipulating the peer's RTT estimate. Version 0.42.0 contains a patch for the issue. No known workarounds are available. A flaw was found in quic-go. This issue may allow an attacker to trigger a denial of service by sending a large number of NEW_CONNECTION_ID frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a RETIRE_CONNECTION_ID frame, but the attacker can prevent the receiver from sending out the vast majority of these RETIRE_CONNECTION_ID frames by selectively acknowledging received packets and collapsing the peers congestion window and by manipulating the peer's RTT estimate.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-14550'>CVE-2025-14550</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2026-02-03</td>
-                        <td>Django: Django: Denial of Service via crafted request with duplicate headers</td>
-                        <td>This MODERATE impact denial-of-service flaw in Django affects Red Hat products utilizing the ASGIRequest component, such as Red Hat Ansible Automation Platform, Red Hat Discovery, and Red Hat Satellite. A remote attacker could send specially crafted requests containing duplicate headers, potentially rendering the affected system unavailable.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-1285'>CVE-2026-1285</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2026-02-03</td>
-                        <td>Django: Django: Denial of Service via crafted HTML inputs</td>
-                        <td>This is a MODERATE impact denial-of-service flaw in Django. Applications utilizing Django that process untrusted HTML inputs with a large number of unmatched end tags through the `Truncator.chars()` or `Truncator.words()` methods (with `html=True`), or the `truncatechars_html` and `truncatewords_html` template filters, may experience resource exhaustion. This can lead to the application becoming unavailable.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-66031'>CVE-2025-66031</a></td>
