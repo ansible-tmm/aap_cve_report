@@ -38,10 +38,10 @@
           duplicate_detection: false
           name: master
         origin:
-          url: https://github.com/ansible-tmm/aap_cve_report
+          url: https://github.com/veejnasp/aap_cve_report
           token: "{{ github_token }}"
         upstream:
-          url: https://github.com/ansible-tmm/aap_cve_report
+          url: https://github.com/veejnasp/aap_cve_report
           token: "{{ github_token }}"
           branch: master
       register: repository
