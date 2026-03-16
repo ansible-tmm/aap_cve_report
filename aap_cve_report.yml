@@ -1,6 +1,8 @@
 ---
 - name: Generate cve report
-  hosts: localhost
+  hosts: "{{ target | lower }}"
+  ignore_unreachable: true
+  any_errors_fatal: true
   gather_facts: false
   become: false
   vars:
