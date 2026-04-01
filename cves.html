@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-03-31 @ 23:15:36">
+        <meta name="description" content="Report generated on 2026-04-01 @ 00:15:35">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-03-31 @ 23:15:36">
+        <meta property="og:description" content="Report generated on 2026-04-01 @ 00:15:35">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-03-31 @ 23:15:36</i>
+                <i>Report generated on 2026-04-01 @ 00:15:35</i>
                 </span>
             </div>
         </nav>
@@ -247,6 +247,34 @@ The majority of RHEL utilities are not long-running applications; instead, they 
 As go-lang vendors its dependencies, a package may contain a library with a known vulnerability, solely because of lower tier libraries including it as a part of its dependencies, but the vulnerable code is not reachable at runtime. In such cases the issue is not exploitable. We classify these situations as “Not affected” or “Will not fix,” depending on the risk of breaking other unrelated packages.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-25990'>CVE-2026-25990</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-02-11</td>
+                        <td>pillow: Pillow: Out-of-bounds Write via Specially Crafted PSD Image</td>
+                        <td>Pillow is a Python imaging library. From 10.3.0 to before 12.1.1, n out-of-bounds write may be triggered when loading a specially crafted PSD image. This vulnerability is fixed in 12.1.1. A flaw was found the Pillow Python imaging library. Providing a specially crafted PSD image  may lead to an out-of-bounds write. This could potentially allow for arbitrary code execution or information disclosure.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-26007'>CVE-2026-26007</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-02-10</td>
+                        <td>cryptography: cryptography Subgroup Attack Due to Missing Subgroup Validation for SECT Curves</td>
+                        <td>cryptography is a package designed to expose cryptographic primitives and recipes to Python developers. Prior to 46.0.5, the public_key_from_numbers (or EllipticCurvePublicNumbers.public_key()), EllipticCurvePublicNumbers.public_key(), load_der_public_key() and load_pem_public_key() functions do not verify that the point belongs to the expected prime-order subgroup of the curve. This missing validation allows an attacker to provide a public key point P from a small-order subgroup. This can lead to security issues in various situations, such as the most commonly used signature verification (ECDSA) and shared key negotiation (ECDH). When the victim computes the shared secret as S = [victim_private_key]P via ECDH, this leaks information about victim_private_key mod (small_subgroup_order). For curves with cofactor > 1, this reveals the least significant bits of the private key. When these weak public keys are used in ECDSA , it's easy to forge signatures on the small subgroup. Only SECT curves are impacted by this. This vulnerability is fixed in 46.0.5. A validation flaw has been discovered in the python cryptography package. This missing validation allows an attacker to provide a public key point P from a small-order subgroup. This can lead to security issues in various situations, such as the most commonly used signature verification (ECDSA) and shared key negotiation (ECDH). When the victim computes the shared secret as S = [victim_private_key]P via ECDH, this leaks information about victim_private_key mod (small_subgroup_order). For curves with cofactor > 1, this reveals the least significant bits of the private key. When these weak public keys are used in ECDSA , it's easy to forge signatures on the small subgroup. Only SECT curves are impacted by this.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-25639'>CVE-2026-25639</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-02-09</td>
+                        <td>axios: Axios affected by Denial of Service via __proto__ Key in mergeConfig</td>
+                        <td>Axios is a promise based HTTP client for the browser and Node.js. Prior to versions 0.30.3 and 1.13.5, the mergeConfig function in axios crashes with a TypeError when processing configuration objects containing __proto__ as an own property. An attacker can trigger this by providing a malicious configuration object created via JSON.parse(), causing complete denial of service. This vulnerability is fixed in versions 0.30.3 and 1.13.5. A denial of service flaw has been discovered in the Axios npm package. the mergeConfig function in axios crashes with a TypeError when processing configuration objects containing __proto__ as an own property. An attacker can trigger this by providing a malicious configuration object created via JSON.parse(), causing complete denial of service.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-1615'>CVE-2026-1615</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-02-09</td>
+                        <td>jsonpath: jsonpath: Arbitrary Code Execution via unsafe JSON Path expression evaluation</td>
+                        <td>Red Hat Product Security team has rated this vulnerability as Important as it may allows arbitrary code execution when processing untrusted JSON Path expressions. This can lead to Remote Code Execution in Node.js environments or Cross-site Scripting in browser contexts. In some contexts it may be possible to remotely exploit this flaw without any privileges. However, within Red Hat products the jsonpath component is used as a transitive dependency or does not directly handle user input. This context reduces exposure and criticality of this vulnerability.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-1312'>CVE-2026-1312</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-02-03</td>
@@ -395,6 +423,41 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>2025-03-01</td>
                         <td>aap-gateway: aap-gateway privilege escalation</td>
                         <td>Red Hat has evaluated this vulnerability. This issue only affects versions AAP 2.5 GA and onwards.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-30922'>CVE-2026-30922</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-18</td>
+                        <td>pyasn1: pyasn1 Vulnerable to Denial of Service via Unbounded Recursion</td>
+                        <td>pyasn1 is a generic ASN.1 library for Python. Prior to 0.6.3, the `pyasn1` library is vulnerable to a Denial of Service (DoS) attack caused by uncontrolled recursion when decoding ASN.1 data with deeply nested structures. An attacker can supply a crafted payload containing thousands of nested `SEQUENCE` (`0x30`) or `SET` (`0x31`) tags with "Indefinite Length" (`0x80`) markers. This forces the decoder to recursively call itself until the Python interpreter crashes with a `RecursionError` or consumes all available memory (OOM), crashing the host application. This is a distinct vulnerability from CVE-2026-23490 (which addressed integer overflows in OID decoding). The fix for CVE-2026-23490 (`MAX_OID_ARC_CONTINUATION_OCTETS`) does not mitigate this recursion issue. Version 0.6.3 fixes this specific issue. An unbounded recursion flaw has been discovered in the pypi pyasn1 library. This uncontrolled recursion occurs when decoding ASN.1 data with deeply nested structures. An attacker can supply a crafted payload containing nested SEQUENCE (0x30) or SET (0x31) tags with Indefinite Length (0x80) markers. This forces the decoder to recursively call itself until the Python interpreter crashes with a RecursionError or consumes all available memory (OOM), crashing the host application.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-28498'>CVE-2026-28498</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-16</td>
+                        <td>authlib: Authlib: Authentication bypass via forged OpenID Connect ID Tokens</td>
+                        <td>This IMPORTANT vulnerability in Authlib allows attackers to bypass OIDC ID Token integrity verification. The at_hash and c_hash validation fails open for unknown algorithms, accepting forged tokens as valid. Exploitation requires no authentication or user interaction. Impact is high to confidentiality and integrity. Red Hat products using Authlib for OIDC validation are affected. Fixed in version 1.6.9.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-29074'>CVE-2026-29074</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-06</td>
+                        <td>svgo: SVGO: Denial of Service via XML entity expansion</td>
+                        <td>SVGO, short for SVG Optimizer, is a Node.js library and command-line application for optimizing SVG files. From version 2.1.0 to before version 2.8.1, from version 3.0.0 to before version 3.3.3, and before version 4.0.1, SVGO accepts XML with custom entities, without guards against entity expansion or recursion. This can result in a small XML file (811 bytes) stalling the application and even crashing the Node.js process with JavaScript heap out of memory. This issue has been patched in versions 2.8.1, 3.3.3, and 4.0.1. A flaw was found in SVGO, an SVG (Scalable Vector Graphics) Optimizer. This vulnerability allows a remote attacker to cause a Denial of Service (DoS) by submitting a specially crafted XML file. The application's failure to properly guard against XML entity expansion or recursion can lead to the Node.js process consuming excessive memory and crashing.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-28802'>CVE-2026-28802</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-06</td>
+                        <td>authlib: Authlib: Signature verification bypass via malicious JWT allows unauthorized access</td>
+                        <td>Authlib is a Python library which builds OAuth and OpenID Connect servers. From version 1.6.5 to before version 1.6.7, previous tests involving passing a malicious JWT containing alg: none and an empty signature was passing the signature verification step without any changes to the application code when a failure was expected.. This issue has been patched in version 1.6.7. A flaw was found in Authlib, a Python library for building OAuth and OpenID Connect servers. A remote attacker can exploit this vulnerability by crafting a malicious JSON Web Token (JWT) with a "none" algorithm and an empty signature. This bypasses the expected signature verification, potentially allowing the attacker to forge tokens and gain unauthorized access or perform unauthorized actions within applications using Authlib.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-69873'>CVE-2025-69873</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-02-11</td>
+                        <td>ajv: ReDoS via $data reference</td>
+                        <td>To exploit this issue, the $data option must be enabled and the attacker needs to be able to send a payload with a specially crafted regular expression to the application processing the input. A 31-character payload causes approximately 44 seconds of execution, with each additional character doubling the execution time. Therefore, even a small payload can cause an application to become unresponsive and eventually result in a denial of service. Due to this reason, this flaw has been rated with an important severity.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-25536'>CVE-2026-25536</a></td>
@@ -1120,6 +1183,27 @@ The current python-django issue may be resolved in an upcoming Satellite update.
                         <td>2024-04-04</td>
                         <td>quic-go: memory exhaustion attack against QUIC's connection ID mechanism</td>
                         <td>quic-go is an implementation of the QUIC protocol in Go. Prior to version 0.42.0, an attacker can cause its peer to run out of memory sending a large number of `NEW_CONNECTION_ID` frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a `RETIRE_CONNECTION_ID` frame. The attacker can prevent the receiver from sending out (the vast majority of) these `RETIRE_CONNECTION_ID` frames by collapsing the peers congestion window (by selectively acknowledging received packets) and by manipulating the peer's RTT estimate. Version 0.42.0 contains a patch for the issue. No known workarounds are available. A flaw was found in quic-go. This issue may allow an attacker to trigger a denial of service by sending a large number of NEW_CONNECTION_ID frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a RETIRE_CONNECTION_ID frame, but the attacker can prevent the receiver from sending out the vast majority of these RETIRE_CONNECTION_ID frames by selectively acknowledging received packets and collapsing the peers congestion window and by manipulating the peer's RTT estimate.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-30827'>CVE-2026-30827</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-03-07</td>
+                        <td>express-rate-limit: express-rate-limit: Denial of Service for IPv4 clients due to incorrect IPv6 subnet masking</td>
+                        <td>express-rate-limit is a basic rate-limiting middleware for Express. In versions starting from 8.0.0 and prior to versions 8.0.2, 8.1.1, 8.2.2, and 8.3.0, the default keyGenerator in express-rate-limit applies IPv6 subnet masking (/56 by default) to all addresses that net.isIPv6() returns true for. This includes IPv4-mapped IPv6 addresses (::ffff:x.x.x.x), which Node.js returns as request.ip on dual-stack servers. Because the first 80 bits of all IPv4-mapped addresses are zero, a /56 (or any /32 to /80) subnet mask produces the same network key (::/56) for every IPv4 client. This collapses all IPv4 traffic into a single rate-limit bucket: one client exhausting the limit causes HTTP 429 for all other IPv4 clients. This issue has been patched in versions 8.0.2, 8.1.1, 8.2.2, and 8.3.0. A flaw was found in express-rate-limit. The default key generator incorrectly applies IPv6 subnet masking to IPv4-mapped IPv6 addresses, which are used when an IPv4 client connects to a dual-stack server. This misconfiguration causes all IPv4 traffic to be treated as a single entity for rate limiting. Consequently, a remote attacker can exhaust the rate limit with a single client, leading to a Denial of Service (DoS) for all other IPv4 clients by causing them to receive HTTP 429 errors.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-27904'>CVE-2026-27904</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-02-26</td>
+                        <td>minimatch: Minimatch: Denial of Service via catastrophic backtracking in glob expressions</td>
+                        <td>Exploitation of this flaw requires that a user or service processes untrusted input.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-68121'>CVE-2025-68121</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-02-05</td>
+                        <td>crypto/tls: Unexpected session resumption in crypto/tls</td>
+                        <td>During session resumption in crypto/tls, if the underlying Config has its ClientCAs or RootCAs fields mutated between the initial handshake and the resumed handshake, the resumed handshake may succeed when it should have failed. This may happen when a user calls Config.Clone and mutates the returned Config, or uses Config.GetConfigForClient. This can cause a client to resume a session with a server that it would not have resumed with during the initial handshake, or cause a server to resume a session with a client that it would not have resumed with during the initial handshake.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-66031'>CVE-2025-66031</a></td>
