@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-05-04 @ 23:15:45">
+        <meta name="description" content="Report generated on 2026-05-05 @ 00:15:54">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-05-04 @ 23:15:45">
+        <meta property="og:description" content="Report generated on 2026-05-05 @ 00:15:54">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-05-04 @ 23:15:45</i>
+                <i>Report generated on 2026-05-05 @ 00:15:54</i>
                 </span>
             </div>
         </nav>
@@ -247,11 +247,88 @@ The majority of RHEL utilities are not long-running applications; instead, they 
 As go-lang vendors its dependencies, a package may contain a library with a known vulnerability, solely because of lower tier libraries including it as a part of its dependencies, but the vulnerable code is not reachable at runtime. In such cases the issue is not exploitable. We classify these situations as “Not affected” or “Will not fix,” depending on the risk of breaking other unrelated packages.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-6266'>CVE-2026-6266</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-05-04</td>
+                        <td>aap-controller: aap-gateway: Account hijacking and unauthorized access via unverified email linking</td>
+                        <td>A flaw was found in the AAP gateway. The user auto-link strategy, introduced in AAP 2.6, automatically links an external Identity Provider (IDP) identity to an existing AAP user account based on email matching without verifying email ownership. This allows a remote attacker to potentially hijack a victim's account or gain unauthorized access to other accounts, including administrative accounts, by manipulating the IDP-provided email.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-4800'>CVE-2026-4800</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-31</td>
+                        <td>lodash: lodash: Arbitrary code execution via untrusted input in template imports</td>
+                        <td>In the context of Red Hat Enterprise Linux, the grafana and grafana-pcp packages execute the affected JavaScript entirely client-side within the user's browser. Consequently, the attack surface is strictly restricted to the local browser environment.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-30922'>CVE-2026-30922</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-18</td>
+                        <td>pyasn1: pyasn1 Vulnerable to Denial of Service via Unbounded Recursion</td>
+                        <td>pyasn1 is a generic ASN.1 library for Python. Prior to 0.6.3, the `pyasn1` library is vulnerable to a Denial of Service (DoS) attack caused by uncontrolled recursion when decoding ASN.1 data with deeply nested structures. An attacker can supply a crafted payload containing thousands of nested `SEQUENCE` (`0x30`) or `SET` (`0x31`) tags with "Indefinite Length" (`0x80`) markers. This forces the decoder to recursively call itself until the Python interpreter crashes with a `RecursionError` or consumes all available memory (OOM), crashing the host application. This is a distinct vulnerability from CVE-2026-23490 (which addressed integer overflows in OID decoding). The fix for CVE-2026-23490 (`MAX_OID_ARC_CONTINUATION_OCTETS`) does not mitigate this recursion issue. Version 0.6.3 fixes this specific issue. An unbounded recursion flaw has been discovered in the pypi pyasn1 library. This uncontrolled recursion occurs when decoding ASN.1 data with deeply nested structures. An attacker can supply a crafted payload containing nested SEQUENCE (0x30) or SET (0x31) tags with Indefinite Length (0x80) markers. This forces the decoder to recursively call itself until the Python interpreter crashes with a RecursionError or consumes all available memory (OOM), crashing the host application.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-27459'>CVE-2026-27459</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-17</td>
+                        <td>pyOpenSSL: DTLS cookie callback buffer overflow</td>
+                        <td>This flaw is only exploitable when an application using the pyOpenSSL library provides a custom callback to the set_cookie_generate_callback function. For the buffer overflow to occur, the callback function must return a cookie string or byte sequence longer than 256 bytes, limiting the exposure of this issue. Due to these reasons, this vulnerability has been rated with an important severity.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-32597'>CVE-2026-32597</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-12</td>
+                        <td>pyjwt: PyJWT accepts unknown `crit` header extensions (RFC 7515 §4.1.11 MUST violation)</td>
+                        <td>PyJWT is a JSON Web Token implementation in Python. Prior to 2.12.0, PyJWT does not validate the crit (Critical) Header Parameter defined in RFC 7515 §4.1.11. When a JWS token contains a crit array listing extensions that PyJWT does not understand, the library accepts the token instead of rejecting it. This violates the MUST requirement in the RFC. This vulnerability is fixed in 2.12.0. A missing verification step has been discovered in PyJWT. PyJWT does not validate the crit (Critical) Header Parameter defined in RFC 7515 §4.1.11. When a JWS token contains a crit array listing extensions that PyJWT does not understand, the library accepts the token instead of rejecting it. This violates the MUST requirement in the RFC.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-32274'>CVE-2026-32274</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-12</td>
+                        <td>black: Black: Arbitrary file writes from unsanitized user input in cache file name</td>
+                        <td>Black is the uncompromising Python code formatter. Prior to 26.3.1, Black writes a cache file, the name of which is computed from various formatting options. The value of the --python-cell-magics option was placed in the filename without sanitization, which allowed an attacker who controls the value of this argument to write cache files to arbitrary file system locations. Fixed in Black 26.3.1. A user input sanitization flaw has been discovered in the Black python code formatter. Black writes a cache file, the name of which is computed from various formatting options. The value of the --python-cell-magics option was placed in the filename without sanitization, which allowed an attacker who controls the value of this argument to write cache files to arbitrary file system locations.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-25679'>CVE-2026-25679</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-06</td>
+                        <td>net/url: Incorrect parsing of IPv6 host literals in net/url</td>
+                        <td>url.Parse insufficiently validated the host/authority component and accepted some invalid URLs. The Go standard library function net/url.Parse insufficiently validated the host/authority component and accepted some invalid URLs by effectively treating garbage before an IP-literal as ignorable. The function should have rejected this as invalid.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-29074'>CVE-2026-29074</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-06</td>
+                        <td>svgo: SVGO: Denial of Service via XML entity expansion</td>
+                        <td>SVGO, short for SVG Optimizer, is a Node.js library and command-line application for optimizing SVG files. From version 2.1.0 to before version 2.8.1, from version 3.0.0 to before version 3.3.3, and before version 4.0.1, SVGO accepts XML with custom entities, without guards against entity expansion or recursion. This can result in a small XML file (811 bytes) stalling the application and even crashing the Node.js process with JavaScript heap out of memory. This issue has been patched in versions 2.8.1, 3.3.3, and 4.0.1. A flaw was found in SVGO, an SVG (Scalable Vector Graphics) Optimizer. This vulnerability allows a remote attacker to cause a Denial of Service (DoS) by submitting a specially crafted XML file. The application's failure to properly guard against XML entity expansion or recursion can lead to the Node.js process consuming excessive memory and crashing.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-69534'>CVE-2025-69534</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-05</td>
+                        <td>python-markdown: denial of service via malformed HTML-like sequences</td>
+                        <td>To exploit this flaw, an attacker must be able to supply a specially crafted payload to be processed by an application using Python-Markdown. Additionally, the security impact of this vulnerability is limited to an information disclosure via the unhandled exception stack trace and a denial of service. There is no memory corruption or arbitrary command execution. Due to these reasons, this issue has been rated with an important severity.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-27606'>CVE-2026-27606</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-02-25</td>
+                        <td>rollup: Rollup: Remote Code Execution via Path Traversal Vulnerability</td>
+                        <td>Rollup is a module bundler for JavaScript. Versions prior to 2.80.0, 3.30.0, and 4.59.0 of the Rollup module bundler (specifically v4.x and present in current source) is vulnerable to an Arbitrary File Write via Path Traversal. Insecure file name sanitization in the core engine allows an attacker to control output filenames (e.g., via CLI named inputs, manual chunk aliases, or malicious plugins) and use traversal sequences (`../`) to overwrite files anywhere on the host filesystem that the build process has permissions for. This can lead to persistent Remote Code Execution (RCE) by overwriting critical system or user configuration files. Versions 2.80.0, 3.30.0, and 4.59.0 contain a patch for the issue. A flaw was found in Rollup, a JavaScript module bundler. Insecure file name sanitization in the core engine allows an attacker to control output filenames, potentially through command-line interface (CLI) inputs, manual chunk aliases, or malicious plugins. By using directory traversal sequences (`../`), an attacker can overwrite files anywhere on the host filesystem where the build process has write permissions. This vulnerability can lead to persistent remote code execution (RCE) by overwriting critical system or user configuration files.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-25990'>CVE-2026-25990</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-02-11</td>
                         <td>pillow: Pillow: Out-of-bounds Write via Specially Crafted PSD Image</td>
                         <td>Pillow is a Python imaging library. From 10.3.0 to before 12.1.1, an out-of-bounds write may be triggered when loading a specially crafted PSD image. This vulnerability is fixed in 12.1.1. A flaw was found the Pillow Python imaging library. Providing a specially crafted PSD image  may lead to an out-of-bounds write. This could potentially allow for arbitrary code execution or information disclosure.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-69873'>CVE-2025-69873</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-02-11</td>
+                        <td>ajv: ReDoS via $data reference</td>
+                        <td>To exploit this issue, the $data option must be enabled and the attacker needs to be able to send a payload with a specially crafted regular expression to the application processing the input. A 31-character payload causes approximately 44 seconds of execution, with each additional character doubling the execution time. Therefore, even a small payload can cause an application to become unresponsive and eventually result in a denial of service. Due to this reason, this flaw has been rated with an important severity.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-26007'>CVE-2026-26007</a></td>
@@ -425,11 +502,39 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>Red Hat has evaluated this vulnerability. This issue only affects versions AAP 2.5 GA and onwards.</td>
                     </tr>
                                         <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-30922'>CVE-2026-30922</a></td>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-32280'>CVE-2026-32280</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-03-18</td>
-                        <td>pyasn1: pyasn1 Vulnerable to Denial of Service via Unbounded Recursion</td>
-                        <td>pyasn1 is a generic ASN.1 library for Python. Prior to 0.6.3, the `pyasn1` library is vulnerable to a Denial of Service (DoS) attack caused by uncontrolled recursion when decoding ASN.1 data with deeply nested structures. An attacker can supply a crafted payload containing thousands of nested `SEQUENCE` (`0x30`) or `SET` (`0x31`) tags with "Indefinite Length" (`0x80`) markers. This forces the decoder to recursively call itself until the Python interpreter crashes with a `RecursionError` or consumes all available memory (OOM), crashing the host application. This is a distinct vulnerability from CVE-2026-23490 (which addressed integer overflows in OID decoding). The fix for CVE-2026-23490 (`MAX_OID_ARC_CONTINUATION_OCTETS`) does not mitigate this recursion issue. Version 0.6.3 fixes this specific issue. An unbounded recursion flaw has been discovered in the pypi pyasn1 library. This uncontrolled recursion occurs when decoding ASN.1 data with deeply nested structures. An attacker can supply a crafted payload containing nested SEQUENCE (0x30) or SET (0x31) tags with Indefinite Length (0x80) markers. This forces the decoder to recursively call itself until the Python interpreter crashes with a RecursionError or consumes all available memory (OOM), crashing the host application.</td>
+                        <td>2026-04-08</td>
+                        <td>crypto/x509: crypto/tls: golang: Go: Denial of Service vulnerability in certificate chain building</td>
+                        <td>A flaw was found in the Go standard library packages `crypto/x509` and `crypto/tls`. During the process of building a certificate chain, an attacker can provide a large number of intermediate certificates. This excessive input is not properly limited, leading to an uncontrolled amount of work being performed. This can result in a denial of service (DoS) condition, making the affected system or application unavailable to legitimate users.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-33810'>CVE-2026-33810</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-04-08</td>
+                        <td>crypto/x509: golang: Go crypto/x509: Certificate validation bypass due to incorrect DNS constraint application</td>
+                        <td>When verifying a certificate chain containing excluded DNS constraints, these constraints are not correctly applied to wildcard DNS SANs which use a different case than the constraint. This only affects validation of otherwise trusted certificate chains, issued by a root CA in the VerifyOptions.Roots CertPool, or in the system certificate pool. A flaw was found in the `crypto/x509` package within Go (golang). When verifying a certificate chain, excluded DNS (Domain Name System) constraints are not correctly applied to wildcard DNS Subject Alternative Names (SANs) if the case of the SAN differs from the constraint. This oversight could allow an attacker to bypass certificate validation, potentially leading to the acceptance of a malicious certificate that should have been rejected. This issue specifically impacts the validation of trusted certificate chains.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-35030'>CVE-2026-35030</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-04-06</td>
+                        <td>litellm: LiteLLM: Authentication bypass and privilege escalation via OIDC userinfo cache key collision</td>
+                        <td>This is an Important flaw in LiteLLM that enables authentication bypass and privilege escalation. The vulnerability is present only when JWT authentication is explicitly enabled, as this configuration is not active by default. Red Hat Ansible Automation Platform, Lightspeed Core, Red Hat OpenShift AI, and Ansible Services are affected if configured with JWT authentication.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-35029'>CVE-2026-35029</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-04-06</td>
+                        <td>litellm: LiteLLM: Remote code execution and privilege escalation via unrestricted proxy configuration endpoint</td>
+                        <td>This Important flaw in LiteLLM allows an authenticated user to bypass authorization on the `/config/update` endpoint. This enables modification of proxy configurations and environment variables, leading to remote code execution, unauthorized file access, and potential account takeover. Red Hat Ansible Automation Platform, Lightspeed Core, and Red Hat OpenShift AI are affected.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-4926'>CVE-2026-4926</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-26</td>
+                        <td>path-to-regexp: path-to-regexp: Denial of Service via crafted regular expressions</td>
+                        <td>This is an Important flaw in `path-to-regexp` that can lead to a Denial of Service. The vulnerability occurs when specially crafted input containing multiple sequential optional groups is used to generate regular expressions, causing exponential resource consumption.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-28498'>CVE-2026-28498</a></td>
@@ -439,11 +544,18 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>This IMPORTANT vulnerability in Authlib allows attackers to bypass OIDC ID Token integrity verification. The at_hash and c_hash validation fails open for unknown algorithms, accepting forged tokens as valid. Exploitation requires no authentication or user interaction. Impact is high to confidentiality and integrity. Red Hat products using Authlib for OIDC validation are affected. Fixed in version 1.6.9.</td>
                     </tr>
                                         <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-29074'>CVE-2026-29074</a></td>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-31812'>CVE-2026-31812</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-10</td>
+                        <td>quinn-proto: quinn-proto: Denial of Service via crafted QUIC Initial packet</td>
+                        <td>The availability impact of this flaw is limited to specific services on Red Hat systems. Host system availability is not at risk.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-27137'>CVE-2026-27137</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-03-06</td>
-                        <td>svgo: SVGO: Denial of Service via XML entity expansion</td>
-                        <td>SVGO, short for SVG Optimizer, is a Node.js library and command-line application for optimizing SVG files. From version 2.1.0 to before version 2.8.1, from version 3.0.0 to before version 3.3.3, and before version 4.0.1, SVGO accepts XML with custom entities, without guards against entity expansion or recursion. This can result in a small XML file (811 bytes) stalling the application and even crashing the Node.js process with JavaScript heap out of memory. This issue has been patched in versions 2.8.1, 3.3.3, and 4.0.1. A flaw was found in SVGO, an SVG (Scalable Vector Graphics) Optimizer. This vulnerability allows a remote attacker to cause a Denial of Service (DoS) by submitting a specially crafted XML file. The application's failure to properly guard against XML entity expansion or recursion can lead to the Node.js process consuming excessive memory and crashing.</td>
+                        <td>crypto/x509: Incorrect enforcement of email constraints in crypto/x509</td>
+                        <td>When verifying a certificate chain which contains a certificate containing multiple email address constraints which share common local portions but different domain portions, these constraints will not be properly applied, and only the last constraint will be considered. A certificate validation flaw has been discovered in the golang crypto/x509 module. When verifying a certificate chain which contains a certificate containing multiple email address constraints which share common local portions but different domain portions, these constraints will not be properly applied, and only the last constraint will be considered.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-28802'>CVE-2026-28802</a></td>
@@ -451,13 +563,6 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>2026-03-06</td>
                         <td>authlib: Authlib: Signature verification bypass via malicious JWT allows unauthorized access</td>
                         <td>Authlib is a Python library which builds OAuth and OpenID Connect servers. From version 1.6.5 to before version 1.6.7, previous tests involving passing a malicious JWT containing alg: none and an empty signature was passing the signature verification step without any changes to the application code when a failure was expected.. This issue has been patched in version 1.6.7. A flaw was found in Authlib, a Python library for building OAuth and OpenID Connect servers. A remote attacker can exploit this vulnerability by crafting a malicious JSON Web Token (JWT) with a "none" algorithm and an empty signature. This bypasses the expected signature verification, potentially allowing the attacker to forge tokens and gain unauthorized access or perform unauthorized actions within applications using Authlib.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-69873'>CVE-2025-69873</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-02-11</td>
-                        <td>ajv: ReDoS via $data reference</td>
-                        <td>To exploit this issue, the $data option must be enabled and the attacker needs to be able to send a payload with a specially crafted regular expression to the application processing the input. A 31-character payload causes approximately 44 seconds of execution, with each additional character doubling the execution time. Therefore, even a small payload can cause an application to become unresponsive and eventually result in a denial of service. Due to this reason, this flaw has been rated with an important severity.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-25536'>CVE-2026-25536</a></td>
@@ -1040,6 +1145,13 @@ Red Hat Satellite does not use the affected functions during runtime, therefore 
                         <td>cryptography is a package designed to expose cryptographic primitives and recipes to Python developers. In affected versions `Cipher.update_into` would accept Python objects which implement the buffer protocol, but provide only immutable buffers. This would allow immutable objects (such as `bytes`) to be mutated, thus violating fundamental rules of Python and resulting in corrupted output. This now correctly raises an exception. This issue has been present since `update_into` was originally introduced in cryptography 1.8. A vulnerability was found in python-cryptography. In affected versions, `Cipher.update_into` would accept Python objects which implement the buffer protocol but provide only immutable buffers. This issue allows immutable objects (such as `bytes`) to be mutated, thus violating the fundamental rules of Python, resulting in corrupted output.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-33154'>CVE-2026-33154</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-03-20</td>
+                        <td>dynaconf: jinja2: Dynaconf: Arbitrary code execution via Server-Side Template Injection</td>
+                        <td>dynaconf is a configuration management tool for Python. Prior to version 3.2.13, Dynaconf is vulnerable to Server-Side Template Injection (SSTI) due to unsafe template evaluation in the @Jinja resolver. When the jinja2 package is installed, Dynaconf evaluates template expressions embedded in configuration values without a sandboxed environment. This issue has been patched in version 3.2.13. A flaw was found in dynaconf, a Python configuration management tool. This Server-Side Template Injection (SSTI) vulnerability occurs due to unsafe template evaluation in the @Jinja resolver when the jinja2 package is installed. A remote attacker could exploit this by embedding malicious template expressions in configuration values, which are then processed without a sandboxed environment. This could lead to arbitrary code execution on the affected system.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-68121'>CVE-2025-68121</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2026-02-05</td>
@@ -1059,6 +1171,13 @@ Red Hat Satellite does not use the affected functions during runtime, therefore 
                         <td>2026-02-03</td>
                         <td>Django: Django: Denial of Service via crafted HTML inputs</td>
                         <td>This is a MODERATE impact denial-of-service flaw in Django. Applications utilizing Django that process untrusted HTML inputs with a large number of unmatched end tags through the `Truncator.chars()` or `Truncator.words()` methods (with `html=True`), or the `truncatechars_html` and `truncatewords_html` template filters, may experience resource exhaustion. This can lead to the application becoming unavailable.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-69227'>CVE-2025-69227</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-01-05</td>
+                        <td>aiohttp: aiohttp: Denial of Service via specially crafted POST request</td>
+                        <td>This vulnerability is rated Moderate for Red Hat products as it can lead to a Denial of Service (DoS) in applications utilizing the `aiohttp` library. Exploitation requires Python optimizations to be explicitly enabled (e.g., via `-O` or `PYTHONOPTIMIZE=1`) and the application to process POST requests using the `Request.post()` method. Red Hat products are affected if they meet these specific configuration and usage criteria.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-62707'>CVE-2025-62707</a></td>
@@ -1206,6 +1325,27 @@ The current python-django issue may be resolved in an upcoming Satellite update.
                         <td>Exploitation of this flaw requires that a user or service processes untrusted input.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-26996'>CVE-2026-26996</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-02-20</td>
+                        <td>minimatch: minimatch: Denial of Service via specially crafted glob patterns</td>
+                        <td>Exploitation of this flaw requires that a user or service processes untrusted input.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-0598'>CVE-2026-0598</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-02-06</td>
+                        <td>ansible-lightspeed: Broken Object Level Authorization Leading to Cross-User AI Conversation Context Injection in Ansible Lightspeed API</td>
+                        <td>This vulnerability is rated Moderate for Red Hat. The flaw in Ansible Lightspeed API conversation endpoints allows an authenticated attacker to access or influence other users' AI chat sessions due to improper ownership validation of conversation identifiers. This can lead to unauthorized information disclosure and manipulation of AI-generated outputs.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-69228'>CVE-2025-69228</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-01-05</td>
+                        <td>aiohttp: aiohttp: Denial of Service via memory exhaustion from crafted POST request</td>
+                        <td>This vulnerability is rated Moderate for Red Hat products. A flaw in aiohttp allows a remote attacker to cause a Denial of Service (DoS) by sending a specially crafted POST request to an aiohttp server that utilizes the `Request.post()` method. This can lead to uncontrolled memory consumption, freezing the server and making the server unavailable.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-66031'>CVE-2025-66031</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2025-11-26</td>
@@ -1253,6 +1393,13 @@ The current python-django issue may be resolved in an upcoming Satellite update.
                         <td>2023-10-25</td>
                         <td>pip: Mercurial configuration injectable in repo revision when installing via pip</td>
                         <td>Mercurial is not available in RHEL 8 and 9,  so the vulnerability cannot be exploited. Without mercurial installed (the hg command), pip cannot clone and install from hg+http[s] URLs.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-39373'>CVE-2026-39373</a></td>
+                        <td data-sortvalue="3" class='color-low'>Low</td>
+                        <td>2026-04-07</td>
+                        <td>JWCrypto: python-cryptography: python: JWCrypto: Memory exhaustion via crafted compressed JWE tokens</td>
+                        <td>This is an Important denial of service vulnerability in JWCrypto, a Python library used in Red Hat products such as Red Hat Ansible Automation Platform and Red Hat Enterprise Linux. An unauthenticated attacker can send specially crafted JWE tokens with ZIP compression, leading to excessive memory consumption and potential system exhaustion. This can result in a denial of service on affected systems.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-53643'>CVE-2025-53643</a></td>
