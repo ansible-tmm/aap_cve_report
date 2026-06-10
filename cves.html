@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-06-09 @ 23:15:47">
+        <meta name="description" content="Report generated on 2026-06-10 @ 00:15:52">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-06-09 @ 23:15:47">
+        <meta property="og:description" content="Report generated on 2026-06-10 @ 00:15:52">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-06-09 @ 23:15:47</i>
+                <i>Report generated on 2026-06-10 @ 00:15:52</i>
                 </span>
             </div>
         </nav>
@@ -72,6 +72,20 @@ Further investigation would need to be done to determine exactly which CVEs affe
                         <td>2025-12-23</td>
                         <td>langchain-core: LangChain: Arbitrary code execution via serialization injection</td>
                         <td>This vulnerability is rated Critical for Red Hat products. A serialization injection flaw in LangChain's `dumps()` and `dumpd()` functions allows remote attackers to achieve arbitrary code execution. This occurs when user-controlled data containing the internal 'lc' key is improperly deserialized as a legitimate LangChain object.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-48710'>CVE-2026-48710</a></td>
+                        <td data-sortvalue="0" class='color-critical'>Critical</td>
+                        <td>2026-05-26</td>
+                        <td>starlette: Starlette: Security restriction bypass via malformed HTTP Host header</td>
+                        <td>The impact is rated as Critical because path-based authentication and access control middleware can be completely bypassed by an unauthenticated remote attacker using a crafted HTTP Host header.
+Starlette reconstructs `request.url` by combining the HTTP Host header value with the request path, but performs no validation on the Host header. An attacker can inject path separators or query characters into the Host header (e.g., `Host: example.com/health?x=`), causing `request.url.path` to return a value that differs from the actual HTTP `request path` used for routing. Middleware that enforces authentication or authorization decisions based on `request.url.path` will evaluate the injected path rather than the real one, allowing the attacker to reach protected endpoints.
+With regard to CVSS metrics, the Attack Vector (AV) is Network and Privileges Required (PR) is None, because the attack requires only the ability to send HTTP requests with a crafted Host header. User interaction is not required.
+Red Hat Satellite / Insights (IoP): The starlette package is included as a dependency of Connexion, but this flaw is rated Low impact because these services do not use path-based authentication middleware and all services are deployed behind reverse proxies. 
+OpenShift Lightspeed (OLS): The starlette package is included as a dependency, but this flaw is rated Low impact because authentication is enforced via Kubernetes TokenReview/SubjectAccessReview through FastAPI dependency injection, not path-based middleware; request.url.path is only used for metrics and response header application.
+RHOAI Kubeflow Training images: starlette is being used as indirect dependency of mlflow, but this flaw is rated as Low impact because mlflow is used as client library only to store training metrics on remote server, it doesn't expose any endpoint.
+RHOAI odh-automl: The impact is reduced to Low since starlette is only used in the backend and it's transient dependency and starlette is not used at all to serve any endpoints.
+RHOAI odh-kserve-autogluon-server-rhel9: While the Starlette dependency is present in the build, the vulnerable code in starlette is not reachable. This reduces the impact to low.</td>
                     </tr>
                                                                             <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-61726'>CVE-2025-61726</a></td>
@@ -247,6 +261,13 @@ The majority of RHEL utilities are not long-running applications; instead, they 
 As go-lang vendors its dependencies, a package may contain a library with a known vulnerability, solely because of lower tier libraries including it as a part of its dependencies, but the vulnerable code is not reachable at runtime. In such cases the issue is not exploitable. We classify these situations as “Not affected” or “Will not fix,” depending on the risk of breaking other unrelated packages.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-6321'>CVE-2026-6321</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-05-04</td>
+                        <td>fast-uri: fast-uri: Path traversal vulnerability allows bypass of security policies</td>
+                        <td>fast-uri decoded percent-encoded path separators and dot segments before applying dot-segment removal in its normalize() and equal() functions. Encoded path data was treated like real slashes and parent-directory references, so distinct URIs could collapse onto the same normalized path. Applications that normalize or compare attacker-controlled URLs to enforce path-based policy can be bypassed, with a path that appears confined under an allowed prefix normalizing to a different location. Versions <= 3.1.0 are affected. Update to 3.1.1 or later. A flaw was found in fast-uri. A remote attacker could exploit this vulnerability by providing a specially crafted Uniform Resource Locator (URL) containing percent-encoded path separators and dot segments. Due to incorrect processing, fast-uri would decode these elements before proper normalization, leading to distinct URLs resolving to the same internal path. This could allow an attacker to bypass security policies that rely on path-based comparisons, potentially gaining unauthorized access to resources.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-6266'>CVE-2026-6266</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-05-04</td>
@@ -254,11 +275,114 @@ As go-lang vendors its dependencies, a package may contain a library with a know
                         <td>A flaw was found in the AAP gateway. The user auto-link strategy, introduced in AAP 2.6, automatically links an external Identity Provider (IDP) identity to an existing AAP user account based on email matching without verifying email ownership. This allows a remote attacker to potentially hijack a victim's account or gain unauthorized access to other accounts, including administrative accounts, by manipulating the IDP-provided email. A flaw was found in the AAP gateway. The user auto-link strategy, introduced in AAP 2.6, automatically links an external Identity Provider (IDP) identity to an existing AAP user account based on email matching without verifying email ownership. This allows a remote attacker to potentially hijack a victim's account or gain unauthorized access to other accounts, including administrative accounts, by manipulating the IDP-provided email.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-7246'>CVE-2026-7246</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-04-30</td>
+                        <td>github.com/pallets/click: Pallets Click: Arbitrary command execution via command injection in click.edit()</td>
+                        <td>A command injection vulnerability exists in the click.edit() function of the Pallets Click library. The filename parameter is not sanitized before being interpolated into a shell command string, allowing an attacker who controls the filename to inject and execute arbitrary OS commands.
+The root cause is in edit_files(), which wraps the filename in double quotes and passes the resulting string to subprocess.Popen() with shell=True. A filename containing a double-quote character (") can break out of the quoting context and introduce arbitrary shell metacharacters.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-40895'>CVE-2026-40895</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-04-21</td>
+                        <td>follow-redirects: follow-redirects: Information disclosure via cross-domain redirects</td>
+                        <td>follow-redirects is an open source, drop-in replacement for Node's `http` and `https` modules that automatically follows redirects. Prior to 1.16.0, when an HTTP request follows a cross-domain redirect (301/302/307/308), follow-redirects only strips authorization, proxy-authorization, and cookie headers (matched by regex at index.js). Any custom authentication header (e.g., X-API-Key, X-Auth-Token, Api-Key, Token) is forwarded verbatim to the redirect target. This vulnerability is fixed in 1.16.0. A flaw was found in follow-redirects. When an HTTP request follows a cross-domain redirect (a redirection to a different domain), custom authentication headers, such as X-API-Key or X-Auth-Token, are not properly stripped. This allows these sensitive headers to be forwarded verbatim to the redirect target, potentially leading to the unintended disclosure of authentication information to an untrusted third party.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-40192'>CVE-2026-40192</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-04-15</td>
+                        <td>Pillow: Pillow: Denial of Service via decompression bomb in FITS image processing</td>
+                        <td>Pillow is a Python imaging library. Versions 10.3.0 through 12.1.1 did not limit the amount of GZIP-compressed data read when decoding a FITS image, making them vulnerable to decompression bomb attacks. A specially crafted FITS file could cause unbounded memory consumption, leading to denial of service (OOM crash or severe performance degradation). If users are unable to immediately upgrade, they should only open specific image formats, excluding FITS, as a workaround. A flaw was found in Pillow, a Python imaging library. This vulnerability allows a remote attacker to trigger a denial of service (DoS) by providing a specially crafted FITS image file. The library's failure to limit the amount of GZIP-compressed data during decoding can lead to unbounded memory consumption, causing the system to crash or experience severe performance issues.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-62718'>CVE-2025-62718</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-04-09</td>
+                        <td>axios: Axios: Server-Side Request Forgery and proxy bypass due to improper hostname normalization</td>
+                        <td>This flaw has limited impact due to combination of non-default conditions to exploit: the attacker must be able to control or influence URLs passed to axios in a server-side context, the application must have both `HTTP_PROXY` and `NO_PROXY` configured, and the proxy itself must be positioned to act on the misdirected traffic or have been compromised by the attacker to intercept the rerouted traffic.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-39892'>CVE-2026-39892</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-04-08</td>
+                        <td>cryptography: Cryptography: Buffer overflow via non-contiguous buffer in API</td>
+                        <td>In default configurations Red Hat products isolate service processes from total system access. Should an attacker be able to exploit this vulnerability their impact will be limited to that service account and they will not have access to the broader system.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-32280'>CVE-2026-32280</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-04-08</td>
+                        <td>crypto/x509: crypto/tls: golang: Go: Denial of Service vulnerability in certificate chain building</td>
+                        <td>During chain building, the amount of work that is done is not correctly limited when a large number of intermediate certificates are passed in VerifyOptions.Intermediates, which can lead to a denial of service. This affects both direct users of crypto/x509 and users of crypto/tls. A flaw was found in the Go standard library packages `crypto/x509` and `crypto/tls`. During the process of building a certificate chain, an attacker can provide a large number of intermediate certificates. This excessive input is not properly limited, leading to an uncontrolled amount of work being performed. This can result in a denial of service (DoS) condition, making the affected system or application unavailable to legitimate users.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-32283'>CVE-2026-32283</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-04-08</td>
+                        <td>crypto/tls: golang: Go crypto/tls: Denial of Service via multiple TLS 1.3 key update messages</td>
+                        <td>If one side of the TLS connection sends multiple key update messages post-handshake in a single record, the connection can deadlock, causing uncontrolled consumption of resources. This can lead to a denial of service. This only affects TLS 1.3. A flaw was found in the `crypto/tls` package within the Go (golang) standard library, specifically affecting TLS 1.3 connections. A remote attacker can exploit this vulnerability by sending multiple key update messages in a single record after the handshake. This can cause the connection to deadlock, leading to uncontrolled consumption of resources and ultimately a denial of service (DoS).</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-39363'>CVE-2026-39363</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-04-07</td>
+                        <td>Vite: Vite: Information disclosure via WebSocket connection bypasses access control</td>
+                        <td>Vite is a frontend tooling framework for JavaScript. From 6.0.0 to before 6.4.2, 7.3.2, and 8.0.5, if it is possible to connect to the Vite dev server’s WebSocket without an Origin header, an attacker can invoke fetchModule via the custom WebSocket event vite:invoke and combine file://... with ?raw (or ?inline) to retrieve the contents of arbitrary files on the server as a JavaScript string (e.g., export default "..."). The access control enforced in the HTTP request path (such as server.fs.allow) is not applied to this WebSocket-based execution path. This vulnerability is fixed in 6.4.2, 7.3.2, and 8.0.5. A flaw was found in Vite, a frontend tooling framework. A remote attacker can exploit this vulnerability by connecting to the Vite development server's WebSocket without an Origin header. This allows the attacker to invoke the fetchModule function, enabling them to retrieve the contents of arbitrary files on the server. This information disclosure can lead to unauthorized access to sensitive data.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-4800'>CVE-2026-4800</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-03-31</td>
                         <td>lodash: lodash: Arbitrary code execution via untrusted input in template imports</td>
                         <td>In the context of Red Hat Enterprise Linux, the grafana and grafana-pcp packages execute the affected JavaScript entirely client-side within the user's browser. Consequently, the attack surface is strictly restricted to the local browser environment.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-34070'>CVE-2026-34070</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-31</td>
+                        <td>langchain: path traversal in legacy load_prompt functions in langchain-core</td>
+                        <td>This flaw is exploitable in applications that accept prompt configs from untrusted sources, including low-code AI builders and API wrappers that expose `load_prompt_from_config()`.
+Also, the affected functions (`load_prompt`, `load_prompt_from_config` and the `.save()` method on prompt classes) are undocumented legacy APIs. They are superseded by the `dumpd`/`dumps`/`load`/`loads` serialization APIs in `langchain_core.load`, which do not perform filesystem reads and use an allowlist-based security model.
+An attacker who controls or influences the prompt configuration dictionary can read files outside the intended directory, such as cloud-mounted secrets, internal system prompts, cloud credentials, Kubernetes manifests, CI/CD configs and application settings.
+Due to these reasons, this vulnerability has been rated with an important severity.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-33896'>CVE-2026-33896</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-27</td>
+                        <td>node-forge: Forge (node-forge): Certificate validation bypass allows unauthorized certificate issuance</td>
+                        <td>Forge (also called `node-forge`) is a native implementation of Transport Layer Security in JavaScript. Prior to version 1.4.0, `pki.verifyCertificateChain()` does not enforce RFC 5280 basicConstraints requirements when an intermediate certificate lacks both the `basicConstraints` and `keyUsage` extensions. This allows any leaf certificate (without these extensions) to act as a CA and sign other certificates, which node-forge will accept as valid. Version 1.4.0 patches the issue. A flaw was found in Forge (also known as node-forge), a JavaScript implementation of Transport Layer Security (TLS). The `pki.verifyCertificateChain()` function does not properly enforce certificate validation rules. This oversight allows an intermediate certificate that lacks specific security extensions to enable any leaf certificate to function as a Certificate Authority (CA) and sign other certificates. Consequently, node-forge could accept these unauthorized certificates as valid, potentially leading to spoofing or the issuance of illegitimate certificates.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-33895'>CVE-2026-33895</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-27</td>
+                        <td>node-forge: Forge: Authentication bypass via forged Ed25519 cryptographic signatures</td>
+                        <td>Forge (also called `node-forge`) is a native implementation of Transport Layer Security in JavaScript. Prior to version 1.4.0, Ed25519 signature verification accepts forged non-canonical signatures where the scalar S is not reduced modulo the group order (`S >= L`). A valid signature and its `S + L` variant both verify in forge, while Node.js `crypto.verify` (OpenSSL-backed) rejects the `S + L` variant, as defined by the specification. This class of signature malleability has been exploited in practice to bypass authentication and authorization logic (see CVE-2026-25793, CVE-2022-35961). Applications relying on signature uniqueness (i.e., dedup by signature bytes, replay tracking, signed-object canonicalization checks) may be bypassed. Version 1.4.0 patches the issue. A flaw was found in Forge (also called `node-forge`), a JavaScript library used for Transport Layer Security (TLS). The library's Ed25519 signature verification process does not correctly validate cryptographic signatures, allowing forged non-canonical signatures to be accepted. A remote attacker could exploit this signature malleability to bypass authentication and authorization logic. This vulnerability can also circumvent security checks in applications that rely on the uniqueness of cryptographic signatures for functions such as deduplication or preventing replay attacks.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-33894'>CVE-2026-33894</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-27</td>
+                        <td>node-forge: Forge: Signature Forgery via Weak RSASSA PKCS#1 v1.5 Verification</td>
+                        <td>Forge (also called `node-forge`) is a native implementation of Transport Layer Security in JavaScript. Prior to version 1.4.0, RSASSA PKCS#1 v1.5 signature verification accepts forged signatures for low public exponent keys (e=3). Attackers can forge signatures by stuffing “garbage” bytes within the ASN structure in order to construct a signature that passes verification, enabling Bleichenbacher style forgery. This issue is similar to CVE-2022-24771, but adds bytes in an addition field within the ASN structure, rather than outside of it.  Additionally, forge does not validate that signatures include a minimum of 8 bytes of padding as defined by the specification, providing attackers additional space to construct Bleichenbacher forgeries. Version 1.4.0 patches the issue. A flaw was found in Forge (also called `node-forge`), a JavaScript implementation of Transport Layer Security. A remote attacker could exploit weaknesses in the RSASSA PKCS#1 v1.5 signature verification process. By crafting malicious signatures that include extra data within the ASN structure and do not meet padding requirements, an attacker can bypass signature validation. This allows for the creation of forged signatures that appear legitimate, potentially compromising the integrity and authenticity of communications.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-33891'>CVE-2026-33891</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-27</td>
+                        <td>node-forge: node-forge: Denial of Service via infinite loop in BigInteger.modInverse()</td>
+                        <td>Forge (also called `node-forge`) is a native implementation of Transport Layer Security in JavaScript. Prior to version 1.4.0, a Denial of Service (DoS) vulnerability exists in the node-forge library due to an infinite loop in the BigInteger.modInverse() function (inherited from the bundled jsbn library). When modInverse() is called with a zero value as input, the internal Extended Euclidean Algorithm enters an unreachable exit condition, causing the process to hang indefinitely and consume 100% CPU. Version 1.4.0 patches the issue. A flaw was found in the node-forge library, a JavaScript implementation of Transport Layer Security. This vulnerability, inherited from the bundled jsbn library, allows a remote attacker to cause a Denial of Service (DoS). When the BigInteger.modInverse() function is called with a zero value, it enters an infinite loop, causing the process to hang indefinitely and consume 100% of the CPU resources.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-4926'>CVE-2026-4926</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-03-26</td>
+                        <td>path-to-regexp: path-to-regexp: Denial of Service via crafted regular expressions</td>
+                        <td>This is an Important flaw in `path-to-regexp` that can lead to a Denial of Service. The vulnerability occurs when specially crafted input containing multiple sequential optional groups is used to generate regular expressions, causing exponential resource consumption.
+The Red Hat Advanced Cluster Security is not affected by this issue since it's shipping a `path-to-regexp` version which doesn't contain the vulnerable code.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-30922'>CVE-2026-30922</a></td>
@@ -502,11 +626,29 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>Red Hat has evaluated this vulnerability. This issue only affects versions AAP 2.5 GA and onwards.</td>
                     </tr>
                                         <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-32280'>CVE-2026-32280</a></td>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-41140'>CVE-2026-41140</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-04-08</td>
-                        <td>crypto/x509: crypto/tls: golang: Go: Denial of Service vulnerability in certificate chain building</td>
-                        <td>During chain building, the amount of work that is done is not correctly limited when a large number of intermediate certificates are passed in VerifyOptions.Intermediates, which can lead to a denial of service. This affects both direct users of crypto/x509 and users of crypto/tls. A flaw was found in the Go standard library packages `crypto/x509` and `crypto/tls`. During the process of building a certificate chain, an attacker can provide a large number of intermediate certificates. This excessive input is not properly limited, leading to an uncontrolled amount of work being performed. This can result in a denial of service (DoS) condition, making the affected system or application unavailable to legitimate users.</td>
+                        <td>2026-04-24</td>
+                        <td>poetry: Poetry: Path traversal vulnerability allows arbitrary file write via malicious package extraction</td>
+                        <td>Poetry is a dependency manager for Python. Prior to 2.3.4, the extractall() function in src/poetry/utils/helpers.py:410-426 extracts sdist tarballs without path traversal protection on Python versions where tarfile.data_filter is unavailable. Considering only Python versions which are still supported by Poetry, these are 3.10.0 - 3.10.12 and 3.11.0 - 3.11.4. This vulnerability is fixed in 2.3.4. A flaw was found in Poetry, a dependency manager for Python. This vulnerability allows a remote attacker to perform a path traversal attack. By crafting a malicious software package, the `extractall()` function in Poetry can be tricked into writing files to unintended locations on the system. This could lead to the creation or overwrite of critical system files, potentially compromising the integrity of the system.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-40175'>CVE-2026-40175</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-04-10</td>
+                        <td>axios: Axios: Remote Code Execution via Prototype Pollution escalation</td>
+                        <td>The Axios library, a promise-based HTTP client, is susceptible to an Important prototype pollution vulnerability. This flaw, when combined with specific "Gadget" attack chains in third-party dependencies, can lead to remote code execution or full cloud compromise, including bypassing AWS IMDSv2.
+With pollution check patch available in Axios gives an advantage, it remains vulnerable due to HTTP Header Sanitation and Server-Side Request Forgery threat.
+Red Hat products that incorporate the vulnerable Axios library are affected.
+The openshift4/ose-monitoring-plugin-rhel9 container image is not vulnerable to this flaw. The affected component is used as a build-time dependency but it's not shipped in the final product, meaning the flaw is not present thus cannot be exploited in the container deployments.
+Regarding openshift4/ose-console for Product stream 4.12 and 4.13, the vulnerable component is present (indirect dependency), but the vulnerability is not exploitable in our case due to the browser runtime, where the required Node.js-specific attack vectors are not available. With this, the impact becomes low.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-40217'>CVE-2026-40217</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-04-10</td>
+                        <td>LiteLLM: LiteLLM: Arbitrary Code Execution via bytecode rewriting</td>
+                        <td>LiteLLM through 2026-04-08 allows remote attackers to execute arbitrary code via bytecode rewriting at the /guardrails/test_custom_code URI. A flaw was found in LiteLLM. A remote attacker can exploit this flaw by performing bytecode rewriting at the `/guardrails/test_custom_code` URI. This could lead to arbitrary code execution, allowing the attacker to run malicious code on the affected system.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-33810'>CVE-2026-33810</a></td>
@@ -514,6 +656,13 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>2026-04-08</td>
                         <td>crypto/x509: golang: Go crypto/x509: Certificate validation bypass due to incorrect DNS constraint application</td>
                         <td>When verifying a certificate chain containing excluded DNS constraints, these constraints are not correctly applied to wildcard DNS SANs which use a different case than the constraint. This only affects validation of otherwise trusted certificate chains, issued by a root CA in the VerifyOptions.Roots CertPool, or in the system certificate pool. A flaw was found in the `crypto/x509` package within Go (golang). When verifying a certificate chain, excluded DNS (Domain Name System) constraints are not correctly applied to wildcard DNS Subject Alternative Names (SANs) if the case of the SAN differs from the constraint. This oversight could allow an attacker to bypass certificate validation, potentially leading to the acceptance of a malicious certificate that should have been rejected. This issue specifically impacts the validation of trusted certificate chains.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-39364'>CVE-2026-39364</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-04-07</td>
+                        <td>vite: Vite: Information disclosure via query parameter manipulation on the development server</td>
+                        <td>Vite is a frontend tooling framework for JavaScript. From 7.1.0 to before 7.3.2 and 8.0.5, on the Vite dev server, files that should be blocked by server.fs.deny (e.g., .env, *.crt) can be retrieved with HTTP 200 responses when query parameters such as ?raw, ?import&raw, or ?import&url&inline are appended. This vulnerability is fixed in 7.3.2 and 8.0.5. A flaw was found in Vite, a frontend tooling framework for JavaScript. On the Vite development server, a remote attacker could exploit this vulnerability by appending specific query parameters, such as ?raw, to requests. This allows the attacker to bypass security restrictions and retrieve sensitive files, including environment variables (.env) and certificate files (*.crt), which should otherwise be blocked. This information disclosure could lead to further compromise of the system.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-35030'>CVE-2026-35030</a></td>
@@ -528,14 +677,6 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>2026-04-06</td>
                         <td>litellm: LiteLLM: Remote code execution and privilege escalation via unrestricted proxy configuration endpoint</td>
                         <td>This Important flaw in LiteLLM allows an authenticated user to bypass authorization on the `/config/update` endpoint. This enables modification of proxy configurations and environment variables, leading to remote code execution, unauthorized file access, and potential account takeover. Red Hat Ansible Automation Platform, Lightspeed Core, and Red Hat OpenShift AI are affected.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-4926'>CVE-2026-4926</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-03-26</td>
-                        <td>path-to-regexp: path-to-regexp: Denial of Service via crafted regular expressions</td>
-                        <td>This is an Important flaw in `path-to-regexp` that can lead to a Denial of Service. The vulnerability occurs when specially crafted input containing multiple sequential optional groups is used to generate regular expressions, causing exponential resource consumption.
-The Red Hat Advanced Cluster Security is not affected by this issue since it's shipping a `path-to-regexp` version which doesn't contain the vulnerable code.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-28498'>CVE-2026-28498</a></td>
@@ -1139,11 +1280,32 @@ Red Hat Satellite does not use the affected functions during runtime, therefore 
                         <td>cryptography is a package designed to expose cryptographic primitives and recipes to Python developers. In affected versions `Cipher.update_into` would accept Python objects which implement the buffer protocol, but provide only immutable buffers. This would allow immutable objects (such as `bytes`) to be mutated, thus violating fundamental rules of Python and resulting in corrupted output. This now correctly raises an exception. This issue has been present since `update_into` was originally introduced in cryptography 1.8. A vulnerability was found in python-cryptography. In affected versions, `Cipher.update_into` would accept Python objects which implement the buffer protocol but provide only immutable buffers. This issue allows immutable objects (such as `bytes`) to be mutated, thus violating the fundamental rules of Python, resulting in corrupted output.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-32282'>CVE-2026-32282</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-04-08</td>
+                        <td>golang: internal/syscall/unix: Root.Chmod can follow symlinks out of the root</td>
+                        <td>To exploit this issue, an attacker needs access to the system and the required permissions to create a symbolic link. Additionally, the attacker must swap the target file with a symbolic link in the exact window after the `Root.Chmod` function checks its target but before acting. Due to these conditions, this flaw has been rated with a moderate severity.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-33154'>CVE-2026-33154</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2026-03-20</td>
                         <td>dynaconf: jinja2: Dynaconf: Arbitrary code execution via Server-Side Template Injection</td>
                         <td>dynaconf is a configuration management tool for Python. Prior to version 3.2.13, Dynaconf is vulnerable to Server-Side Template Injection (SSTI) due to unsafe template evaluation in the @Jinja resolver. When the jinja2 package is installed, Dynaconf evaluates template expressions embedded in configuration values without a sandboxed environment. This issue has been patched in version 3.2.13. A flaw was found in dynaconf, a Python configuration management tool. This Server-Side Template Injection (SSTI) vulnerability occurs due to unsafe template evaluation in the @Jinja resolver when the jinja2 package is installed. A remote attacker could exploit this by embedding malicious template expressions in configuration values, which are then processed without a sandboxed environment. This could lead to arbitrary code execution on the affected system.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-27904'>CVE-2026-27904</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-02-26</td>
+                        <td>minimatch: Minimatch: Denial of Service via catastrophic backtracking in glob expressions</td>
+                        <td>Exploitation of this flaw requires that a user or service processes untrusted input.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-26996'>CVE-2026-26996</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-02-20</td>
+                        <td>minimatch: minimatch: Denial of Service via specially crafted glob patterns</td>
+                        <td>Exploitation of this flaw requires that a user or service processes untrusted input.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-68121'>CVE-2025-68121</a></td>
@@ -1305,25 +1467,31 @@ The current python-django issue may be resolved in an upcoming Satellite update.
                         <td>quic-go is an implementation of the QUIC protocol in Go. Prior to version 0.42.0, an attacker can cause its peer to run out of memory sending a large number of `NEW_CONNECTION_ID` frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a `RETIRE_CONNECTION_ID` frame. The attacker can prevent the receiver from sending out (the vast majority of) these `RETIRE_CONNECTION_ID` frames by collapsing the peers congestion window (by selectively acknowledging received packets) and by manipulating the peer's RTT estimate. Version 0.42.0 contains a patch for the issue. No known workarounds are available. A flaw was found in quic-go. This issue may allow an attacker to trigger a denial of service by sending a large number of NEW_CONNECTION_ID frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a RETIRE_CONNECTION_ID frame, but the attacker can prevent the receiver from sending out the vast majority of these RETIRE_CONNECTION_ID frames by selectively acknowledging received packets and collapsing the peers congestion window and by manipulating the peer's RTT estimate.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-28684'>CVE-2026-28684</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-04-20</td>
+                        <td>python-dotenv: python-dotenv: Arbitrary file overwrite via symbolic link following</td>
+                        <td>python-dotenv reads key-value pairs from a .env file and can set them as environment variables. Prior to version 1.2.2, `set_key()` and `unset_key()` in python-dotenv follow symbolic links when rewriting `.env` files, allowing a local attacker to overwrite arbitrary files via a crafted symlink when a cross-device rename fallback is triggered. Users should upgrade to v.1.2.2 or, as a workaround, apply the patch manually. A flaw was found in python-dotenv. A local attacker can exploit this by crafting a symbolic link, which the `set_key()` and `unset_key()` functions in python-dotenv follow when rewriting `.env` files. This can lead to the overwriting of arbitrary files on the system.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-28390'>CVE-2026-28390</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-04-07</td>
+                        <td>openssl: OpenSSL: Denial of Service due to NULL pointer dereference in CMS EnvelopedData processing</td>
+                        <td>This CVE has been rated as moderate by redhat because the vulnerability is limited to a denial-of-service condition caused by a NULL pointer dereference in OpenSSL CMS processing, without evidence of memory corruption or code execution, furthermore the Affected functionality is niche. The vulnerable path requires:
+CMS/S/MIME processing,
+specifically CMS_decrypt(),
+with RSA-OAEP KeyTransportRecipientInfo.
+Many OpenSSL consumers never use CMS APIs, never process S/MIME,
+or do not decrypt attacker-controlled CMS objects.
+So exposure is far narrower than a generic TLS parsing vulnerability.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-30827'>CVE-2026-30827</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2026-03-07</td>
                         <td>express-rate-limit: express-rate-limit: Denial of Service for IPv4 clients due to incorrect IPv6 subnet masking</td>
                         <td>express-rate-limit is a basic rate-limiting middleware for Express. In versions starting from 8.0.0 and prior to versions 8.0.2, 8.1.1, 8.2.2, and 8.3.0, the default keyGenerator in express-rate-limit applies IPv6 subnet masking (/56 by default) to all addresses that net.isIPv6() returns true for. This includes IPv4-mapped IPv6 addresses (::ffff:x.x.x.x), which Node.js returns as request.ip on dual-stack servers. Because the first 80 bits of all IPv4-mapped addresses are zero, a /56 (or any /32 to /80) subnet mask produces the same network key (::/56) for every IPv4 client. This collapses all IPv4 traffic into a single rate-limit bucket: one client exhausting the limit causes HTTP 429 for all other IPv4 clients. This issue has been patched in versions 8.0.2, 8.1.1, 8.2.2, and 8.3.0. A flaw was found in express-rate-limit. The default key generator incorrectly applies IPv6 subnet masking to IPv4-mapped IPv6 addresses, which are used when an IPv4 client connects to a dual-stack server. This misconfiguration causes all IPv4 traffic to be treated as a single entity for rate limiting. Consequently, a remote attacker can exhaust the rate limit with a single client, leading to a Denial of Service (DoS) for all other IPv4 clients by causing them to receive HTTP 429 errors.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-27904'>CVE-2026-27904</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2026-02-26</td>
-                        <td>minimatch: Minimatch: Denial of Service via catastrophic backtracking in glob expressions</td>
-                        <td>Exploitation of this flaw requires that a user or service processes untrusted input.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-26996'>CVE-2026-26996</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2026-02-20</td>
-                        <td>minimatch: minimatch: Denial of Service via specially crafted glob patterns</td>
-                        <td>Exploitation of this flaw requires that a user or service processes untrusted input.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-0598'>CVE-2026-0598</a></td>
