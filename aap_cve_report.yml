@@ -13,6 +13,7 @@
         - Red Hat Ansible Automation Platform 2.4
         - Red Hat Ansible Automation Platform 2.5
         - Red Hat Ansible Automation Platform 2.6
+        - Red Hat Ansible Automation Platform 2.7
       ansible_tmm.aap_cve_report.cve_info:
         details: false
         product: "{{ item }}"
