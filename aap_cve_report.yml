@@ -28,7 +28,7 @@
         cve_table_output_dest: "{{ website_location }}"
         cve_table_become_publish: true
         cve_disclaimer: |
-          The CVEs listed are based on those which have been addressed in Red Hat Ansible Automation Platform 2.{4,5,6}.
+          The CVEs listed are based on those which have been addressed in Red Hat Ansible Automation Platform 2.{4,5,6,7}.
           Further investigation would need to be done to determine exactly which CVEs affect AWX.
 
     - name: Retrieve a repository from a distant location and make it available locally
