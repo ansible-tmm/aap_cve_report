@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-07-01 @ 23:15:49">
+        <meta name="description" content="Report generated on 2026-07-02 @ 00:15:46">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-07-01 @ 23:15:49">
+        <meta property="og:description" content="Report generated on 2026-07-02 @ 00:15:46">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-07-01 @ 23:15:49</i>
+                <i>Report generated on 2026-07-02 @ 00:15:46</i>
                 </span>
             </div>
         </nav>
@@ -633,6 +633,76 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>Red Hat has evaluated this vulnerability. This issue only affects versions AAP 2.5 GA and onwards.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44487'>CVE-2026-44487</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-06-11</td>
+                        <td>axios: Axios: Information disclosure of proxy credentials via redirect flows</td>
+                        <td>Axios is a promise based HTTP client for the browser and Node.js. Prior to 0.32.0 and 1.16.0, Axios’s Node.js HTTP adapter may forward a Proxy-Authorization header to a redirected origin during specific proxy-to-direct redirect flows. This affects Node.js usage, where an initial HTTP request is sent through an authenticated HTTP proxy, redirects are followed, and the redirected URL is no longer proxied. Under affected redirect shapes, the final origin can receive the proxy credential that was intended only for the outbound proxy. This vulnerability is fixed in 0.32.0 and 1.16.0. A flaw was found in Axios. During specific proxy-to-direct redirect flows in the Node.js HTTP adapter, a remote attacker could exploit this vulnerability. The Proxy-Authorization header, which contains proxy credentials and is intended only for the outbound proxy, may be forwarded to the final redirected origin. This can lead to the disclosure of sensitive proxy credentials to an unintended third party.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44488'>CVE-2026-44488</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-06-11</td>
+                        <td>axios: Axios: Denial of Service due to unenforced request and response size limits</td>
+                        <td>Axios is a promise based HTTP client for the browser and Node.js. Axios versions 1.7.0 through 1.15.x did not enforce configured request and response size limits when requests were sent with the fetch adapter. Applications that selected adapter: 'fetch', or ran in environments where axios resolved to the fetch adapter, could receive or send bodies larger than maxContentLength or maxBodyLength despite those limits being explicitly configured. This can cause resource exhaustion in server-side usage when a malicious or compromised server returns an oversized response, when an attacker can supply a large data: URL, or when an application forwards attacker-controlled request bodies through axios while relying on maxBodyLength as a boundary. This vulnerability is fixed in 0.32.0 and 1.16.0. A flaw was found in Axios, a promise-based HTTP client. When using the fetch adapter, Axios did not properly enforce configured request and response size limits. This vulnerability allows a remote attacker, through a malicious or compromised server, or by supplying a large data URL, to send or receive oversized data bodies. This can lead to resource exhaustion in server-side applications, resulting in a Denial of Service (DoS).</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44495'>CVE-2026-44495</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-06-11</td>
+                        <td>axios: Axios: Information disclosure due to prototype pollution vulnerability</td>
+                        <td>Axios is a promise based HTTP client for the browser and Node.js. From 0.19.0 to before 0.31.1 and 1.15.2, Axios contains prototype-pollution gadgets in request config processing. If another vulnerability in the same JavaScript process has already polluted Object.prototype.transformResponse, affected Axios versions may treat that inherited value as request configuration or as an option validator. Axios does not itself create the prototype pollution. Exploitability requires a separate prototype-pollution vulnerability or equivalent attacker control over Object.prototype before Axios creates a request. This vulnerability is fixed in 0.31.1 and 1.15.2. A flaw was found in Axios, a promise-based HTTP client. This vulnerability involves prototype pollution gadgets in the request configuration processing. If another vulnerability has already polluted the Object.prototype.transformResponse, affected Axios versions may incorrectly interpret this inherited value as part of the request configuration or as an option validator. Axios does not itself create the prototype pollution. Exploitability requires a separate prototype-pollution vulnerability or equivalent attacker control over Object.prototype before Axios creates a request.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-48526'>CVE-2026-48526</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-05-28</td>
+                        <td>python-pyjwt: PyJWT: Authentication bypass due to forged JSON Web Tokens</td>
+                        <td>PyJWT is a JSON Web Token implementation in Python. Prior to 2.13.0, when the verifier is decoding JSON Web Tokens, while supporting both asymmetric and HMAC algorithms, the library does not validate use of JSON Web Keys in HMAC algorithm, allowing attacker to use the issuer public key as the secret key for HMAC algorithm. This vulnerability is fixed in 2.13.0. A flaw was found in PyJWT, a Python library for JSON Web Token (JWT) implementation. When decoding JWTs, the library fails to validate the use of JSON Web Keys (JWK) in the HMAC algorithm while also supporting asymmetric algorithms. This allows a remote attacker to use the issuer's public key as the secret key for the HMAC algorithm, leading to the ability to forge JWTs. This vulnerability can result in authentication bypass or unauthorized access.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-8643'>CVE-2026-8643</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-05-27</td>
+                        <td>python-pip: Path traversal via malicious entry point name in pip wheel installation allows arbitrary file overwrite</td>
+                        <td>This Important flaw in pip's wheel installation process allows for arbitrary file overwrite due to path traversal. An attacker could exploit this by convincing a user to install a specially crafted malicious Python wheel. While file overwrites are limited to the installing user's permissions, using `pip install` with elevated privileges in Red Hat environments significantly increases the potential impact, potentially leading to system integrity compromise or arbitrary code execution.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-45736'>CVE-2026-45736</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-05-15</td>
+                        <td>ws: ws: Uninitialized memory disclosure via `websocket.close()` with `TypedArray`</td>
+                        <td>This Important vulnerability in the `ws` WebSocket library for Node.js could lead to sensitive information disclosure. The flaw occurs when a `TypedArray` is specifically provided as the `reason` argument to the `websocket.close()` function, potentially exposing uninitialized memory. Red Hat products utilizing this library may be affected if their implementations allow for such a crafted `close()` call.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44432'>CVE-2026-44432</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-05-13</td>
+                        <td>urllib3: urllib3: Denial of Service due to excessive HTTP response decompression</td>
+                        <td>urllib3 is an HTTP client library for Python. From 2.6.0 to before 2.7.0, urllib3 could decompress the whole response instead of the requested portion (1) during the second HTTPResponse.read(amt=N) call when the response was decompressed using the official Brotli library or (2) when HTTPResponse.drain_conn() was called after the response had been read and decompressed partially (compression algorithm did not matter here). These issues could cause urllib3 to fully decode a small amount of highly compressed data in a single operation. This could result in excessive resource consumption (high CPU usage and massive memory allocation for the decompressed data) on the client side. This vulnerability is fixed in 2.7.0. A flaw was found in urllib3, an HTTP client library for Python. This vulnerability allows a remote attacker to cause excessive resource consumption, such as high CPU usage and massive memory allocation, on the client side. This occurs when urllib3 attempts to decompress an entire HTTP response, even if only a partial read was requested, or when draining the connection after a partial decompression. This can lead to a Denial of Service (DoS) condition.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44293'>CVE-2026-44293</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-05-13</td>
+                        <td>protobufjs: protobufjs: Arbitrary code execution due to unsafe expression generation from crafted protobuf descriptors</td>
+                        <td>This is an Important flaw affecting Red Hat products that incorporate the protobufjs library. protobufjs is vulnerable to arbitrary code execution when compiling protobuf definitions into JavaScript. During generation of the toObject conversion function, a schema-controlled default value on a bytes field that is not a string can be emitted as unsafe JavaScript code. An attacker who can supply or influence the protobuf descriptor processed by the application (low privileges required) may achieve code execution in the Node.js process context. Fixed upstream in protobufjs 7.5.6 and 8.0.2. Affects Red Hat offerings that bundle protobufjs and process attacker-influenced protobuf schemas at runtime.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-42338'>CVE-2026-42338</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-05-12</td>
+                        <td>ip-address: ip-address: Cross-site scripting via improper HTML escaping of untrusted input</td>
+                        <td>ip-address is a library for parsing and manipulating IPv4 and IPv6 addresses in JavaScript. Prior to 10.1.1, Address6.group() and Address6.link() do not HTML-escape attacker-controlled content before embedding it in the HTML strings they return, and AddressError.parseMessage (emitted by the Address6 constructor for invalid input) can contain unescaped attacker-controlled content in one branch. An application that (1) passes untrusted input to Address6 and (2) renders the output of these methods, or the thrown error's parseMessage, as HTML (e.g. via innerHTML) is vulnerable to cross-site scripting. This vulnerability is fixed in 10.1.1. A flaw was found in ip-address, a JavaScript library for parsing and manipulating IPv4 and IPv6 addresses. This vulnerability allows a remote attacker to perform cross-site scripting (XSS) by providing untrusted input to the Address6 constructor. When an application renders the output of Address6.group(), Address6.link(), or the AddressError.parseMessage as HTML without proper escaping, the attacker-controlled content can be executed in the user's browser.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-6322'>CVE-2026-6322</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-05-05</td>
+                        <td>fast-uri: fast-uri: URI authority bypass due to improper delimiter handling</td>
+                        <td>fast-uri normalize() decoded percent-encoded authority delimiters inside the host component and then re-emitted them as raw delimiters during serialization. A host that combined an allowed domain, an encoded at-sign, and a different domain was re-emitted with the at-sign as a raw userinfo separator, changing the URI's authority to the second domain. Applications that normalize untrusted URLs before host allowlist checks, redirect validation, or outbound request routing can be steered to a different authority than the input appeared to specify. Versions <= 3.1.1 are affected. Update to 3.1.2 or later. A flaw was found in fast-uri. A remote attacker could exploit this vulnerability by crafting a malicious Uniform Resource Identifier (URI) that contains percent-encoded authority delimiters. The fast-uri library incorrectly decodes these delimiters during normalization and then re-emits them as raw separators, which can change the URI's intended authority. This issue allows applications that perform host allowlist checks, redirect validation, or outbound request routing to be steered to a different authority than specified, potentially bypassing security controls.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-41140'>CVE-2026-41140</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-04-24</td>
@@ -754,20 +824,6 @@ Regarding openshift4/ose-console for Product stream 4.12 and 4.13, the vulnerabl
                         <td>2025-12-02</td>
                         <td>mcp: DNS Rebinding Protection Disabled by Default in Model Context Protocol Python SDK</td>
                         <td>The MCP Python SDK, called `mcp` on PyPI, is a Python implementation of the Model Context Protocol (MCP). Prior to version 1.23.0, tThe Model Context Protocol (MCP) Python SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication using FastMCP with streamable HTTP or SSE transport, and has not configured TransportSecuritySettings, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access resources exposed by the MCP server on behalf of the user in those limited circumstances. Note that running HTTP-based MCP servers locally without authentication is not recommended per MCP security best practices. This issue does not affect servers using stdio transport. This vulnerability is fixed in 1.23.0. A DNS rebinding flaw has been discovered in the pypi mcp library. The Model Context Protocol (MCP) Python SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication using FastMCP with streamable HTTP or SSE transport, and has not configured TransportSecuritySettings, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access resources exposed by the MCP server on behalf of the user in those limited circumstances.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-48526'>CVE-2026-48526</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-05-28</td>
-                        <td>python-pyjwt: PyJWT: Authentication bypass due to forged JSON Web Tokens</td>
-                        <td>PyJWT is a JSON Web Token implementation in Python. Prior to 2.13.0, when the verifier is decoding JSON Web Tokens, while supporting both asymmetric and HMAC algorithms, the library does not validate use of JSON Web Keys in HMAC algorithm, allowing attacker to use the issuer public key as the secret key for HMAC algorithm. This vulnerability is fixed in 2.13.0. A flaw was found in PyJWT, a Python library for JSON Web Token (JWT) implementation. When decoding JWTs, the library fails to validate the use of JSON Web Keys (JWK) in the HMAC algorithm while also supporting asymmetric algorithms. This allows a remote attacker to use the issuer's public key as the secret key for the HMAC algorithm, leading to the ability to forge JWTs. This vulnerability can result in authentication bypass or unauthorized access.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44432'>CVE-2026-44432</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-05-13</td>
-                        <td>urllib3: urllib3: Denial of Service due to excessive HTTP response decompression</td>
-                        <td>urllib3 is an HTTP client library for Python. From 2.6.0 to before 2.7.0, urllib3 could decompress the whole response instead of the requested portion (1) during the second HTTPResponse.read(amt=N) call when the response was decompressed using the official Brotli library or (2) when HTTPResponse.drain_conn() was called after the response had been read and decompressed partially (compression algorithm did not matter here). These issues could cause urllib3 to fully decode a small amount of highly compressed data in a single operation. This could result in excessive resource consumption (high CPU usage and massive memory allocation for the decompressed data) on the client side. This vulnerability is fixed in 2.7.0. A flaw was found in urllib3, an HTTP client library for Python. This vulnerability allows a remote attacker to cause excessive resource consumption, such as high CPU usage and massive memory allocation, on the client side. This occurs when urllib3 attempts to decompress an entire HTTP response, even if only a partial read was requested, or when draining the connection after a partial decompression. This can lead to a Denial of Service (DoS) condition.</td>
                     </tr>
                                                                             <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-59530'>CVE-2025-59530</a></td>
@@ -1488,6 +1544,27 @@ The current python-django issue may be resolved in an upcoming Satellite update.
                         <td>quic-go is an implementation of the QUIC protocol in Go. Prior to version 0.42.0, an attacker can cause its peer to run out of memory sending a large number of `NEW_CONNECTION_ID` frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a `RETIRE_CONNECTION_ID` frame. The attacker can prevent the receiver from sending out (the vast majority of) these `RETIRE_CONNECTION_ID` frames by collapsing the peers congestion window (by selectively acknowledging received packets) and by manipulating the peer's RTT estimate. Version 0.42.0 contains a patch for the issue. No known workarounds are available. A flaw was found in quic-go. This issue may allow an attacker to trigger a denial of service by sending a large number of NEW_CONNECTION_ID frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a RETIRE_CONNECTION_ID frame, but the attacker can prevent the receiver from sending out the vast majority of these RETIRE_CONNECTION_ID frames by selectively acknowledging received packets and collapsing the peers congestion window and by manipulating the peer's RTT estimate.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44431'>CVE-2026-44431</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-05-13</td>
+                        <td>urllib3: urllib3: Information disclosure via cross-origin redirects forwarding sensitive headers</td>
+                        <td>urllib3 is an HTTP client library for Python. From 1.23 to before 2.7.0, cross-origin redirects followed from the low-level API via ProxyManager.connection_from_url().urlopen(..., assert_same_host=False) still forward these sensitive headers. This vulnerability is fixed in 2.7.0. A flaw was found in urllib3, an HTTP client library for Python. When using the low-level API via `ProxyManager.connection_from_url().urlopen()` with `assert_same_host=False`, cross-origin redirects can still forward sensitive headers. This could allow a remote attacker to gain unauthorized access to sensitive information.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-42035'>CVE-2026-42035</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-04-24</td>
+                        <td>axios: Axios: Arbitrary HTTP header injection via prototype pollution</td>
+                        <td>Axios is a promise based HTTP client for the browser and Node.js. Prior to 1.15.1 and 0.31.1, a prototype pollution gadget exists in the Axios HTTP adapter (lib/adapters/http.js) that allows an attacker to inject arbitrary HTTP headers into outgoing requests. The vulnerability exploits duck-type checking of the data payload, where if Object.prototype is polluted with getHeaders, append, pipe, on, once, and Symbol.toStringTag, Axios misidentifies any plain object payload as a FormData instance and calls the attacker-controlled getHeaders() function, merging the returned headers into the outgoing request. The vulnerable code resides exclusively in lib/adapters/http.js. The prototype pollution source does not need to originate from Axios itself — any prototype pollution primitive in any dependency in the application's dependency tree is sufficient to trigger this gadget. This vulnerability is fixed in 1.15.1 and 0.31.1. A flaw was found in Axios, a software library for making network requests. A remote attacker can exploit a prototype pollution vulnerability to inject arbitrary HTTP headers into outgoing requests. This occurs when the application's core object definitions are manipulated, causing Axios to misinterpret data and include attacker-controlled headers in network communications. This could lead to unauthorized actions or data manipulation.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-41240'>CVE-2026-41240</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-04-23</td>
+                        <td>DOMPurify: DOMPurify: Cross-Site Scripting (XSS) via inconsistent tag sanitization</td>
+                        <td>DOMPurify is a DOM-only cross-site scripting sanitizer for HTML, MathML, and SVG. Versions prior to 3.4.0 have an inconsistency between FORBID_TAGS and FORBID_ATTR handling when function-based ADD_TAGS is used. Commit c361baa added an early exit for FORBID_ATTR at line 1214. The same fix was not applied to FORBID_TAGS. At line 1118-1123, when EXTRA_ELEMENT_HANDLING.tagCheck returns true, the short-circuit evaluation skips the FORBID_TAGS check entirely. This allows forbidden elements to survive sanitization with their attributes intact. Version 3.4.0 patches the issue. A flaw was found in DOMPurify, a DOM-only cross-site scripting sanitizer. A remote attacker could exploit an inconsistency in how forbidden tags and attributes are handled when function-based tag additions are used. This allows malicious HTML, MathML, or SVG elements to bypass sanitization and execute arbitrary code in the user's browser, leading to Cross-Site Scripting (XSS).</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-28684'>CVE-2026-28684</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2026-04-20</td>
@@ -1555,13 +1632,6 @@ So exposure is far narrower than a generic TLS parsing vulnerability.</td>
                         <td>2026-06-15</td>
                         <td>ansible-lightspeed: Ansible Lightspeed: Session hijacking and unauthorized data access due to insufficient session expiration</td>
                         <td>This Moderate vulnerability in Ansible Lightspeed allows for post-logout session hijacking. An attacker who obtains a valid OAuth token before a user logs out can maintain persistent unauthorized access to Ansible Automation Platform resources, including inventories and playbooks, because the backend token is not invalidated upon client-side logout. This risk is primarily for data confidentiality, as current token scopes are read-only.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44431'>CVE-2026-44431</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2026-05-13</td>
-                        <td>urllib3: urllib3: Information disclosure via cross-origin redirects forwarding sensitive headers</td>
-                        <td>urllib3 is an HTTP client library for Python. From 1.23 to before 2.7.0, cross-origin redirects followed from the low-level API via ProxyManager.connection_from_url().urlopen(..., assert_same_host=False) still forward these sensitive headers. This vulnerability is fixed in 2.7.0. A flaw was found in urllib3, an HTTP client library for Python. When using the low-level API via `ProxyManager.connection_from_url().urlopen()` with `assert_same_host=False`, cross-origin redirects can still forward sensitive headers. This could allow a remote attacker to gain unauthorized access to sensitive information.</td>
                     </tr>
                                                                             <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-39329'>CVE-2024-39329</a></td>
