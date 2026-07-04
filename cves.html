@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-07-03 @ 23:15:50">
+        <meta name="description" content="Report generated on 2026-07-04 @ 00:15:42">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-07-03 @ 23:15:50">
+        <meta property="og:description" content="Report generated on 2026-07-04 @ 00:15:42">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-07-03 @ 23:15:50</i>
+                <i>Report generated on 2026-07-04 @ 00:15:42</i>
                 </span>
             </div>
         </nav>
@@ -637,21 +637,21 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-06-11</td>
                         <td>axios: Axios: Information disclosure of proxy credentials via redirect flows</td>
-                        <td>Axios is a promise based HTTP client for the browser and Node.js. Prior to 0.32.0 and 1.16.0, Axios’s Node.js HTTP adapter may forward a Proxy-Authorization header to a redirected origin during specific proxy-to-direct redirect flows. This affects Node.js usage, where an initial HTTP request is sent through an authenticated HTTP proxy, redirects are followed, and the redirected URL is no longer proxied. Under affected redirect shapes, the final origin can receive the proxy credential that was intended only for the outbound proxy. This vulnerability is fixed in 0.32.0 and 1.16.0. A flaw was found in Axios. During specific proxy-to-direct redirect flows in the Node.js HTTP adapter, a remote attacker could exploit this vulnerability. The Proxy-Authorization header, which contains proxy credentials and is intended only for the outbound proxy, may be forwarded to the final redirected origin. This can lead to the disclosure of sensitive proxy credentials to an unintended third party.</td>
+                        <td>This is an Important information disclosure flaw in Axios affecting Node.js environments. When an application uses Axios with an authenticated HTTP proxy and follows redirects from an HTTP to a non-proxied HTTPS destination, the Proxy-Authorization header may be inadvertently sent to the final origin server. This could lead to the exposure of sensitive proxy credentials to an unintended third party.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44488'>CVE-2026-44488</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-06-11</td>
                         <td>axios: Axios: Denial of Service due to unenforced request and response size limits</td>
-                        <td>Axios is a promise based HTTP client for the browser and Node.js. Axios versions 1.7.0 through 1.15.x did not enforce configured request and response size limits when requests were sent with the fetch adapter. Applications that selected adapter: 'fetch', or ran in environments where axios resolved to the fetch adapter, could receive or send bodies larger than maxContentLength or maxBodyLength despite those limits being explicitly configured. This can cause resource exhaustion in server-side usage when a malicious or compromised server returns an oversized response, when an attacker can supply a large data: URL, or when an application forwards attacker-controlled request bodies through axios while relying on maxBodyLength as a boundary. This vulnerability is fixed in 0.32.0 and 1.16.0. A flaw was found in Axios, a promise-based HTTP client. When using the fetch adapter, Axios did not properly enforce configured request and response size limits. This vulnerability allows a remote attacker, through a malicious or compromised server, or by supplying a large data URL, to send or receive oversized data bodies. This can lead to resource exhaustion in server-side applications, resulting in a Denial of Service (DoS).</td>
+                        <td>Important: A denial of service flaw was found in Axios, a JavaScript HTTP client library. This issue arises when applications utilize the `fetch` adapter, as configured request and response size limits are not properly enforced. A remote attacker could exploit this by sending or receiving excessively large data bodies, leading to resource exhaustion and potential denial of service in affected server-side applications.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44495'>CVE-2026-44495</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-06-11</td>
                         <td>axios: Axios: Information disclosure due to prototype pollution vulnerability</td>
-                        <td>Axios is a promise based HTTP client for the browser and Node.js. From 0.19.0 to before 0.31.1 and 1.15.2, Axios contains prototype-pollution gadgets in request config processing. If another vulnerability in the same JavaScript process has already polluted Object.prototype.transformResponse, affected Axios versions may treat that inherited value as request configuration or as an option validator. Axios does not itself create the prototype pollution. Exploitability requires a separate prototype-pollution vulnerability or equivalent attacker control over Object.prototype before Axios creates a request. This vulnerability is fixed in 0.31.1 and 1.15.2. A flaw was found in Axios, a promise-based HTTP client. This vulnerability involves prototype pollution gadgets in the request configuration processing. If another vulnerability has already polluted the Object.prototype.transformResponse, affected Axios versions may incorrectly interpret this inherited value as part of the request configuration or as an option validator. Axios does not itself create the prototype pollution. Exploitability requires a separate prototype-pollution vulnerability or equivalent attacker control over Object.prototype before Axios creates a request.</td>
+                        <td>This Important vulnerability in Axios, a promise-based HTTP client, can lead to information disclosure, including credential theft and response hijacking, or denial of service. Exploitation requires a separate prototype pollution vulnerability in the same JavaScript process, allowing an attacker to control `Object.prototype.transformResponse`. Red Hat products using affected Axios versions are at risk if another component introduces such pollution.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-48526'>CVE-2026-48526</a></td>
