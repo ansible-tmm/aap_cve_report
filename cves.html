@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-07-04 @ 23:15:49">
+        <meta name="description" content="Report generated on 2026-07-05 @ 00:15:47">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-07-04 @ 23:15:49">
+        <meta property="og:description" content="Report generated on 2026-07-05 @ 00:15:47">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-07-04 @ 23:15:49</i>
+                <i>Report generated on 2026-07-05 @ 00:15:47</i>
                 </span>
             </div>
         </nav>
@@ -658,7 +658,7 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-05-28</td>
                         <td>python-pyjwt: PyJWT: Authentication bypass due to forged JSON Web Tokens</td>
-                        <td>PyJWT is a JSON Web Token implementation in Python. Prior to 2.13.0, when the verifier is decoding JSON Web Tokens, while supporting both asymmetric and HMAC algorithms, the library does not validate use of JSON Web Keys in HMAC algorithm, allowing attacker to use the issuer public key as the secret key for HMAC algorithm. This vulnerability is fixed in 2.13.0. A flaw was found in PyJWT, a Python library for JSON Web Token (JWT) implementation. When decoding JWTs, the library fails to validate the use of JSON Web Keys (JWK) in the HMAC algorithm while also supporting asymmetric algorithms. This allows a remote attacker to use the issuer's public key as the secret key for the HMAC algorithm, leading to the ability to forge JWTs. This vulnerability can result in authentication bypass or unauthorized access.</td>
+                        <td>This Important vulnerability in PyJWT allows for authentication bypass and unauthorized access. It occurs when a JWT verifier is misconfigured to accept both symmetric and asymmetric algorithms, and a public JSON Web Key is erroneously used as the HMAC secret. Red Hat products are only affected if they utilize this specific, non-standard verifier configuration.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-8643'>CVE-2026-8643</a></td>
