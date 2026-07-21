@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-07-21 @ 11:18:05">
+        <meta name="description" content="Report generated on 2026-07-21 @ 12:15:52">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-07-21 @ 11:18:05">
+        <meta property="og:description" content="Report generated on 2026-07-21 @ 12:15:52">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-07-21 @ 11:18:05</i>
+                <i>Report generated on 2026-07-21 @ 12:15:52</i>
                 </span>
             </div>
         </nav>
@@ -337,6 +337,13 @@ As go-lang vendors its dependencies, a package may contain a library with a know
                         <td>ansible-core: argument injection in ansible-galaxy role install leads to arbitrary code execution</td>
                         <td>Conditions for Exploitation: Successful exploitation requires user interaction, specifically tricking a victim into installing a maliciously crafted Ansible role (or a role with a malicious dependency) using the ansible-galaxy role install command.
 Broad Impact: While user interaction is required, the potential impact is highly severe. Successfully injecting the malicious arguments allows a remote attacker to achieve arbitrary code execution on the machine running the Ansible command, leading to a full compromise of the user's environment and system integrity.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-48526'>CVE-2026-48526</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-05-28</td>
+                        <td>python-pyjwt: PyJWT: Authentication bypass due to forged JSON Web Tokens</td>
+                        <td>This Important vulnerability in PyJWT allows for authentication bypass and unauthorized access. It occurs when a JWT verifier is misconfigured to accept both symmetric and asymmetric algorithms, and a public JSON Web Key is erroneously used as the HMAC secret. Red Hat products are only affected if they utilize this specific, non-standard verifier configuration.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-8643'>CVE-2026-8643</a></td>
@@ -760,6 +767,20 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>Red Hat has evaluated this vulnerability. This issue only affects versions AAP 2.5 GA and onwards.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-48746'>CVE-2026-48746</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-06-22</td>
+                        <td>vllm: starlette: vLLM: Critical authentication bypass allows unauthorized API access</td>
+                        <td>CVE-2026-48746 is an authentication bypass in the vLLM OpenAI-compatible API server. A remote attacker who can reach the vLLM endpoint directly can craft a Host header so the authentication middleware checks a different URL path than the one actually dispatched, bypassing VLLM_API_KEY / --api-key protection. Successful exploitation allows unauthorized inference API access, which can result in confidentiality loss (model/prompt abuse) and availability impact (resource exhaustion). The flaw does not provide integrity compromise or arbitrary code execution. Exploitation requires vLLM API-key authentication to be enabled and the service to be exposed without an RFC-conforming reverse proxy that normalizes the Host header. Because Red Hat AI inference offerings are commonly deployed behind OpenShift Routes or similar proxies, and because the vulnerability is conditional on deployment and configuration, the overall flaw impact is rated Important rather than Critical.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-54283'>CVE-2026-54283</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-06-22</td>
+                        <td>starlette: Starlette: request.form() limits silently ignored for application/x-www-form-urlencoded enable DoS</td>
+                        <td>A flaw was found in Starlette where the request.form() method silently ignores configured resource limits (max_fields and max_part_size) when parsing application/x-www-form-urlencoded data. An unauthenticated attacker can exploit this by sending a urlencoded request body with an arbitrarily large number of fields or an oversized field, causing denial of service through resource exhaustion. This only affects applications that explicitly call request.form() on urlencoded input; JSON-only APIs and services where Starlette is a transitive dependency not used for form parsing are not affected.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-27145'>CVE-2026-27145</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-06-02</td>
@@ -769,18 +790,18 @@ Red Hat rates this issue as Important. It affects Red Hat products that include 
 Upstream fix: Go 1.25.11 and Go 1.26.4 (GO-2026-5037).</td>
                     </tr>
                                         <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-48526'>CVE-2026-48526</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-05-28</td>
-                        <td>python-pyjwt: PyJWT: Authentication bypass due to forged JSON Web Tokens</td>
-                        <td>This Important vulnerability in PyJWT allows for authentication bypass and unauthorized access. It occurs when a JWT verifier is misconfigured to accept both symmetric and asymmetric algorithms, and a public JSON Web Key is erroneously used as the HMAC secret. Red Hat products are only affected if they utilize this specific, non-standard verifier configuration.</td>
-                    </tr>
-                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-45736'>CVE-2026-45736</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-05-15</td>
                         <td>ws: ws: Uninitialized memory disclosure via `websocket.close()` with `TypedArray`</td>
                         <td>This Important vulnerability in the `ws` WebSocket library for Node.js could lead to sensitive information disclosure. The flaw occurs when a `TypedArray` is specifically provided as the `reason` argument to the `websocket.close()` function, potentially exposing uninitialized memory. Red Hat products utilizing this library may be affected if their implementations allow for such a crafted `close()` call.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-42561'>CVE-2026-42561</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-05-13</td>
+                        <td>python-multipart: python-multipart: Denial of Service via excessive multipart part headers</td>
+                        <td>This is an Important denial of service vulnerability in python-multipart. A remote attacker can trigger excessive CPU utilization by sending specially crafted multipart/form-data requests, leading to service disruption.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44293'>CVE-2026-44293</a></td>
@@ -918,6 +939,13 @@ Regarding openshift4/ose-console for Product stream 4.12 and 4.13, the vulnerabl
                         <td>2025-12-02</td>
                         <td>mcp: DNS Rebinding Protection Disabled by Default in Model Context Protocol Python SDK</td>
                         <td>The MCP Python SDK, called `mcp` on PyPI, is a Python implementation of the Model Context Protocol (MCP). Prior to version 1.23.0, tThe Model Context Protocol (MCP) Python SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication using FastMCP with streamable HTTP or SSE transport, and has not configured TransportSecuritySettings, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access resources exposed by the MCP server on behalf of the user in those limited circumstances. Note that running HTTP-based MCP servers locally without authentication is not recommended per MCP security best practices. This issue does not affect servers using stdio transport. This vulnerability is fixed in 1.23.0. A DNS rebinding flaw has been discovered in the pypi mcp library. The Model Context Protocol (MCP) Python SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication using FastMCP with streamable HTTP or SSE transport, and has not configured TransportSecuritySettings, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access resources exposed by the MCP server on behalf of the user in those limited circumstances.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-42264'>CVE-2026-42264</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-05-08</td>
+                        <td>axios: Axios: Prototype pollution allows information disclosure and request manipulation</td>
+                        <td>This Important prototype pollution flaw in Axios could result in information disclosure and network request manipulation. The vulnerability occurs when a co-located dependency in the application environment successfully pollutes the JavaScript `Object.prototype`. Under these conditions, Axios may unknowingly incorporate the manipulated properties into its outbound HTTP requests, potentially compromising data confidentiality and integrity. Exploitation is contingent on a prior successful prototype pollution attack from another component.</td>
                     </tr>
                                                                             <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-59530'>CVE-2025-59530</a></td>
@@ -1451,6 +1479,23 @@ Red Hat Satellite does not use the affected functions during runtime, therefore 
                         <td>cryptography is a package designed to expose cryptographic primitives and recipes to Python developers. In affected versions `Cipher.update_into` would accept Python objects which implement the buffer protocol, but provide only immutable buffers. This would allow immutable objects (such as `bytes`) to be mutated, thus violating fundamental rules of Python and resulting in corrupted output. This now correctly raises an exception. This issue has been present since `update_into` was originally introduced in cryptography 1.8. A vulnerability was found in python-cryptography. In affected versions, `Cipher.update_into` would accept Python objects which implement the buffer protocol but provide only immutable buffers. This issue allows immutable objects (such as `bytes`) to be mutated, thus violating the fundamental rules of Python, resulting in corrupted output.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44431'>CVE-2026-44431</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-05-13</td>
+                        <td>urllib3: urllib3: Information disclosure via cross-origin redirects forwarding sensitive headers</td>
+                        <td>urllib3 is an HTTP client library for Python. From 1.23 to before 2.7.0, cross-origin redirects followed from the low-level API via ProxyManager.connection_from_url().urlopen(..., assert_same_host=False) still forward these sensitive headers. This vulnerability is fixed in 2.7.0. A flaw was found in urllib3, an HTTP client library for Python. When using the low-level API via `ProxyManager.connection_from_url().urlopen()` with `assert_same_host=False`, cross-origin redirects can still forward sensitive headers. This could allow a remote attacker to gain unauthorized access to sensitive information.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-57847'>CVE-2025-57847</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-04-08</td>
+                        <td>ansible-automation-platform: privilege escalation via excessive group writable /etc/passwd permissions</td>
+                        <td>Red Hat Product Security has rated this vulnerability as moderate severity for affected products which run on OpenShift. The vulnerability allows for potential privilege escalation within a container, but OpenShift's default, multi-layered security posture effectively mitigates this risk. 
+The primary controls include the default Security Context Constraints (SCC), which severely limit a container's permissions from the start, and SELinux, which enforces mandatory access control to ensure strict isolation. While other container runtime environments may have different controls available and require case-by-case analysis, OpenShift's built-in defenses are designed to prevent this type of attack.
+Out of Box RHEL configuration isolates a single process inside a container. Unless multiple processes are packaged inside a single container, that defeats the principle behind containerization, this bug can not be used to meaningfully escalate privileges.
+Also, RHEL, and any common linux distributions do NOT add any additional users to the root group. The presence of the root group is strictly due to conformance with POSIX permission management requirements and can be considered to be an artifact of filesystem permission limitations.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-32281'>CVE-2026-32281</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2026-04-08</td>
@@ -1643,13 +1688,6 @@ The current python-django issue may be resolved in an upcoming Satellite update.
                         <td>2024-04-04</td>
                         <td>quic-go: memory exhaustion attack against QUIC's connection ID mechanism</td>
                         <td>quic-go is an implementation of the QUIC protocol in Go. Prior to version 0.42.0, an attacker can cause its peer to run out of memory sending a large number of `NEW_CONNECTION_ID` frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a `RETIRE_CONNECTION_ID` frame. The attacker can prevent the receiver from sending out (the vast majority of) these `RETIRE_CONNECTION_ID` frames by collapsing the peers congestion window (by selectively acknowledging received packets) and by manipulating the peer's RTT estimate. Version 0.42.0 contains a patch for the issue. No known workarounds are available. A flaw was found in quic-go. This issue may allow an attacker to trigger a denial of service by sending a large number of NEW_CONNECTION_ID frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a RETIRE_CONNECTION_ID frame, but the attacker can prevent the receiver from sending out the vast majority of these RETIRE_CONNECTION_ID frames by selectively acknowledging received packets and collapsing the peers congestion window and by manipulating the peer's RTT estimate.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44431'>CVE-2026-44431</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2026-05-13</td>
-                        <td>urllib3: urllib3: Information disclosure via cross-origin redirects forwarding sensitive headers</td>
-                        <td>urllib3 is an HTTP client library for Python. From 1.23 to before 2.7.0, cross-origin redirects followed from the low-level API via ProxyManager.connection_from_url().urlopen(..., assert_same_host=False) still forward these sensitive headers. This vulnerability is fixed in 2.7.0. A flaw was found in urllib3, an HTTP client library for Python. When using the low-level API via `ProxyManager.connection_from_url().urlopen()` with `assert_same_host=False`, cross-origin redirects can still forward sensitive headers. This could allow a remote attacker to gain unauthorized access to sensitive information.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-42035'>CVE-2026-42035</a></td>
