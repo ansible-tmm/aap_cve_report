@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-08-20 @ 23:16:11">
+        <meta name="description" content="Report generated on 2026-08-21 @ 00:15:56">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-08-20 @ 23:16:11">
+        <meta property="og:description" content="Report generated on 2026-08-21 @ 00:15:56">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-08-20 @ 23:16:11</i>
+                <i>Report generated on 2026-08-21 @ 00:15:56</i>
                 </span>
             </div>
         </nav>
@@ -1830,6 +1830,13 @@ The current python-django issue may be resolved in an upcoming Satellite update.
                         <td>joserfc is a Python library that provides an implementation of several JSON Object Signing and Encryption (JOSE) standards. In versions 1.3.4 through 1.6.5, joserfc accepts oversized RFC7797 b64=false JWS payloads without applying JWSRegistry.max_payload_length, which can lead to resource exhaustion. The normal JWS compact and flattened JSON paths reject payloads above the configured payload-size limit with ExceededSizeError. The RFC7797 unencoded payload paths do not make the same check. A valid b64=false compact or flattened JSON JWS can therefore deserialize successfully with a payload larger than JWSRegistry.max_payload_length. Applications that accept lower-trust JWS values and rely on joserfc to reject oversized token content during verification have a moderate availability risk. This issue has been fixed in version 1.6.7. A flaw was found in joserfc, a Python library for JSON Object Signing and Encryption (JOSE). This vulnerability allows a remote attacker to cause resource exhaustion, leading to a Denial of Service (DoS), by sending oversized JSON Web Signature (JWS) payloads. The library fails to apply size limits, specifically JWSRegistry.max_payload_length, when processing RFC7797 b64=false JWS payloads.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44188'>CVE-2026-44188</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-06-15</td>
+                        <td>ansible-lightspeed: Ansible Lightspeed: Session hijacking and unauthorized data access due to insufficient session expiration</td>
+                        <td>This Moderate vulnerability in Ansible Lightspeed allows for post-logout session hijacking. An attacker who obtains a valid OAuth token before a user logs out can maintain persistent unauthorized access to Ansible Automation Platform resources, including inventories and playbooks, because the backend token is not invalidated upon client-side logout. This risk is primarily for data confidentiality, as current token scopes are read-only.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-48710'>CVE-2026-48710</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2026-05-26</td>
@@ -1916,13 +1923,6 @@ So exposure is far narrower than a generic TLS parsing vulnerability.</td>
                         <td>2025-06-16</td>
                         <td>python-protobuf: Unbounded recursion in Python Protobuf</td>
                         <td>The availability impact of this denial-of-service vulnerability is confined to applications that directly integrate the Protobuf package. Within the context of a Red Hat system, the host machine itself is not expected to be impacted, thereby limiting the scope of disruption to individual application instances rather than broader system instability.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44188'>CVE-2026-44188</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2026-06-15</td>
-                        <td>ansible-lightspeed: Ansible Lightspeed: Session hijacking and unauthorized data access due to insufficient session expiration</td>
-                        <td>This Moderate vulnerability in Ansible Lightspeed allows for post-logout session hijacking. An attacker who obtains a valid OAuth token before a user logs out can maintain persistent unauthorized access to Ansible Automation Platform resources, including inventories and playbooks, because the backend token is not invalidated upon client-side logout. This risk is primarily for data confidentiality, as current token scopes are read-only.</td>
                     </tr>
                                                                             <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-39329'>CVE-2024-39329</a></td>
