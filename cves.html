@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-08-25 @ 11:16:08">
+        <meta name="description" content="Report generated on 2026-08-25 @ 12:16:13">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-08-25 @ 11:16:08">
+        <meta property="og:description" content="Report generated on 2026-08-25 @ 12:16:13">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-08-25 @ 11:16:08</i>
+                <i>Report generated on 2026-08-25 @ 12:16:13</i>
                 </span>
             </div>
         </nav>
@@ -254,11 +254,102 @@ The majority of RHEL utilities are not long-running applications; instead, they 
 As go-lang vendors its dependencies, a package may contain a library with a known vulnerability, solely because of lower tier libraries including it as a part of its dependencies, but the vulnerable code is not reachable at runtime. In such cases the issue is not exploitable. We classify these situations as “Not affected” or “Will not fix,” depending on the risk of breaking other unrelated packages.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-71366'>CVE-2026-71366</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-24</td>
+                        <td>awx: notification backends allow SSRF and credential leakage</td>
+                        <td>Red Hat has assessed this vulnerability as Important impact. Multiple notification backends in AWX send HTTP requests to user-configured URLs without private-network egress filtering, allowing an organization notification administrator to use the AWX control node as an SSRF proxy to reach internal services. The webhook notification backend compounds this by following redirects and resending Basic Authentication credentials to redirect targets without host validation, enabling credential exfiltration through a controlled redirect. The Grafana notification backend similarly exposes its API key to the configured endpoint. Red Hat Ansible Automation Platform ships all affected notification backends as part of Automation Controller. This flaw is tracked separately from CVE-2026-71365 (webhook status callback SSRF) because it affects a different code path, requires different permissions, and exposes different credentials. In managed service deployments where notification administrators are tenants, the SSRF risk is elevated because tenants should not be able to probe internal infrastructure. Customers are advised to restrict notification template creation to trusted administrators until a fix is available.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-71364'>CVE-2026-71364</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-24</td>
+                        <td>awx: project archive extraction allows path traversal file writes</td>
+                        <td>Red Hat has assessed this vulnerability as Important impact. The project_archive action plugin in AWX does not validate that extracted archive members remain within the project directory boundary. This is a well-known vulnerability class (Zip Slip) that allows arbitrary file writes when a user with project administration privileges creates or updates an archive-type project pointing to a malicious archive source. Red Hat Ansible Automation Platform ships the affected code as part of Automation Controller. In containerized deployments (AAP 2.5+), the extraction typically runs inside an execution environment container, which may limit the blast radius depending on volume mounts and container isolation. In RPM-based deployments (AAP 2.4-2.6), the extraction runs on the host with the privileges of the AWX service user, increasing the potential impact of arbitrary file writes. Customers using archive-type projects are advised to ensure archive sources use HTTPS from trusted providers until a fix is available.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-71365'>CVE-2026-71365</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-18</td>
+                        <td>awx: webhook status callback SSRF leaks the Git PAT</td>
+                        <td>Red Hat has assessed this vulnerability as Important impact. The webhook status callback code in AWX does not validate the target URL host before sending authenticated status updates, allowing a job template administrator to redirect status callbacks to arbitrary endpoints and exfiltrate the configured Git PAT credential. This crosses two trust boundaries: first, the template admin role grants operational control over the template but should not provide access to plaintext credential values, which are stored encrypted and not readable through the API; second, the AWX control node is used as a proxy to reach internal or loopback services that are not directly accessible to the attacker. Red Hat Ansible Automation Platform ships the affected code as part of Automation Controller. In managed service deployments where template administrators are tenants, the SSRF additionally allows probing internal service mesh endpoints. Customers are advised to restrict webhook template admin access to trusted users and review webhook-enabled templates until a fix is available.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-73620'>CVE-2026-73620</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-13</td>
+                        <td>gitpython: GitPython: Arbitrary file overwrite and read via unsafe git option forwarding</td>
+                        <td>This is an Important flaw in GitPython that allows an authenticated attacker to achieve arbitrary file overwrite and read capabilities. The vulnerability stems from insufficient validation of git options passed to `IndexFile.checkout()` and `TagReference.create()`, enabling attackers to manipulate repository content or access sensitive files. This impacts several Red Hat products, including Red Hat OpenStack Platform, Red Hat Satellite, and Red Hat Ansible Automation Platform.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-15307'>CVE-2026-15307</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-04</td>
+                        <td>django: Django: Remote code execution via GeoDjango spatial lookups</td>
+                        <td>Red Hat products that are built with Django framework do not implement GeoDjango or GIS capabilities.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-69244'>CVE-2026-69244</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-03</td>
+                        <td>aiohttp: AIOHTTP: Denial of Service via malformed HTTP responses</td>
+                        <td>This is an Important severity flaw in aiohttp that could lead to a denial of service in client applications. A remote, malicious HTTP server could send a specially crafted response, causing an out-of-bounds read in the aiohttp C response parser and resulting in the client application terminating unexpectedly.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-69152'>CVE-2026-69152</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-03</td>
+                        <td>brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation</td>
+                        <td>Any applications that pass user-controlled input to the `expand()` function are vulnerable to this issue. This flaw can result in an excessive consumption of memory that eventually terminates the process or blocks the event loop, both causing a denial of service. As this vulnerability allows a remote attacker to cause a denial of service, it has been rated with an important severity.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-67323'>CVE-2026-67323</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-01</td>
+                        <td>gitpython: GitPython: Arbitrary code execution via command injection due to unguarded Git options</td>
+                        <td>This is an Important vulnerability because it allows for arbitrary code execution or file truncation. The flaw in GitPython requires an application to process attacker-controlled input through specific GitPython methods, such as Repo.archive() or git.ls_remote(), to be exploited. This could lead to a compromise of confidentiality, integrity, and availability on affected Red Hat products that utilize GitPython in such a manner.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-67324'>CVE-2026-67324</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-01</td>
+                        <td>gitpython: GitPython: Arbitrary Code Execution via Joined Short Options Bypass</td>
+                        <td>This vulnerability is rated as Important because exploitation requires an application to invoke `Repo.clone_from()` with attacker-controlled `multi_options` while `allow_unsafe_options=False` is set. This precondition means an attacker must already have some influence over a Git-related workflow within the consuming application, rather than exploiting it through mere network access. This affects GitPython version 3.1.50.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-67322'>CVE-2026-67322</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-01</td>
+                        <td>gitpython: GitPython: Environment variable exfiltration via attacker-controlled clone URL</td>
+                        <td>This Important vulnerability in GitPython allows for sensitive environment variable exfiltration. When an application utilizes GitPython's Repo.clone_from() method with an attacker-controlled Git repository URL, embedded environment variable tokens within the URL are expanded and transmitted to a remote server. This poses a risk of information disclosure, particularly for credentials or tokens, in Red Hat products that process untrusted clone URLs.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-67325'>CVE-2026-67325</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-01</td>
+                        <td>gitpython: GitPython: Command Injection via Git option prefix abbreviation</td>
+                        <td>This vulnerability is rated as Important as it allows for arbitrary command execution. It arises from an incomplete command injection blocklist in GitPython, which can be bypassed by supplying abbreviated Git options. This could lead to a complete compromise of confidentiality, integrity, and availability in Red Hat products that process untrusted input as keyword arguments to GitPython's Git commands.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-12383'>CVE-2026-12383</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-07-27</td>
                         <td>eda-server: ExternalEventStreamViewSet trusts Subject header without validation and leaks expected DN</td>
                         <td>This flaw is a defense-in-depth failure in EDA that becomes exploitable when combined with the gateway header-forwarding issue (tracked as a separate CVE). EDA should not rely solely on an HTTP header for mTLS authentication. The DN leak in the error response further reduces the difficulty of exploitation. EDA has been included in AAP since version 2.4. The mTLS external event stream feature and the trust-of-Subject-header pattern apply to all EDA versions that support external event streams with mTLS authentication.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-14257'>CVE-2026-14257</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-07-23</td>
+                        <td>brace-expansion: Brace-expansion: Denial of Service via memory exhaustion in expand() function</td>
+                        <td>A flaw was found in the brace-expansion npm package. The expand() function limits the number of generated results but does not bound the length of each result string. By chaining multiple brace groups, an attacker can keep the result count under the limit while making each result progressively longer, causing total memory consumption to grow until the Node.js process crashes with an uncatchable out-of-memory error. This affects any application that passes attacker-influenced strings to brace-expansion directly or transitively via minimatch or glob brace patterns.
+Note: In the majority of Red Hat products, brace-expansion is brought in as a transitive dependency of minimatch or glob and is not used at runtime. It is typically only invoked during build or development tooling and is not directly exposed to untrusted network input, reducing the practical exploitability of this flaw.
+```
+$ npm ls --omit=dev brace-expansion
+npm@10.9.8 /usr/lib/node_modules/npm
+`-- minimatch@9.0.9
+`-- brace-expansion@2.0.2
+```</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-12701'>CVE-2026-12701</a></td>
@@ -350,6 +441,13 @@ As go-lang vendors its dependencies, a package may contain a library with a know
                         <td>2026-06-15</td>
                         <td>webpack-dev-server: webpack-dev-server: Information disclosure and denial of service via improper proxy configuration</td>
                         <td>Impact: When a user-configured proxy on webpack-dev-server has a broad context (e.g. /) and ws: true, it also intercepts the dev server's own HMR WebSocket and forwards it to the proxy target. This leaks the browser's cookies and Origin header to the backend, bypasses the dev server's Host/Origin validation, and corrupts the HMR socket (both HMR and the proxy end up writing to the same socket). Patches: Fixed in webpack-dev-server@5.2.5. Workarounds: Scope user-defined proxy context to specific paths instead of /, or omit ws: true from the proxy entry when WebSocket forwarding is not required. A flaw was found in webpack-dev-server. When a user configures a proxy with a broad context, such as '/', and enables WebSocket (ws: true) forwarding, the development server's own Hot Module Replacement (HMR) WebSocket can be intercepted. This interception leads to the leakage of the browser's cookies and Origin header to the proxy target, bypassing the server's Host/Origin validation. Additionally, it can corrupt the HMR socket, resulting in a denial of service for the HMR functionality.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44705'>CVE-2026-44705</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-06-11</td>
+                        <td>tmp: path Traversal via unsanitized prefix/postfix enables directory escape</td>
+                        <td>Applications that pass user-controlled data to the file or directory creation functions without input sanitization are vulnerable to this issue. This flaw allows files to be created in arbitrary locations with the privileges of the running process. Due to this reason, this vulnerability has been rated with an Important severity.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44486'>CVE-2026-44486</a></td>
@@ -923,6 +1021,14 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>A flaw was found in Starlette where the request.form() method silently ignores configured resource limits (max_fields and max_part_size) when parsing application/x-www-form-urlencoded data. An unauthenticated attacker can exploit this by sending a urlencoded request body with an arbitrarily large number of fields or an oversized field, causing denial of service through resource exhaustion. This only affects applications that explicitly call request.form() on urlencoded input; JSON-only APIs and services where Starlette is a transitive dependency not used for form parsing are not affected.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-12143'>CVE-2026-12143</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-06-12</td>
+                        <td>form-data: form-data: Form field override via CRLF injection</td>
+                        <td>This is an Important impact flaw in the form-data library: a remote attacker can inject arbitrary headers or additional multipart parts via CRLF injection in field names or filenames, potentially overriding sensitive form fields and affecting data integrity.
+For RHOAI and RHEL AI, severity is Moderate because affected versions appear only as a transitive npm dependency in RHOAI (dashboard, mod-arch plugins, MLflow UI) and RHEL AI 3.4 bootc images, and those products use fixed field names for uploads rather than passing untrusted user input as multipart field names or filenames. The documented exploit path is therefore not reachable in default deployments. Practical impact is limited to non-default or custom integrations that forward multipart requests using attacker-controlled field names.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-45736'>CVE-2026-45736</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-05-15</td>
@@ -1072,6 +1178,13 @@ Regarding openshift4/ose-console for Product stream 4.12 and 4.13, the vulnerabl
                         <td>2025-12-02</td>
                         <td>mcp: DNS Rebinding Protection Disabled by Default in Model Context Protocol Python SDK</td>
                         <td>The MCP Python SDK, called `mcp` on PyPI, is a Python implementation of the Model Context Protocol (MCP). Prior to version 1.23.0, tThe Model Context Protocol (MCP) Python SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication using FastMCP with streamable HTTP or SSE transport, and has not configured TransportSecuritySettings, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access resources exposed by the MCP server on behalf of the user in those limited circumstances. Note that running HTTP-based MCP servers locally without authentication is not recommended per MCP security best practices. This issue does not affect servers using stdio transport. This vulnerability is fixed in 1.23.0. A DNS rebinding flaw has been discovered in the pypi mcp library. The Model Context Protocol (MCP) Python SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication using FastMCP with streamable HTTP or SSE transport, and has not configured TransportSecuritySettings, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access resources exposed by the MCP server on behalf of the user in those limited circumstances.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-46625'>CVE-2026-46625</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-06-10</td>
+                        <td>js-cookie: JavaScript Cookie: Cookie attribute manipulation via prototype pollution</td>
+                        <td>Important: This flaw in the `js-cookie` JavaScript library allows for cookie attribute manipulation via prototype pollution. When applications process untrusted JSON data with affected versions of `js-cookie`, an attacker could control sensitive cookie properties such as `domain` or `secure`, potentially leading to session fixation or other client-side security bypasses.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-42264'>CVE-2026-42264</a></td>
@@ -1610,6 +1723,20 @@ Red Hat Satellite does not use the affected functions during runtime, therefore 
                         <td>2023-02-08</td>
                         <td>python-cryptography: memory corruption via immutable objects</td>
                         <td>cryptography is a package designed to expose cryptographic primitives and recipes to Python developers. In affected versions `Cipher.update_into` would accept Python objects which implement the buffer protocol, but provide only immutable buffers. This would allow immutable objects (such as `bytes`) to be mutated, thus violating fundamental rules of Python and resulting in corrupted output. This now correctly raises an exception. This issue has been present since `update_into` was originally introduced in cryptography 1.8. A vulnerability was found in python-cryptography. In affected versions, `Cipher.update_into` would accept Python objects which implement the buffer protocol but provide only immutable buffers. This issue allows immutable objects (such as `bytes`) to be mutated, thus violating the fundamental rules of Python, resulting in corrupted output.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-69243'>CVE-2026-69243</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-08-03</td>
+                        <td>aiohttp: AIOHTTP: HTTP Request Smuggling via WebSocket Upgrade</td>
+                        <td>Moderate impact. This vulnerability in aiohttp's HTTP parser enables request smuggling when the server-side component handles WebSocket upgrade requests containing a body. An attacker could exploit an edge case during protocol switching, causing trailing data to be processed as subsequent requests or upgraded protocol data. This affects Red Hat products utilizing aiohttp in a server-side capacity.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-52902'>CVE-2026-52902</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-06-09</td>
+                        <td>awxkit: path traversal via YAML !include directive</td>
+                        <td>awxkit as a bundled Python dependency found in ee-supported and platform-resource-runner containers for ansible-automation-platform and as part of the automation-controller RPM.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44431'>CVE-2026-44431</a></td>
