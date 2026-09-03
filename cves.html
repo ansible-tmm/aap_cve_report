@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-09-03 @ 11:16:20">
+        <meta name="description" content="Report generated on 2026-09-03 @ 12:16:16">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-09-03 @ 11:16:20">
+        <meta property="og:description" content="Report generated on 2026-09-03 @ 12:16:16">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-09-03 @ 11:16:20</i>
+                <i>Report generated on 2026-09-03 @ 12:16:16</i>
                 </span>
             </div>
         </nav>
@@ -1774,7 +1774,7 @@ Also, RHEL, and any common linux distributions do NOT add any additional users t
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2026-03-20</td>
                         <td>dynaconf: jinja2: Dynaconf: Arbitrary code execution via Server-Side Template Injection</td>
-                        <td>dynaconf is a configuration management tool for Python. Prior to version 3.2.13, Dynaconf is vulnerable to Server-Side Template Injection (SSTI) due to unsafe template evaluation in the @Jinja resolver. When the jinja2 package is installed, Dynaconf evaluates template expressions embedded in configuration values without a sandboxed environment. This issue has been patched in version 3.2.13. A flaw was found in dynaconf, a Python configuration management tool. This Server-Side Template Injection (SSTI) vulnerability occurs due to unsafe template evaluation in the @Jinja resolver when the jinja2 package is installed. A remote attacker could exploit this by embedding malicious template expressions in configuration values, which are then processed without a sandboxed environment. This could lead to arbitrary code execution on the affected system.</td>
+                        <td>Red Hat products using dynaconf with the jinja2 package installed, such as Red Hat Ansible Automation Platform and Red Hat Satellite, are affected. An attacker with low privileges could achieve arbitrary code execution by injecting malicious template expressions into configuration values. This is due to unsafe template evaluation in the @Jinja resolver, but exploitation requires high attack complexity.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-27904'>CVE-2026-27904</a></td>
