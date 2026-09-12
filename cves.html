@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-09-12 @ 11:16:19">
+        <meta name="description" content="Report generated on 2026-09-12 @ 12:16:12">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-09-12 @ 11:16:19">
+        <meta property="og:description" content="Report generated on 2026-09-12 @ 12:16:12">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-09-12 @ 11:16:19</i>
+                <i>Report generated on 2026-09-12 @ 12:16:12</i>
                 </span>
             </div>
         </nav>
@@ -521,6 +521,13 @@ Broad Impact: While user interaction is required, the potential impact is highly
                         <td>daphne before 4.2.2 did not pass maxFramePayloadSize or maxMessagePayloadSize to Autobahn's WebSocketServerFactory. Because Autobahn defaults both values to 0 (unlimited), an unauthenticated remote attacker could send arbitrarily large WebSocket messages or frames, causing excessive memory consumption and a denial of service. A flaw was found in daphne. An unauthenticated remote attacker could exploit this vulnerability by sending arbitrarily large WebSocket messages or frames. This oversight in payload size handling can lead to excessive memory consumption, resulting in a denial of service (DoS) for the affected system.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-42504'>CVE-2026-42504</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-06-02</td>
+                        <td>mime: golang: Golang MIME: Denial of Service via maliciously-crafted MIME header</td>
+                        <td>This is rated as an Important severity flaw. A remote attacker could trigger a Denial of Service by sending a crafted MIME header with numerous invalid encoded-words to an application utilizing the affected Golang MIME package. This could lead to excessive CPU consumption on the system processing the malformed header, impacting service availability.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-27145'>CVE-2026-27145</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-06-02</td>
@@ -579,11 +586,25 @@ Upstream fix: Go 1.25.11 and Go 1.26.4 (GO-2026-5037).</td>
                         <td>urllib3 is an HTTP client library for Python. From 2.6.0 to before 2.7.0, urllib3 could decompress the whole response instead of the requested portion (1) during the second HTTPResponse.read(amt=N) call when the response was decompressed using the official Brotli library or (2) when HTTPResponse.drain_conn() was called after the response had been read and decompressed partially (compression algorithm did not matter here). These issues could cause urllib3 to fully decode a small amount of highly compressed data in a single operation. This could result in excessive resource consumption (high CPU usage and massive memory allocation for the decompressed data) on the client side. This vulnerability is fixed in 2.7.0. A flaw was found in urllib3, an HTTP client library for Python. This vulnerability allows a remote attacker to cause excessive resource consumption, such as high CPU usage and massive memory allocation, on the client side. This occurs when urllib3 attempts to decompress an entire HTTP response, even if only a partial read was requested, or when draining the connection after a partial decompression. This can lead to a Denial of Service (DoS) condition.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-39820'>CVE-2026-39820</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-05-07</td>
+                        <td>net/mail: golang: Go net/mail: Denial of Service via crafted email inputs</td>
+                        <td>This is an Important denial of service vulnerability in the Go `net/mail` package. Applications processing untrusted email inputs via `ParseAddress`, `ParseAddressList`, or `ParseDate` functions are susceptible to excessive resource consumption, which can lead to service unavailability.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-33811'>CVE-2026-33811</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-05-07</td>
                         <td>net: golang: Go net package: Denial of Service via long CNAME response in LookupCNAME</td>
                         <td>This is an Important denial of service vulnerability in the Go `net` package, affecting applications configured to use the `cgo` DNS resolver. A remote attacker could trigger a double-free memory error by providing a very long CNAME response, leading to a crash of the vulnerable application and impacting service availability.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-42499'>CVE-2026-42499</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-05-07</td>
+                        <td>net/mail: golang: net/mail: Denial of Service via pathological email address parsing</td>
+                        <td>This is an Important denial of service vulnerability in the `net/mail` package of the Go standard library. A remote attacker can exploit this flaw by sending specially crafted email addresses, leading to excessive resource consumption and a denial of service in Go applications that parse email addresses using the affected library.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-44244'>CVE-2026-44244</a></td>
@@ -1723,6 +1744,13 @@ Red Hat Satellite does not use the affected functions during runtime, therefore 
                         <td>2023-02-08</td>
                         <td>python-cryptography: memory corruption via immutable objects</td>
                         <td>cryptography is a package designed to expose cryptographic primitives and recipes to Python developers. In affected versions `Cipher.update_into` would accept Python objects which implement the buffer protocol, but provide only immutable buffers. This would allow immutable objects (such as `bytes`) to be mutated, thus violating fundamental rules of Python and resulting in corrupted output. This now correctly raises an exception. This issue has been present since `update_into` was originally introduced in cryptography 1.8. A vulnerability was found in python-cryptography. In affected versions, `Cipher.update_into` would accept Python objects which implement the buffer protocol but provide only immutable buffers. This issue allows immutable objects (such as `bytes`) to be mutated, thus violating the fundamental rules of Python, resulting in corrupted output.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-78679'>CVE-2026-78679</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-08-25</td>
+                        <td>GitPython: GitPython: Arbitrary file read via TagReference.create()</td>
+                        <td>A flaw was found in GitPython's TagReference.create() function. An incomplete fix for a prior vulnerability (GHSA-3f7w-8rr8-f37f) failed to validate positional parameters, allowing an attacker with low privileges to supply a specially crafted reference value (such as --file=/path/to/file) to read arbitrary files on the system. The file contents are then returned within the annotated tag message, leading to information disclosure. This vulnerability requires that the application forwards user-controlled input to the reference parameter of TagReference.create(), which limits the scope of exploitation to applications that expose this specific code path.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-69243'>CVE-2026-69243</a></td>
