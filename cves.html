@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-09-21 @ 11:16:12">
+        <meta name="description" content="Report generated on 2026-09-21 @ 12:16:15">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-09-21 @ 11:16:12">
+        <meta property="og:description" content="Report generated on 2026-09-21 @ 12:16:15">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-09-21 @ 11:16:12</i>
+                <i>Report generated on 2026-09-21 @ 12:16:15</i>
                 </span>
             </div>
         </nav>
@@ -79,6 +79,13 @@ Further investigation would need to be done to determine exactly which CVEs affe
                         <td>2026-06-23</td>
                         <td>eda-server: websocket missing authorization allows credential theft via activation_id spoofing</td>
                         <td>A missing authorization vulnerability was found in the Event-Driven Ansible (EDA) websocket API. The /api/eda/ws/ansible-rulebook endpoint does not verify user permissions when processing Worker messages. Any authenticated user can send a forged message with an arbitrary activation_id to receive plaintext credentials associated with that activation, including OAuth tokens, vault passwords, and SSH keys. A missing authorization vulnerability was found in the Event-Driven Ansible (EDA) websocket API. The /api/eda/ws/ansible-rulebook endpoint does not verify user permissions when processing Worker messages. Any authenticated user can send a forged message with an arbitrary activation_id to receive plaintext credentials associated with that activation, including OAuth tokens, vault passwords, and SSH keys.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-12564'>CVE-2026-12564</a></td>
+                        <td data-sortvalue="0" class='color-critical'>Critical</td>
+                        <td>2026-07-17</td>
+                        <td>Automation-Controller: automation-controller: Kubernetes service account token exfiltration via HashiCorp Vault credential SSRF</td>
+                        <td>This flaw affects AAP Controller deployments that include the HashiCorp Vault credential plugin (awx_plugins/credentials/hashivault.py) with kubernetes_role support. The vulnerability is particularly impactful in AAP Cloud (managed service) environments where the Kubernetes control plane is managed by Red Hat and tenant isolation is a security boundary. On-premise deployments are also affected, though the impact is lower since the administrator already has access to the infrastructure. The vulnerable code path exists in all AAP versions that ship the hashivault credential plugin with kubernetes_role authentication support.</td>
                     </tr>
                                                                             <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-61726'>CVE-2025-61726</a></td>
@@ -1201,6 +1208,97 @@ Regarding openshift4/ose-console for Product stream 4.12 and 4.13, the vulnerabl
                         <td>The MCP Python SDK, called `mcp` on PyPI, is a Python implementation of the Model Context Protocol (MCP). Prior to version 1.23.0, tThe Model Context Protocol (MCP) Python SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication using FastMCP with streamable HTTP or SSE transport, and has not configured TransportSecuritySettings, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access resources exposed by the MCP server on behalf of the user in those limited circumstances. Note that running HTTP-based MCP servers locally without authentication is not recommended per MCP security best practices. This issue does not affect servers using stdio transport. This vulnerability is fixed in 1.23.0. A DNS rebinding flaw has been discovered in the pypi mcp library. The Model Context Protocol (MCP) Python SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication using FastMCP with streamable HTTP or SSE transport, and has not configured TransportSecuritySettings, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access resources exposed by the MCP server on behalf of the user in those limited circumstances.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-76172'>CVE-2026-76172</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-24</td>
+                        <td>fast-uri: fast-uri: URI parsing flaw enables server-side request forgery and redirects</td>
+                        <td>fast-uri is a URI parser for Node.js. During parsing it runs a legacy decoding pass over the scheme component and never re-escapes the result, and serialization writes the scheme back out verbatim, unlike the host component which is re-escaped. As a result an input whose scheme carries percent-encoded slashes parses as a scheme with no authority, so the parsed host and error are both undefined, yet resolving or normalizing that same input emits a network-path reference whose authority is attacker-chosen and re-parses to that host. An application that allowlists on the parsed host, or treats a reference with no authority as safe to resolve against its base, gets the opposite of what it checked, giving an off-site redirect, server-side request forgery, or address-policy bypass. The legacy decoder also expands non-standard escape forms, widening the issue past upstream filters, and control characters in the scheme can reach the output as raw carriage return and line feed. The affected versions are 2.3.1 up to but not including 2.4.5, 3.0.0 up to but not including 3.1.6, and 4.0.0 up to but not including 4.1.3. The issue is fixed in 2.4.5, 3.1.6, and 4.1.3, which reject a scheme that is not valid after decoding. Users should upgrade to a patched version. A flaw was found in fast-uri, a software component used for parsing Uniform Resource Identifiers (URIs) in Node.js applications. This vulnerability arises from an issue in how fast-uri processes the scheme part of a URI, specifically when it contains special characters that are percent-encoded. An attacker can exploit this by crafting a malicious URI, causing the parser to misinterpret the host, which can lead to serious security risks. These risks include unauthorized redirection to external websites, server-side request forgery (SSRF) where the application makes unintended requests to internal or external resources, and bypassing security policies.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-75975'>CVE-2026-75975</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-24</td>
+                        <td>fast-uri: fast-uri: Server-side request forgery via malformed IPv6 normalization</td>
+                        <td>fast-uri is a URI parser for Node.js. Its custom parser for bracketed IPv6 literals does not validate the complete IPv6 grammar, so invalid trailing text in an authority can be silently discarded and a malformed attacker-controlled host is turned into a different valid IPv6 destination. For example, a bracketed literal with invalid trailing characters is normalized to the unspecified address, which a Node HTTP client then connects to a local service over loopback, and other malformed literals collapse to private-range addresses. No error is set on the parsed result, so an application checking the error field cannot detect the rewrite. An application that normalizes untrusted URLs before outbound requests, redirects, proxy routing, or address-policy enforcement can be redirected to a local or private IPv6 target, giving a server-side request forgery and address-policy bypass primitive. The affected versions are 2.3.1 up to but not including 2.4.5, 3.0.0 up to but not including 3.1.6, and 4.0.0 up to but not including 4.1.3. The issue is fixed in 2.4.5, 3.1.6, and 4.1.3, which validate bracketed IP literals against the full grammar and mark malformed literals as authority errors. Users should upgrade to a patched version. A flaw was found in fast-uri, a URI parser for Node.js. Its custom parser for bracketed IPv6 literals does not fully validate the IPv6 grammar, allowing invalid trailing text in an authority to be silently discarded. This can lead to a malformed, attacker-controlled host being normalized into a different, valid IPv6 destination, such as a local or private IPv6 target. An application normalizing untrusted URLs before outbound requests, redirects, or proxy routing could be redirected, resulting in a server-side request forgery (SSRF) and address-policy bypass.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-75899'>CVE-2026-75899</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-24</td>
+                        <td>fast-uri: fast-uri: Server-Side Request Forgery via repeated hostname percent-decoding</td>
+                        <td>This flaw in the `fast-uri` library, used by applications for URI parsing, allows for Server-Side Request Forgery (SSRF) and host-policy bypass. By crafting a doubly percent-encoded hostname in an untrusted HTTP-family URI, an attacker could redirect internal application requests to arbitrary network destinations, potentially bypassing security controls and accessing internal services. This risk is present in Red Hat products that process untrusted URIs using affected versions of `fast-uri`.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-75931'>CVE-2026-75931</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-24</td>
+                        <td>fast-uri: fast-uri: Host confusion via skipped IDN canonicalization</td>
+                        <td>fast-uri is a URI parser for Node.js. It canonicalizes a host to its ASCII form only when the input carries an explicit scheme, so a scheme-relative reference such as a host preceded by two slashes is returned with its host verbatim and no error set. As a result fast-uri's own entry points disagree with each other: parse, resolve, normalize, and equal can yield different hosts for the same input depending only on whether a scheme is written out, and equal can return opposite verdicts for the same pair of hosts. An application that extracts a host with fast-uri to check it against a policy list and then resolves the same reference can make its decision on one host while the destination is another, enabling host confusion and policy bypass. The affected versions are 2.4.2 up to but not including 2.4.5, 3.1.3 up to but not including 3.1.6, and 4.0.1 up to but not including 4.1.3. The issue is fixed in 2.4.5, 3.1.6, and 4.1.3, which canonicalize the host consistently across the resolve path. Users should upgrade to a patched version. A flaw was found in fast-uri, a URI parser for Node.js. This vulnerability arises because the parser fails to consistently convert internationalized domain names (IDN) to their standard ASCII form when processing scheme-relative references. This inconsistency can lead to host confusion, where an application might validate a URI against a security policy using one hostname, but then resolve to a different, potentially malicious, hostname. This discrepancy could allow an attacker to bypass security policies and access unauthorized resources.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-49825'>CVE-2026-49825</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-20</td>
+                        <td>lxml: lxml-html-clean: lxml: URL bypass vulnerability in Cleaner via missing xlink:href</td>
+                        <td>lxml is a library for processing XML and HTML in the Python language. Prior to 6.1.1, link attributes in ``lxml.html.defs.link_attrs`` were missing ``xlink:href``, which can be used for URL bypass attacks in embedded SVG/MathML/etc. content. This vulnerability was fixed in lxml 6.1.1 and lxml_html_clean 0.4.5. A flaw was found in lxml, a library for processing XML and HTML in Python. The `lxml.html.defs.link_attrs` were missing `xlink:href`, which could allow an attacker to bypass URL filtering mechanisms. This vulnerability enables URL bypass attacks in embedded content such as Scalable Vector Graphics (SVG) or Mathematical Markup Language (MathML), potentially leading to information disclosure or arbitrary code execution in the context of the user's browser.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-54284'>CVE-2026-54284</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-17</td>
+                        <td>sqlparse: sqlparse: Denial of Service via quadratic CPU consumption in SQL parsing</td>
+                        <td>sqlparse is a non-validating SQL parser module for Python. Prior to 0.6.0, TokenList construction and string conversion in sqlparse/sql.py repeatedly flatten nested token subtrees constructed by group_parenthesis and group_case, causing quadratic CPU consumption through sqlparse.parse(), sqlparse.format(), and sqlparse.split() before depth and token limits terminate processing. This issue is fixed in version 0.6.0. A flaw was found in sqlparse, a Python module for parsing SQL. A remote attacker could exploit a vulnerability in the TokenList construction and string conversion processes, specifically when handling nested token subtrees. This flaw leads to quadratic CPU consumption, which can result in a Denial of Service (DoS) by exhausting system resources before internal limits are reached.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-59893'>CVE-2026-59893</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-17</td>
+                        <td>sqlparse: sqlparse: Denial of Service via inefficient SQL parsing</td>
+                        <td>sqlparse is a non-validating SQL parser module for Python. Prior to 0.6.0, SQL_REGEX in sqlparse/keywords.py and the per-position loop in sqlparse/lexer.py repeatedly scan unmatched dollar-quoted literal and multiline-comment delimiters, causing quadratic CPU consumption through sqlparse.parse(), sqlparse.format(), and sqlparse.split(). This issue is fixed in version 0.6.0. A flaw was found in sqlparse, a Python module for parsing SQL. A remote attacker could exploit this vulnerability by providing specially crafted SQL input. This flaw causes inefficient processing of certain SQL patterns, leading to excessive CPU consumption and potentially a Denial of Service (DoS) condition, making the application unresponsive.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-71491'>CVE-2026-71491</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-17</td>
+                        <td>sqlparse: sqlparse: Denial of Service via quadratic CPU consumption in comment grouping</td>
+                        <td>sqlparse is a non-validating SQL parser module for Python. Prior to 0.6.0, group_comments in sqlparse/engine/grouping.py repeatedly rescans comment-only statements before the MAX_GROUPING_TOKENS guard, causing quadratic CPU consumption through sqlparse.parse() and sqlparse.format(sql, strip_comments=True). This issue is fixed in version 0.6.0. A flaw was found in sqlparse, a Python module for parsing SQL. A remote attacker could exploit this vulnerability by providing specially crafted SQL input that contains numerous comment-only statements. This could cause the `group_comments` function to repeatedly rescan these statements, leading to excessive CPU consumption and a Denial of Service (DoS) for the application using the parser.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-73624'>CVE-2026-73624</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-13</td>
+                        <td>gitpython: GitPython: Arbitrary File Overwrite via improper git option validation</td>
+                        <td>This is an Important arbitrary file overwrite vulnerability in GitPython's Diffable.diff method. It allows an attacker to write arbitrary content to chosen file paths at the process's privilege level by manipulating git options, which could lead to system compromise or privilege escalation.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-73625'>CVE-2026-73625</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-13</td>
+                        <td>gitpython: GitPython: Remote Code Execution via kwarg value smuggling</td>
+                        <td>This is an Important remote code execution vulnerability in GitPython, affecting Red Hat products that utilize GitPython versions prior to 3.1.54. The flaw allows an attacker to bypass input sanitization by smuggling malicious Git options within single-character keyword arguments, leading to arbitrary command execution when GitPython methods process untrusted input. This poses a significant risk to the integrity and confidentiality of systems.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-73623'>CVE-2026-73623</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-13</td>
+                        <td>gitpython: GitPython: Remote Code Execution via malicious Git template</td>
+                        <td>This is an Important severity flaw in GitPython where an incomplete denylist in `unsafe_git_clone_options` allows remote code execution. An attacker can leverage the `--template` option to execute arbitrary commands during repository cloning by pointing to a directory containing malicious post-checkout hooks. This risk is present when applications using GitPython clone untrusted repositories.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-73622'>CVE-2026-73622</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-13</td>
+                        <td>gitpython: GitPython: Information disclosure via environment variable expansion in URL handling</td>
+                        <td>This is an Important information disclosure flaw in GitPython. It allows an attacker to exfiltrate sensitive environment variables from systems that use GitPython to create or add remote repositories from untrusted URLs. This occurs because environment variable expansion is not disabled in URL handling, leading to secrets being embedded in Git configuration and transmitted to attacker-controlled hosts.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-59877'>CVE-2026-59877</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-07-08</td>
+                        <td>protobufjs: protobufjs: Denial of Service via crafted .proto schema</td>
+                        <td>The `protobufjs` library, used in Red Hat products, is susceptible to a Denial of Service when processing a specially crafted `.proto` schema. A remote attacker can exploit this by providing a malformed schema, causing an infinite loop during parsing and leading to service unavailability. This is considered Important due to the potential for significant disruption to services that handle external protobuf definitions.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-46625'>CVE-2026-46625</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-06-10</td>
@@ -2078,6 +2176,20 @@ So exposure is far narrower than a generic TLS parsing vulnerability.</td>
                         <td>2025-06-16</td>
                         <td>python-protobuf: Unbounded recursion in Python Protobuf</td>
                         <td>The availability impact of this denial-of-service vulnerability is confined to applications that directly integrate the Protobuf package. Within the context of a Red Hat system, the host machine itself is not expected to be impacted, thereby limiting the scope of disruption to individual application instances rather than broader system instability.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84375'>CVE-2026-84375</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-01</td>
+                        <td>js-yaml: js-yaml: Denial of Service vulnerability in YAML parsing</td>
+                        <td>This is an Important denial of service vulnerability in js-yaml, affecting applications that process untrusted YAML input. The flaw allows an attacker to craft a small YAML document that, when parsed, can lead to prolonged CPU consumption due to inefficient merge key processing, potentially exhausting system resources. This is particularly relevant where applications handle external YAML data and have merge processing enabled by default.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-69153'>CVE-2026-69153</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-08-03</td>
+                        <td>postcss: PostCSS: Information disclosure via crafted sourceMappingURL</td>
+                        <td>Red Hat rates this flaw as Moderate because the information disclosed is limited to files with a .map extension. Source map files may contain source code paths and content, but the attacker cannot read arbitrary files on the system. Exploitation requires the application to process attacker-controlled CSS through PostCSS on the server side.</td>
                     </tr>
                                                                             <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-39329'>CVE-2024-39329</a></td>
