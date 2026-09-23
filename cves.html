@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-09-22 @ 23:16:27">
+        <meta name="description" content="Report generated on 2026-09-23 @ 00:16:05">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-09-22 @ 23:16:27">
+        <meta property="og:description" content="Report generated on 2026-09-23 @ 00:16:05">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-09-22 @ 23:16:27</i>
+                <i>Report generated on 2026-09-23 @ 00:16:05</i>
                 </span>
             </div>
         </nav>
@@ -1212,14 +1212,14 @@ Regarding openshift4/ose-console for Product stream 4.12 and 4.13, the vulnerabl
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-08-24</td>
                         <td>fast-uri: fast-uri: URI parsing flaw enables server-side request forgery and redirects</td>
-                        <td>fast-uri is a URI parser for Node.js. During parsing it runs a legacy decoding pass over the scheme component and never re-escapes the result, and serialization writes the scheme back out verbatim, unlike the host component which is re-escaped. As a result an input whose scheme carries percent-encoded slashes parses as a scheme with no authority, so the parsed host and error are both undefined, yet resolving or normalizing that same input emits a network-path reference whose authority is attacker-chosen and re-parses to that host. An application that allowlists on the parsed host, or treats a reference with no authority as safe to resolve against its base, gets the opposite of what it checked, giving an off-site redirect, server-side request forgery, or address-policy bypass. The legacy decoder also expands non-standard escape forms, widening the issue past upstream filters, and control characters in the scheme can reach the output as raw carriage return and line feed. The affected versions are 2.3.1 up to but not including 2.4.5, 3.0.0 up to but not including 3.1.6, and 4.0.0 up to but not including 4.1.3. The issue is fixed in 2.4.5, 3.1.6, and 4.1.3, which reject a scheme that is not valid after decoding. Users should upgrade to a patched version. A flaw was found in fast-uri, a software component used for parsing Uniform Resource Identifiers (URIs) in Node.js applications. This vulnerability arises from an issue in how fast-uri processes the scheme part of a URI, specifically when it contains special characters that are percent-encoded. An attacker can exploit this by crafting a malicious URI, causing the parser to misinterpret the host, which can lead to serious security risks. These risks include unauthorized redirection to external websites, server-side request forgery (SSRF) where the application makes unintended requests to internal or external resources, and bypassing security policies.</td>
+                        <td>A host confusion vulnerability was found in fast-uri, a URI parser for Node.js. The parser runs a legacy decoding pass over the scheme component and never re-escapes the result. As a consequence, an input whose scheme carries percent-encoded slashes parses as having no authority (undefined host), yet resolving or normalizing that same input emits a network-path reference with an attacker-chosen authority. Applications that normalize or resolve untrusted URLs before a redirect check, host allowlist, or outbound request decision can be steered to an attacker-controlled domain, enabling server-side request forgery (SSRF), open redirect, or address-policy bypass. Additionally, a normalized URI in a response header can carry injected carriage return line feed (CRLF) characters, enabling HTTP response splitting attacks such as cache poisoning or session hijacking. This issue affects Red Hat products that bundle fast-uri as part of their Node.js dependencies. Fixed versions are available: fast-uri 2.4.5, 3.1.6, and 4.1.3.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-75975'>CVE-2026-75975</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-08-24</td>
                         <td>fast-uri: fast-uri: Server-side request forgery via malformed IPv6 normalization</td>
-                        <td>fast-uri is a URI parser for Node.js. Its custom parser for bracketed IPv6 literals does not validate the complete IPv6 grammar, so invalid trailing text in an authority can be silently discarded and a malformed attacker-controlled host is turned into a different valid IPv6 destination. For example, a bracketed literal with invalid trailing characters is normalized to the unspecified address, which a Node HTTP client then connects to a local service over loopback, and other malformed literals collapse to private-range addresses. No error is set on the parsed result, so an application checking the error field cannot detect the rewrite. An application that normalizes untrusted URLs before outbound requests, redirects, proxy routing, or address-policy enforcement can be redirected to a local or private IPv6 target, giving a server-side request forgery and address-policy bypass primitive. The affected versions are 2.3.1 up to but not including 2.4.5, 3.0.0 up to but not including 3.1.6, and 4.0.0 up to but not including 4.1.3. The issue is fixed in 2.4.5, 3.1.6, and 4.1.3, which validate bracketed IP literals against the full grammar and mark malformed literals as authority errors. Users should upgrade to a patched version. A flaw was found in fast-uri, a URI parser for Node.js. Its custom parser for bracketed IPv6 literals does not fully validate the IPv6 grammar, allowing invalid trailing text in an authority to be silently discarded. This can lead to a malformed, attacker-controlled host being normalized into a different, valid IPv6 destination, such as a local or private IPv6 target. An application normalizing untrusted URLs before outbound requests, redirects, or proxy routing could be redirected, resulting in a server-side request forgery (SSRF) and address-policy bypass.</td>
+                        <td>A Server-Side Request Forgery (SSRF) flaw was found in fast-uri, a URI parser for Node.js. The parser's incomplete validation of bracketed IPv6 literals allows attackers to inject malformed authority components that are silently normalized to different valid IPv6 destinations. This could allow an attacker to bypass URL allowlists or network-based access controls, potentially enabling unauthorized access to internal services, cloud metadata endpoints, or other network resources. This issue affects Red Hat products that bundle fast-uri as part of their Node.js dependencies. Fixed versions are available: fast-uri 2.4.5, 3.1.6, and 4.1.3.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-75899'>CVE-2026-75899</a></td>
