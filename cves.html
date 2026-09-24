@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-09-23 @ 23:16:28">
+        <meta name="description" content="Report generated on 2026-09-24 @ 00:16:11">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-09-23 @ 23:16:28">
+        <meta property="og:description" content="Report generated on 2026-09-24 @ 00:16:11">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-09-23 @ 23:16:28</i>
+                <i>Report generated on 2026-09-24 @ 00:16:11</i>
                 </span>
             </div>
         </nav>
@@ -67,6 +67,103 @@ Further investigation would need to be done to determine exactly which CVEs affe
                 </thead>
                 <tbody>
                                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-75884'>CVE-2026-75884</a></td>
+                        <td data-sortvalue="0" class='color-critical'>Critical</td>
+                        <td>2026-09-23</td>
+                        <td>awx: awx: Privilege escalation to OpenShift namespace via pod_spec_override injection in container groups</td>
+                        <td>Red Hat Ansible Automation Platform includes the AWX controller, which contains an incomplete input validation flaw in the container group pod_spec_override field. An AAP platform administrator can exploit this to escalate privileges from the application level to OpenShift namespace-level access, enabling exfiltration of namespace secrets including admin passwords and the database field-encryption key. Containerized (Podman) installs are not affected.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84474'>CVE-2026-84474</a></td>
+                        <td data-sortvalue="0" class='color-critical'>Critical</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: view_jobtemplate to execute privilege escalation via host_config_key exposure and X-Forwarded-For spoofing of provisioning-callback host match</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible
+Automation Platform 2.5, 2.6, and 2.7 (the gateway/envoy topology that
+forwards X-Forwarded-For to the controller was introduced with the AAP
+gateway in 2.5). The host_config_key exposure (defect a) is present in the
+controller code independent of version; the full remote host-spoofing chain
+(defect b) requires the shipped gateway topology with an empty
+PROXY_IP_ALLOWED_LIST. [Verify AAP 2.4 for the standalone host_config_key
+exposure -- see affects.]</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84502'>CVE-2026-84502</a></td>
+                        <td data-sortvalue="0" class='color-critical'>Critical</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: Project scm_url argument injection into `git ls-remote --upload-pack` yields RCE on the controller-task control-plane pod</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible
+Automation Platform, and the underlying argument-injection behavior in the
+ansible-core git module. The controller does not reject project SCM URLs that
+begin with a dash and the git module does not separate options from the
+repository argument, allowing command execution on the control-plane task pod.
+[Verify AAP 2.4 and ansible-core stream coverage -- see affects.]</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84638'>CVE-2026-84638</a></td>
+                        <td data-sortvalue="0" class='color-critical'>Critical</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: instance group attachment to schedules and workflow job template nodes checks only read permission, allowing use of restricted (controlplane / other-tenant) instance groups and privilege escalation to control-plane code execution</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible
+Automation Platform. Exploitation requires an authenticated user who can modify
+a schedule or workflow job template node and who can view (read) the target
+instance group; the impact is escalation to code execution on the control plane
+node or within another tenant's execution environment. [Verify AAP 2.4 -- see
+affects.]</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84684'>CVE-2026-84684</a></td>
+                        <td data-sortvalue="0" class='color-critical'>Critical</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: constructed inventory input inventory attachment checks only read permission on the source inventory, allowing a read-only user to clone another tenant's hosts and secrets and run ad hoc commands against them</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible
+Automation Platform. Exploitation requires an authenticated user who can
+administer a constructed inventory and can read (view) an inventory in another
+organization; the impact is cross-tenant disclosure of inventory data and
+secrets and ad hoc code execution against another tenant's hosts.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84711'>CVE-2026-84711</a></td>
+                        <td data-sortvalue="0" class='color-critical'>Critical</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller: Project scm_branch/scm_refspec argument injection into git during project sync allows arbitrary file read on the sync host (control-plane ServiceAccount token, SECRET_KEY, and DB credentials on control-plane deployments) leading to full AAP and Kubernetes-namespace compromise</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible Automation Platform.
+Exploitation requires an authenticated user with permission to create or edit a project
+(not a system administrator). Because project synchronization runs on the control-plane
+host on default OpenShift Operator deployments, the arbitrary file read can disclose the
+control-plane Kubernetes ServiceAccount token, the Controller SECRET_KEY, and the database
+credentials, enabling full compromise of the platform and its Kubernetes namespace; Red
+Hat rates this Critical. The realized impact is reduced on deployments where project
+updates run in an isolated execution environment without control-plane secrets. The
+recommended fix is to reject SCM branch/refspec values beginning with a dash at the API,
+pass them only after a `--` end-of-options sentinel in the sync playbook, adopt the
+upstream ansible.builtin.git fix that inserts `--` before the checkout version, and run
+project updates with a minimal ServiceAccount.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84719'>CVE-2026-84719</a></td>
+                        <td data-sortvalue="0" class='color-critical'>Critical</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller: WorkflowJobTemplate /copy/ deep-copy sanitizer omits instance_groups authorization (InstanceGroup use_role bypass to control-plane)</td>
+                        <td>This flaw is a missing-authorization weakness in the automation-controller WorkflowJobTemplate
+copy path: the post-copy sanitizer does not verify the copying user's InstanceGroup use_role
+(nor the execution_environment read role) on relations preserved from the original workflow. It
+belongs to the same class as other InstanceGroup use_role bypass findings; the security-relevant
+consequence is that attacker-controlled automation can be scheduled onto instance groups the
+user is not authorized to use, including the control-plane instance group, resulting in code
+execution in the control-plane execution context. The correct fix adds per-relationship use/read
+authorization checks for instance_groups, execution_environment, and labels in
+deep_copy_permission_check_func (or removes those fields from
+WorkflowJobTemplateNode.FIELDS_TO_PRESERVE_AT_COPY).</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-12564'>CVE-2026-12564</a></td>
+                        <td data-sortvalue="0" class='color-critical'>Critical</td>
+                        <td>2026-07-17</td>
+                        <td>Automation-Controller: automation-controller: Kubernetes service account token exfiltration via HashiCorp Vault credential SSRF</td>
+                        <td>This flaw affects AAP Controller deployments that include the HashiCorp Vault credential plugin (awx_plugins/credentials/hashivault.py) with kubernetes_role support. The vulnerability is particularly impactful in AAP Cloud (managed service) environments where the Kubernetes control plane is managed by Red Hat and tenant isolation is a security boundary. On-premise deployments are also affected, though the impact is lower since the administrator already has access to the infrastructure. The vulnerable code path exists in all AAP versions that ship the hashivault credential plugin with kubernetes_role authentication support.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-68664'>CVE-2025-68664</a></td>
                         <td data-sortvalue="0" class='color-critical'>Critical</td>
                         <td>2025-12-23</td>
@@ -79,13 +176,6 @@ Further investigation would need to be done to determine exactly which CVEs affe
                         <td>2026-06-23</td>
                         <td>eda-server: websocket missing authorization allows credential theft via activation_id spoofing</td>
                         <td>A missing authorization vulnerability was found in the Event-Driven Ansible (EDA) websocket API. The /api/eda/ws/ansible-rulebook endpoint does not verify user permissions when processing Worker messages. Any authenticated user can send a forged message with an arbitrary activation_id to receive plaintext credentials associated with that activation, including OAuth tokens, vault passwords, and SSH keys. A missing authorization vulnerability was found in the Event-Driven Ansible (EDA) websocket API. The /api/eda/ws/ansible-rulebook endpoint does not verify user permissions when processing Worker messages. Any authenticated user can send a forged message with an arbitrary activation_id to receive plaintext credentials associated with that activation, including OAuth tokens, vault passwords, and SSH keys.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-12564'>CVE-2026-12564</a></td>
-                        <td data-sortvalue="0" class='color-critical'>Critical</td>
-                        <td>2026-07-17</td>
-                        <td>Automation-Controller: automation-controller: Kubernetes service account token exfiltration via HashiCorp Vault credential SSRF</td>
-                        <td>This flaw affects AAP Controller deployments that include the HashiCorp Vault credential plugin (awx_plugins/credentials/hashivault.py) with kubernetes_role support. The vulnerability is particularly impactful in AAP Cloud (managed service) environments where the Kubernetes control plane is managed by Red Hat and tenant isolation is a security boundary. On-premise deployments are also affected, though the impact is lower since the administrator already has access to the infrastructure. The vulnerable code path exists in all AAP versions that ship the hashivault credential plugin with kubernetes_role authentication support.</td>
                     </tr>
                                                                             <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-61726'>CVE-2025-61726</a></td>
@@ -1014,11 +1104,226 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>Red Hat has evaluated this vulnerability. This issue only affects versions AAP 2.5 GA and onwards.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84679'>CVE-2026-84679</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: the AWX_TASK_ENV setting applies arbitrary environment variables to the control-plane web and task processes, enabling TLS interception of external credentials and code execution</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible
+Automation Platform. Exploitation requires the system administrator (superuser)
+role; the impact is control over the control-plane process environment, enabling
+TLS interception of external credentials and Red Hat subscription/Insights
+secrets, arbitrary file write, and potential code execution on the control
+plane.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84486'>CVE-2026-84486</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: unauthenticated debug scheduler-trigger endpoints (AllowAny, routed without DEBUG guard) allow advisory-lock starvation of job dispatch (DoS)</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible
+Automation Platform. Debug endpoints intended for development are routed and
+world-accessible on production builds, allowing an unauthenticated attacker to
+disrupt job scheduling. The fix restricts the endpoints to system
+administrators and only routes them when debug mode is enabled. [Verify AAP
+2.4 -- see affects.]</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84644'>CVE-2026-84644</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller-container: automation-controller: automation-controller: server-side request forgery via the Thycotic Secret Server external credential plugin test endpoint (caller-controlled server_url, backend executed in the controller web process)</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible
+Automation Platform. Exploitation requires an authenticated user with the use
+role on a Thycotic Secret Server credential (or the ability to create one); the
+impact is a blind server-side request forgery originating from the control-plane
+web pod, enabling internal reconnaissance and a limited request-forgery/denial-
+of-service primitive</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84683'>CVE-2026-84683</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: stored cross-site scripting in the job stdout HTML view via ANSI OSC 8 hyperlink sequences (javascript: anchor) enabling session takeover</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible
+Automation Platform. Exploitation requires an authenticated low-privileged user
+who can produce job output (or an external party whose data a playbook echoes)
+to plant the payload, and a higher-privileged user to view the stdout HTML page
+and click the injected link; the impact is JavaScript execution in the viewer's
+authenticated session, up to platform takeover.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84686'>CVE-2026-84686</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: notification template password fields can be decrypted by a notification-template administrator by replaying encrypted values across subfields, exposing plaintext Slack, PagerDuty, Twilio, AWS SNS and Grafana credentials</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible
+Automation Platform. Exploitation requires an authenticated user with
+administrative access to a notification template; the impact is recovery of the
+plaintext of notification credentials that the user was only permitted to use.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84689'>CVE-2026-84689</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: bulk job launch allows setting a workflow node's job reference to an arbitrary unified job, enabling a low-privileged user to cancel and read metadata of jobs in other organizations</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible
+Automation Platform. Exploitation requires an authenticated user with execute
+permission on a job template; the impact is cross-tenant cancellation of running
+automation (denial of service) and disclosure of job metadata.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84691'>CVE-2026-84691</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: format string injection in the API 4XX error log setting discloses Django SECRET_KEY and database credentials to an administrator</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible
+Automation Platform. Exploitation requires an authenticated System Administrator
+(superuser); the impact is disclosure of the Django SECRET_KEY and database
+credentials, enabling offline decryption of all stored credentials and session
+forgery.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84692'>CVE-2026-84692</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: workflow job template node execute permission check bypassed by creating a node with a null unified_job_template and then patching it, allowing a single workflow-admin to execute any other tenant's job template with the victim's credentials (cross-tenant privilege escalation)</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible Automation
+Platform. Exploitation requires an authenticated user with admin permission on at
+least one workflow job template; the impact is cross-organization privilege
+escalation to execution of another tenant's automation with that tenant's
+credentials.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84706'>CVE-2026-84706</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: Credential Type env-injector deny-list omits process-hijacking variables (BASH_ENV/LD_PRELOAD) allowing code execution in the execution environment</td>
+                        <td>This flaw requires a highly privileged actor. Creating or modifying a custom Credential
+Type requires Controller superuser; an organization Credential Admin can weaponize a
+pre-existing malicious custom type by supplying its input. Managed credential types
+cannot be edited and are unaffected. The control that is bypassed exists specifically
+to prevent credential injectors from hijacking the runner process, so its incomplete
+deny-list is a security defect (CWE-184) rather than expected behavior, and in
+Gateway-managed deployments (AAP 2.5+) it crosses the platform-admin -> execution-
+environment/host boundary. Red Hat recommends replacing the deny-list with an
+allow-list at both the serializer and the runtime injection sink.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84708'>CVE-2026-84708</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: container group pod_spec_override mints the automation-controller ServiceAccount token and mounts control-plane namespace secrets into job pods, bypassing automountServiceAccountToken:false (control-plane secret and identity compromise)</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible Automation
+Platform deployments that use container groups (Kubernetes/OpenShift execution).
+Exploitation requires an authenticated user with the Instance Group admin role on a
+container group (superuser is not required). The impact is compromise of the
+control-plane service-account identity on the Kubernetes API and cleartext disclosure of
+control-plane namespace secrets — including the platform database password and Django
+SECRET_KEY — leading to full platform data compromise. The realized severity depends on
+whether the deployment strips service-account-token volumes (tower#7523) and runs job
+pods in a dedicated namespace with a reduced-RBAC service account (awx-operator#2122);
+both were absent on the tested system. Red Hat recommends stripping projected
+serviceAccountToken and secret volumes from pod_spec_override at both the serializer and
+the runtime dispatch, pinning serviceAccountName/namespace, and adopting the dedicated
+job namespace with minimal RBAC.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84714'>CVE-2026-84714</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller: incomplete sanitize_jinja() regex allows Jinja template injection into ad-hoc module_args, Machine-credential fields, and Host names, reaching ansible-core templating in the execution environment</td>
+                        <td>A flaw was found in the automation-controller input-validation guard sanitize_jinja(). The function uses two regular expressions to reject user-supplied Jinja, but the patterns stop at the first interior '}' or '%' character, so a Jinja expression containing an inner brace (for example an empty dict) is accepted while remaining valid Jinja. Because sanitize_jinja() is the sole guard on several launch-time fields — ad-hoc command module_args, Machine-credential username / become_method / become_user, and inventory host names — a low-privileged user can inject Jinja that ansible-core evaluates in the execution environment. This enables execution of arbitrary commands in the execution environment (bypassing an administrator's AD_HOC_COMMANDS module allowlist) and disclosure of secrets belonging to credentials the attacker cannot read (by templating a co-attached credential's injected environment variables), across the credential access-control boundary.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-87817'>CVE-2026-87817</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-09</td>
+                        <td>GitPython: GitPython: Remote Code Execution via Git directory impersonation</td>
+                        <td>This vulnerability is rated as Important because it allows remote code execution in Red Hat products utilizing GitPython. Exploitation requires user interaction, specifically a victim calling index.commit() on a repository where an attacker has previously placed a malicious pre-commit hook by impersonating the git directory. This reduces the immediate threat compared to vulnerabilities exploitable without user interaction.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-54284'>CVE-2026-54284</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-17</td>
+                        <td>sqlparse: sqlparse: Denial of Service via quadratic CPU consumption in SQL parsing</td>
+                        <td>sqlparse is a non-validating SQL parser module for Python. Prior to 0.6.0, TokenList construction and string conversion in sqlparse/sql.py repeatedly flatten nested token subtrees constructed by group_parenthesis and group_case, causing quadratic CPU consumption through sqlparse.parse(), sqlparse.format(), and sqlparse.split() before depth and token limits terminate processing. This issue is fixed in version 0.6.0. A flaw was found in sqlparse, a Python module for parsing SQL. A remote attacker could exploit a vulnerability in the TokenList construction and string conversion processes, specifically when handling nested token subtrees. This flaw leads to quadratic CPU consumption, which can result in a Denial of Service (DoS) by exhausting system resources before internal limits are reached.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-59893'>CVE-2026-59893</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-17</td>
+                        <td>sqlparse: sqlparse: Denial of Service via inefficient SQL parsing</td>
+                        <td>sqlparse is a non-validating SQL parser module for Python. Prior to 0.6.0, SQL_REGEX in sqlparse/keywords.py and the per-position loop in sqlparse/lexer.py repeatedly scan unmatched dollar-quoted literal and multiline-comment delimiters, causing quadratic CPU consumption through sqlparse.parse(), sqlparse.format(), and sqlparse.split(). This issue is fixed in version 0.6.0. A flaw was found in sqlparse, a Python module for parsing SQL. A remote attacker could exploit this vulnerability by providing specially crafted SQL input. This flaw causes inefficient processing of certain SQL patterns, leading to excessive CPU consumption and potentially a Denial of Service (DoS) condition, making the application unresponsive.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-71491'>CVE-2026-71491</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-17</td>
+                        <td>sqlparse: sqlparse: Denial of Service via quadratic CPU consumption in comment grouping</td>
+                        <td>sqlparse is a non-validating SQL parser module for Python. Prior to 0.6.0, group_comments in sqlparse/engine/grouping.py repeatedly rescans comment-only statements before the MAX_GROUPING_TOKENS guard, causing quadratic CPU consumption through sqlparse.parse() and sqlparse.format(sql, strip_comments=True). This issue is fixed in version 0.6.0. A flaw was found in sqlparse, a Python module for parsing SQL. A remote attacker could exploit this vulnerability by providing specially crafted SQL input that contains numerous comment-only statements. This could cause the `group_comments` function to repeatedly rescan these statements, leading to excessive CPU consumption and a Denial of Service (DoS) for the application using the parser.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-56860'>CVE-2026-56860</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-13</td>
+                        <td>net/url: golang: golang net/url: Denial of Service from quadratic complexity in path resolution</td>
+                        <td>This is an Important denial of service flaw in the Go `net/url` package. Applications built with Go that process untrusted URLs containing parent directory segments ('..') may be vulnerable to excessive resource consumption due to quadratic time complexity in path resolution. This can lead to a denial of service, impacting the availability of affected services.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-56853'>CVE-2026-56853</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-13</td>
+                        <td>net/http: golang: Go net/http: Unencrypted HTTP/2 connections vulnerable to Denial of Service</td>
+                        <td>Important: Unencrypted HTTP/2 servers are susceptible to a denial of service due to improper handling of ReadHeaderTimeout during the client preface reading phase. This can lead to resource exhaustion and service unavailability in affected Red Hat products configured to support unencrypted HTTP/2.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-56858'>CVE-2026-56858</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-13</td>
+                        <td>html/template: golang: Go html/template: Cross-Site Scripting via pathological input</td>
+                        <td>This is an Important cross-site scripting (XSS) vulnerability in the Go `html/template` package. Applications utilizing this package to render untrusted input are susceptible to arbitrary content injection due to a flaw in how pathological inputs are handled, potentially leading to client-side script execution.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-56862'>CVE-2026-56862</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-13</td>
+                        <td>crypto/tls: golang: Golang crypto/tls: Denial of Service via indefinite KeyUpdate messages</td>
+                        <td>This is an Important denial of service vulnerability in the `golang` `crypto/tls` package. A remote, unauthenticated attacker can exploit this flaw by continuously sending `KeyUpdate` messages during a TLS handshake, forcing the server to perform indefinite key derivation operations. This resource exhaustion can lead to a denial of service for applications and services in Red Hat products that use the affected `crypto/tls` library and are exposed to untrusted network clients.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-33818'>CVE-2026-33818</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-13</td>
+                        <td>encoding/asn1: golang: Go encoding/asn1: Denial of Service via excessive recursion in Unmarshal</td>
+                        <td>This is an Important denial of service flaw in the Go encoding/asn1 package, as it can be triggered remotely without authentication. An attacker can provide a malformed ASN.1 structure, causing excessive recursion during unmarshalling and leading to stack exhaustion, which can render the service unavailable.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-56859'>CVE-2026-56859</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-13</td>
+                        <td>encoding/xml: golang: Go: Denial of Service via XML decoding recursion depth issue</td>
+                        <td>An Important denial of service flaw affects applications utilizing the Go `encoding/xml` package. This vulnerability arises from an issue in XML decoding where a recursion depth counter fails to reset, potentially leading to stack exhaustion when processing malicious XML input.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-73086'>CVE-2026-73086</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-11</td>
+                        <td>nanoid: nanoid: Predictable ID generation due to integer overflow</td>
+                        <td>Important: This flaw in the nanoid JavaScript library allows a remote attacker to cause predictable ID generation by exploiting an integer overflow in the `nanoid(size)` function. This can lead to the compromise of session tokens, CSRF tokens, and API keys, bypassing security mechanisms. The attack requires specific conditions, contributing to its Important severity rather than Critical.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-18141'>CVE-2026-18141</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-07-31</td>
                         <td>aap-gateway: aap-gateway: Authentication bypass in Event-Driven Ansible via forged HTTP header</td>
                         <td>Important: Ansible Automation Platform 2.6 Event-Driven Ansible (EDA) is vulnerable to an authentication bypass, allowing unauthenticated remote attackers to inject arbitrary events into mTLS-protected event streams. This is due to a flaw in the `aap-gateway` configuration that permits bypassing mTLS by manipulating the URL and forging the Subject HTTP header. The vulnerability is exacerbated by information disclosure, where error messages reveal the expected certificate subject, simplifying targeted exploitation against default mTLS deployments.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-67214'>CVE-2026-67214</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-07-29</td>
+                        <td>nanoid: nanoid: Denial of Service via negative size input in non-secure module functions</td>
+                        <td>An input validation flaw in Nano ID's non-secure module (`nanoid/non-secure`) causes an infinite loop in the `customAlphabet` and `nanoid` functions when processed with a negative size parameter. Because the decrementing loop counter never meets its termination condition, an unauthenticated attacker who passes an unvalidated negative integer value can block the NodeJS event loop, resulting in a thread hang and complete Denial of Service (DoS) for the host application.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-54058'>CVE-2026-54058</a></td>
@@ -1241,27 +1546,6 @@ Regarding openshift4/ose-console for Product stream 4.12 and 4.13, the vulnerabl
                         <td>2026-08-20</td>
                         <td>lxml: lxml-html-clean: lxml: URL bypass vulnerability in Cleaner via missing xlink:href</td>
                         <td>lxml is a library for processing XML and HTML in the Python language. Prior to 6.1.1, link attributes in ``lxml.html.defs.link_attrs`` were missing ``xlink:href``, which can be used for URL bypass attacks in embedded SVG/MathML/etc. content. This vulnerability was fixed in lxml 6.1.1 and lxml_html_clean 0.4.5. A flaw was found in lxml, a library for processing XML and HTML in Python. The `lxml.html.defs.link_attrs` were missing `xlink:href`, which could allow an attacker to bypass URL filtering mechanisms. This vulnerability enables URL bypass attacks in embedded content such as Scalable Vector Graphics (SVG) or Mathematical Markup Language (MathML), potentially leading to information disclosure or arbitrary code execution in the context of the user's browser.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-54284'>CVE-2026-54284</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-08-17</td>
-                        <td>sqlparse: sqlparse: Denial of Service via quadratic CPU consumption in SQL parsing</td>
-                        <td>sqlparse is a non-validating SQL parser module for Python. Prior to 0.6.0, TokenList construction and string conversion in sqlparse/sql.py repeatedly flatten nested token subtrees constructed by group_parenthesis and group_case, causing quadratic CPU consumption through sqlparse.parse(), sqlparse.format(), and sqlparse.split() before depth and token limits terminate processing. This issue is fixed in version 0.6.0. A flaw was found in sqlparse, a Python module for parsing SQL. A remote attacker could exploit a vulnerability in the TokenList construction and string conversion processes, specifically when handling nested token subtrees. This flaw leads to quadratic CPU consumption, which can result in a Denial of Service (DoS) by exhausting system resources before internal limits are reached.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-59893'>CVE-2026-59893</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-08-17</td>
-                        <td>sqlparse: sqlparse: Denial of Service via inefficient SQL parsing</td>
-                        <td>sqlparse is a non-validating SQL parser module for Python. Prior to 0.6.0, SQL_REGEX in sqlparse/keywords.py and the per-position loop in sqlparse/lexer.py repeatedly scan unmatched dollar-quoted literal and multiline-comment delimiters, causing quadratic CPU consumption through sqlparse.parse(), sqlparse.format(), and sqlparse.split(). This issue is fixed in version 0.6.0. A flaw was found in sqlparse, a Python module for parsing SQL. A remote attacker could exploit this vulnerability by providing specially crafted SQL input. This flaw causes inefficient processing of certain SQL patterns, leading to excessive CPU consumption and potentially a Denial of Service (DoS) condition, making the application unresponsive.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-71491'>CVE-2026-71491</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-08-17</td>
-                        <td>sqlparse: sqlparse: Denial of Service via quadratic CPU consumption in comment grouping</td>
-                        <td>sqlparse is a non-validating SQL parser module for Python. Prior to 0.6.0, group_comments in sqlparse/engine/grouping.py repeatedly rescans comment-only statements before the MAX_GROUPING_TOKENS guard, causing quadratic CPU consumption through sqlparse.parse() and sqlparse.format(sql, strip_comments=True). This issue is fixed in version 0.6.0. A flaw was found in sqlparse, a Python module for parsing SQL. A remote attacker could exploit this vulnerability by providing specially crafted SQL input that contains numerous comment-only statements. This could cause the `group_comments` function to repeatedly rescan these statements, leading to excessive CPU consumption and a Denial of Service (DoS) for the application using the parser.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-73624'>CVE-2026-73624</a></td>
@@ -2076,6 +2360,221 @@ The current python-django issue may be resolved in an upcoming Satellite update.
                         <td>quic-go is an implementation of the QUIC protocol in Go. Prior to version 0.42.0, an attacker can cause its peer to run out of memory sending a large number of `NEW_CONNECTION_ID` frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a `RETIRE_CONNECTION_ID` frame. The attacker can prevent the receiver from sending out (the vast majority of) these `RETIRE_CONNECTION_ID` frames by collapsing the peers congestion window (by selectively acknowledging received packets) and by manipulating the peer's RTT estimate. Version 0.42.0 contains a patch for the issue. No known workarounds are available. A flaw was found in quic-go. This issue may allow an attacker to trigger a denial of service by sending a large number of NEW_CONNECTION_ID frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a RETIRE_CONNECTION_ID frame, but the attacker can prevent the receiver from sending out the vast majority of these RETIRE_CONNECTION_ID frames by selectively acknowledging received packets and collapsing the peers congestion window and by manipulating the peer's RTT estimate.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84499'>CVE-2026-84499</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: write-only survey password recovered in plaintext via Schedule/WorkflowJobTemplateNode survey min/max validation error message</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible
+Automation Platform. Exploitation requires an authenticated user holding the
+JobTemplate Admin role on the target job template; the impact is disclosure of
+write-only survey password values to a user not otherwise authorized to read
+them. [Verify AAP 2.4 -- see affects.]</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84643'>CVE-2026-84643</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: missing use_role authorization on the project signature validation credential foreign key allows a project administrator to bind and use another organization's credential cross-tenant</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible
+Automation Platform. Exploitation requires an authenticated user holding the
+Organization Project Admin role; the impact is a cross-tenant authorization
+boundary violation, disclosing another organization's credential metadata and
+causing server-side use of that credential during project synchronization.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84680'>CVE-2026-84680</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: organization galaxy credential attachment checks only read permission on the credential, allowing an organization admin with read-only visibility to bind and server-side-use another tenant's Automation Hub API token</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible
+Automation Platform. Exploitation requires an authenticated user who administers
+an organization and can read (view) a Galaxy/Hub credential in another
+organization; the impact is cross-tenant server-side use of that credential's
+Automation Hub token.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84703'>CVE-2026-84703</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: execution environment credential foreign key is not use-permission checked, allowing an organization execution-environment admin to bind and disclose another organization's container registry credential (cross-tenant credential disclosure)</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible Automation
+Platform. Exploitation requires an authenticated user with the organization
+execution-environment admin role; the impact is disclosure of another
+organization's container registry credentials across the tenant boundary.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84707'>CVE-2026-84707</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: host_filter SmartFilter ORM traversal exposes JobEvent/AdHocCommandEvent event_data and stdout to users without permission on the job, enabling blind character-by-character extraction of job output (cross-tenant information disclosure)</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible Automation
+Platform. Exploitation requires an authenticated user with at least the Read role
+on one inventory whose hosts have been targeted by jobs; the impact is disclosure
+of job and ad-hoc command output -- which may contain plaintext secrets -- for jobs
+the user has no permission to view, including across organizations, without any
+ability to modify data. Cross-organization disclosure of tenant data is a tenancy
+crossing under a single controller authorization authority and does not change the
+CVSS scope. Red Hat recommends both marking event_data and stdout as
+non-searchable and restricting host_filter to an allow-list of host-local fields
+rather than permitting open ORM relation traversal.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84709'>CVE-2026-84709</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller: CredentialType injector validation renders attacker-supplied Jinja2 templates synchronously in the web worker, allowing uncontrolled resource consumption (denial of service) and an unhandled-exception (500) via /api/controller/v2/credential_types/</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible Automation
+Platform. Exploitation requires an authenticated superuser, and the rendering sandbox
+prevents code execution, so there is no confidentiality or integrity impact; the impact
+is a denial of service of the Controller web tier while the attack is sustained, plus an
+unhandled server error. Red Hat rates this Moderate. The recommended fix is to validate
+injector templates by inspecting the parsed template (parse, do not render), or to bound
+rendering with a hard wall-clock/iteration/output limit and reject loop/extends/include/
+import constructs, and to broaden exception handling so all failures surface as clean
+validation errors rather than HTTP 500.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84712'>CVE-2026-84712</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller: unauthenticated /api/v2/ping/ discloses automation-mesh instance topology and instance-group membership</td>
+                        <td>There is no configuration workaround that trims the /ping/ response. Operators
+can reduce exposure by ensuring the Controller API route is not reachable by
+untrusted networks and by fronting health checks with an infrastructure probe
+that does not proxy /ping/ externally, but the definitive fix is to stop
+serializing instance/instance-group/install_uuid/active_node data from the
+unauthenticated endpoint.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84716'>CVE-2026-84716</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller: instance install_bundle issues 10-year, non-revocable receptor mesh-CA certificates for caller-chosen (and case-variant impersonating) hostnames</td>
+                        <td>A flaw was found in the automation-controller instance install-bundle endpoint. When a System Administrator downloads an execution/hop node's install bundle, the controller signs an X.509 certificate with the receptor mesh certificate authority in which the Common Name, DNS subject-alternative-name, and receptor node-id are taken verbatim from the caller-chosen instance hostname, with a hard-coded ten-year validity, a random serial, and no issuance log or revocation list. Because the hostname charset validator is case-insensitive while the uniqueness validator is case-sensitive, an administrator can register a case variant of an existing control node's hostname and obtain a mesh-CA-signed certificate that TLS peers, which match hostnames case-insensitively, accept as that control node. In managed/hosted deployments — where the customer holds controller superuser but the platform operator runs the mesh — this yields a long-lived, non-revocable mesh peer credential and, with an on-path position, TLS impersonation or interception of control/hybrid mesh nodes. It does not grant direct remote code execution, because receptor work submission is gated by a separate signing key not included in the bundle.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84717'>CVE-2026-84717</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller: unauthenticated 200-vs-403 oracle in Bitbucket Data Center webhook receiver enumerates webhook-enabled job templates</td>
+                        <td>This flaw is an unauthenticated information-disclosure (target enumeration) weakness in the
+automation-controller Bitbucket Data Center webhook receiver. Confidentiality impact is limited
+to the existence and webhook configuration of template IDs; no secret webhook_key, credential,
+or payload content is exposed, and the ping code path performs no action (integrity and
+availability are not affected). The correct fix is to make the unsigned diagnostics:ping
+response independent of whether a matching template exists — either by performing the
+ping/is_ignored_request short-circuit before get_object(), or by requiring a valid
+X-Hub-Signature for ping as well.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84718'>CVE-2026-84718</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller: client IP spoofing in audit/access logs via unrestricted X-Forwarded-For trust</td>
+                        <td>This flaw is an audit/forensic integrity weakness: an attacker can spoof the client IP recorded
+in automation-controller's audit and access logs by supplying an X-Forwarded-For header, which
+Controller trusts unconditionally in its shipped production configuration. It does not disclose
+information and does not grant additional access; confidentiality and availability are not
+affected and the integrity impact is limited to the source-IP field of log records. Note that
+merely populating PROXY_IP_ALLOWED_LIST does not fully resolve the issue in an Envoy-append
+deployment, because the leftmost (attacker-controlled) X-Forwarded-For entry is still selected;
+the robust fix uses the existing trusted-proxy shared-secret mechanism (preferring the trusted
+rightmost entry) and/or selects the rightmost entry rather than the leftmost.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84720'>CVE-2026-84720</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller: WorkflowJobNode.ancestor_artifacts lacks prevent_search, exposing no_log set_stats artifacts via ORM-traversal count-oracle</td>
+                        <td>This flaw is an information-exposure weakness in automation-controller: a workflow-artifact
+column that is hidden at the serializer layer and intended to be masked by Ansible's no_log
+control is nonetheless queryable through the generic REST filter backend because it is not
+wrapped in prevent_search(), and it is stored before no_log masking is applied. The
+security-relevant consequence is that a low-privileged or zero-role user can use response counts
+as an oracle to recover, character by character, secret values propagated between workflow nodes
+via set_stats, including across organizations. It belongs to the same class as other
+prevent_search-omission / open-ORM-traversal findings in the controller filter surface; the
+correct fix both wraps the field in prevent_search() and redacts no_log keys before persisting
+the column, and a durable fix constrains generic relation-traversal filtering.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84724'>CVE-2026-84724</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller: SystemJob extra_vars.days argument injection into uncontainerized control-plane awx-manage process</td>
+                        <td>This flaw is an argument-injection weakness in the automation-controller system-job dispatcher:
+an unvalidated system-job variable is flattened into the management-command argument string with
+spaces and then re-split by the job runner, allowing extra arguments to be injected into an
+awx-manage process that, uniquely among job types, runs on the control node without container
+isolation. Exploitation requires superuser privileges. The demonstrated impact is control of the
+awx-manage argument vector and of sys.path[0]; full code execution requires an additional import
+gadget not present in the current management commands. The correct fix builds the runner argument
+file with shlex-safe quoting (ansible_runner.utils.args2cmdline, as the base task class already
+does), validates the launch-time extra_vars through the existing system-job validator, and coerces
+numeric options with int().</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-71458'>CVE-2026-71458</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-06</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: Named-URL 404 body oracle enables cross-tenant resource name enumeration</td>
+                        <td>URLModificationMiddleware resolves named-URL lookups against unfiltered Model.objects before RBAC. The 403→404 shim only rewrites 403 responses, leaving the pk=0 miss path with a different 404 detail string. Differential "Not found." vs "No <Model> matches..." reveals whether a named resource (org, credential, inventory, host) exists anywhere on the platform. Enables cross-tenant internal hostname enumeration.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-71459'>CVE-2026-71459</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-06</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: JobJobEventsChildrenSummary               RBAC bypass exposes cross-tenant job event tree structure</td>
+                        <td>JobJobEventsChildrenSummary view has no model/parent_model. ModelAccessPermission.check_get_permissions() falls through (returns True) for any authenticated user. The view uses raw get_object_or_404(Job, pk) without DRF object-level permission check. Zero-privilege user reads event tree structure, event_processing_finished status, and enumerates Job IDs platform-wide via 200/404 oracle. Sibling endpoint /jobs/{id}/job_events/ correctly returns 403.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-71460'>CVE-2026-71460</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-06</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: Any authenticated user reads Red Hat subscription/license details via /config/</td>
+                        <td>/api/v2/config/ is protected only by IsAuthenticated. license_info (account_number, subscription_id, pool_id, sku, support_level, instance counts) returned to any authenticated user. The superuser/auditor gate only covers project_base_dir/project_local_paths/custom_virtualenvs, not license_info. Enables social engineering against Red Hat support and estate sizing reconnaissance.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-71462'>CVE-2026-71462</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-06</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: CUSTOM_VENV_PATH setting provides filesystem path-existence oracle on control pod</td>
+                        <td>StringListPathField.to_internal_value() calls os.path.exists() on unbounded user-supplied paths. 200 vs 400 response reveals existence of arbitrary absolute paths on the controller-web pod. Tenant superuser can confirm /etc/tower/SECRET_KEY, k8s service-account token, receptor sockets, ConfigMap mount points. Mainly impactful on managed AAP (ansiblecloud.com) where tenant admin != host admin.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84375'>CVE-2026-84375</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-01</td>
+                        <td>js-yaml: js-yaml: Denial of Service vulnerability in YAML parsing</td>
+                        <td>This is an Important denial of service vulnerability in js-yaml, affecting applications that process untrusted YAML input. The flaw allows an attacker to craft a small YAML document that, when parsed, can lead to prolonged CPU consumption due to inefficient merge key processing, potentially exhausting system resources. This is particularly relevant where applications handle external YAML data and have merge processing enabled by default.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84470'>CVE-2026-84470</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-01</td>
+                        <td>automation-controller: automation-controller-container: automation-controller/AWX: Bulk Job Launch checks instance_groups at read level instead of use level, allowing execution-placement authorization bypass</td>
+                        <td>his flaw affects the Bulk Job Launch API in
+automation-controller as shipped in Red Hat Ansible Automation Platform.
+Exploitation requires an authenticated principal that already holds execute
+permission on a job template and read (but not use) permission on the target
+instance group; it does not grant new template or credential access, only
+unauthorized control of execution placement onto instance groups.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-75838'>CVE-2026-75838</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-08-18</td>
+                        <td>dompurify: DOMPurify: Cross-Site Scripting via IN_PLACE sanitization</td>
+                        <td>This cross-site scripting flaw in DOMPurify affects Red Hat products that utilize the library for HTML sanitization. The vulnerability allows attackers to execute arbitrary JavaScript by exploiting incomplete neutralization of detached subtrees during IN_PLACE sanitization, but only when a non-default configuration involving an element-removal hook is in use and user interaction with specially crafted content occurs.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-69153'>CVE-2026-69153</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-08-03</td>
+                        <td>postcss: PostCSS: Information disclosure via crafted sourceMappingURL</td>
+                        <td>Red Hat rates this flaw as Moderate because the information disclosed is limited to files with a .map extension. Source map files may contain source code paths and content, but the attacker cannot read arbitrary files on the system. Exploitation requires the application to process attacker-controlled CSS through PostCSS on the server side.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-48990'>CVE-2026-48990</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2026-06-17</td>
@@ -2177,20 +2676,6 @@ So exposure is far narrower than a generic TLS parsing vulnerability.</td>
                         <td>python-protobuf: Unbounded recursion in Python Protobuf</td>
                         <td>The availability impact of this denial-of-service vulnerability is confined to applications that directly integrate the Protobuf package. Within the context of a Red Hat system, the host machine itself is not expected to be impacted, thereby limiting the scope of disruption to individual application instances rather than broader system instability.</td>
                     </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84375'>CVE-2026-84375</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2026-09-01</td>
-                        <td>js-yaml: js-yaml: Denial of Service vulnerability in YAML parsing</td>
-                        <td>This is an Important denial of service vulnerability in js-yaml, affecting applications that process untrusted YAML input. The flaw allows an attacker to craft a small YAML document that, when parsed, can lead to prolonged CPU consumption due to inefficient merge key processing, potentially exhausting system resources. This is particularly relevant where applications handle external YAML data and have merge processing enabled by default.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-69153'>CVE-2026-69153</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2026-08-03</td>
-                        <td>postcss: PostCSS: Information disclosure via crafted sourceMappingURL</td>
-                        <td>Red Hat rates this flaw as Moderate because the information disclosed is limited to files with a .map extension. Source map files may contain source code paths and content, but the attacker cannot read arbitrary files on the system. Exploitation requires the application to process attacker-controlled CSS through PostCSS on the server side.</td>
-                    </tr>
                                                                             <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-39329'>CVE-2024-39329</a></td>
                         <td data-sortvalue="3" class='color-low'>Low</td>
@@ -2232,6 +2717,27 @@ So exposure is far narrower than a generic TLS parsing vulnerability.</td>
                         <td>2025-07-14</td>
                         <td>aiohttp: AIOHTTP HTTP Request/Response Smuggling</td>
                         <td>AIOHTTP is an asynchronous HTTP client/server framework for asyncio and Python. Prior to version 3.12.14, the Python parser is vulnerable to a request smuggling vulnerability due to not parsing trailer sections of an HTTP request. If a pure Python version of aiohttp is installed (i.e. without the usual C extensions) or AIOHTTP_NO_EXTENSIONS is enabled, then an attacker may be able to execute a request smuggling attack to bypass certain firewalls or proxy protections. Version 3.12.14 contains a patch for this issue. A request smuggling flaw was found in the aiohttp python library. If a pure Python version of aiohttp is installed, without the usual C extensions, for example, or if AIOHTTP_NO_EXTENSIONS is enabled, an attacker can execute a request smuggling attack to bypass certain firewalls or proxy protections.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-71463'>CVE-2026-71463</a></td>
+                        <td data-sortvalue="3" class='color-low'>Low</td>
+                        <td>2026-09-06</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: Notification template Jinja whitelist bypass via conditional gating leaks tracebacks</td>
+                        <td>Notification template Jinja AST whitelist only inspects static Getattr nodes. Dynamic subscripts (job['job'+'_env']) and {% if job.id > 100 %} conditional gating bypass both the AST check and the test-render (stub has small job.id). At runtime, the gated branch executes and exceptions write full tracebacks into notification body, which is POSTed to attacker-controlled webhook URL. Leaks install paths, Python version, source line numbers.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-71464'>CVE-2026-71464</a></td>
+                        <td data-sortvalue="3" class='color-low'>Low</td>
+                        <td>2026-09-06</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: Schedule and WorkflowJobTemplateNode scm_branch prompt bypasses leading-dash git-argument guard</td>
+                        <td>LaunchConfigurationBaseSerializer.scm_branch has no validate_scm_branch() leading-dash check, unlike Project/JobTemplate/JobLaunch serializers. Schedule and WFJT Node accept --upload-pack=/bin/id as scm_branch. Currently blocked at runtime by jobs.py:1502 ValueError check (defense-in-depth), but the API validation gap means sole reliance on a task-layer guard. Refactoring that guard away would promote this to RCE.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-71465'>CVE-2026-71465</a></td>
+                        <td data-sortvalue="3" class='color-low'>Low</td>
+                        <td>2026-09-06</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: Ad-hoc command limit field allows CLI argument injection into ansible executable</td>
+                        <td>RunAdHocCommand.build_args() appends limit as bare positional (args.append(limit)) instead of using args.extend(['-l', limit]) like RunJob. A limit beginning with - is parsed as an ansible CLI option. Currently limited to short-circuit flags (--version, --help) since injected element displaces required pattern positional. Would escalate if ansible-core ever defaults pattern.</td>
                     </tr>
                                                     </tbody>
             </table>
