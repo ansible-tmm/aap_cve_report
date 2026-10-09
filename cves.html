@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-10-09 @ 11:16:25">
+        <meta name="description" content="Report generated on 2026-10-09 @ 12:16:13">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-10-09 @ 11:16:25">
+        <meta property="og:description" content="Report generated on 2026-10-09 @ 12:16:13">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-10-09 @ 11:16:25</i>
+                <i>Report generated on 2026-10-09 @ 12:16:13</i>
                 </span>
             </div>
         </nav>
@@ -498,6 +498,13 @@ job namespace with minimal RBAC.</td>
                         <td>A flaw was found in the automation-controller input-validation guard sanitize_jinja(). The function uses two regular expressions to reject user-supplied Jinja, but the patterns stop at the first interior '}' or '%' character, so a Jinja expression containing an inner brace (for example an empty dict) is accepted while remaining valid Jinja. Because sanitize_jinja() is the sole guard on several launch-time fields — ad-hoc command module_args, Machine-credential username / become_method / become_user, and inventory host names — a low-privileged user can inject Jinja that ansible-core evaluates in the execution environment. This enables execution of arbitrary commands in the execution environment (bypassing an administrator's AD_HOC_COMMANDS module allowlist) and disclosure of secrets belonging to credentials the attacker cannot read (by templating a co-attached credential's injected environment variables), across the credential access-control boundary. A flaw was found in the automation-controller input-validation guard sanitize_jinja(). The function uses two regular expressions to reject user-supplied Jinja, but the patterns stop at the first interior '}' or '%' character, so a Jinja expression containing an inner brace (for example an empty dict) is accepted while remaining valid Jinja. Because sanitize_jinja() is the sole guard on several launch-time fields — ad-hoc command module_args, Machine-credential username / become_method / become_user, and inventory host names — a low-privileged user can inject Jinja that ansible-core evaluates in the execution environment. This enables execution of arbitrary commands in the execution environment (bypassing an administrator's AD_HOC_COMMANDS module allowlist) and disclosure of secrets belonging to credentials the attacker cannot read (by templating a co-attached credential's injected environment variables), across the credential access-control boundary.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-87819'>CVE-2026-87819</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-09</td>
+                        <td>GitPython: GitPython: Denial of Service via crafted commit author field</td>
+                        <td>A regular expression denial of service vulnerability was found in GitPython when processing commit author and committer fields. The Actor.name_email_regex pattern exhibits quadratic backtracking when encountering malformed author fields containing unterminated angle brackets. An attacker who can introduce a crafted commit object into a repository that is subsequently processed by a GitPython application can cause excessive CPU resource consumption, leading to denial of service for over two minutes per commit access. This requires the application to parse commits from untrusted sources such as public git servers, tarballs, or automated import tools.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-87817'>CVE-2026-87817</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-09-09</td>
@@ -524,6 +531,13 @@ job namespace with minimal RBAC.</td>
                         <td>2026-08-29</td>
                         <td>qs: qs: Denial of Service via improper validation in stringify function</td>
                         <td>A denial of service vulnerability was found in the qs package for Node.js. The stringify function does not verify that constructor.isBuffer is callable before invoking it. An attacker who can influence object shape, for example through query parameters parsed with allowPrototypes: true as Express 4 does by default, can cause qs.stringify to throw a TypeError when that data is re-serialized. In typical Node.js HTTP frameworks the error is caught per request and returns HTTP 500. In code paths without an error boundary, such as async handlers or background jobs, the process may exit.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-78677'>CVE-2026-78677</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-25</td>
+                        <td>GitPython: GitPython: Arbitrary Code Execution via Path Traversal</td>
+                        <td>Red Hat Product Security has identified a path traversal vulnerability in GitPython versions before 3.1.59. The vulnerability arises because the `--separate-git-dir` option is not included in the `unsafe_git_clone_options` denylist, allowing attackers who control the `separate_git_dir` parameter during repository cloning to redirect Git repository metadata to arbitrary filesystem locations outside the intended clone destination. This can lead to arbitrary directory and file creation bounded only by process permissions. When combined with subsequent Git operations that trigger hook execution on the redirected repository, this vulnerability can escalate to arbitrary code execution. Exploitation requires that the application passes untrusted, attacker-controlled input to the `separate_git_dir` keyword argument of `Repo.clone_from()` or `Repo.clone()` methods without proper validation, while the `allow_unsafe_options` parameter remains at its default value of False.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-71366'>CVE-2026-71366</a></td>
@@ -1431,6 +1445,13 @@ administrators and only routes them when debug mode is enabled. [Verify AAP
 2.4 -- see affects.]</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-42784'>CVE-2026-42784</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-16</td>
+                        <td>sequoia-openpgp: sequoia-openpgp: Cryptographic integrity compromise via key flag confusion</td>
+                        <td>This vulnerability in the `sequoia-openpgp` library allows for a critical compromise of cryptographic integrity. By exploiting a key flag confusion, an attacker can bypass signature validation, enabling the forgery of signatures and illegitimate binding of subkeys. This could impact Red Hat products that utilize `sequoia-openpgp` for OpenPGP operations, potentially leading to unauthorized actions or data manipulation.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84394'>CVE-2026-84394</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-09-02</td>
@@ -1695,6 +1716,20 @@ Regarding openshift4/ose-console for Product stream 4.12 and 4.13, the vulnerabl
                         <td>The MCP Python SDK, called `mcp` on PyPI, is a Python implementation of the Model Context Protocol (MCP). Prior to version 1.23.0, tThe Model Context Protocol (MCP) Python SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication using FastMCP with streamable HTTP or SSE transport, and has not configured TransportSecuritySettings, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access resources exposed by the MCP server on behalf of the user in those limited circumstances. Note that running HTTP-based MCP servers locally without authentication is not recommended per MCP security best practices. This issue does not affect servers using stdio transport. This vulnerability is fixed in 1.23.0. A DNS rebinding flaw has been discovered in the pypi mcp library. The Model Context Protocol (MCP) Python SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication using FastMCP with streamable HTTP or SSE transport, and has not configured TransportSecuritySettings, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access resources exposed by the MCP server on behalf of the user in those limited circumstances.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102273'>CVE-2026-102273</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-28</td>
+                        <td>pyjwt: pyjwt: Token forgery via acceptance of public JWK containers as HMAC secrets</td>
+                        <td>Red Hat rates this vulnerability as Important because an attacker with access to a public verification key can forge cryptographic tokens to bypass authentication, allowing impersonation of privileged users and unauthorized access to protected application resources. Exploitation is limited to environments where applications concurrently permit symmetric HMAC and asymmetric algorithms while passing public key containers into validation routines.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-96760'>CVE-2026-96760</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-28</td>
+                        <td>authlib: authlib: Signature verification bypass via deserialize_json</td>
+                        <td>This vulnerability is rated as having Important impact for Red Hat products because an unauthenticated remote attacker could bypass cryptographic signature verification and submit forged token data. Successful exploitation directly compromises identity and integrity assurances when an application processes JSON-formatted web signatures. Exposure is primarily restricted to workloads where integrated services explicitly invoke the vulnerable JSON deserialization routine rather than standard compact tokens.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84475'>CVE-2026-84475</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-09-23</td>
@@ -1718,11 +1753,26 @@ controller SECRET_KEY and database credentials within the control-plane rsyslog
 component, which is not otherwise accessible to the API superuser role.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-91990'>CVE-2026-91990</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-15</td>
+                        <td>tornado: Tornado: Denial of Service via memory amplification in multipart parsing</td>
+                        <td>This is an Important severity flaw. Applications using the Tornado web framework on Red Hat platforms are vulnerable to a denial of service due to a memory amplification issue in the `parse_multipart_form_data` function. A remote, unauthenticated attacker can send a crafted multipart request, causing the server to consume excessive memory and become unavailable.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-76648'>CVE-2026-76648</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-09-06</td>
                         <td>automation-controller: automation-controller-container: AAP Controller: CopyAPIView.post() missing read                 authorization check enables Job Template secret                 recovery</td>
                         <td>CopyAPIView (awx/awx/api/generics.py:873) sets permission_classes = (IsAuthenticated,), so DRF's get_object() performs no object-level RBAC. The get() handler (lines 988–991) explicitly guards with request.user.can_access(obj._class_, 'read', obj) — but post() (lines 1001–1010) does not. POST only checks: can_access(model, 'add', create_kwargs_check) can_access(model, 'copy_related', obj) For JobTemplate, can_add (awx/awx/main/access.py:1465–1520) gates on inventory.use_role + project.use_role + execution_environment.read_role — resource-level roles that do not imply read on the source JT — and can_copy_related (1522–1534) checks only credentials.use_role. None of these imply the caller can read the source JT. CopyAPIView (awx/awx/api/generics.py:873) sets permission_classes = (IsAuthenticated,), so DRF's get_object() performs no object-level RBAC. The get() handler (lines 988–991) explicitly guards with request.user.can_access(obj._class_, 'read', obj) — but post() (lines 1001–1010) does not. POST only checks: can_access(model, 'add', create_kwargs_check) can_access(model, 'copy_related', obj) For JobTemplate, can_add (awx/awx/main/access.py:1465–1520) gates on inventory.use_role + project.use_role + execution_environment.read_role — resource-level roles that do not imply read on the source JT — and can_copy_related (1522–1534) checks only credentials.use_role. None of these imply the caller can read the source JT.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-45820'>CVE-2026-45820</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-07-22</td>
+                        <td>fflate: fflate: Denial of Service via crafted ZIP archives</td>
+                        <td>This CVE describes a denial-of-service flaw in the fflate JavaScript compression library. Parsing a maliciously crafted ZIP archive via unzipSync()/unzip() triggers an infinite loop in the ZIP64 central-directory parser (z64e): a central directory entry declaring the ZIP64 size sentinel (0xFFFFFFFF) but omitting the required ZIP64 extra field causes out-of-bounds reads that keep the loop condition permanently true, consuming CPU indefinitely. Only fflate's ZIP-extraction APIs are affected; its gzip/deflate/zip-creation paths are not.
+Red Hat products bundle fflate almost exclusively within web-frontend assets. Each affected component was assessed individually. Components that reach fflate only through compression-only consumers (posthog-js gzip telemetry, jsPDF zlib) never invoke the vulnerable unzipSync/z64e path and are marked not affected (vulnerable code not in the execute path). Components that bundle fflate in the vulnerable version range (through 0.8.2) where the ZIP-extraction path could not be positively excluded are marked affected. Where the vulnerable path is reachable only from client-side browser code processing same-origin assets, practical impact is limited to a self-inflicted denial of service within the user's own browser session rather than a service-level outage.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-46625'>CVE-2026-46625</a></td>
@@ -2839,6 +2889,13 @@ validates the connect target for every notification backend regardless of transp
 centralized in the template send path) and rejects private, loopback, link-local, and reserved
 destinations. Red Hat notes the SSRF connect-target validation should be present on all
 maintained streams, as it currently exists only on the 2.7 branch.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-63374'>CVE-2026-63374</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-22</td>
+                        <td>anyio: AnyIO: TLS certificate spoofing via improper internationalized domain name encoding</td>
+                        <td>This vulnerability is rated as having a Moderate severity for Red Hat products because exploitation requires an attacker to already be positioned to intercept network traffic, and the flaw only manifests when connecting to internationalized domain names containing non-ASCII characters. Within Red Hat supported environments and containerized AI components, workloads predominantly communicate using standard ASCII fully qualified domain names and internal endpoints. Because the defect does not allow remote code execution and requires a prior man-in-the-middle condition, the overall blast radius is constrained to specific redirected sessions.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-71461'>CVE-2026-71461</a></td>
