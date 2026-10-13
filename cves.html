@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-10-12 @ 23:16:11">
+        <meta name="description" content="Report generated on 2026-10-13 @ 00:16:26">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-10-12 @ 23:16:11">
+        <meta property="og:description" content="Report generated on 2026-10-13 @ 00:16:26">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-10-12 @ 23:16:11</i>
+                <i>Report generated on 2026-10-13 @ 00:16:26</i>
                 </span>
             </div>
         </nav>
@@ -607,7 +607,7 @@ job namespace with minimal RBAC.</td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-08-17</td>
                         <td>sqlparse: sqlparse: Denial of Service via quadratic CPU consumption in SQL parsing</td>
-                        <td>sqlparse is a non-validating SQL parser module for Python. Prior to 0.6.0, TokenList construction and string conversion in sqlparse/sql.py repeatedly flatten nested token subtrees constructed by group_parenthesis and group_case, causing quadratic CPU consumption through sqlparse.parse(), sqlparse.format(), and sqlparse.split() before depth and token limits terminate processing. This issue is fixed in version 0.6.0. A flaw was found in sqlparse, a Python module for parsing SQL. A remote attacker could exploit a vulnerability in the TokenList construction and string conversion processes, specifically when handling nested token subtrees. This flaw leads to quadratic CPU consumption, which can result in a Denial of Service (DoS) by exhausting system resources before internal limits are reached.</td>
+                        <td>This vulnerability is rated as an Important severity flaw because an unauthenticated remote attacker can trigger excessive CPU resource consumption and induce a denial-of-service condition using a small, crafted payload. The issue affects deployments where an exposed service directly submits untrusted, deeply nested SQL statements to parsing routines, leading to worker thread exhaustion and service unresponsiveness.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-59893'>CVE-2026-59893</a></td>
