@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-10-14 @ 00:16:24">
+        <meta name="description" content="Report generated on 2026-10-14 @ 01:16:20">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-10-14 @ 00:16:24">
+        <meta property="og:description" content="Report generated on 2026-10-14 @ 01:16:20">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-10-14 @ 00:16:24</i>
+                <i>Report generated on 2026-10-14 @ 01:16:20</i>
                 </span>
             </div>
         </nav>
@@ -2715,7 +2715,7 @@ The current python-django issue may be resolved in an upcoming Satellite update.
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2024-12-09</td>
                         <td>nanoid: nanoid mishandles non-integer values</td>
-                        <td>nanoid (aka Nano ID) before 5.0.9 mishandles non-integer values. 3.3.8 is also a fixed version. A flaw was found in nanoid. Affected versions of nanoid mishandles non-integer values. When nanoid is called with a fractional value, there were a number of undesirable effects: - In browser and non-secure, the code infinite loops on while (size--) - In node, the value of poolOffset becomes fractional, causing calls to nanoid to return zeroes until the pool is next filled: when i is initialized to poolOffset, pool[i] & 63 -> undefined & 63 -> 0 - If the first call in node is a fractional argument, the initial buffer allocation fails with an error The highest impact of this issue system availability.</td>
+                        <td>Moderate impact: CVE-2024-55565 affects Red Hat products and components that ship nanoid in the current affected mappings. When nanoid is called with a fractional size, browser and non-secure implementations can enter an infinite loop; in Node.js, calls can return zeroes until the pool is refilled, and an initial fractional call can fail buffer allocation. These behaviors can impair system availability. Red Hat rates the issue Moderate (CVSS 6.5, CVSS:3.1/AV:A/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). The current scope spans Red Hat middleware, Ansible, OpenShift, cloud services, Enterprise Linux, and Ceph mappings, as well as Community Projects: 196 of 198 mappings are marked AFFECTED and two are NEW/OOSS. Delegated handling includes affected, WONTFIX, OOSS, DEFER, and NOTAFFECTED outcomes. For delegated mappings marked AFFECTED, a fix is being pursued. For DEFER mappings, the record does not state why remediation is deferred; the residual risk is continued availability or functional impact if fractional values reach nanoid. Mappings delegated as NOTAFFECTED are product-specific determinations, but the record provides no technical rationale for them. The Red Hat assessment is higher than the external CISA score (6.5 versus 4.3), reflecting different assumptions about required privileges and affected security properties.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2024-53259'>CVE-2024-53259</a></td>
