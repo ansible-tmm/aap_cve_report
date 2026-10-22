@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-10-22 @ 11:16:13">
+        <meta name="description" content="Report generated on 2026-10-22 @ 12:16:41">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-10-22 @ 11:16:13">
+        <meta property="og:description" content="Report generated on 2026-10-22 @ 12:16:41">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-10-22 @ 11:16:13</i>
+                <i>Report generated on 2026-10-22 @ 12:16:41</i>
                 </span>
             </div>
         </nav>
@@ -192,6 +192,13 @@ is the textbook AC:H definition; step (2) in particular fits it.</td>
                         <td>2026-06-23</td>
                         <td>eda-server: websocket missing authorization allows credential theft via activation_id spoofing</td>
                         <td>A missing authorization vulnerability was found in the Event-Driven Ansible (EDA) websocket API. The /api/eda/ws/ansible-rulebook endpoint does not verify user permissions when processing Worker messages. Any authenticated user can send a forged message with an arbitrary activation_id to receive plaintext credentials associated with that activation, including OAuth tokens, vault passwords, and SSH keys. A missing authorization vulnerability was found in the Event-Driven Ansible (EDA) websocket API. The /api/eda/ws/ansible-rulebook endpoint does not verify user permissions when processing Worker messages. Any authenticated user can send a forged message with an arbitrary activation_id to receive plaintext credentials associated with that activation, including OAuth tokens, vault passwords, and SSH keys.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102268'>CVE-2026-102268</a></td>
+                        <td data-sortvalue="0" class='color-critical'>Critical</td>
+                        <td>2026-09-28</td>
+                        <td>pyjwt: PyJWT: Authentication bypass via improper public key validation</td>
+                        <td>This vulnerability is rated as Critical severity for Red Hat products because an unauthenticated remote attacker could forge valid cryptographic tokens and bypass authentication checks without knowing the private signing key. Exploitation occurs when consuming applications configure token verification to accept both symmetric and asymmetric algorithms simultaneously, allowing an asymmetric public key to be mishandled as a symmetric secret. Deployments that strictly enforce a single algorithm type or validate tokens using JSON Web Key sets do not permit this algorithm confusion and remain unaffected.</td>
                     </tr>
                                                                             <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-61726'>CVE-2025-61726</a></td>
@@ -1433,6 +1440,111 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>Red Hat has evaluated this vulnerability. This issue only affects versions AAP 2.5 GA and onwards.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-92982'>CVE-2026-92982</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-15</td>
+                        <td>ansible-operator-plugins: Ansible Operator Plugins: Arbitrary Code Execution via Jinja2 Template Injection</td>
+                        <td>This is an Important vulnerability where a low-privileged Kubernetes user can achieve arbitrary code execution within an operator pod. By injecting Jinja2 templates into Custom Resource (CR) spec fields, an attacker can escalate privileges to the operator service account's cluster RBAC. This occurs because the `markUnsafe` flag in Ansible Operator Plugins, used in Red Hat Ansible Automation Platform and OpenShift Container Platform, defaults to `false`, enabling template injection.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-104851'>CVE-2026-104851</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-02</td>
+                        <td>fsspec: fsspec: arbitrary code execution via unrestricted template rendering in ReferenceFileSystem</td>
+                        <td>This vulnerability is rated as an Important severity flaw because an attacker could achieve arbitrary code execution within the application environment, though exploitation requires tricking a user or pipeline into opening an untrusted reference catalog. In typical Red Hat deployments such as Red Hat OpenShift AI (RHOAI), fsspec is utilized for data manipulation and storage abstraction across containerized workloads. The impact is limited to the privileges of the running container or application process without granting immediate host-level access, which aligns the risk with an Important rather than a Critical rating.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-103262'>CVE-2026-103262</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-01</td>
+                        <td>tornado: Tornado: Denial of Service via decompression bomb in CurlAsyncHTTPClient</td>
+                        <td>This vulnerability has been rated as Important because an untrusted remote server can remotely terminate an application process through memory exhaustion without requiring credentials. By default, Tornado deploys the SimpleAsyncHTTPClient implementation, which includes built-in thresholds for decompressed and raw payload sizes and remains unaffected by this flaw. However, systems that explicitly configure CurlAsyncHTTPClient—typically enabled for custom proxy routing or advanced transport options—bypass these protections and do not enforce body size constraints. When such client applications fetch resources from compromised or malicious web endpoints, the resulting decompression bomb can consume all available system memory, leading to an immediate denial of service.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102937'>CVE-2026-102937</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-29</td>
+                        <td>virtualenv: virtualenv: Arbitrary code execution via unescaped prompt in Windows activation script</td>
+                        <td>An IMPORTANT severity command injection flaw was found in virtualenv, a tool for creating isolated Python virtual environments that is shipped as a bundled dependency in Red Hat offerings such as Red Hat OpenShift AI, Red Hat Enterprise Linux UBI container images, Red Hat Hardened Images components, and Fedora/EPEL community projects. On Windows, virtualenv's BatchActivator did not escape the prompt value before writing it into the cmd.exe set "VAR=value" statement of a generated activate.bat script. An attacker who can influence the prompt value, via the --prompt option, the VIRTUALENV_PROMPT environment variable, or the corresponding configuration setting, can supply a double quote that terminates the assignment and injects arbitrary cmd.exe commands. When a user activates the generated virtual environment on Windows, the injected commands run with that user's privileges, resulting in arbitrary code execution. The vulnerability is limited to the Windows batch activation script because the injected syntax is cmd.exe-specific. Exploitation requires the attacker to influence the prompt text and a user to activate the crafted environment, so scenarios that template the prompt from untrusted input, such as CI jobs deriving prompts from branch names, are most exposed. Some Red Hat components that bundle virtualenv are not affected because the vulnerable code or the component itself is not present in the shipped versions. For the affected Red Hat and community offerings the impact is rated IMPORTANT, and because virtualenv reaches these products as a dependency, fixes are being pursued through the delegated product and community maintainers rather than a direct Red Hat security update. Red Hat scores this flaw 7.8 (CVSS:3.1) while the upstream CVEORG record scores it 7.3 (CVSS:4.0); the difference reflects differing assessments of attack complexity and required user interaction, and both scores place the flaw in the high severity range.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102930'>CVE-2026-102930</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-29</td>
+                        <td>virtualenv: virtualenv: Arbitrary code execution via unverified downloaded seed wheels</td>
+                        <td>An Important severity flaw was found in virtualenv, a tool for creating isolated Python virtual environments that is shipped in Red Hat products and offerings including Red Hat Enterprise Linux, Red Hat Ansible Automation Platform, Red Hat AI offerings, and other Red Hat cloud services. When virtualenv fetches pip or setuptools seed wheels over the network, through its periodic-update mechanism or the --download option, it does not verify the downloaded files against an authoritative cryptographic checksum. A network attacker able to intercept TLS traffic, or a compromised or stale package index or mirror, could substitute a malicious wheel under the expected distribution, version, and filename. virtualenv would then cache the tampered wheel and seed it into subsequently created virtual environments, which can result in arbitrary code execution. Red Hat products that bundle virtualenv are affected where this download path can be exercised, and fixes are being pursued through the respective product release streams; a small number of bundled components were assessed as not affected because the vulnerable component is not present in them. While the upstream project's security advisory rates this issue as low severity, Red Hat rates it as Important based on the potential for arbitrary code execution in environments created from tampered seed packages.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102925'>CVE-2026-102925</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-29</td>
+                        <td>virtualenv: virtualenv: Arbitrary code execution via crafted paths in activation scripts</td>
+                        <td>An Important severity flaw was found in virtualenv, a tool for creating isolated Python virtual environments that is bundled as a dependency in a number of Red Hat products, including Red Hat OpenShift AI, Red Hat Enterprise Linux container images, Red Hat Hardened Images, and other Red Hat-delivered components. The generated activate (bash and zsh) and activate.fish scripts place path values that were already escaped by shlex.quote inside an additional quoted context. The surplus quotes can terminate the data-only quoted run, leaving shell metacharacters within a crafted value to be parsed as shell commands: in the bash and zsh scripts a crafted virtual environment path is interpolated when a relocated environment's recorded directory is absent, and in the fish script crafted Tcl or Tk library paths are interpolated into __TCL_LIBRARY__ or __TK_LIBRARY__. When a user sources such an activation script, an attacker who controls the crafted path can execute arbitrary code with the privileges of that user. The flaw was rated Important (CVSS 3.1 score 7.8, AV:L/AC:L/PR:N/UI:R/S:U/C:H/I:H/A:H), consistent with the upstream severity; exploitation requires local control of the affected path values and user interaction to source the activation script. Red Hat product relationships for this flaw are DELEGATED: the impact described above applies where vulnerable virtualenv versions are bundled, fixes are being pursued through the responsible product components, and components where virtualenv is not present in the shipped artifact are being marked not affected.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-97689'>CVE-2026-97689</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-29</td>
+                        <td>urllib3: urllib3: Denial of Service via unbounded memory allocation in chunk parser</td>
+                        <td>urllib3 is an HTTP client library for Python. From 1.10.3 until 2.8.0, the HTTPResponse.read_chunked and HTTPResponse.stream methods can allocate unbounded memory because the streaming chunk parser buffers the chunk-size field until newline or EOF without a length bound. The trigger is that a malicious server returns Transfer-Encoding: chunked followed by a very long run of bytes without a newline. The attack mechanism is that a malicious HTTP server sends a very long unterminated chunk-size line. The impact is that unbounded memory allocation can exhaust the client process. This issue is fixed in version 2.8.0. A flaw was found in urllib3. This flaw allows a Denial of Service (DoS) through unbounded memory allocation when parsing chunk-encoded responses. A malicious server can send an excessively long chunk-size line without a newline, exhausting client memory and terminating the application.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-97687'>CVE-2026-97687</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-29</td>
+                        <td>urllib3: urllib3: Traffic interception via HTTPS proxy TLS configuration override</td>
+                        <td>urllib3 is an HTTP client library for Python. From 1.26.0 until 2.8.0, the proxy_ssl_context, proxy_assert_hostname, proxy_assert_fingerprint, ssl_context, cert_reqs, verify_mode, use_forwarding_for_https=True, and CERT_NONE configuration paths fail to remain separated because target-server TLS settings are incorrectly applied to the HTTPS proxy connection. The trigger is that an application uses an HTTPS proxy and configures target-server TLS settings that must remain separate from the proxy TLS handshake, including HTTPS forwarding with target-specific identity or credentials. Applying cert_reqs=CERT_NONE can overwrite proxy_ssl_context.verify_mode in place, and the mutation persists so later connections reusing the same context may connect to the HTTPS proxy without certificate verification. The attack mechanism is that an attacker intercepts and impersonates the HTTPS proxy after the effective proxy policy accepts the attacker's certificate. The impact is that the attacker can observe or modify forwarded traffic or receive a target TLS client certificate, while CONNECT tunneling still preserves the separate end-to-end target TLS connection. This issue is fixed in version 2.8.0. A flaw was found in urllib3. This vulnerability allows a remote attacker on the network to intercept and alter data transmitted through an HTTPS proxy. The issue occurs when target-server Transport Layer Security (TLS) settings inadvertently overwrite the proxy's TLS configuration, which can disable certificate verification on reused connection contexts. Consequently, an attacker can impersonate the proxy to monitor or modify forwarded traffic or capture client credentials.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102273'>CVE-2026-102273</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-28</td>
+                        <td>pyjwt: pyjwt: Token forgery via acceptance of public JWK containers as HMAC secrets</td>
+                        <td>Red Hat rates this vulnerability as Important because an attacker with access to a public verification key can forge cryptographic tokens to bypass authentication, allowing impersonation of privileged users and unauthorized access to protected application resources. Exploitation is limited to environments where applications concurrently permit symmetric HMAC and asymmetric algorithms while passing public key containers into validation routines.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102272'>CVE-2026-102272</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-28</td>
+                        <td>pyjwt: pyjwt: Token forgery via improper Unicode byte-order mark handling</td>
+                        <td>This vulnerability is rated as an Important severity because successful exploitation permits an unauthenticated remote attacker to bypass authentication and forge valid tokens, though exploitation requires specific mixed-algorithm verification settings. In Red Hat environments, exposure is restricted to services that simultaneously allow both symmetric HMAC and asymmetric signature algorithms while parsing public keys that contain byte order marks. Workloads and services that enforce single-algorithm verification policies or utilize standard asymmetric key validation routines are not susceptible to this attack.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102271'>CVE-2026-102271</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-28</td>
+                        <td>pyjwt: PyJWT: Authentication bypass via acceptance of DER public keys as HMAC secrets</td>
+                        <td>This vulnerability is rated as Important because an attacker can forge valid JSON Web Tokens and bypass authentication mechanisms if public cryptographic keys are mistakenly treated as shared secrets. Exploitation requires a specific application scenario where both asymmetric and HMAC algorithms are concurrently permitted during signature verification and public keys are provided in raw DER binary format. Typical Red Hat product integrations do not employ this vulnerable algorithm combination or key encoding by default, which restricts the overall attack surface in standard production environments.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102267'>CVE-2026-102267</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-28</td>
+                        <td>pyjwt: pyjwt: Verification key substitution via unvalidated JWKS redirects</td>
+                        <td>This vulnerability is rated as an Important impact because improper handling of HTTP redirects during dynamic key retrieval can allow an adversary to supply forged cryptographic keys or intercept sensitive request headers. In Red Hat environments where services utilize PyJWKClient to fetch JSON Web Key Sets over the network, accepting untrusted key material may compromise token validation and authentication boundaries. Exploitation requires the target service to dynamically resolve keys via HTTP and relies on an attacker's ability to manipulate responses returned by the configured key server.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102266'>CVE-2026-102266</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-28</td>
+                        <td>pyjwt: pyjwt: Authentication bypass via empty HMAC key acceptance</td>
+                        <td>This vulnerability is rated as having an Important impact for Red Hat products because successful exploitation allows an unauthenticated remote attacker to generate forged tokens with arbitrary administrative claims, completely bypassing authentication controls. The flaw is not classified as Critical because exploitation requires a specific misconfiguration prerequisite—the target environment must actively load a symmetric key set containing a blank key entry. Typical deployments running standard authentication configurations are not exposed unless an empty HMAC key definition is explicitly ingested by the application.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-96760'>CVE-2026-96760</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-28</td>
+                        <td>authlib: authlib: Signature verification bypass via deserialize_json</td>
+                        <td>This vulnerability is rated as having Important impact for Red Hat products because an unauthenticated remote attacker could bypass cryptographic signature verification and submit forged token data. Successful exploitation directly compromises identity and integrity assurances when an application processes JSON-formatted web signatures. Exposure is primarily restricted to workloads where integrated services explicitly invoke the vulnerable JSON deserialization routine rather than standard compact tokens.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-90959'>CVE-2026-90959</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-24</td>
+                        <td>pulpcore: pulpcore: file:// scheme allowlist bypass in content upload file_url field enables arbitrary file read and Pulp Container registry signing key theft</td>
+                        <td>This vulnerability is rated as Critical severity because a low-privilege authenticated Pulp user can read arbitrary files accessible to the Pulp service process, and in deployments with Pulp Container can steal the registry JWT signing private key and forge bearer tokens granting unauthorized read and write access to private container repositories owned by other users. Red Hat product impact analysis is pending to determine which products ship the affected pulpcore code with the file_url content upload feature enabled and the Pulp Container plugin installed.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84486'>CVE-2026-84486</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-09-23</td>
@@ -1445,11 +1557,32 @@ administrators and only routes them when debug mode is enabled. [Verify AAP
 2.4 -- see affects.]</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-93599'>CVE-2026-93599</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-18</td>
+                        <td>rustls-webpki: rustls-webpki: Denial of Service via crafted Certificate Revocation List</td>
+                        <td>rustls-webpki through 0.103.12 (and 0.104.0-alpha releases before 0.104.0-alpha.7) contains a reachable panic in bit_string_flags() in src/der.rs. The input guard fails to reject a named-bit BIT STRING whose content is exactly [0x00] (zero padding bits and no data bytes), so raw_bits.len() - 1 underflows on the empty slice and the subsequent index operation panics (subtract-with-overflow in debug, index-out-of-bounds in release). The condition is reachable through the public API BorrowedCertRevocationList::from_der() when a CRL contains an issuingDistributionPoint extension with such an onlySomeReasons value. Exploitation requires an application that explicitly opts in to CRL revocation checking by passing RevocationOptions to verify_for_usage() and that parses CRL bytes obtained from a source the attacker can influence; the default rustls configuration, which does not use RevocationOptions, is unaffected. A crafted CRL causes a denial of service via the panic. Fixed in 0.103.13 and 0.104.0-alpha.7. A flaw was found in rustls-webpki. A remote attacker, by influencing an application to parse a specially crafted Certificate Revocation List (CRL) that contains an empty `onlySomeReasons` value in its `issuingDistributionPoint` extension, could trigger a panic. This vulnerability leads to a denial of service (DoS) in applications that explicitly enable CRL revocation checking.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-42784'>CVE-2026-42784</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-09-16</td>
                         <td>sequoia-openpgp: sequoia-openpgp: Cryptographic integrity compromise via key flag confusion</td>
                         <td>This vulnerability in the `sequoia-openpgp` library allows for a critical compromise of cryptographic integrity. By exploiting a key flag confusion, an attacker can bypass signature validation, enabling the forgery of signatures and illegitimate binding of subkeys. This could impact Red Hat products that utilize `sequoia-openpgp` for OpenPGP operations, potentially leading to unauthorized actions or data manipulation.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-90711'>CVE-2026-90711</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-15</td>
+                        <td>proxy-addr: proxy-addr vulnerable to IP spoofing via IPv4-mapped IPv6 trust subnet</td>
+                        <td>This vulnerability is rated as Important because unauthenticated remote attackers can spoof client IP addresses and circumvent security controls, such as rate limits or network access lists, by sending custom forwarding headers. Exploitation is contingent on application configurations that define reverse proxy trust subnets using IPv4-mapped IPv6 notation with short IPv4 prefix lengths. Environments configuring trusted proxies via canonical IPv4 CIDR blocks, hostnames, or default loopback addresses are not vulnerable to this behavior.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-87776'>CVE-2026-87776</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-11</td>
+                        <td>compression: compression: Denial of Service via memory leak on premature response close</td>
+                        <td>Red Hat has rated this vulnerability as Important. A remote unauthenticated attacker can cause a denial of service by repeatedly aborting connections while compressed responses are being sent, which can lead to memory exhaustion and server termination.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84394'>CVE-2026-84394</a></td>
@@ -1506,6 +1639,14 @@ administrators and only routes them when debug mode is enabled. [Verify AAP
                         <td>2026-07-29</td>
                         <td>nanoid: nanoid: Denial of Service via negative size input in non-secure module functions</td>
                         <td>An input validation flaw in Nano ID's non-secure module (`nanoid/non-secure`) causes an infinite loop in the `customAlphabet` and `nanoid` functions when processed with a negative size parameter. Because the decrementing loop counter never meets its termination condition, an unauthenticated attacker who passes an unvalidated negative integer value can block the NodeJS event loop, resulting in a thread hang and complete Denial of Service (DoS) for the host application.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-45820'>CVE-2026-45820</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-07-22</td>
+                        <td>fflate: fflate: Denial of Service via crafted ZIP archives</td>
+                        <td>This CVE describes a denial-of-service flaw in the fflate JavaScript compression library. Parsing a maliciously crafted ZIP archive via unzipSync()/unzip() triggers an infinite loop in the ZIP64 central-directory parser (z64e): a central directory entry declaring the ZIP64 size sentinel (0xFFFFFFFF) but omitting the required ZIP64 extra field causes out-of-bounds reads that keep the loop condition permanently true, consuming CPU indefinitely. Only fflate's ZIP-extraction APIs are affected; its gzip/deflate/zip-creation paths are not.
+Red Hat products bundle fflate almost exclusively within web-frontend assets. Each affected component was assessed individually. Components that reach fflate only through compression-only consumers (posthog-js gzip telemetry, jsPDF zlib) never invoke the vulnerable unzipSync/z64e path and are marked not affected (vulnerable code not in the execute path). Components that bundle fflate in the vulnerable version range (through 0.8.2) where the ZIP-extraction path could not be positively excluded are marked affected. Where the vulnerable path is reachable only from client-side browser code processing same-origin assets, practical impact is limited to a self-inflicted denial of service within the user's own browser session rather than a service-level outage.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-54058'>CVE-2026-54058</a></td>
@@ -1716,20 +1857,6 @@ Regarding openshift4/ose-console for Product stream 4.12 and 4.13, the vulnerabl
                         <td>The MCP Python SDK, called `mcp` on PyPI, is a Python implementation of the Model Context Protocol (MCP). Prior to version 1.23.0, tThe Model Context Protocol (MCP) Python SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication using FastMCP with streamable HTTP or SSE transport, and has not configured TransportSecuritySettings, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access resources exposed by the MCP server on behalf of the user in those limited circumstances. Note that running HTTP-based MCP servers locally without authentication is not recommended per MCP security best practices. This issue does not affect servers using stdio transport. This vulnerability is fixed in 1.23.0. A DNS rebinding flaw has been discovered in the pypi mcp library. The Model Context Protocol (MCP) Python SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication using FastMCP with streamable HTTP or SSE transport, and has not configured TransportSecuritySettings, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access resources exposed by the MCP server on behalf of the user in those limited circumstances.</td>
                     </tr>
                                         <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102273'>CVE-2026-102273</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-09-28</td>
-                        <td>pyjwt: pyjwt: Token forgery via acceptance of public JWK containers as HMAC secrets</td>
-                        <td>Red Hat rates this vulnerability as Important because an attacker with access to a public verification key can forge cryptographic tokens to bypass authentication, allowing impersonation of privileged users and unauthorized access to protected application resources. Exploitation is limited to environments where applications concurrently permit symmetric HMAC and asymmetric algorithms while passing public key containers into validation routines.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-96760'>CVE-2026-96760</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-09-28</td>
-                        <td>authlib: authlib: Signature verification bypass via deserialize_json</td>
-                        <td>This vulnerability is rated as having Important impact for Red Hat products because an unauthenticated remote attacker could bypass cryptographic signature verification and submit forged token data. Successful exploitation directly compromises identity and integrity assurances when an application processes JSON-formatted web signatures. Exposure is primarily restricted to workloads where integrated services explicitly invoke the vulnerable JSON deserialization routine rather than standard compact tokens.</td>
-                    </tr>
-                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84475'>CVE-2026-84475</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-09-23</td>
@@ -1765,14 +1892,6 @@ component, which is not otherwise accessible to the API superuser role.</td>
                         <td>2026-09-06</td>
                         <td>automation-controller: automation-controller-container: AAP Controller: CopyAPIView.post() missing read                 authorization check enables Job Template secret                 recovery</td>
                         <td>An IMPORTANT severity flaw was found in the Red Hat Ansible Automation Platform automation controller. The CopyAPIView.post() API handler does not verify that the requesting user has read access to the source object before performing a copy operation, while the corresponding GET handler does enforce this check. As a result, an authenticated user holding only Use roles on a shared project and inventory can copy any Job Template built on those resources, including Job Templates they are not permitted to read, and becomes the administrator of the resulting clone. The clone contains the source Job Template's plaintext host_config_key and extra_vars fields, which frequently contain secrets, and the recovered host_config_key can be used to authenticate against the original Job Template's provisioning callback endpoint. This allows a low-privileged authenticated attacker to disclose highly confidential information and gain limited control over cloned resources (CVSS 3.1: 8.5, AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N), which matches the upstream severity. The automation-controller component in Ansible Automation Platform 2.5, 2.6, and 2.7 is affected and fixes are being pursued through the delegated maintenance process. For Ansible Automation Platform 2.4 the fix is deferred, so no update is currently planned for that stream and the authorization gap remains; the residual risk is that users with only resource-level Use roles on shared projects and inventories can recover secrets from Job Templates they cannot read. The automation-controller-cli package in Ansible Automation Platform 2.7 is not affected because the vulnerable code is not in its execution path.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-45820'>CVE-2026-45820</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-07-22</td>
-                        <td>fflate: fflate: Denial of Service via crafted ZIP archives</td>
-                        <td>This CVE describes a denial-of-service flaw in the fflate JavaScript compression library. Parsing a maliciously crafted ZIP archive via unzipSync()/unzip() triggers an infinite loop in the ZIP64 central-directory parser (z64e): a central directory entry declaring the ZIP64 size sentinel (0xFFFFFFFF) but omitting the required ZIP64 extra field causes out-of-bounds reads that keep the loop condition permanently true, consuming CPU indefinitely. Only fflate's ZIP-extraction APIs are affected; its gzip/deflate/zip-creation paths are not.
-Red Hat products bundle fflate almost exclusively within web-frontend assets. Each affected component was assessed individually. Components that reach fflate only through compression-only consumers (posthog-js gzip telemetry, jsPDF zlib) never invoke the vulnerable unzipSync/z64e path and are marked not affected (vulnerable code not in the execute path). Components that bundle fflate in the vulnerable version range (through 0.8.2) where the ZIP-extraction path could not be positively excluded are marked affected. Where the vulnerable path is reachable only from client-side browser code processing same-origin assets, practical impact is limited to a self-inflicted denial of service within the user's own browser session rather than a service-level outage.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-46625'>CVE-2026-46625</a></td>
@@ -2760,6 +2879,27 @@ The current python-django issue may be resolved in an upcoming Satellite update.
                         <td>quic-go is an implementation of the QUIC protocol in Go. Prior to version 0.42.0, an attacker can cause its peer to run out of memory sending a large number of `NEW_CONNECTION_ID` frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a `RETIRE_CONNECTION_ID` frame. The attacker can prevent the receiver from sending out (the vast majority of) these `RETIRE_CONNECTION_ID` frames by collapsing the peers congestion window (by selectively acknowledging received packets) and by manipulating the peer's RTT estimate. Version 0.42.0 contains a patch for the issue. No known workarounds are available. A flaw was found in quic-go. This issue may allow an attacker to trigger a denial of service by sending a large number of NEW_CONNECTION_ID frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a RETIRE_CONNECTION_ID frame, but the attacker can prevent the receiver from sending out the vast majority of these RETIRE_CONNECTION_ID frames by selectively acknowledging received packets and collapsing the peers congestion window and by manipulating the peer's RTT estimate.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102938'>CVE-2026-102938</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-29</td>
+                        <td>virtualenv: virtualenv: Arbitrary code execution via configuration injection in prompt values</td>
+                        <td>A flaw was found in virtualenv, a tool for creating isolated Python virtual environments that is bundled in a number of Red Hat offerings, including Red Hat Enterprise Linux, Red Hat OpenShift AI, and other layered products and containers, as well as in Fedora and EPEL community builds. Red Hat rates this flaw as having Moderate impact. virtualenv writes prompt values verbatim into the line-oriented pyvenv.cfg file, while its reader parses the file with str.splitlines() and accepts the last value for duplicate keys. An attacker who can influence prompt input -- the --prompt command-line option, the VIRTUALENV_PROMPT environment variable, or a configuration-derived value such as a CI job templating an untrusted branch name -- can inject line boundaries and additional configuration keys, including home, into the generated pyvenv.cfg. Because tooling reads home to locate the base interpreter, a consumer that trusts the file can be redirected to an attacker-selected interpreter, potentially resulting in arbitrary code execution or environment tampering when the virtual environment is used. Exploitation requires the prompt value to come from outside the operator's trust boundary: where the operator supplies the prompt directly, they already control the command line, and the effect is corruption of their own environment rather than privilege gain. This is why Red Hat assesses the impact as Moderate, while the upstream project published the advisory with low severity. Fixes for affected Red Hat products and streams are being pursued by the responsible component and product teams under delegated resolution; some community and out-of-support-scope streams will not receive an update.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-63374'>CVE-2026-63374</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-22</td>
+                        <td>anyio: AnyIO: TLS certificate spoofing via improper internationalized domain name encoding</td>
+                        <td>This vulnerability is rated as having a Moderate severity for Red Hat products because exploitation requires an attacker to already be positioned to intercept network traffic, and the flaw only manifests when connecting to internationalized domain names containing non-ASCII characters. Within Red Hat supported environments and containerized AI components, workloads predominantly communicate using standard ASCII fully qualified domain names and internal endpoints. Because the defect does not allow remote code execution and requires a prior man-in-the-middle condition, the overall blast radius is constrained to specific redirected sessions.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-94416'>CVE-2026-94416</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-09-18</td>
+                        <td>aap-gateway: aap-gateway: authorization bypass via workload identity token forgery</td>
+                        <td>The base CVSS scores the direct technical impact of the flaw: read-only disclosure of the AAP credentials retrievable from a downstream resource server, with Scope:Changed reflecting that the impact reaches beyond the gateway's authority into that resource server. The credentials exposed are those AAP uses to automate managed infrastructure (for example cloud IAM keys, SSH private keys, or service-account credentials), so the real-world business impact of their misuse can be significant; that consequence is deployment-dependent and is not reflected in the base metrics. Administrator-created service keys persist across upgrades, so environments that ran AAP 2.5 or 2.6 should audit and revoke non-installer-provisioned service keys even if the workload-identity feature is only enabled after upgrading to 2.7.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-75838'>CVE-2026-75838</a></td>
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2026-08-18</td>
@@ -2791,6 +2931,13 @@ OpenShift Lightspeed (OLS): The starlette package is included as a dependency, b
 RHOAI Kubeflow Training images: starlette is being used as indirect dependency of mlflow, but this flaw is rated as Low impact because mlflow is used as client library only to store training metrics on remote server, it doesn't expose any endpoint.
 RHOAI odh-automl: The impact is reduced to Low since starlette is only used in the backend and it's transient dependency and starlette is not used at all to serve any endpoints.
 RHOAI odh-kserve-autogluon-server-rhel9: While the Starlette dependency is present in the build, the vulnerable code in starlette is not reachable. This reduces the impact to low.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-39836'>CVE-2026-39836</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-05-07</td>
+                        <td>net: golang: Go net package: Denial of Service via NUL byte in Dial and LookupPort on Windows</td>
+                        <td>This denial of service flaw exists within the Go `net` package, specifically impacting applications when executed on Microsoft Windows operating systems. Red Hat Product Security has rated this flaw as a Moderate as Red Hat products primarily deploy Go applications on Linux-based environments. Customers operating Go applications, including those bundled with Red Hat products, within a Windows environment should assess their exposure to this flaw.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-42035'>CVE-2026-42035</a></td>
@@ -2889,13 +3036,6 @@ validates the connect target for every notification backend regardless of transp
 centralized in the template send path) and rejects private, loopback, link-local, and reserved
 destinations. Red Hat notes the SSRF connect-target validation should be present on all
 maintained streams, as it currently exists only on the 2.7 branch.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-63374'>CVE-2026-63374</a></td>
-                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
-                        <td>2026-09-22</td>
-                        <td>anyio: AnyIO: TLS certificate spoofing via improper internationalized domain name encoding</td>
-                        <td>This vulnerability is rated as having a Moderate severity for Red Hat products because exploitation requires an attacker to already be positioned to intercept network traffic, and the flaw only manifests when connecting to internationalized domain names containing non-ASCII characters. Within Red Hat supported environments and containerized AI components, workloads predominantly communicate using standard ASCII fully qualified domain names and internal endpoints. Because the defect does not allow remote code execution and requires a prior man-in-the-middle condition, the overall blast radius is constrained to specific redirected sessions.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-71461'>CVE-2026-71461</a></td>
