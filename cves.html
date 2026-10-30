@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-10-29 @ 23:16:31">
+        <meta name="description" content="Report generated on 2026-10-30 @ 00:16:19">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-10-29 @ 23:16:31">
+        <meta property="og:description" content="Report generated on 2026-10-30 @ 00:16:19">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-10-29 @ 23:16:31</i>
+                <i>Report generated on 2026-10-30 @ 00:16:19</i>
                 </span>
             </div>
         </nav>
@@ -1445,6 +1445,28 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>2026-10-15</td>
                         <td>ansible-operator-plugins: Ansible Operator Plugins: Arbitrary Code Execution via Jinja2 Template Injection</td>
                         <td>This is an Important vulnerability where a low-privileged Kubernetes user can achieve arbitrary code execution within an operator pod. By injecting Jinja2 templates into Custom Resource (CR) spec fields, an attacker can escalate privileges to the operator service account's cluster RBAC. This occurs because the `markUnsafe` flag in Ansible Operator Plugins, used in Red Hat Ansible Automation Platform and OpenShift Container Platform, defaults to `false`, enabling template injection.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-78667'>CVE-2026-78667</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-08</td>
+                        <td>net/http: golang: golang: Denial of Service via crafted HTTP Range headers</td>
+                        <td>This vulnerability is rated with an Important severity for Red Hat products because an unauthenticated remote attacker can exhaust server compute resources over the network, leading to a complete service outage. Across Red Hat enterprise environments, Go is widely deployed in container runtimes, monitoring daemons, and OpenShift infrastructure components. However, exploitation is restricted to applications that actively listen on the network and serve content using standard library HTTP handlers that process multi-range requests. CLI utilities and server components that do not handle byte-range requests from untrusted clients remain unaffected.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-78669'>CVE-2026-78669</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-08</td>
+                        <td>net/http: net/http/internal/http2: golang.org/x/net/http2: net/http: Denial of Service via excessive HTTP/2 SETTINGS frames</td>
+                        <td>A flaw was found in the Go net/http package and the golang.org/x/net/http2 module. A malicious HTTP/2 peer can cause excessive CPU consumption by opening a large number of HTTP/2 streams and then sending many small SETTINGS frames containing SETTINGS_INITIAL_WINDOW_SIZE values. Each SETTINGS frame forces the server or client to iterate over all open streams to adjust their flow-control windows, resulting in quadratic CPU usage and denial of service.
+This vulnerability affects all Go programs that serve or consume HTTP/2 traffic using net/http or golang.org/x/net/http2.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-97031'>CVE-2026-97031</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-08</td>
+                        <td>crypto/tls: golang: crypto/tls: Denial of Service via multiple ECH outer extension references</td>
+                        <td>This vulnerability is rated as an Important severity flaw because an unauthenticated remote attacker can trigger memory exhaustion and crash server processes without requiring privileges or user interaction. Go applications that terminate TLS connections and accept Encrypted Client Hello configurations are vulnerable to resource amplification during the initial handshake. While the flaw does not facilitate arbitrary code execution or compromise data confidentiality, the resulting denial of service can disrupt critical network services.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-104851'>CVE-2026-104851</a></td>
