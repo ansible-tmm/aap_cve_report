@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-10-30 @ 12:16:37">
+        <meta name="description" content="Report generated on 2026-10-30 @ 13:16:41">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-10-30 @ 12:16:37">
+        <meta property="og:description" content="Report generated on 2026-10-30 @ 13:16:41">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-10-30 @ 12:16:37</i>
+                <i>Report generated on 2026-10-30 @ 13:16:41</i>
                 </span>
             </div>
         </nav>
@@ -1224,7 +1224,7 @@ The Red Hat Advanced Cluster Security is not affected by this issue since it's s
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-03-06</td>
                         <td>net/url: Incorrect parsing of IPv6 host literals in net/url</td>
-                        <td>url.Parse insufficiently validated the host/authority component and accepted some invalid URLs. The Go standard library function net/url.Parse insufficiently validated the host/authority component and accepted some invalid URLs by effectively treating garbage before an IP-literal as ignorable. The function should have rejected this as invalid.</td>
+                        <td>Red Hat evaluates this vulnerability as having an Important severity because unauthenticated remote attackers can target exposed Go services over the network to trigger severe denial-of-service conditions or validation discrepancies without requiring elevated privileges. Across standard Red Hat environments—including OpenShift Container Platform and Red Hat Enterprise Linux container tools—many components rely on the core Go runtime to process user-supplied addresses and endpoints. Although improper handling of malformed host segments in web addresses can disrupt network-facing daemons, the vulnerability cannot be leveraged for arbitrary code execution or data leakage, keeping the risk bounded within the Important classification.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-29074'>CVE-2026-29074</a></td>
@@ -1273,7 +1273,7 @@ The Red Hat Advanced Cluster Security is not affected by this issue since it's s
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-02-09</td>
                         <td>axios: Axios affected by Denial of Service via __proto__ Key in mergeConfig</td>
-                        <td>Axios is a promise based HTTP client for the browser and Node.js. Prior to versions 0.30.3 and 1.13.5, the mergeConfig function in axios crashes with a TypeError when processing configuration objects containing __proto__ as an own property. An attacker can trigger this by providing a malicious configuration object created via JSON.parse(), causing complete denial of service. This vulnerability is fixed in versions 0.30.3 and 1.13.5. A denial of service flaw has been discovered in the Axios npm package. the mergeConfig function in axios crashes with a TypeError when processing configuration objects containing __proto__ as an own property. An attacker can trigger this by providing a malicious configuration object created via JSON.parse(), causing complete denial of service.</td>
+                        <td>This vulnerability is rated as having an Important severity because an unauthenticated remote attacker can trigger an unhandled process crash in backend services that merge untrusted JSON input into HTTP request configurations, resulting in denial of service. While Axios is widely distributed across Red Hat products and container images, exploitation is constrained to server-side Node.js applications that dynamically feed externally supplied configuration dictionaries into Axios methods. Browser-based frontends and deployments relying solely on static configuration parameters are unaffected by persistent service disruption.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-1615'>CVE-2026-1615</a></td>
@@ -1827,7 +1827,7 @@ Regarding openshift4/ose-console for Product stream 4.12 and 4.13, the vulnerabl
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-03-06</td>
                         <td>crypto/x509: Incorrect enforcement of email constraints in crypto/x509</td>
-                        <td>When verifying a certificate chain which contains a certificate containing multiple email address constraints which share common local portions but different domain portions, these constraints will not be properly applied, and only the last constraint will be considered. A certificate validation flaw has been discovered in the golang crypto/x509 module. When verifying a certificate chain which contains a certificate containing multiple email address constraints which share common local portions but different domain portions, these constraints will not be properly applied, and only the last constraint will be considered.</td>
+                        <td>This vulnerability is rated as an Important impact because unauthenticated network entities can bypass identity restrictions without requiring local system privileges. In Red Hat environments hosting Go-based network services or container infrastructure, certificate chain validation overlooks specific email name constraints when multiple rules share an identical local mailbox name across distinct domain names. As a result, a subordinate certificate authority could successfully issue unauthorized certificates that circumvent organizational security policies, leading to improper trust establishment.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-28802'>CVE-2026-28802</a></td>
@@ -2973,7 +2973,7 @@ RHOAI odh-kserve-autogluon-server-rhel9: While the Starlette dependency is prese
                         <td data-sortvalue="2" class='color-moderate'>Moderate</td>
                         <td>2026-04-23</td>
                         <td>DOMPurify: DOMPurify: Cross-Site Scripting (XSS) via inconsistent tag sanitization</td>
-                        <td>DOMPurify is a DOM-only cross-site scripting sanitizer for HTML, MathML, and SVG. Versions prior to 3.4.0 have an inconsistency between FORBID_TAGS and FORBID_ATTR handling when function-based ADD_TAGS is used. Commit c361baa added an early exit for FORBID_ATTR at line 1214. The same fix was not applied to FORBID_TAGS. At line 1118-1123, when EXTRA_ELEMENT_HANDLING.tagCheck returns true, the short-circuit evaluation skips the FORBID_TAGS check entirely. This allows forbidden elements to survive sanitization with their attributes intact. Version 3.4.0 patches the issue. A flaw was found in DOMPurify, a DOM-only cross-site scripting sanitizer. A remote attacker could exploit an inconsistency in how forbidden tags and attributes are handled when function-based tag additions are used. This allows malicious HTML, MathML, or SVG elements to bypass sanitization and execute arbitrary code in the user's browser, leading to Cross-Site Scripting (XSS).</td>
+                        <td>Red Hat Product Security has rated this vulnerability as Moderate because exploitation requires a specialized and uncommon configuration where dynamic callback functions are defined for element handling. In typical Red Hat deployments incorporating DOMPurify, web consoles and interfaces rely on default or static sanitization profiles rather than function-based tag evaluation. Furthermore, successful exploitation requires user interaction to process malicious markup, limiting the attack surface to scenarios where an authenticated victim is tricked into viewing attacker-controlled input.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-28684'>CVE-2026-28684</a></td>
