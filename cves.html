@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-10-30 @ 23:16:45">
+        <meta name="description" content="Report generated on 2026-10-31 @ 00:16:33">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-10-30 @ 23:16:45">
+        <meta property="og:description" content="Report generated on 2026-10-31 @ 00:16:33">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-10-30 @ 23:16:45</i>
+                <i>Report generated on 2026-10-31 @ 00:16:33</i>
                 </span>
             </div>
         </nav>
@@ -201,6 +201,23 @@ is the textbook AC:H definition; step (2) in particular fits it.</td>
                         <td>This vulnerability is rated as Critical severity for Red Hat products because an unauthenticated remote attacker could forge valid cryptographic tokens and bypass authentication checks without knowing the private signing key. Exploitation occurs when consuming applications configure token verification to accept both symmetric and asymmetric algorithms simultaneously, allowing an asymmetric public key to be mishandled as a symmetric secret. Deployments that strictly enforce a single algorithm type or validate tokens using JSON Web Key sets do not permit this algorithm confusion and remain unaffected.</td>
                     </tr>
                                                                             <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-111497'>CVE-2026-111497</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-22</td>
+                        <td>brotli: Out-of-Bounds Write in Google Brotli Decoder</td>
+                        <td>This issue is rated Important. Exploitation requires that the target decompress attacker-controlled Brotli data (for example HTTP content negotiated with Content-Encoding: br, or APIs such as Node.js zlib / fetch() that decode Brotli). The vulnerable path is reached with a malformed stream rather than typical well-formed encoder output, and there is no public, reliable remote code execution proof-of-concept. Red Hat Enterprise Linux compiler and runtime hardenings - including Address Space Layout Randomization (ASLR), Non-eXecutable (NX) memory, FORTIFY_SOURCE, and SELinux - increase the difficulty of turning this memory corruption into reliable code execution, though they do not eliminate crashes or all impact. Combined with the Attack Requirements noted by the CNA (CVSS v4 AT:P), Red Hat scores Attack Complexity as High and rates the flaw Important rather than Critical.
+---
+The Node.js packages in Red Hat Enterprise Linux use either system version of brotli or bundled version. Some Node.js versions are marked "Not affected" because they utilize system brotli. For these versions, the Node.js package itself does not require updating. However, customers must still update the system brotli/libbrotli package to address the vulnerability for these Node.js installations.
+Following is the overview of Node.js versions use system or bundled version.
+- Node.js 22 in Red Hat Enterprise Linux 8 and 9, provided via nodejs:22 module, uses system brotli.
+- Node.js 24 in Red Hat Enterprise Linux 8 and 9, provided via nodejs:24 modules, use bundled brotli.
+- Node.js 22 and 24 in Red Hat Enterprise Linux 10, provided via nodejs22 and nodejs24 use system brotli.
+---
+The .NET packages in Red Hat Enterprise Linux may either use system version of brotli or bundled version. Following is the overview of .NET versions use system or bundled version.
+- .NET 8.0 in Red Hat Enterprise Linux 8, 9, and 10, provided via dotnet8.0 packages, use bundled brotli.
+- .NET 9.0, 10.0, and 11.0 in Red Hat Enterprise Linux 8, 9, and 10, provided via dotnet9.0, dotnet10.0, and dotnet11.0 packages, use system brotli.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-61726'>CVE-2025-61726</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-01-28</td>
@@ -1440,6 +1457,20 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>Red Hat has evaluated this vulnerability. This issue only affects versions AAP 2.5 GA and onwards.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-111066'>CVE-2026-111066</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>aiohttp: aiohttp: Denial of Service via file descriptor exhaustion in multipart request processing</td>
+                        <td>This vulnerability is rated as Important for Red Hat products because an unauthenticated remote attacker can cause a denial of service without requiring user interaction or elevated privileges. In Red Hat environments, exposure is limited to services or containerized applications built with the aiohttp framework that explicitly handle multipart form uploads. When such endpoints are targeted, excessive file handle consumption can exhaust operating system resources, preventing the affected service from handling legitimate requests.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-111064'>CVE-2026-111064</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>aiohttp: aiohttp: Denial of Service via missing initial request timeout</td>
+                        <td>This flaw affects products that run an aiohttp server exposed to untrusted clients. Products that use aiohttp only as an HTTP client are not affected.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-92982'>CVE-2026-92982</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-10-15</td>
@@ -1515,7 +1546,14 @@ This vulnerability affects all Go programs that serve or consume HTTP/2 traffic 
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-09-29</td>
                         <td>urllib3: urllib3: Traffic interception via HTTPS proxy TLS configuration override</td>
-                        <td>urllib3 is an HTTP client library for Python. From 1.26.0 until 2.8.0, the proxy_ssl_context, proxy_assert_hostname, proxy_assert_fingerprint, ssl_context, cert_reqs, verify_mode, use_forwarding_for_https=True, and CERT_NONE configuration paths fail to remain separated because target-server TLS settings are incorrectly applied to the HTTPS proxy connection. The trigger is that an application uses an HTTPS proxy and configures target-server TLS settings that must remain separate from the proxy TLS handshake, including HTTPS forwarding with target-specific identity or credentials. Applying cert_reqs=CERT_NONE can overwrite proxy_ssl_context.verify_mode in place, and the mutation persists so later connections reusing the same context may connect to the HTTPS proxy without certificate verification. The attack mechanism is that an attacker intercepts and impersonates the HTTPS proxy after the effective proxy policy accepts the attacker's certificate. The impact is that the attacker can observe or modify forwarded traffic or receive a target TLS client certificate, while CONNECT tunneling still preserves the separate end-to-end target TLS connection. This issue is fixed in version 2.8.0. A flaw was found in urllib3. This vulnerability allows a remote attacker on the network to intercept and alter data transmitted through an HTTPS proxy. The issue occurs when target-server Transport Layer Security (TLS) settings inadvertently overwrite the proxy's TLS configuration, which can disable certificate verification on reused connection contexts. Consequently, an attacker can impersonate the proxy to monitor or modify forwarded traffic or capture client credentials.</td>
+                        <td>Red Hat has evaluated this vulnerability as having an Important impact because a network attacker can exploit corrupted TLS validation states to impersonate an HTTPS proxy, enabling complete interception and manipulation of sensitive communications as well as client credential theft. Successful exploitation depends on specialized application architectures where outgoing requests utilize an HTTPS-capable proxy alongside customized destination TLS parameters that inadvertently override proxy verification. Default Red Hat enterprise deployments that communicate directly with endpoints, utilize traditional HTTP proxies, or rely on standard CONNECT tunneling for end-to-end encryption do not expose this flaw.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84782'>CVE-2026-84782</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-29</td>
+                        <td>openssl: compat-openssl: openssl: Information disclosure via DTLS handshake retransmission</td>
+                        <td>This vulnerability is rated as an Important severity because an unauthenticated network adversary can trigger process crashes or memory exposure without requiring local system privileges. Red Hat Enterprise Linux utilizes OpenSSL as the fundamental cryptographic provider across the operating system; however, overall exposure is limited because the flaw strictly affects software using Datagram Transport Layer Security (DTLS) over UDP under non-blocking I/O configurations. Standard TLS connections over TCP, which represent the typical deployment model for the majority of Red Hat workloads and system services, are unaffected.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102273'>CVE-2026-102273</a></td>
@@ -1583,7 +1621,7 @@ administrators and only routes them when debug mode is enabled. [Verify AAP
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-09-18</td>
                         <td>rustls-webpki: rustls-webpki: Denial of Service via crafted Certificate Revocation List</td>
-                        <td>rustls-webpki through 0.103.12 (and 0.104.0-alpha releases before 0.104.0-alpha.7) contains a reachable panic in bit_string_flags() in src/der.rs. The input guard fails to reject a named-bit BIT STRING whose content is exactly [0x00] (zero padding bits and no data bytes), so raw_bits.len() - 1 underflows on the empty slice and the subsequent index operation panics (subtract-with-overflow in debug, index-out-of-bounds in release). The condition is reachable through the public API BorrowedCertRevocationList::from_der() when a CRL contains an issuingDistributionPoint extension with such an onlySomeReasons value. Exploitation requires an application that explicitly opts in to CRL revocation checking by passing RevocationOptions to verify_for_usage() and that parses CRL bytes obtained from a source the attacker can influence; the default rustls configuration, which does not use RevocationOptions, is unaffected. A crafted CRL causes a denial of service via the panic. Fixed in 0.103.13 and 0.104.0-alpha.7. A flaw was found in rustls-webpki. A remote attacker, by influencing an application to parse a specially crafted Certificate Revocation List (CRL) that contains an empty `onlySomeReasons` value in its `issuingDistributionPoint` extension, could trigger a panic. This vulnerability leads to a denial of service (DoS) in applications that explicitly enable CRL revocation checking.</td>
+                        <td>This vulnerability is rated as Important because an unauthenticated remote attacker can cause an immediate denial of service by triggering an unhandled panic in network-facing services. Exploitation requires the consuming software to explicitly enable Certificate Revocation List (CRL) validation, a capability that is disabled by default in standard rustls configurations. Applications and services that actively ingest revocation lists from untrusted endpoints face service termination, whereas environments utilizing default certificate verification workflows remain unaffected.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-42784'>CVE-2026-42784</a></td>
