@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-10-31 @ 12:16:20">
+        <meta name="description" content="Report generated on 2026-10-31 @ 13:16:07">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-10-31 @ 12:16:20">
+        <meta property="og:description" content="Report generated on 2026-10-31 @ 13:16:07">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-10-31 @ 12:16:20</i>
+                <i>Report generated on 2026-10-31 @ 13:16:07</i>
                 </span>
             </div>
         </nav>
@@ -540,7 +540,7 @@ job namespace with minimal RBAC.</td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-09-03</td>
                         <td>node-forge: node-forge: Signature forgery vulnerability in RSA PKCS#1 v1.5 verification</td>
-                        <td>node-forge through 1.4.0 fails to validate element count in nested DigestAlgorithm sequences during RSA PKCS#1 v1.5 signature verification. Attackers can embed garbage bytes inside the DigestAlgorithm sequence to forge valid signatures for arbitrary messages using low-exponent RSA keys. This is an incomplete fix for CVE-2026-33894. A flaw was found in node-forge. This vulnerability allows a remote attacker to forge valid RSA PKCS#1 v1.5 signatures for arbitrary messages. The flaw occurs because the software fails to properly validate the element count in nested DigestAlgorithm sequences during signature verification. By embedding specially crafted data, an attacker can bypass signature validation, leading to potential integrity compromise.</td>
+                        <td>Red Hat rates this flaw as having an Important impact because an attacker can remotely forge valid signatures to subvert cryptographic integrity checks without holding the private signing key. In Red Hat environments, node-forge is vendored into various management web consoles and Node.js-based services where signature verification is performed. Successful exploitation requires the verifier to process RSA PKCS#1 v1.5 signatures using small public exponents (such as e=3), allowing Bleichenbacher-style forgery through malformed ASN.1 parsing. Systems utilizing standard exponents like 65537 or alternative signature mechanisms are not susceptible to this attack.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84292'>CVE-2026-84292</a></td>
@@ -582,7 +582,7 @@ job namespace with minimal RBAC.</td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-08-20</td>
                         <td>lxml: lxml-html-clean: lxml: URL bypass vulnerability in Cleaner via missing xlink:href</td>
-                        <td>lxml is a library for processing XML and HTML in the Python language. Prior to 6.1.1, link attributes in ``lxml.html.defs.link_attrs`` were missing ``xlink:href``, which can be used for URL bypass attacks in embedded SVG/MathML/etc. content. This vulnerability was fixed in lxml 6.1.1 and lxml_html_clean 0.4.5. A flaw was found in lxml, a library for processing XML and HTML in Python. The `lxml.html.defs.link_attrs` were missing `xlink:href`, which could allow an attacker to bypass URL filtering mechanisms. This vulnerability enables URL bypass attacks in embedded content such as Scalable Vector Graphics (SVG) or Mathematical Markup Language (MathML), potentially leading to information disclosure or arbitrary code execution in the context of the user's browser.</td>
+                        <td>This vulnerability is rated as an Important severity for Red Hat products because an unauthenticated remote attacker could inject malicious script schemes into rendered markup, resulting in cross-site scripting and potential session hijacking in the victim's browser. Exploitation requires an application to process untrusted user input using the HTML cleaner utility configured with non-default, relaxed attribute filtering. Under default library configurations where strict attribute allowlists are enforced, the relevant hyperlink attributes are stripped automatically before link scheme validation occurs.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-76222'>CVE-2026-76222</a></td>
@@ -1677,7 +1677,7 @@ administrators and only routes them when debug mode is enabled. [Verify AAP
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-08-24</td>
                         <td>fast-uri: fast-uri: Host confusion via skipped IDN canonicalization</td>
-                        <td>fast-uri is a URI parser for Node.js. It canonicalizes a host to its ASCII form only when the input carries an explicit scheme, so a scheme-relative reference such as a host preceded by two slashes is returned with its host verbatim and no error set. As a result fast-uri's own entry points disagree with each other: parse, resolve, normalize, and equal can yield different hosts for the same input depending only on whether a scheme is written out, and equal can return opposite verdicts for the same pair of hosts. An application that extracts a host with fast-uri to check it against a policy list and then resolves the same reference can make its decision on one host while the destination is another, enabling host confusion and policy bypass. The affected versions are 2.4.2 up to but not including 2.4.5, 3.1.3 up to but not including 3.1.6, and 4.0.1 up to but not including 4.1.3. The issue is fixed in 2.4.5, 3.1.6, and 4.1.3, which canonicalize the host consistently across the resolve path. Users should upgrade to a patched version. A flaw was found in fast-uri, a URI parser for Node.js. This vulnerability arises because the parser fails to consistently convert internationalized domain names (IDN) to their standard ASCII form when processing scheme-relative references. This inconsistency can lead to host confusion, where an application might validate a URI against a security policy using one hostname, but then resolve to a different, potentially malicious, hostname. This discrepancy could allow an attacker to bypass security policies and access unauthorized resources.</td>
+                        <td>Red Hat evaluates this vulnerability as having an Important severity because unauthenticated remote attackers could supply crafted scheme-relative input to evade hostname restrictions, potentially facilitating policy bypass or improper routing without prior credentials. Within Red Hat offerings, fast-uri is packaged as a bundled dependency within several administrative web interfaces and console extensions. Actual exploitability depends on whether an affected service relies on the library to enforce origin filtering or domain allowlists against untrusted network requests.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-73086'>CVE-2026-73086</a></td>
