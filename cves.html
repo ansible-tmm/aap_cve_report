@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-11-13 @ 11:16:13">
+        <meta name="description" content="Report generated on 2026-11-13 @ 12:16:27">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-11-13 @ 11:16:13">
+        <meta property="og:description" content="Report generated on 2026-11-13 @ 12:16:27">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-11-13 @ 11:16:13</i>
+                <i>Report generated on 2026-11-13 @ 12:16:27</i>
                 </span>
             </div>
         </nav>
@@ -222,7 +222,9 @@ Following is the overview of Node.js versions use system or bundled version.
 ---
 The .NET packages in Red Hat Enterprise Linux may either use system version of brotli or bundled version. Following is the overview of .NET versions use system or bundled version.
 - .NET 8.0 in Red Hat Enterprise Linux 8, 9, and 10, provided via dotnet8.0 packages, use bundled brotli.
-- .NET 9.0, 10.0, and 11.0 in Red Hat Enterprise Linux 8, 9, and 10, provided via dotnet9.0, dotnet10.0, and dotnet11.0 packages, use system brotli.</td>
+- .NET 9.0, 10.0, and 11.0 in Red Hat Enterprise Linux 8, 9, and 10, provided via dotnet9.0, dotnet10.0, and dotnet11.0 use system brotli.
+---
+Red Hat OpenShift Service Mesh ships the vulnerable Brotli decoder code compiled into the istio-proxy; however, it is not affected by this security flaw by default. The vulnerable code is only reachable if a custom EnvoyFilter configures the envoy.filters.http.decompressor filter with Brotli - the Service Mesh control plane never generates this filter. All currently supported OpenShift Service Mesh streams (3.1, 3.2, 3.3 and 3.4) are not-affected and no fix is required. OpenShift Service Mesh 2.6 (out of support since 30 June 2026) and 3.0 (out of support since 31 October 2026) will not receive a fix for this CVE.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2025-61726'>CVE-2025-61726</a></td>
