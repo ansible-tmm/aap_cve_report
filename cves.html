@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-11-20 @ 11:16:36">
+        <meta name="description" content="Report generated on 2026-11-20 @ 12:17:01">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-11-20 @ 11:16:36">
+        <meta property="og:description" content="Report generated on 2026-11-20 @ 12:17:01">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-11-20 @ 11:16:36</i>
+                <i>Report generated on 2026-11-20 @ 12:17:01</i>
                 </span>
             </div>
         </nav>
@@ -431,6 +431,18 @@ role; the impact is control over the control-plane process environment, enabling
 TLS interception of external credentials and Red Hat subscription/Insights
 secrets, arbitrary file write, and potential code execution on the control
 plane.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84486'>CVE-2026-84486</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-23</td>
+                        <td>automation-controller: automation-controller-container: automation-controller: unauthenticated debug scheduler-trigger endpoints (AllowAny, routed without DEBUG guard) allow advisory-lock starvation of job dispatch (DoS)</td>
+                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible
+Automation Platform. Debug endpoints intended for development are routed and
+world-accessible on production builds, allowing an unauthenticated attacker to
+disrupt job scheduling. The fix restricts the endpoints to system
+administrators and only routes them when debug mode is enabled. [Verify AAP
+2.4 -- see affects.]</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84644'>CVE-2026-84644</a></td>
@@ -1487,6 +1499,232 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>Red Hat has evaluated this vulnerability. This issue only affects versions AAP 2.5 GA and onwards.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-119195'>CVE-2026-119195</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-29</td>
+                        <td>pyasn1: pyasn1: Denial of Service via quadratic processing of fragmented ASN.1 data</td>
+                        <td>This vulnerability is rated as Important because unauthenticated remote attackers can trigger severe denial of service against network-facing services without requiring privileges or prior authentication. Red Hat environments running platforms and containerized services that parse external ASN.1 inputs are directly exposed, as processing heavily segmented streams monopolizes backend CPU cycles. The impact is confined to system availability, with no breach of data integrity or confidentiality.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-119194'>CVE-2026-119194</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-29</td>
+                        <td>pyasn1: pyasn1: Denial of Service via hash collisions in schemaless decoding</td>
+                        <td>This vulnerability is rated as an Important impact because unauthenticated remote attackers can cause complete availability loss through CPU exhaustion against services processing untrusted ASN.1 data. The risk manifests when applications decode BER, CER, or DER structures without an explicit schema, allowing crafted colliding tag identifiers to induce quadratic computational overhead. Deployments where pyasn1 operations validate inputs against predefined schemas or operate exclusively on trusted internal data remain unaffected.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-96640'>CVE-2026-96640</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-21</td>
+                        <td>pillow: pillow: Denial of Service via duplicate page references in PDF files</td>
+                        <td>Red Hat has evaluated this vulnerability as having an Important severity rating because remote, unauthenticated attackers can cause severe application denial of service through exponential CPU exhaustion. Although Pillow is widely distributed across Red Hat products and container images, exploitation is constrained to environments that accept untrusted PDF files and append image content to them. Standard image processing pipelines and read operations remain unaffected by this issue.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-96778'>CVE-2026-96778</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-21</td>
+                        <td>pillow: pillow: Arbitrary code execution via JPEG encoder buffer overflow</td>
+                        <td>Red Hat evaluates this vulnerability as having an Important severity because an unauthenticated attacker could trigger memory corruption leading to denial of service or arbitrary code execution if an exposed service processes untrusted graphics. In Red Hat ecosystems, Pillow is bundled across various containerized environments, including Red Hat OpenShift AI and Ansible Automation Platform, where background services or pipelines may ingest media files. However, exploitation requires an application workflow that explicitly re-encodes user-supplied images into JPEG format while retaining both embedded color profiles and comment metadata, which restricts the attack surface to specific image handling operations.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-96643'>CVE-2026-96643</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-21</td>
+                        <td>pillow: pillow: Denial of Service via repeated EXIF headers</td>
+                        <td>Red Hat rates this vulnerability as having an Important severity because remote, unauthenticated attackers can cause severe denial of service by submitting crafted images to automated image-processing pipelines. Services utilizing Pillow to inspect metadata or perform operations such as orientation adjustments can experience quadratic CPU consumption when parsing repetitive header markers. Because this condition can be triggered remotely without privileges in standard image handling workflows, it poses an elevated availability risk to backend services.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-96644'>CVE-2026-96644</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-21</td>
+                        <td>pillow: Pillow: Denial of Service via out-of-bounds read in metafile parser</td>
+                        <td>Red Hat rates this vulnerability as an Important severity flaw because an unauthenticated remote attacker could cause an application crash or expose heap memory contents by supplying a crafted image file. In Red Hat Enterprise Linux environments, however, the vulnerable native metafile rendering code is compiled out, as the handler is restricted to Windows operating systems. Consequently, standard Red Hat enterprise installations are not susceptible to this memory over-read condition.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-114145'>CVE-2026-114145</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-21</td>
+                        <td>GitPython: GitPython: arbitrary code execution via improper submodule path validation</td>
+                        <td>This vulnerability is rated as Important because successful exploitation permits arbitrary code execution within the context of the underlying service or container. Although execution of arbitrary commands represents a critical consequence, the rating reflects the high complexity and prerequisites required, specifically that an application must accept user-controlled submodule paths and operate where default Git hook templates are absent. In Red Hat environments, such as Ansible Automation Platform, OpenShift AI, and Red Hat Satellite, impact is limited to workloads configured to process repository structures from untrusted or unauthenticated sources.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-114138'>CVE-2026-114138</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-21</td>
+                        <td>djangorestframework: djangorestframework: Denial of Service via unbounded Accept header parsing</td>
+                        <td>This vulnerability is rated as Important severity because an unauthenticated remote user can force severe CPU exhaustion and service outages across exposed web endpoints without requiring valid credentials. In Red Hat environments, products such as Red Hat Ansible Automation Platform and Satellite deploy web APIs that rely on synchronous application workers, making them susceptible to worker starvation when handling excessive content negotiation headers. Although active exploitation can render exposed API services temporarily unavailable, the vulnerability does not compromise system integrity or expose sensitive data.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-114137'>CVE-2026-114137</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-21</td>
+                        <td>djangorestframework: djangorestframework: Unauthorized access via improper token revocation in TokenProxy</td>
+                        <td>Red Hat has rated this vulnerability as having an Important severity because incomplete credential invalidation directly compromises API authorization boundaries, allowing decommissioned or compromised credentials to maintain persistent remote access across exposed endpoints. Within Red Hat environments like Ansible Automation Platform and Satellite, backend services depend on API tokens for routine orchestration and integration workflows. While built-in administration interfaces that bypass proxy-based deletion remain unaffected, automated workflows and external tooling attempting credential revocation silently fail to purge access, leaving tokens valid indefinitely.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-114136'>CVE-2026-114136</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-21</td>
+                        <td>djangorestframework: djangorestframework: Denial of Service via improper charset handling in JSON parser</td>
+                        <td>This vulnerability is rated as Important severity because remote, unauthenticated attackers can cause severe worker process memory exhaustion on exposed endpoints without requiring privileges or user interaction. While the impact is restricted to service availability rather than data confidentiality or integrity, the massive amplification ratio allows small network payloads to evade framework request-size constraints. In Red Hat environments, affected management and automation services rely on default API parser configurations, making backend workers susceptible to denial of service from minimal malicious traffic.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-113726'>CVE-2026-113726</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-20</td>
+                        <td>virtualenv: virtualenv: Arbitrary command execution via unescaped prompt variables in zsh</td>
+                        <td>Red Hat has evaluated this issue as having an Important severity impact because it permits arbitrary code execution in the context of the user running the shell session without requiring elevated privileges. Although the attack requires user interaction to load a malicious environment path or configuration, the resulting execution inherits full user permissions. However, typical Red Hat Enterprise Linux and container environments configure bash as the default login shell, which is not vulnerable to this vector. Exploitation is constrained to interactive Z shell (zsh) sessions where prompt substitution has been specifically enabled.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-113776'>CVE-2026-113776</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-20</td>
+                        <td>virtualenv: virtualenv: Arbitrary command execution via sequential placeholder substitution in activation templates</td>
+                        <td>This vulnerability is rated as Important for Red Hat because arbitrary code execution can occur within the invoking user's context, even though exploitation requires local interaction to activate the environment. In typical Red Hat deployments and automated pipelines, virtual environments are frequently generated and sourced during workload execution or developer workspaces. Exposure is contingent on an attacker being able to supply untrusted destination filesystem paths or prompt parameters that embed internal template substitution tokens.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-113732'>CVE-2026-113732</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-20</td>
+                        <td>virtualenv: virtualenv: Arbitrary code execution via improperly quoted Fish activation scripts</td>
+                        <td>Red Hat has rated this flaw as having an Important impact because successful exploitation permits arbitrary local command execution within the victim's user context, although exploitation requires user interaction to source a compromised environment. On Red Hat Enterprise Linux and associated container environments, Fish is not installed or configured as the default login shell, significantly limiting exposure under standard deployment profiles. However, in developer workstations or automation pipelines where the Fish shell is utilized and environment paths or prompts can be influenced by untrusted input, the flaw poses a serious risk.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112897'>CVE-2026-112897</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: pillow: Information disclosure via uninitialized buffer in TIFF decoding</td>
+                        <td>Red Hat rates this vulnerability as Important because an unauthenticated remote attacker can exploit default image parsing workflows to extract sensitive process memory without requiring privileges or triggering application crashes. In Red Hat environments such as Red Hat OpenShift AI and Ansible Automation Platform, backend services that ingest user-provided images and return rendered thumbnails, previews, or re-encoded files inadvertently disclose previously freed heap data from concurrent or prior operations. The vulnerability requires processing compressed TIFF files where the decoder handles truncated image streams, meaning services that reject this format or never expose generated image outputs are not impacted.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112896'>CVE-2026-112896</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: Pillow: Denial of Service via out-of-bounds read in TIFF encoder</td>
+                        <td>This vulnerability is rated as Important severity for Red Hat products because remote, unauthenticated attackers can supply crafted image files over network endpoints to cause process termination or heap memory disclosure without requiring privileges. The impact primarily concerns applications and containerized services that ingest untrusted image data and subsequently re-encode or save it using the libtiff-backed encoder while retaining metadata. Environments and workflows that only read, validate, or display images without writing them back out to TIFF format are not affected.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112895'>CVE-2026-112895</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: pillow: Denial of service via crafted PDF during append operations</td>
+                        <td>This vulnerability is rated as an Important severity flaw because an unauthenticated remote attacker can cause severe service disruption and denial of service without requiring elevated privileges. Red Hat products shipping Pillow—including components within Red Hat OpenShift AI, Ansible Automation Platform, and Satellite—are exposed only when configured to append images to untrusted, user-supplied PDF documents. Standard deployments that do not append to external PDF files or that generate new documents from trusted sources are unaffected.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112894'>CVE-2026-112894</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: pillow: Denial of Service via crafted multi-frame image conversion</td>
+                        <td>This vulnerability is rated as an Important severity flaw because an unauthenticated remote attacker can cause severe CPU exhaustion and service disruption by submitting minimal crafted inputs without needing system privileges. The elevated risk arises because even tiny files with declared high sequence numbers can tie up backend worker processes for prolonged periods in applications that convert user-provided graphics into multipage documents. Deployments remain unaffected if they only perform standard single-image rendering, validation, or do not expose multi-frame document export capabilities to untrusted users.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112893'>CVE-2026-112893</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: Pillow: Denial of Service via invalid pointer free during font rendering</td>
+                        <td>Red Hat rates this vulnerability as having an Important severity because an unauthenticated remote attacker could cause memory corruption or terminate the application process without requiring privileges, leading to a denial of service. Across Red Hat product environments, Pillow operates as an underlying imaging component in automated services and containerized workloads. The vulnerability is only triggered if an application accepts untrusted font files from users and renders text using non-zero stroke widths, leaving services that utilize standard system fonts unaffected.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112892'>CVE-2026-112892</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: pillow: Denial of Service via unbounded memory expansion in MSP image decoder</td>
+                        <td>This vulnerability is evaluated as an Important impact because remote unauthenticated actors can induce an application denial of service by consuming all host or container memory, bypassing standard decompression safety limits. In Red Hat deployments such as Red Hat OpenShift AI and Red Hat Quay, service ingestion workflows accepting user-submitted graphics could suffer process termination or node instability when decoding untrusted assets. Deployments that process only verified internal content or do not expose image analysis to external inputs face substantially lower operational risk.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112406'>CVE-2026-112406</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: pillow: Denial of Service via infinite loop during PDF page rewriting</td>
+                        <td>This vulnerability is rated as Important because an unauthenticated remote user can supply a crafted document to trigger an infinite processing loop, resulting in complete CPU core exhaustion and denial of service for the target application worker. The issue specifically threatens services or workloads that ingest untrusted PDFs and append or save pages to them. Standard image parsing and reading pipelines that do not modify or append to existing PDF structures remain unaffected.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112405'>CVE-2026-112405</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: Pillow: Denial of Service via null pointer dereference in Image.merge()</td>
+                        <td>This vulnerability is rated as having an Important impact for Red Hat products because an unauthenticated remote attacker can crash service worker processes handling user uploads without requiring privileges or prior interaction. In Red Hat environments such as Ansible Automation Platform, Satellite, and OpenShift AI, Pillow is embedded across containerized services and platform tooling that handle image ingest and transformation. Because parsing an invalid image file triggers an immediate segmentation fault within the native extension, the issue causes service disruption, although it does not compromise data confidentiality or allow arbitrary code execution.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112404'>CVE-2026-112404</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: Pillow: Denial of Service via out-of-bounds read in TIFF decoding</td>
+                        <td>This vulnerability is rated as an Important severity flaw because an unauthenticated remote attacker can exploit it to terminate backend worker processes or leak adjacent heap contents without requiring elevated privileges. Red Hat products utilizing Pillow within containerized services, AI model serving, or automation workflows may be exposed if they accept and parse untrusted TIFF files. Because TIFF parsing occurs automatically during standard image opening routines without requiring custom decode flags, services that ingest user-provided media are susceptible to denial of service or memory exposure.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112403'>CVE-2026-112403</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: Pillow: Heap buffer overflow in ImagingJpegDecode</td>
+                        <td>The overflow only triggers when the application calls `draft()` or `thumbnail()` before loading the image. Direct `Image.open().load()` or `Image.open().resize()` decode at scale 1 and are unaffected. Many image processing pipelines use `load()` followed by `resize()`, not `thumbnail()`. The libjpeg-turbo 3.x requirement, specific code path, and dimension threshold make this **not easily exploitable** across the entire Pillow install base.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112402'>CVE-2026-112402</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: pillow: Denial of service via double free during image transformation</td>
+                        <td>This vulnerability is rated as Important because remote, unauthenticated attackers can cause service disruptions or memory corruption in applications that accept user-controlled image transformation requests without requiring prior privileges. In typical Red Hat environments, such as containerized AI or automation workloads processing image data, processing oversized transformation geometries under strict process memory limits forces premature deallocation of internal structures, culminating in process termination. Applications that sanitize image bounds or avoid exposing custom affine transform endpoints remain largely unaffected by this crash condition.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112397'>CVE-2026-112397</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: pillow: Denial of Service via out-of-bounds memory access on zero-width images</td>
+                        <td>This vulnerability is rated as having Important impact because remote, unauthenticated attackers can trigger an immediate denial of service by crashing target processes without requiring user intervention. In typical Red Hat product deployments, exposure is limited because triggering the flaw requires an application to actively process untrusted image input through morphological transformations. Workloads that parse standard image formats without performing morphology operations are not susceptible to this failure mode.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112392'>CVE-2026-112392</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: pillow: Denial of Service via zero-size images in rank filters</td>
+                        <td>Red Hat has rated this vulnerability as having an impact of Important because an unauthenticated remote attacker can crash backend application processes handling image transformations without requiring elevated privileges. In Red Hat environments deploying services with Pillow, processing untrusted image inputs or crop coordinates using rank-derived filtering routines can lead to service interruption. However, the scope of impact is confined strictly to process termination resulting from an invalid memory dereference, with no evidence of memory corruption or confidentiality exposure.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112400'>CVE-2026-112400</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: pillow: Denial of Service via memory exhaustion from crafted GIF image</td>
+                        <td>Red Hat rates this vulnerability as Important because an unauthenticated remote attacker can supply a malicious graphic file that forces extensive memory allocations, leading to daemon termination or denial of service. The flaw requires consuming applications to catch decompression bomb exceptions and reuse the same image object across subsequent frame operations, allowing oversized geometry values to trigger high resource exhaustion. Exposure is largely concentrated in containerized services and image-processing pipelines that handle untrusted animation uploads directly.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112399'>CVE-2026-112399</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: pillow: Denial of service via crafted APNG image</td>
+                        <td>This vulnerability is rated as an Important severity for Red Hat products because an unauthenticated remote attacker can cause a denial of service through memory exhaustion without requiring user interaction or elevated privileges. Red Hat solutions such as OpenShift AI and Ansible Automation Platform integrate Pillow to process arbitrary user or automated media uploads. Because full-canvas memory allocation occurs during initial file header ingestion prior to decompression safety limits being enforced, applications cannot rely on standard dimension safeguards to prevent worker termination.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112398'>CVE-2026-112398</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution</td>
+                        <td>- Requires optional olefile package installed (not bundled by default in RHEL/most containers)
+- High attack complexity for reliable RCE (heap layout control, vtable hijacking)
+- Affects a file format (FlashPix) rarely used in production image processing</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112393'>CVE-2026-112393</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO</td>
+                        <td>The attack complexity is high and also for services that do hit this code path (image upload → TIFF re-encode to BytesIO → return/upload), the minimal PoC reliably crashes the worker process. The heap corruption could plausibly be developed into RCE by a skilled attacker who has already compromised the same process enough to leak addresses, but that's a chained-exploit scenario, not a standalone wormable RCE.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112391'>CVE-2026-112391</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: Pillow: Denial of Service via unbounded recursion in PDF parser</td>
+                        <td>Red Hat has evaluated this vulnerability as having Important severity because an unauthenticated remote attacker could cause worker process termination and denial of service by submitting maliciously structured input files. However, exploitation is constrained to specific deployment workflows where an application utilizes Pillow to append image data onto preexisting, untrusted PDF documents. Systems and services that only process standard raster image formats or do not manipulate external PDF files in append mode are unaffected.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112390'>CVE-2026-112390</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>pillow: Pillow: Denial of Service via infinite loop during crafted MIC image parsing</td>
+                        <td>This vulnerability is rated as an Important severity flaw because an unauthenticated remote attacker can induce an infinite loop, exhausting worker CPU resources and resulting in a denial of service for applications handling untrusted image data. Within Red Hat environments, Pillow is deployed across numerous container images, machine learning frameworks, and automated backend services. Exploitation requires the optional olefile dependency to be present to register the Microsoft Image Composer format handler, and specifically targets workflows that query frame counts or process multi-frame images. Environments that do not inspect frame counts or do not have olefile installed are not vulnerable.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-111066'>CVE-2026-111066</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-10-19</td>
@@ -1499,6 +1737,13 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>2026-10-19</td>
                         <td>aiohttp: aiohttp: Denial of Service via missing initial request timeout</td>
                         <td>This flaw affects products that run an aiohttp server exposed to untrusted clients. Products that use aiohttp only as an HTTP client are not affected.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-68498'>CVE-2026-68498</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-16</td>
+                        <td>com.fasterxml.jackson.core/jackson-core: tools.jackson.core/jackson-core: jackson-core: Denial of Service via excessively long JSON property names</td>
+                        <td>A flaw was found in jackson-core. When parsing JSON from character-based inputs (such as Reader, String, or char[]), ReaderBasedJsonParser fails to enforce the configured StreamReadConstraints.maxNameLength limit during name accumulation, validating against the larger maxStringLength limit instead. A remote, unauthenticated attacker can exploit this flaw by sending a crafted JSON object containing an excessively long property name, forcing allocations up to 100 million characters. This can cause heap exhaustion and an Out-Of-Memory application crash, resulting in a denial of service within standard process and container boundaries.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-92982'>CVE-2026-92982</a></td>
@@ -1586,6 +1831,13 @@ This vulnerability affects all Go programs that serve or consume HTTP/2 traffic 
                         <td>This vulnerability is rated as an Important severity because an unauthenticated network adversary can trigger process crashes or memory exposure without requiring local system privileges. Red Hat Enterprise Linux utilizes OpenSSL as the fundamental cryptographic provider across the operating system; however, overall exposure is limited because the flaw strictly affects software using Datagram Transport Layer Security (DTLS) over UDP under non-blocking I/O configurations. Standard TLS connections over TCP, which represent the typical deployment model for the majority of Red Hat workloads and system services, are unaffected.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102278'>CVE-2026-102278</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-28</td>
+                        <td>brace-expansion: brace-expansion: Denial of Service via uncontrolled recursion in nested brace patterns</td>
+                        <td>This vulnerability is rated as Important because remote unauthenticated attackers can supply crafted nested expressions to trigger native stack exhaustion and crash server-side processes, resulting in a denial of service without compromising system confidentiality or integrity. In Red Hat environments, the affected library is distributed across containerized web consoles, developer tools, and Node.js runtime environments. Exploitation is constrained to deployments where applications process untrusted, user-defined pattern inputs directly through expansion functions without input depth validation.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102273'>CVE-2026-102273</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-09-28</td>
@@ -1633,18 +1885,6 @@ This vulnerability affects all Go programs that serve or consume HTTP/2 traffic 
                         <td>2026-09-24</td>
                         <td>pulpcore: pulpcore: file:// scheme allowlist bypass in content upload file_url field enables arbitrary file read and Pulp Container registry signing key theft</td>
                         <td>This vulnerability is rated as Critical severity because a low-privilege authenticated Pulp user can read arbitrary files accessible to the Pulp service process, and in deployments with Pulp Container can steal the registry JWT signing private key and forge bearer tokens granting unauthorized read and write access to private container repositories owned by other users. Red Hat product impact analysis is pending to determine which products ship the affected pulpcore code with the file_url content upload feature enabled and the Pulp Container plugin installed.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84486'>CVE-2026-84486</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-09-23</td>
-                        <td>automation-controller: automation-controller-container: automation-controller: unauthenticated debug scheduler-trigger endpoints (AllowAny, routed without DEBUG guard) allow advisory-lock starvation of job dispatch (DoS)</td>
-                        <td>This flaw affects automation-controller as shipped in Red Hat Ansible
-Automation Platform. Debug endpoints intended for development are routed and
-world-accessible on production builds, allowing an unauthenticated attacker to
-disrupt job scheduling. The fix restricts the endpoints to system
-administrators and only routes them when debug mode is enabled. [Verify AAP
-2.4 -- see affects.]</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-93599'>CVE-2026-93599</a></td>
@@ -1982,6 +2222,13 @@ component, which is not otherwise accessible to the API superuser role.</td>
                         <td>2026-09-06</td>
                         <td>automation-controller: automation-controller-container: AAP Controller: CopyAPIView.post() missing read                 authorization check enables Job Template secret                 recovery</td>
                         <td>An IMPORTANT severity flaw was found in the Red Hat Ansible Automation Platform automation controller. The CopyAPIView.post() API handler does not verify that the requesting user has read access to the source object before performing a copy operation, while the corresponding GET handler does enforce this check. As a result, an authenticated user holding only Use roles on a shared project and inventory can copy any Job Template built on those resources, including Job Templates they are not permitted to read, and becomes the administrator of the resulting clone. The clone contains the source Job Template's plaintext host_config_key and extra_vars fields, which frequently contain secrets, and the recovered host_config_key can be used to authenticate against the original Job Template's provisioning callback endpoint. This allows a low-privileged authenticated attacker to disclose highly confidential information and gain limited control over cloned resources (CVSS 3.1: 8.5, AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:L/A:N), which matches the upstream severity. The automation-controller component in Ansible Automation Platform 2.5, 2.6, and 2.7 is affected and fixes are being pursued through the delegated maintenance process. For Ansible Automation Platform 2.4 the fix is deferred, so no update is currently planned for that stream and the authorization gap remains; the residual risk is that users with only resource-level Use roles on shared projects and inventories can recover secrets from Job Templates they cannot read. The automation-controller-cli package in Ansible Automation Platform 2.7 is not affected because the vulnerable code is not in its execution path.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-69249'>CVE-2026-69249</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-08-03</td>
+                        <td>python-cryptography: python-cryptography: Duplicate self-signed intermediates can cause exponential path-building</td>
+                        <td>Red Hat rates this Important (CVSS 3.1 7.5 AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H). GHSA-jwv3-5hgf-82ww rates Low, but upstream CVSS 4.0 is 8.7 (AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N), reflecting an easy remote availability impact. Attack Complexity is Low: an attacker supplies a certificate chain with duplicate self-signed intermediates to PolicyBuilder path-building; no special PKI topology is required (unlike CVE-2026-69248). Max chain depth bounds recursion but still allows multi-second CPU cost per verify in testing, which is enough for resource-exhaustion DoS. Confidentiality and integrity are unaffected. Vulnerable from cryptography 42.0.0 (PolicyBuilder); fixed in 49.0.0.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-46625'>CVE-2026-46625</a></td>
