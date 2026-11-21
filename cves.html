@@ -4,12 +4,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <title></title>
-        <meta name="description" content="Report generated on 2026-11-20 @ 23:16:56">
+        <meta name="description" content="Report generated on 2026-11-21 @ 00:16:53">
         <meta name="author" content="Ansible Team">
 
         <meta property="og:title" content="">
         <meta property="og:type" content="website">
-        <meta property="og:description" content="Report generated on 2026-11-20 @ 23:16:56">
+        <meta property="og:description" content="Report generated on 2026-11-21 @ 00:16:53">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
@@ -44,7 +44,7 @@
                 <span></span>
                 </a>
                 <span class="navbar-text" style="color: grey">
-                <i>Report generated on 2026-11-20 @ 23:16:56</i>
+                <i>Report generated on 2026-11-21 @ 00:16:53</i>
                 </span>
             </div>
         </nav>
@@ -72,6 +72,13 @@ Further investigation would need to be done to determine exactly which CVEs affe
                         <td>2026-10-14</td>
                         <td>GitPython: GitPython 3.1.30 before 3.2.0 Command Injection via Remote.pull() Refspec</td>
                         <td>This flaw is evaluated as having Critical impact because successful exploitation enables unauthenticated remote code execution with the full privileges of the host service whenever untrusted repository reference strings are processed. In Red Hat environments such as Ansible Automation Platform and OpenShift AI, GitPython manages automated repository synchronization workflows that may become exposed if external inputs govern branch definitions. However, execution is contingent on using SSH or local filesystem transports, whereas interactions strictly using HTTPS remotes render the injected parameters inert.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102268'>CVE-2026-102268</a></td>
+                        <td data-sortvalue="0" class='color-critical'>Critical</td>
+                        <td>2026-09-28</td>
+                        <td>pyjwt: PyJWT: Authentication bypass via improper public key validation</td>
+                        <td>This vulnerability is rated as Critical severity for Red Hat products because an unauthenticated remote attacker could forge valid cryptographic tokens and bypass authentication checks without knowing the private signing key. Exploitation occurs when consuming applications configure token verification to accept both symmetric and asymmetric algorithms simultaneously, allowing an asymmetric public key to be mishandled as a symmetric secret. Deployments that strictly enforce a single algorithm type or validate tokens using JSON Web Key sets do not permit this algorithm confusion and remain unaffected.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-75884'>CVE-2026-75884</a></td>
@@ -199,13 +206,6 @@ is the textbook AC:H definition; step (2) in particular fits it.</td>
                         <td>2026-06-23</td>
                         <td>eda-server: websocket missing authorization allows credential theft via activation_id spoofing</td>
                         <td>A missing authorization vulnerability was found in the Event-Driven Ansible (EDA) websocket API. The /api/eda/ws/ansible-rulebook endpoint does not verify user permissions when processing Worker messages. Any authenticated user can send a forged message with an arbitrary activation_id to receive plaintext credentials associated with that activation, including OAuth tokens, vault passwords, and SSH keys. A missing authorization vulnerability was found in the Event-Driven Ansible (EDA) websocket API. The /api/eda/ws/ansible-rulebook endpoint does not verify user permissions when processing Worker messages. Any authenticated user can send a forged message with an arbitrary activation_id to receive plaintext credentials associated with that activation, including OAuth tokens, vault passwords, and SSH keys.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102268'>CVE-2026-102268</a></td>
-                        <td data-sortvalue="0" class='color-critical'>Critical</td>
-                        <td>2026-09-28</td>
-                        <td>pyjwt: PyJWT: Authentication bypass via improper public key validation</td>
-                        <td>This vulnerability is rated as Critical severity for Red Hat products because an unauthenticated remote attacker could forge valid cryptographic tokens and bypass authentication checks without knowing the private signing key. Exploitation occurs when consuming applications configure token verification to accept both symmetric and asymmetric algorithms simultaneously, allowing an asymmetric public key to be mishandled as a symmetric secret. Deployments that strictly enforce a single algorithm type or validate tokens using JSON Web Key sets do not permit this algorithm confusion and remain unaffected.</td>
                     </tr>
                                                                             <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-111497'>CVE-2026-111497</a></td>
@@ -419,6 +419,13 @@ As go-lang vendors its dependencies, a package may contain a library with a know
                         <td>2026-10-14</td>
                         <td>GitPython: GitPython: Denial of Service via regular expression backtracking in date parsing</td>
                         <td>This vulnerability is rated as Important severity because Red Hat services and containerized environments that ingest remote repositories can be exposed to sustained service outages without requiring administrative privileges or local system access. When an integration processes a repository that includes specifically structured author or tag metadata, the regex evaluation experiences severe resource exhaustion, stalling worker processes. While this defect disrupts service availability across automation workflows and analysis pipelines, it does not allow unauthorized data access or arbitrary code execution.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102273'>CVE-2026-102273</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-09-28</td>
+                        <td>pyjwt: pyjwt: Token forgery via acceptance of public JWK containers as HMAC secrets</td>
+                        <td>Red Hat rates this vulnerability as Important because an attacker with access to a public verification key can forge cryptographic tokens to bypass authentication, allowing impersonation of privileged users and unauthorized access to protected application resources. Exploitation is limited to environments where applications concurrently permit symmetric HMAC and asymmetric algorithms while passing public key containers into validation routines.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84679'>CVE-2026-84679</a></td>
@@ -1499,6 +1506,20 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>Red Hat has evaluated this vulnerability. This issue only affects versions AAP 2.5 GA and onwards.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-119197'>CVE-2026-119197</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-29</td>
+                        <td>pyasn1: pyasn1: Denial of Service via quadratic complexity in binary REAL decoding</td>
+                        <td>This vulnerability is rated as Important because unauthenticated remote attackers can cause significant denial of service via CPU starvation in network services that parse untrusted ASN.1 data. While the pyasn1 library is widely packaged across Red Hat Enterprise Linux and containerized application stacks, practical risk requires that an exposed application accepts external input and processes binary-encoded floating-point definitions without schema restrictions. Services handling such untrusted input synchronously within worker threads are primarily vulnerable to CPU exhaustion and availability degradation.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-119196'>CVE-2026-119196</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-29</td>
+                        <td>pyasn1: pyasn1: Denial of Service via constructed bit string decoding</td>
+                        <td>Red Hat has classified this vulnerability as Important because an unauthenticated network attacker can cause CPU starvation and worker thread exhaustion across network-exposed services without requiring elevated privileges. Within Red Hat distributions and enterprise platforms, pyasn1 serves as an underlying ASN.1 parsing library for several automation components, identity management services, and containerized workloads. Although client-side and internal utilities experience negligible operational risk, network-facing services that ingest untrusted or schema-less ASN.1 structures are directly exposed to availability denial.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-119195'>CVE-2026-119195</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-10-29</td>
@@ -1511,6 +1532,41 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>2026-10-29</td>
                         <td>pyasn1: pyasn1: Denial of Service via hash collisions in schemaless decoding</td>
                         <td>This vulnerability is rated as an Important impact because unauthenticated remote attackers can cause complete availability loss through CPU exhaustion against services processing untrusted ASN.1 data. The risk manifests when applications decode BER, CER, or DER structures without an explicit schema, allowing crafted colliding tag identifiers to induce quadratic computational overhead. Deployments where pyasn1 operations validate inputs against predefined schemas or operate exclusively on trusted internal data remain unaffected.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-118669'>CVE-2026-118669</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-28</td>
+                        <td>oauthlib: oauthlib: privilege escalation via client identity confusion in token grant handlers</td>
+                        <td>This vulnerability is rated as an Important severity for Red Hat products because an authenticated client with low privileges can obtain access tokens under a different identity over the network, leading to significant privilege escalation without requiring user interaction. The exposure specifically impacts deployments where the server application relies on the submitted client identifier parameter during scope or grant checks instead of the authenticated client object. Workloads that do not act as an OAuth2 token endpoint or that enforce scope authorization solely from the authenticated entity remain unaffected.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-114616'>CVE-2026-114616</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-22</td>
+                        <td>authlib: authlib: Authentication bypass via zero-length HMAC key</td>
+                        <td>This vulnerability is rated as Important severity because successful exploitation enables remote unauthenticated token forgery and full authentication bypass, though the risk is constrained by the prerequisite that the consuming service must resolve HMAC secrets to empty values. In standard Red Hat deployments, underlying services and containerized offerings enforce or dynamically provision defined secret keys, substantially reducing exposure under default configurations. However, if an application environment fails to supply a secret or allows key lookups to return blank values, external actors can generate predictable signatures and gain unauthorized access.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-114615'>CVE-2026-114615</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-22</td>
+                        <td>authlib: Authlib: Authentication bypass via improper asymmetric key validation</td>
+                        <td>This vulnerability is rated as Important severity because an unauthenticated remote attacker could forge cryptographic tokens and bypass authentication, leading to unauthorized access. The issue stems from incomplete validation of asymmetric key prefixes, which permits public keys with non-canonical formatting to be treated as symmetric secrets when mixed algorithm registries are enabled. In Red Hat environments, overall exposure is constrained to services that permit dynamic algorithm selection alongside non-stripped public key configurations.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-114613'>CVE-2026-114613</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-22</td>
+                        <td>msgpack: msgpack: Denial of Service via memory leak during map deserialization</td>
+                        <td>Red Hat has evaluated this vulnerability as having an Important severity because an unauthenticated remote attacker can cause a denial of service by triggering excessive memory allocation in exposed network services. Python MessagePack components deployed across Red Hat products use the compiled C accelerator by default when parsing incoming serialized data. When malformed payloads are processed, unreleased objects accumulate in memory over time, eventually leading to process crashes and service unavailability.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-114605'>CVE-2026-114605</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-22</td>
+                        <td>dnspython: dnspython: Denial of Service via excessive DNS compression pointer traversal</td>
+                        <td>This vulnerability is rated as an Important impact because an unauthenticated remote attacker can trigger complete CPU exhaustion and application unresponsiveness without requiring specialized access or privileges. In Red Hat enterprise deployments, the library is embedded across multiple platform services and containerized environments that process network records. Systems are primarily vulnerable when applications accept and decompress wire-format responses from untrusted external name servers.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-96640'>CVE-2026-96640</a></td>
@@ -1569,6 +1625,27 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>This vulnerability is rated as Important severity because remote, unauthenticated attackers can cause severe worker process memory exhaustion on exposed endpoints without requiring privileges or user interaction. While the impact is restricted to service availability rather than data confidentiality or integrity, the massive amplification ratio allows small network payloads to evade framework request-size constraints. In Red Hat environments, affected management and automation services rely on default API parser configurations, making backend workers susceptible to denial of service from minimal malicious traffic.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-114098'>CVE-2026-114098</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-21</td>
+                        <td>dulwich: Dulwich: Arbitrary code execution via symlink directory traversal during stash pop</td>
+                        <td>This vulnerability has been rated as having an Important severity because successful exploitation allows writing arbitrary files outside the repository working directory, potentially leading to arbitrary code execution. Exploitation requires user interaction to perform stash operations on a maliciously crafted Git repository containing directory symlinks. In typical Red Hat deployments, automated systems and workflows do not perform stash operations on untrusted repositories, significantly limiting real-world exposure.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-114097'>CVE-2026-114097</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-21</td>
+                        <td>dulwich: dulwich: Arbitrary code execution via symlink path traversal during branch filtering</td>
+                        <td>This vulnerability is rated as having an Important severity because successful exploitation can result in arbitrary code execution within the application context if untrusted repositories are processed. Red Hat products embedding Dulwich are only susceptible if they run branch filtering operations on untrusted Git repositories. Exploitation requires user interaction or an automated workflow to process a malicious repository where residual symlinks redirect file writes during index filtering.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-114096'>CVE-2026-114096</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-21</td>
+                        <td>dulwich: dulwich: Arbitrary code execution via symlink following during file checkout</td>
+                        <td>Red Hat rates this vulnerability as having an Important security impact because successful exploitation allows arbitrary file overwrite and subsequent code execution within the privileges of the executing process, though it requires interacting with a maliciously constructed Git repository. Exploitation is contingent upon an automated workflow or user processing an untrusted source repository that contains crafted symbolic links.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-113726'>CVE-2026-113726</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-10-20</td>
@@ -1588,6 +1665,27 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>2026-10-20</td>
                         <td>virtualenv: virtualenv: Arbitrary code execution via improperly quoted Fish activation scripts</td>
                         <td>Red Hat has rated this flaw as having an Important impact because successful exploitation permits arbitrary local command execution within the victim's user context, although exploitation requires user interaction to source a compromised environment. On Red Hat Enterprise Linux and associated container environments, Fish is not installed or configured as the default login shell, significantly limiting exposure under standard deployment profiles. However, in developer workstations or automation pipelines where the Fish shell is utilized and environment paths or prompts can be influenced by untrusted input, the flaw poses a serious risk.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-113725'>CVE-2026-113725</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-20</td>
+                        <td>virtualenv: virtualenv: arbitrary code execution via crafted environment name</td>
+                        <td>Red Hat rates this vulnerability as Important because an attacker can execute arbitrary commands with the privileges of a user who activates a compromised or maliciously named Python virtual environment. While exploitation requires user interaction to source the activation script, developer workstations and automated build environments frequently clone repositories or ingest external directory names, elevating the practical risk of executing untrusted activation scripts. Systems where virtual environments are generated exclusively from trusted names or run non-interactively without prompt evaluation are not affected.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-113723'>CVE-2026-113723</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-20</td>
+                        <td>virtualenv: virtualenv: Arbitrary code execution via malicious prompt text</td>
+                        <td>Red Hat has rated this vulnerability as having an Important severity because arbitrary command execution occurs with the full permissions of the user activating the environment, posing a significant risk to developer environments and CI/CD automation. Exploitation requires user interaction, as an attacker cannot exploit this flaw remotely without first enticing a user or automated pipeline to generate a virtual environment using crafted prompt values and subsequently source the activation script. Workflows that generate virtual environments using standard, trusted configuration values are not susceptible to this exploit.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-113722'>CVE-2026-113722</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-20</td>
+                        <td>virtualenv: virtualenv: arbitrary code execution via improperly quoted interpreter paths in script launchers</td>
+                        <td>Red Hat has evaluated this vulnerability as having an Important security impact because arbitrary code can execute within the calling user's context without requiring elevated system privileges. An attacker must successfully manipulate the target directory path used to create the virtual environment, and execution occurs only when a user or automation script runs the generated launcher. Although developer tooling and containerized build pipelines frequently create virtual environments, the issue cannot be triggered remotely without local script invocation.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112897'>CVE-2026-112897</a></td>
@@ -1739,6 +1837,13 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>This flaw affects products that run an aiohttp server exposed to untrusted clients. Products that use aiohttp only as an HTTP client are not affected.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112307'>CVE-2026-112307</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-19</td>
+                        <td>sqlparse: sqlparse: Arbitrary code execution via unescaped PHP output formatting</td>
+                        <td>This vulnerability is rated as Important severity because successful exploitation can result in arbitrary code execution with the privileges of the executing application. Within Red Hat environments, sqlparse is primarily utilized by Python-based services for database interactions, query inspection, and internal migrations rather than generating executable PHP scripts. To trigger this flaw, an application must explicitly invoke sqlparse to export untrusted SQL input using the PHP formatting mode and then evaluate or run the resulting output in a PHP interpreter. Consequently, standard deployments of Red Hat products that consume this library do not typically expose this execution vector.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-68498'>CVE-2026-68498</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-10-16</td>
@@ -1746,11 +1851,32 @@ The potential impact of this vulnerability depends on an organization’s permis
                         <td>A flaw was found in jackson-core. When parsing JSON from character-based inputs (such as Reader, String, or char[]), ReaderBasedJsonParser fails to enforce the configured StreamReadConstraints.maxNameLength limit during name accumulation, validating against the larger maxStringLength limit instead. A remote, unauthenticated attacker can exploit this flaw by sending a crafted JSON object containing an excessively long property name, forcing allocations up to 100 million characters. This can cause heap exhaustion and an Out-Of-Memory application crash, resulting in a denial of service within standard process and container boundaries.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102946'>CVE-2026-102946</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-15</td>
+                        <td>joserfc: joserfc: Signature verification bypass via empty signatures array</td>
+                        <td>This vulnerability is rated as having Critical impact because it permits an unauthenticated remote attacker to completely bypass cryptographic verification without possessing valid signing keys, compromising data integrity and trust. By presenting crafted objects omitting cryptographic signatures, callers parsing general serializations mistakenly treat fabricated payloads as authentic. Exposure is limited to application workflows utilizing the general JSON serialization mechanism, while standard compact token decodings such as JSON Web Tokens (JWT) are not susceptible.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-92982'>CVE-2026-92982</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-10-15</td>
                         <td>ansible-operator-plugins: Ansible Operator Plugins: Arbitrary Code Execution via Jinja2 Template Injection</td>
                         <td>Red Hat has evaluated this vulnerability as having an Important impact rather than Critical because exploitation is bounded by the prerequisite of having authenticated access to create or modify custom resources. Upon reconciliation, malicious template syntax embedded in the resource specification executes within the operator environment, exposing the service account's cluster-level privileges. In default Red Hat deployments utilizing Ansible-based operators, watched resource attributes are automatically forwarded into the runner environment without unsafe designation. Operators constructed with Go or Helm frameworks do not utilize this templating workflow and are not affected.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-109527'>CVE-2026-109527</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-14</td>
+                        <td>mcp: mcp: Denial of Service via unbounded HTTP request body buffering</td>
+                        <td>Red Hat has rated this vulnerability as having an Important severity impact because unauthenticated remote attackers can exhaust system memory and terminate service processes without requiring authentication or user interaction. The issue specifically threatens deployments that expose Model Context Protocol HTTP, Server-Sent Events (SSE), or OAuth routes to untrusted networks. Systems operating solely with standard input/output transports or running behind protective reverse proxies that restrict request body sizes are not susceptible to this exhaustion condition.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-59951'>CVE-2026-59951</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-14</td>
+                        <td>mcp: mcp: Denial of Service via session memory exhaustion in streamable HTTP servers</td>
+                        <td>Red Hat Product Security rates this vulnerability as Important because unauthenticated remote attackers can exhaust host memory and cause an application-level denial of service without requiring user interaction or specialized privileges. Within Red Hat AI, Lightspeed, and automation offerings that incorporate Model Context Protocol (MCP) services, exposure occurs when servers are configured to listen on network-accessible, stateful Streamable HTTP endpoints. Deployments operating with stateless HTTP configurations, standard I/O (stdio), or Server-Sent Events (SSE) transports are not vulnerable to this session buildup.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-78667'>CVE-2026-78667</a></td>
@@ -1836,13 +1962,6 @@ This vulnerability affects all Go programs that serve or consume HTTP/2 traffic 
                         <td>2026-09-28</td>
                         <td>brace-expansion: brace-expansion: Denial of Service via uncontrolled recursion in nested brace patterns</td>
                         <td>This vulnerability is rated as Important because remote unauthenticated attackers can supply crafted nested expressions to trigger native stack exhaustion and crash server-side processes, resulting in a denial of service without compromising system confidentiality or integrity. In Red Hat environments, the affected library is distributed across containerized web consoles, developer tools, and Node.js runtime environments. Exploitation is constrained to deployments where applications process untrusted, user-defined pattern inputs directly through expansion functions without input depth validation.</td>
-                    </tr>
-                                        <tr>
-                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102273'>CVE-2026-102273</a></td>
-                        <td data-sortvalue="1" class='color-important'>Important</td>
-                        <td>2026-09-28</td>
-                        <td>pyjwt: pyjwt: Token forgery via acceptance of public JWK containers as HMAC secrets</td>
-                        <td>Red Hat rates this vulnerability as Important because an attacker with access to a public verification key can forge cryptographic tokens to bypass authentication, allowing impersonation of privileged users and unauthorized access to protected application resources. Exploitation is limited to environments where applications concurrently permit symmetric HMAC and asymmetric algorithms while passing public key containers into validation routines.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102272'>CVE-2026-102272</a></td>
@@ -2086,7 +2205,7 @@ Regarding openshift4/ose-console for Product stream 4.12 and 4.13, the vulnerabl
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-04-10</td>
                         <td>LiteLLM: LiteLLM: Arbitrary Code Execution via bytecode rewriting</td>
-                        <td>LiteLLM through 2026-04-08 allows remote attackers to execute arbitrary code via bytecode rewriting at the /guardrails/test_custom_code URI. A flaw was found in LiteLLM. A remote attacker can exploit this flaw by performing bytecode rewriting at the `/guardrails/test_custom_code` URI. This could lead to arbitrary code execution, allowing the attacker to run malicious code on the affected system.</td>
+                        <td>This vulnerability is rated as having an Important impact because successful exploitation permits an authenticated remote attacker to escape the sandbox and achieve arbitrary code execution in the context of the service process. In Red Hat environments where LiteLLM is integrated into AI tooling, access to proxy administration endpoints requires administrative credentials and is typically not exposed to unauthenticated users. Although the severity of process compromise is high, the requirement for administrative privileges prevents this flaw from reaching Critical impact.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-33810'>CVE-2026-33810</a></td>
@@ -2159,6 +2278,13 @@ Regarding openshift4/ose-console for Product stream 4.12 and 4.13, the vulnerabl
                         <td>Python-Multipart is a streaming multipart parser for Python. Prior to version 0.0.22, a Path Traversal vulnerability exists when using non-default configuration options `UPLOAD_DIR` and `UPLOAD_KEEP_FILENAME=True`. An attacker can write uploaded files to arbitrary locations on the filesystem by crafting a malicious filename. Users should upgrade to version 0.0.22 to receive a patch or, as a workaround, avoid using `UPLOAD_KEEP_FILENAME=True` in project configurations. A flaw was found in Python-Multipart, a tool for parsing multipart form data in Python applications. This vulnerability, known as path traversal, allows a remote attacker to write uploaded files to any location on the server's file system. This exploitation occurs when specific non-default configuration options, `UPLOAD_DIR` and `UPLOAD_KEEP_FILENAME=True`, are enabled, and a malicious filename is provided during a file upload. The primary consequence is unauthorized file creation or modification, which could lead to system compromise.</td>
                     </tr>
                                         <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-21226'>CVE-2026-21226</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-01-13</td>
+                        <td>azure-core: Azure Core shared client library for Python Remote Code Execution Vulnerability</td>
+                        <td>azure-core 1.30.0 is bundled in the Ansible Automation Platform 2.6 controller image, observed in the awx venv. azure-core is a bundled PyPI dependency pulled in by the Azure Ansible content (azure.azcollection) and other Azure SDK clients across several AAP execution environments; but it is not Red Hat source code.</td>
+                    </tr>
+                                        <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-21884'>CVE-2026-21884</a></td>
                         <td data-sortvalue="1" class='color-important'>Important</td>
                         <td>2026-01-10</td>
@@ -2185,6 +2311,13 @@ Regarding openshift4/ose-console for Product stream 4.12 and 4.13, the vulnerabl
                         <td>2025-12-02</td>
                         <td>mcp: DNS Rebinding Protection Disabled by Default in Model Context Protocol Python SDK</td>
                         <td>The MCP Python SDK, called `mcp` on PyPI, is a Python implementation of the Model Context Protocol (MCP). Prior to version 1.23.0, tThe Model Context Protocol (MCP) Python SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication using FastMCP with streamable HTTP or SSE transport, and has not configured TransportSecuritySettings, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access resources exposed by the MCP server on behalf of the user in those limited circumstances. Note that running HTTP-based MCP servers locally without authentication is not recommended per MCP security best practices. This issue does not affect servers using stdio transport. This vulnerability is fixed in 1.23.0. A DNS rebinding flaw has been discovered in the pypi mcp library. The Model Context Protocol (MCP) Python SDK does not enable DNS rebinding protection by default for HTTP-based servers. When an HTTP-based MCP server is run on localhost without authentication using FastMCP with streamable HTTP or SSE transport, and has not configured TransportSecuritySettings, a malicious website could exploit DNS rebinding to bypass same-origin policy restrictions and send requests to the local MCP server. This could allow an attacker to invoke tools or access resources exposed by the MCP server on behalf of the user in those limited circumstances.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-104850'>CVE-2026-104850</a></td>
+                        <td data-sortvalue="1" class='color-important'>Important</td>
+                        <td>2026-10-06</td>
+                        <td>@modelcontextprotocol/sdk: @modelcontextprotocol/client: MCP TypeScript SDK: Information disclosure via unbound OAuth credentials</td>
+                        <td>Red Hat rates this vulnerability as an Important severity because it allows a malicious endpoint to silently extract sensitive authentication secrets and tokens over the network without requiring user interaction. The exposure specifically affects environments where Model Context Protocol client components establish HTTP connections to untrusted external servers while configured with OAuth authentication providers. Workloads communicating exclusively over local standard input/output channels or connecting only to verified, trustworthy endpoints are not susceptible to credential exfiltration.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-84475'>CVE-2026-84475</a></td>
@@ -3214,6 +3347,20 @@ The current python-django issue may be resolved in an upcoming Satellite update.
                         <td>2024-04-04</td>
                         <td>quic-go: memory exhaustion attack against QUIC's connection ID mechanism</td>
                         <td>quic-go is an implementation of the QUIC protocol in Go. Prior to version 0.42.0, an attacker can cause its peer to run out of memory sending a large number of `NEW_CONNECTION_ID` frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a `RETIRE_CONNECTION_ID` frame. The attacker can prevent the receiver from sending out (the vast majority of) these `RETIRE_CONNECTION_ID` frames by collapsing the peers congestion window (by selectively acknowledging received packets) and by manipulating the peer's RTT estimate. Version 0.42.0 contains a patch for the issue. No known workarounds are available. A flaw was found in quic-go. This issue may allow an attacker to trigger a denial of service by sending a large number of NEW_CONNECTION_ID frames that retire old connection IDs. The receiver is supposed to respond to each retirement frame with a RETIRE_CONNECTION_ID frame, but the attacker can prevent the receiver from sending out the vast majority of these RETIRE_CONNECTION_ID frames by selectively acknowledging received packets and collapsing the peers congestion window and by manipulating the peer's RTT estimate.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-113718'>CVE-2026-113718</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-10-20</td>
+                        <td>virtualenv: virtualenv: arbitrary code execution via improper quoting in xonsh activation scripts</td>
+                        <td>Red Hat Product Security rates this vulnerability as Moderate because exploitation requires a combination of uncommon preconditions, including the use of an alternative non-default shell (xonsh) and legacy multibyte character encodings such as GBK or Big5. In typical Red Hat deployments, system locales default to UTF-8 and virtual environments are managed using standard shells like bash, which are unaffected by this flaw. Furthermore, an attacker must have sufficient influence over virtual environment creation parameters—such as custom prompts or file system target paths—and convince a local user to source the resulting script, limiting the practical attack surface.</td>
+                    </tr>
+                                        <tr>
+                        <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-112940'>CVE-2026-112940</a></td>
+                        <td data-sortvalue="2" class='color-moderate'>Moderate</td>
+                        <td>2026-10-20</td>
+                        <td>filelock: filelock: Arbitrary file overwrite via insecure database file reopening</td>
+                        <td>This vulnerability is rated as Moderate severity rather than Important because successful exploitation requires local account access and non-standard directory permissions where untrusted users can manipulate filenames within an unsticky parent directory. Under standard Red Hat Enterprise Linux installations, default kernel settings such as fs.protected_regular and fs.protected_hardlinks restrict link manipulation in common shared locations like /tmp. In addition, exposure is limited to workloads configured to utilize the SQLite-backed ReadWriteLock mechanism rather than standard single-process locking.</td>
                     </tr>
                                         <tr>
                         <td><a target="_blank" href='https://access.redhat.com/security/cve/cve-2026-102938'>CVE-2026-102938</a></td>
